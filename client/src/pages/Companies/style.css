@@ -1,0 +1,20 @@
+.companiesContainer{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.companiesContent{
+	height: 60px;
+    max-width: 460px;
+    margin:1rem;
+    display: flex;
+    /*box-shadow: 10px 10px 5px 0px rgb(0 0 0 / 75%); 
+    -webkit-box-shadow: 10px 10px 5px 0px rgb(0 0 0 / 75%);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);*/
+    justify-content: space-between;
+    background: orange;
+    padding: 1rem;
+}
+.link{
+	color: black;
+}

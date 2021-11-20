@@ -1,0 +1,143 @@
+	/*	HERO STYLE */
+
+	.hero_container {
+	  display: flex;
+	  justify-content: space-around;
+	  flex-wrap: wrap;
+	  text-transform: capitalize;
+	  align-items: center;
+	  height: 60vh;
+	}
+
+	.hero_text {
+	  background-color: var(--primary-color);
+	}
+
+	.hero_button1,
+	.hero_button2 {
+	  padding: 0.7em 1.4em;
+	  margin: 0 0.3em 0.3em 0;
+	  border-radius: 0.15em;
+	  box-sizing: border-box;
+	  text-decoration: none;
+	  font-family: 'Roboto', sans-serif;
+	  text-transform: uppercase;
+	  font-weight: 400;
+	  color: var(--primary-color);
+	  background-color: var(--secondary-color);
+	  box-shadow: inset 0 -0.6em 0 -0.35em rgb(0 0 0 / 17%);
+	  text-align: center;
+	  border-radius: 0.5em;
+	  outline: none;
+	  position: relative;
+	}
+
+	.hero_button2 {
+	  background-color: white;
+	  color: var(--secondary-color);
+	}
+
+	.hero_button1:hover,
+	.hero_button2:hover {
+
+	  top: 0.1em;
+	}
+
+	.hero_button2:hover {
+	  top: 0.1em;
+	}
+
+	.hero_wave {
+	  position: relative;
+	  top: -116px;
+	}
+
+	.hero_img img {
+	  width: auto;
+	  height: 300px;
+	}
+
+
+	/*	SECTION STYLE 		*/
+
+	.section_container {
+	  top: -100px;
+	  position: relative;
+	}
+
+	.section_title {
+	  text-align: center;
+	  text-transform: capitalize;
+	  margin-top: 30px;
+	}
+
+	.section1_container,
+	.section2_container {
+	  display: flex;
+	  justify-content: center;
+	  flex-wrap: wrap;
+	  align-items: center;
+	  text-transform: capitalize;
+	}
+
+	.section2_container {
+	  flex-wrap: wrap-reverse;
+	}
+
+	.section1_container-text {
+	  margin-left: 30px;
+	}
+
+	.section2_container-text {
+	  margin-right: 30px;
+	}
+
+
+	.section_img {
+	  height: 300px;
+	  width: 300px;
+	  border: 1px solid var(--secondary-color);
+	  border-radius: 0.5rem;
+	  transform: rotate(1deg);
+	}
+
+	/* media query for mobile phones */
+	@media (max-width:700px) {
+	  /*	HERO STYLE */
+
+	  .hero_text {
+	    padding: 26px;
+	    font-size: 16px;
+	  }
+
+	  .hero_img img {
+	    height: 180px;
+	  }
+
+	  .hero_wave {
+	    top: -40px;
+	  }
+
+	  /*	SECTION STYLE 		*/
+
+	  .section_container {
+	    top: -59px;
+	  }
+
+	  .section2_container-text {
+	    margin-left: 30px;
+	  }
+
+	  .section_title {
+	    font-size: 16px;
+	  }
+
+	  .section_text {
+	    font-size: 15px;
+	  }
+
+	  .section_img {
+	    height: 200px;
+	    width: 200px;
+	  }
+	}

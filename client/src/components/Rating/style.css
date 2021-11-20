@@ -1,0 +1,14 @@
+.primaryRating {
+  font-size: 14px;
+}
+
+.primaryRatingIcon {
+  color: #acc927;
+  font-size: 22px !important;
+}
+
+@media (max-width: 768px) {
+  .primaryRatingIcon {
+    font-size: 20px !important;
+  }
+}

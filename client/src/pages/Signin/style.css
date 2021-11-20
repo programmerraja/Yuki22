@@ -1,0 +1,81 @@
+/*   user img       */
+.user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65px;
+}
+
+.user-img {
+  width: 35px;
+  height: 35px;
+}
+
+/*  FORM STYLE   */
+.signin_container,
+.signup_container,
+.profile_container {
+  display: flex;
+  justify-content: center;
+  width: auto;
+}
+
+.form_container {
+  background-color: #f6f8fa;
+  width: 300px;
+  height: auto;
+  border: 1px solid white;
+  border-radius: 10px;
+  box-shadow: 2px 1px 3px 3px grey;
+}
+
+.form_input,
+.form_button,
+.form_text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.form_input input,
+.form_input select,
+.form_button input {
+  background-color: rgb(232, 240, 254);
+  border-radius: 5px;
+  border: 2px;
+  height: 30px;
+  width: 90%;
+  outline: none;
+  font-size: 16px;
+}
+
+.form_input label{
+  align-self: baseline;
+  margin: 15px;
+}
+
+.form_button {
+  margin: 18px 10px;
+  width: 90%;
+}
+
+.form_button input {
+  cursor: pointer;
+  color: white;
+  background-color: orange;
+  height: 35px;
+}
+
+.signin:hover,
+.signup:hover {
+  background-color: orange;
+}
+
+/*  ERROR MESSAGE   */
+.error_msg {
+  text-align: center;
+  color: red;
+  margin: 10px;
+  word-break: break-word;
+}
