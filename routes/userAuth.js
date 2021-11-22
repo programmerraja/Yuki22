@@ -10,21 +10,7 @@ const logError = require("../util/logError");
 
 
 
-router.post("/signup",sanitizeHtml, async 
-);
-
-
-router.post("/login",sanitizeHtml, );
-
-
-router.get("/logout", function (req, res) {
-  req.logout();
-  res.sendStatus(200)
-});
-
-
-
-router.post("/forgotPass", sanitizeHtml,postForgetPassword(req, res) {
+router.post("/forgotPass",sanitizeHtml,async function (req, res) {
 
     if (req.body.email) {
         let email = req.body.email;

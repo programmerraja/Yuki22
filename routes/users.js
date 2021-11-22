@@ -12,4 +12,13 @@ router.post("/signin",
 router.post("/signup",
 	userController.signUp);
 
+router.get("/companyNames",
+	userController.getCompanyList);
+
+router.get("/getMyReviews",auth.isAuthenticatedUser(),
+	userController.getMyReviews);
+
+router.post("/addMyReview",auth.isAuthenticatedUser(),
+	userController.addMyReview);
+
 module.exports = router;

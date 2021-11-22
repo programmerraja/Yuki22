@@ -14,7 +14,7 @@ import "./style.css";
 
 
 function Companies(){
-  const [companiesList,setCompaniesList]=useState([{_id:1,name:"a",rating:5},{_id:2,name:"b",rating:4.5}]);
+  const [company_lists,setCompanyLists]=useState([]);
 
   const [loading,setLoading]=useState(true);
 
@@ -25,6 +25,23 @@ function Companies(){
 
   useEffect(()=>{
   	setLoading(false);
+  	API.getCompanyList()
+  	.then((res)=>{
+        if(res.data.status==="sucess"){
+              setCompanyLists(res.data.list);
+         }
+         else{
+          setMsg(msg);
+         }
+   	})
+   	.catch((res)=>{
+      if(res.data && res.data.msg){
+          setMsg(msg);
+      }else{
+          setMsg("unable to fetch list");
+      }
+    });
+
   },[])
 
   return ( 
@@ -35,17 +52,17 @@ function Companies(){
     	?
     		null
     	:
-	    	companiesList.length>0
+	    	company_lists.length>0
 	    	?
 		    	(
 		    		<div className="companiesContainer">
 		    			<div>
 		    			<h3>List of companies that has review</h3>
-			    		{companiesList.map((companiesObj,index)=>
+			    		{company_lists.map((companiesObj,index)=>
 			    		{
 			    			return(
 			    				<div className="companiesContent">
-			    				  <Link to={"/companies/"+companiesObj._id} className="link"> 
+			    				  <Link to={"/company/reviews/"+companiesObj._id} className="link"> 
 			    					<p>{index+1}.{companiesObj.name}</p>
 			    				  </Link>
 			    					<p><Rating number={companiesObj.rating}/> </p>

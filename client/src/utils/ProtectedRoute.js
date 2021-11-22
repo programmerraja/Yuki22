@@ -2,13 +2,14 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import API from "./API";
 
-function ProtectedRoute({ path,props, user, component: Component }) {
+function ProtectedRoute({ path, component: Component }) {
+	console.log(API.isAuth(),API.checkTokenExp())
 	return(<Route exact
 				path={path}
 				render={(props) => (	
-				user && !API.checkTokenExp()? 
-				<Component user={user} {...props} /> :
-				<Redirect to='/login' />
+				API.isAuth() && !API.checkTokenExp()? 
+				<Component  /> :
+				<Redirect to='/signin' />
 				)}
 				/>);
 }

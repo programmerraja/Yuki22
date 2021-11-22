@@ -2,10 +2,19 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 
 import userService from "./userService";
+import companyService from "./companyService";
+
 
 export default {
   setToken:function (token) {
      localStorage.setItem("token",token);
+  },
+  isAuth:function(){
+    let token = localStorage.getItem("token");
+    if (token) {
+      return true;
+    }
+    return false;
   },
   setAuthHeader: function () {
     let token = localStorage.getItem("token");
@@ -49,7 +58,13 @@ export default {
 
   signIn:userService.signIn,
   signUp:userService.signUp,
+  addMyReview:userService.addMyReview,
+  getCompanyNames:userService.getCompanyNames,
+  getMyReviews:userService.getMyReviews,
+  logout:userService.logout,
 
+  getCompanyList:companyService.getCompanyList,
+  getCompanyReviews:companyService.getCompanyReviews
 };
 
 function setAuthHeader() {

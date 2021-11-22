@@ -8,7 +8,7 @@ import logo from "../../img/logo.png";
 import user from "../../img/user.svg";
 
 
-function Nav() {
+function Nav({user}) {
 
   const nav_ref=createRef();
   const crosslines_ref=createRef();
@@ -23,7 +23,7 @@ function Nav() {
 
   let nav_link;
 
-  if("true"=="true"){
+  if(user){
     nav_link=(<><div className="nav_link">
                     <Link to="/companies"> Companies </Link>
                 </div>
@@ -48,12 +48,12 @@ function Nav() {
       nav_link=(<><div className="nav_link">
                     <Link to="/compaines"> Compaines </Link>
                 </div>
-                 <div className="nav_link">
+                <div className="nav_link">
                     <Link to="/user/addReview"> Add Review </Link>
                 </div>
                 <div className="nav_link">
-                  <Link to="/user/profile">
-                  <img src={ user } className="user_img"/>
+                  <Link to="/signin">
+                    <img src={user} className="user_img"/>
                   </Link>
                 </div></>);
     }

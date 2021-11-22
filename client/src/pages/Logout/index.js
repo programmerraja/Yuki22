@@ -1,17 +1,20 @@
-// import {useEffect} from "react";
-// import Api from "../Api/index.js";
+import {useEffect} from "react";
+import {useHistory } from "react-router-dom";
+
+import API from "../../utils/API";
+
+function Logout ({setUser}){
+  localStorage.removeItem("token");
+  const history = useHistory();
 
 
-// function Logout (){
-//   localStorage.setItem("loggedIn",false);
+  useEffect(()=>{
+    API.logout();
+    setUser(false);
+    history.push("/");
+  },[]);
 
-//   useEffect(()=>{
-//     Api.logout();
-//     window.location="/";
+  return null
+}
 
-//   },[]);
-
-//   return null
-// }
-
-// export default Logout;
+export default Logout;

@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
-const { String,Number } = mongoose.Schema.Types;
+const { String,Number ,ObjectId} = mongoose.Schema.Types;
+
 
 const ReviewsSchema = new mongoose.Schema(
   {
@@ -14,13 +15,13 @@ const ReviewsSchema = new mongoose.Schema(
     rounds:{
       type:Number,
     },
-    roundsDetails:[{
+    roundsDetails:{
       type:Object
-    }],
+    },
     isPlaced:{
       type:Number
     },
-    Salary:{
+    salary:{
       type:String
     },
     placementType:{
@@ -32,7 +33,7 @@ const ReviewsSchema = new mongoose.Schema(
     mobileNo:{
       type:Number
     },
-    tips:{
+    advice:{
       type:String
     },
     pros:{

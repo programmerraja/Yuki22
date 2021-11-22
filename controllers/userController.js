@@ -67,7 +67,7 @@ const user = {
                   res.json({"status":"sucess","msg":"Account created sucessfully"});
               } else {
                   //need to remove user from database  if mail not send sucessfully
-                     usermodel.deleteOne({
+                     db.User.deleteOne({
                           _id: new_user._id
                       })
                   
@@ -97,8 +97,123 @@ const user = {
                 }); 
     }
   },
+  
+  addMyReview:function (req,res){
+    console.log(req.body)
+    let{name,attended_on,
+          placement_type,rounds,
+          rounds_detail,is_placed,
+          rating,pros,cons,
+          salary,mobile_no,advice
+        }=req.body
+    if(name && attended_on && placement_type &&  rounds && rounds_detail  ){
+        db.Compaines.findOne({name:name.toLowerCase()})
+        .then((companyObj)=>{
+            //if company exist in our db use the company id 
+            if(companyObj){
+                console.log(companyObj._id);
+                db.Reviews.create({
+                        companyId:companyObj._id,
+                        userId:req.user._id,
+                        placementType:placement_type,
+                        attendedOn:attended_on,
+                        rounds:rounds,
+                        roundsDetails:rounds_detail,
+                        isPlaced:is_placed,
+                        rating:rating,
+                        pros:pros,
+                        cons:cons,
+                        salary:salary,
+                        mobileNo:mobile_no,
+                        advice:advice
+                      })
+                      .then((reviewObj)=>{
+                        res.json({status:"sucess",msg:"sucessfully added your review"})
+                      })
+                      .catch(err=>{
+                        logError(err.msg,err)
+                        res.json({status:"failed",
+                                          msg: "Sorry Something went wrong. Please try again"
+                                  });
+                      })
+            }
+            //create new company then use the id
+            else{
+              db.Compaines.create({name:name,rating:rating})
+              .then((companyObj)=>{
+                  if(companyObj){
+                      db.Reviews.create({
+                        companyId:companyObj._id,
+                        userId:req.user._id,
+                        placementType:placement_type,
+                        attendedOn:attended_on,
+                        rounds:rounds,
+                        roundsDetails:rounds_detail,
+                        isPlaced:is_placed,
+                        rating:rating,
+                        pros:pros,
+                        cons:cons,
+                        salary:salary,
+                        mobileNo:mobile_no,
+                        advice:advice
+                      })
+                      .then((reviewObj)=>{
+                        res.json({status:"sucess",msg:"sucessfully added your review"})
+                      })
+                      .catch(err=>{
+                        logError(err.msg,err)
+                        res.json({status:"failed",
+                                          msg: "Sorry Something went wrong. Please try again"
+                                  });
+                      })
 
+                  }
+              })
+              .catch(err=>{
+                  logError(err.msg,err)
+                  res.json({status:"failed",
+                                    msg: "Sorry Something went wrong. Please try again"
+                            });
+              })
+            } 
+        })
+        .catch(err=>{
+          logError(err.msg,err)
+          res.json({status:"failed",
+                    msg: "Sorry Something went wrong. Please try again"
+                    });
+        })
+    }
+    else{
+      res.json({status:"failed",
+                    msg: "Please fill all the data"
+                    });
+    }
     
+  },
+
+  getCompanyList:function(req,res){
+    db.Compaines.find({})
+    .then((list)=>{
+      let new_list=[];
+      list.forEach(obj=>{
+        new_list.push(obj.name);
+      });
+      res.json({status:"sucess",list:new_list});
+    })
+    .catch((err)=>{
+      res.json({status:"failed",list:[]});
+    })
+  },
+  getMyReviews:function(req,res){
+    db.Reviews.find({userId:req.user._id})
+    .then((reviews)=>{
+      res.json({status:"sucess",reviews:reviews});
+    })
+    .catch((err)=>{
+      res.json({status:"failed",msg:"Something went wrong"});
+    })
+  },
   postUserProfile:async function (req, res) {
         if (req.body.name && req.body.old_password) {
 
@@ -108,7 +223,7 @@ const user = {
                 new_password
             } = req.body;
             let user_id = req.user._id;
-            let user = await usermodel.findOne({
+            let user = await db.User.findOne({
                 _id: user_id
             });
             if (user) {
@@ -154,7 +269,7 @@ const user = {
 
         if (req.body.email) {
             let email = req.body.email;
-            var user = await usermodel.findOne({
+            var user = await db.User.findOne({
                 email: email
             });
             if (user) {
@@ -164,7 +279,7 @@ const user = {
                 //we adding 20 mins to current date and converting in to mili sec
                 let password_reset_expires = Date.now() + 20 * 60 * 1000;
                 //updating the user token
-                let new_user = await usermodel.findOneAndUpdate({
+                let new_user = await db.User.findOneAndUpdate({
                     _id: user._id
                 }, {
                     password_reset_token: token,
@@ -200,7 +315,7 @@ const user = {
         if (password_reset_token && new_password) {
 
             //finding the user
-            var user = await usermodel.findOne({
+            var user = await db.User.findOne({
                 password_reset_token: password_reset_token,
                 password_reset_expires: {
                     $gt: Date.now()
@@ -208,7 +323,7 @@ const user = {
             });
             if (user) {
                 let hash = bcrypt.hashSync(new_password, 2);
-                let new_user = await usermodel.findOneAndUpdate({
+                let new_user = await db.User.findOneAndUpdate({
                     _id: user._id
                 }, {
                     password: hash
@@ -234,7 +349,7 @@ const user = {
     emailVerified:async function (req, res) {
         let user_id = req.body.id;
         if (user_id) {
-            var user = await usermodel.findOne({
+            var user = await db.User.findOne({
                 _id: user_id
             });
             if (user) {

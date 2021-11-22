@@ -19,9 +19,9 @@ function Step5Questions({ rating,
 return ( <>
                   <div  className="add_review-from">
                    <label for="rating" className="add_review-label">
-                   <span>Rate your company out of 5 *</span></label>
+                   <span>Rate the company out of 5 </span></label>
                          <div className="add_review-input-wrapper">
-                          <input placeholder="How may rounds"  
+                          <input placeholder="rating"  
                                   name="rating"  
                                   className="add_review-input" 
                                   value={rating}
@@ -32,10 +32,10 @@ return ( <>
 
                    <div  className="add_review-from">
                          <label for="pros" className="add_review-label">
-                         <span>Write Pros about your company *</span></label>
+                         <span>Write pros about the company </span></label>
                          <div className="add_review-input-wrapper">
 
-                            <textarea placeholder="Passed out year" 
+                            <textarea placeholder="example:Good place to work, can learn lot" 
                                 rows="7"
                                 cols="24" 
                                 name="pros"  
@@ -48,9 +48,9 @@ return ( <>
                    </div>
                    <div  className="add_review-from">
                          <label for="cons" className="add_review-label">
-                         <span>Write Pros about your company *</span></label>
+                         <span>Write cons about the company </span></label>
                          <div className="add_review-input-wrapper">
-                            <textarea placeholder="Passed out year" 
+                            <textarea placeholder="example:less salary,high work pressure" 
                                 rows="7"
                                 cols="24" 
                                 name="cons"  
@@ -63,11 +63,12 @@ return ( <>
                    </div>
 
                   <div  className="add_review-from">
-                   <label for="isPlaced" className="add_review-label">
-                   <span>Salary provided by the company *</span></label>
+                   <label for="salary" className="add_review-label">
+                   <span>Salary range </span></label>
                          <div className="add_review-input-wrapper">
-                           <input placeholder="How may rounds"  
-                                  name="companyName"  
+                           <input type="text"
+                                  placeholder="15k-20k"  
+                                  name="salary"  
                                   className="add_review-input" 
                                   value={salary}
                                   onChange={(e)=>{setSalary(e.target.value);}}
@@ -76,11 +77,11 @@ return ( <>
                    </div>
 
                     <div  className="add_review-from">
-                       <label for="isPlaced" className="add_review-label">
-                       <span>Provide your mobile number for further enquires by students </span></label>
+                       <label for="mobile_no" className="add_review-label">
+                       <span>Provide your mobile number for further enquires for students </span></label>
                          <div className="add_review-input-wrapper">
-                           <input placeholder="How may rounds"  
-                                  name="companyName"  
+                           <input placeholder="mobile no"  
+                                  name="mobile_no"  
                                   className="add_review-input" 
                                   value={mobile_no}
                                   onChange={(e)=>{setMobileNo(e.target.value);}}

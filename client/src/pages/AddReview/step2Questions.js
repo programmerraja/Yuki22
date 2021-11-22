@@ -10,12 +10,12 @@ function Step2Questions({rounds,setRounds}) {
    
 return ( <>
                   <div  className="add_review-from">
-                   <label for="companyName" className="add_review-label">
+                   <label for="rounds" className="add_review-label">
                    <span>How many Rounds *</span></label>
                          <div className="add_review-input-wrapper">
                           <input type="number"
-                                  placeholder="How may rounds"  
-                                  name="companyName"  
+                                  placeholder="How many rounds"  
+                                  name="rounds"  
                                   className="add_review-input" 
                                   value={rounds}
                                   onChange={(e)=>{setRounds(e.target.value);}}/>

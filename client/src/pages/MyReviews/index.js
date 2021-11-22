@@ -13,12 +13,11 @@ import "./style.css";
 
 
 
-function Reviews(){
+function MyReviews(){
   const [reviews,setReviews]=useState([]);
 
   const [loading,setLoading]=useState(true);
 
-  const { companyId } = useParams();
 
   const [msg,setMsg]=useState("");
 
@@ -27,7 +26,7 @@ function Reviews(){
 
    useEffect(()=>{
     setLoading(true);
-    API.getCompanyReviews(companyId)
+    API.getMyReviews()
     .then((res)=>{
         setLoading(false);
         if(res.data.status==="sucess"){
@@ -65,4 +64,4 @@ function Reviews(){
 
   }
 
-export default Reviews;
+export default MyReviews;

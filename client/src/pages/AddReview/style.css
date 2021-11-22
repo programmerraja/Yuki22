@@ -16,9 +16,37 @@
 .add_review-from{
 	margin-bottom: 12px;
 }
+.add_review-error-msg{
+	color: red;
+	text-align: center;
+	margin: 0.2rem;
+}
 .add_review-input{
 	border: 0;
 	outline: 0;
+}
+.suggestion_container{
+	margin-top: 0;
+    margin-bottom: 1rem;
+    position: absolute;
+    background: white;
+    padding: 1rem;
+    min-width: 250px;
+    flex-direction: ju;
+    list-style: none;
+}
+.suggestion_container li{
+	padding: 0.25rem;
+}
+
+.suggestion_container li:hover{
+	background-color: #cbc9c9cf;
+	cursor: pointer;
+	width: 100%;
+}
+
+.red_color{
+	color: red;
 }
 .add_review-button{
 	display: flex;

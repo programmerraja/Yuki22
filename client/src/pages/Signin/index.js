@@ -12,7 +12,7 @@ import "./style.css";
 
 
 
-function Signin(){
+function Signin({setUser}){
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
   const [error,setError]=useState("");
@@ -29,8 +29,9 @@ function Signin(){
     .then((res)=>{
       setLoading(false);
       if(res.data.status==="sucess"){
-        API.setToken(res.msg.token);
+        API.setToken(res.data.token);
         API.setAuthHeader();
+        setUser(true);
         history.push("/reviews");
       }
       else{
