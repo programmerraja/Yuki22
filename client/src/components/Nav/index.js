@@ -37,7 +37,7 @@ function Nav({user}) {
                 <div className="nav_link">
                      <Link to="/user/logout"> Logout </Link>
                 </div>
-                <div className="nav_link">
+                <div className="nav_lin">
                   <Link to="/user/profile">
                   <img src={ userImg } className="user_img"/>
                   </Link>
@@ -51,7 +51,7 @@ function Nav({user}) {
                 <div className="nav_link">
                     <Link to="/user/addReview"> Add Review </Link>
                 </div>
-                <div className="nav_link">
+                <div className="nav_lin">
                   <Link to="/signin">
                     <img src={userImg} className="user_img"/>
                   </Link>

@@ -225,7 +225,10 @@ return ( <>
                       {error_msg}
                     </p>
                     <div className="add_review-button">
-                     <button onClick={onPrevious} >Previous</button> 
+                    {steps!==1?
+                     <button onClick={onPrevious} >Previous</button>
+                     :null 
+                    }
                      {
                       steps==5?
                       <button onClick={onSubitReview}>Submit</button>

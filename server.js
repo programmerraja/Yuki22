@@ -2,7 +2,7 @@ const express = require("express");
 const session = require("express-session");
 const path = require("path");
 const mongoose = require("mongoose");
-// const cors = require("cors");
+const cors = require("cors");
 // const compression = require('compression');
 require("dotenv").config();
 
@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());  
-// app.use(cors())
+app.use(cors())
 
 
 // Serve up static assets (usually on heroku)
