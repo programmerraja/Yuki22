@@ -61,6 +61,8 @@ function App(props) {
       <Router>
       <Nav user={API.isAuth()}/>
         <Switch>
+          <Route exact path="/" component={Home}/>
+
           <Route exact path="/signin" component={()=>{return(<Signin setUser={setUser}/>)}}/>
           <Route exact path="/companies" component={Companies} />
           <Route exact path="/signup" component={Signup} />

@@ -63,13 +63,13 @@
 .form_button input {
   cursor: pointer;
   color: white;
-  background-color: orange;
+  background-color: #4a5ec9;
   height: 35px;
 }
 
 .signin:hover,
 .signup:hover {
-  background-color: orange;
+  background-color: #4a5ec9;
 }
 
 /*  ERROR MESSAGE   */

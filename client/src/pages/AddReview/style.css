@@ -6,13 +6,15 @@
 }
 
 .add_review-container{
-	background-color: orange;
+	background-color: #4a5ec9;
     border-radius: 3px;
     padding: 1rem;
     max-width: 640px;
     min-width: 450px;
 }
-
+.add_review-container label{
+	color:white;
+}
 .add_review-from{
 	margin-bottom: 12px;
 }
@@ -55,7 +57,7 @@
 }
 .add_review-button button{
 	color: #fff;
-    background-color: #1861bf;
+    background-color: orange;
     padding: 7px 16px;
     outline: none;
     border: 0;
