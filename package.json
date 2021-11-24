@@ -1,7 +1,7 @@
 {
-  "name": "justPlaced",
+  "name": "Yuki",
   "version": "1.0.0",
-  "description": "justPlaced a website for posting company reviews",
+  "description": "Yuki a website for posting company reviews",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",

@@ -111,7 +111,6 @@ const user = {
         .then((companyObj)=>{
             //if company exist in our db use the company id 
             if(companyObj){
-                console.log(companyObj._id);
                 db.Reviews.create({
                         companyId:companyObj._id,
                         userId:req.user._id,
@@ -129,6 +128,13 @@ const user = {
                       })
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully added your review"})
+                        db.Compaines.findOneAndUpdate({
+                            _id:companyObj._id,
+                            noOfReviews:Number(companyObj.noOfReviews)+1,
+                            rating:Number(companyObj.rating)+Number(rating)
+                          }).then((a)=>{
+                            console.log(a)
+                          })
                       })
                       .catch(err=>{
                         logError(err.msg,err)
@@ -139,7 +145,7 @@ const user = {
             }
             //create new company then use the id
             else{
-              db.Compaines.create({name:name,rating:rating})
+              db.Compaines.create({name:name,rating:rating,noOfReviews:1})
               .then((companyObj)=>{
                   if(companyObj){
                       db.Reviews.create({
@@ -159,6 +165,7 @@ const user = {
                       })
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully added your review"})
+                        
                       })
                       .catch(err=>{
                         logError(err.msg,err)
@@ -208,9 +215,13 @@ const user = {
   getMyReviews:function(req,res){
     db.Reviews.find({userId:req.user._id})
     .then((reviews)=>{
+      reviews.forEach((review)=>{
+          review._doc.user={name:req.user.name,department:req.user.department};
+      })
       res.json({status:"sucess",reviews:reviews});
     })
     .catch((err)=>{
+      console.log(err)
       res.json({status:"failed",msg:"Something went wrong"});
     })
   },

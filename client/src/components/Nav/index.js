@@ -5,7 +5,7 @@ import {useHistory,Link } from "react-router-dom";
 import "./style.css";
 
 import logo from "../../img/logo.png";
-import user from "../../img/user.svg";
+import userImg from "../../img/user.svg";
 
 
 function Nav({user}) {
@@ -39,21 +39,21 @@ function Nav({user}) {
                 </div>
                 <div className="nav_link">
                   <Link to="/user/profile">
-                  <img src={ user } className="user_img"/>
+                  <img src={ userImg } className="user_img"/>
                   </Link>
                 </div>
                 </>);
   }
   else{
       nav_link=(<><div className="nav_link">
-                    <Link to="/compaines"> Compaines </Link>
+                    <Link to="/companies"> Compaines </Link>
                 </div>
                 <div className="nav_link">
                     <Link to="/user/addReview"> Add Review </Link>
                 </div>
                 <div className="nav_link">
                   <Link to="/signin">
-                    <img src={user} className="user_img"/>
+                    <img src={userImg} className="user_img"/>
                   </Link>
                 </div></>);
     }
@@ -61,7 +61,7 @@ function Nav({user}) {
 return ( <div className="nav">
               <div className="nav-brand">
                     <Link to="/">  
-                      <p> JustPlaced </p>
+                      Yuki 
                     </Link>
               </div>
 

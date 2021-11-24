@@ -1,7 +1,7 @@
 const express = require("express");
 const session = require("express-session");
 const path = require("path");
-const helmet = require("helmet");
+// const helmet = require("helmet");
 const { v4: uuidv4 } = require('uuid')
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -23,9 +23,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());  
 app.use(cors())
 
-app.use(helmet({
-    contentSecurityPolicy: false,
-  }));
+// app.use(helmet({
+//     contentSecurityPolicy: false,
+//   }));
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

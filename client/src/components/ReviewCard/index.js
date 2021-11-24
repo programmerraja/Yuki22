@@ -1,5 +1,7 @@
 import React from "react";
 
+import userImg from "../../img/user.svg";
+
 import "./style.css";
 
 function ReviewCard({
@@ -13,26 +15,46 @@ function ReviewCard({
                     cons,
                     salary,
                     mobileNo,
-                    advice}){
+                    advice,
+                    user
+                  }){
   return ( 
     <>
         <div className="review_container">
         <div className="wrapper">
-          <img src="" alt="dd"/>
-          <p>UserName</p>
+          <div  className="user_wrapper">
+            <img src={userImg} alt="user" className="user_img"/>
+            {isPlaced===1 &&
+            <span className="user_text-green">Placed</span>
+            }
+            {rating &&
+              <span className="user_text">
+              {rating}
+            
+              <i class="far fa-star"></i></span>
+            }
+            <p className="user_name">{user.name}</p>
+            <span className="user_text-small">{user.department}</span>
+          </div>
         </div>
+
           <div className="wrapper">
             <div className="review_text">
-            <p>placement type:{placementType}</p>
+            <p>placement type:
+              <span className="review_text-bold">
+               {placementType}</span>
+            </p>
             </div>
             <div className="review_text">
-              <p>No of rounds:{rounds}</p>
+              <p>No of rounds: 
+                  <span className="review_text-bold">{rounds}</span>
+              </p>
             </div>
             {
               Object.keys(roundsDetails).map((roundName,index)=>{
                 return(
-                  <div>
-                     <div className="review_text">
+                  <div className="review_rounds">
+                     <div className="review_text ">
                       <p className="review_text-bold">{index+1}.{roundName}</p>
                     </div>
                     <div className="review_text">
@@ -49,37 +71,45 @@ function ReviewCard({
               })
             }
           </div>
-              
           <div className="wrapper">
-            <div className="review_text">
-              <p className="review_text-bold">pros:</p>
-              {
-                      pros
-                      .split("\n")
-                      .map((text)=>{
-                            return(<p className="review_text-point">{text}</p>)
-                       })
-              }
-            </div>
-            <div className="review_text">
-              <p className="review_text-bold">cons:</p>
-              {
-                      cons
-                      .split("\n")
-                      .map((text)=>{
-                            return(<p className="review_text-point">{text}</p>)
-                       })
-              }
-            </div>
+            {pros && 
+              <div className="review_text">
+                <p className="review_text-bold">pros:</p>
+                {
+                        pros
+                        .split("\n")
+                        .map((text)=>{
+                              return(<p className="review_text-point">{text}</p>)
+                         })
+                }
+              </div>
+            }
+            {cons && 
+              <div className="review_text">
+                <p className="review_text-bold">cons:</p>
+                {
+                        cons
+                        .split("\n")
+                        .map((text)=>{
+                              return(<p className="review_text-point">{text}</p>)
+                         })
+                }
+              </div>
+            }
           </div>
+
               
           <div className="wrapper">
-              <div className="review_text">
-                <p className="review_text-bold">salary range:{salary}</p>
-              </div>
-              <div className="review_text">
-                <p className="review_text-bold">ContactNo:{mobileNo}</p>
-              </div>
+            { salary && 
+                <div className="review_text">
+                  <p className="review_text-bold">salary:{salary}</p>
+                </div>
+            }
+            {mobileNo && 
+                <div className="review_text">
+                  <p className="review_text-bold">ContactNo:{mobileNo}</p>
+                </div>
+            }
           </div>
         </div>
     </>);

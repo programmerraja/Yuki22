@@ -32,7 +32,7 @@ function UserProfile() {
    const [rounds,setRounds]=useState();
    const [rounds_detail,setRoundsDetail]=useState({});
 
-   const [is_placed,setIsPlaced]=useState(0);
+   const [is_placed,setIsPlaced]=useState("1");
 
    const [rating,setRating]=useState();
    const [pros,setPros]=useState("");
@@ -94,7 +94,7 @@ function UserProfile() {
       }
       if(steps===4){
         //converting rounds string to int by -0
-        if(is_placed===0 || is_placed===1){
+        if(is_placed==="0" || is_placed==="1"){
           return true
         }
         else{

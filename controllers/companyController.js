@@ -18,10 +18,19 @@ const company = {
         res.json({status:"failed",msg:"Something went wrong"});
       })
   },
-  getReviews:function(req,res){
+  getReviews: function(req,res){
     if(req.params.companyId){
+      
       db.Reviews.find({companyId:req.params.companyId})
-      .then((reviews)=>{
+      .then(async(reviews)=>{
+        async function getUser(index){
+          let user=await db.User.findOne({_id:reviews[index]["userId"]});
+          reviews[index]["_doc"]["user"]={name:user.name,regno:user.regno,department:user.department};
+          if(reviews.length-1>index){
+            await getUser(index+1);
+          }
+        }
+        await getUser(0);
         res.json({status:"sucess",reviews:reviews});
       })
       .catch((err)=>{
@@ -31,4 +40,13 @@ const company = {
   }
 };
 
+// db.Reviews.aggregate([{ $match: { companyId:req.params.companyId } },
+//    {
+//     $lookup: {
+//             from: "user",
+//             localField: "userId",
+//             foreignField: "_id",
+//             as: "copies_sold"
+//         }
+// }])
 module.exports = company;

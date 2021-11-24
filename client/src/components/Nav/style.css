@@ -13,6 +13,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 0.5rem;
+}
+.nav-brand a{
+  color: white;
+  font-weight: bold;
 }
 
 .nav-center {
@@ -44,6 +49,8 @@
 
 .nav_link a:hover {
   border: 1px solid white;
+  color:white;
+  text-decoration: none;
 
 }
 
