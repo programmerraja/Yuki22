@@ -2,8 +2,8 @@ const express = require("express");
 const session = require("express-session");
 const path = require("path");
 const mongoose = require("mongoose");
-const cors = require("cors");
-const compression = require('compression');
+// const cors = require("cors");
+// const compression = require('compression');
 require("dotenv").config();
 
 const app = express();
@@ -11,15 +11,15 @@ const passport = require("./passport");
 const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
 
-// Define middleware here
-app.use(compression({filter:(req,res)=>{
-    //such that it will compress all thing
-   return compression.filter(req, res)
-}}));
+// // Define middleware here
+// app.use(compression({filter:(req,res)=>{
+//     //such that it will compress all thing
+//    return compression.filter(req, res)
+// }}));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());  
-app.use(cors())
+// app.use(cors())
 
 
 // Serve up static assets (usually on heroku)
