@@ -1,8 +1,6 @@
 const express = require("express");
 const session = require("express-session");
 const path = require("path");
-// const helmet = require("helmet");
-const { v4: uuidv4 } = require('uuid')
 const mongoose = require("mongoose");
 const cors = require("cors");
 const compression = require('compression');
@@ -23,9 +21,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());  
 app.use(cors())
 
-// app.use(helmet({
-//     contentSecurityPolicy: false,
-//   }));
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -34,19 +29,19 @@ if (process.env.NODE_ENV === "production") {
 }
 
 
-app.use(
-  session({
-    name: "justPlaced",
-    secret: "keyboard cat",
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      maxAge: 24 * 60 * 60 * 1000, // 24 hrs
-    }
-  })
-);
+// app.use(
+//   session({
+//     name: "justPlaced",
+//     secret: "keyboard cat",
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {
+//       maxAge: 24 * 60 * 60 * 1000, // 24 hrs
+//     }
+//   })
+// );
 app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.session());
 // use API routes here
 app.use(routes);
 

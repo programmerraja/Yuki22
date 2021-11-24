@@ -11,7 +11,7 @@ function Logout ({setUser}){
   useEffect(()=>{
     API.logout();
     setUser(false);
-    history.push("/");
+    history.push("/");	
   },[]);
 
   return null
