@@ -17,6 +17,9 @@ router.post("/signup",
 router.get("/companyNames",
 	userController.getCompanyList);
 
+router.post("/forget/password",
+	userController.forgetPassword);
+
 router.post("/verifiy/email/:userId",
 	userController.emailVerified);
 
@@ -27,6 +30,10 @@ router.get("/getMyProfile",
 
 router.get("/getMyReviews",auth.isAuthenticatedUser(),
 	userController.getMyReviews);
+
+
+router.get("/deleteMyReview/:reviewId",auth.isAuthenticatedUser(),
+	userController.deleteMyReview);
 
 router.post("/addMyReview",auth.isAuthenticatedUser(),checkMailVerified,
 	userController.addMyReview);

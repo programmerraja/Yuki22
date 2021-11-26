@@ -5,6 +5,8 @@ import {useHistory,Link } from "react-router-dom";
 import SquareLoader from "../../components/SquareLoader";
 
 import API from "../../utils/API";
+import errorHandler from "../../utils/errorHandler";
+
 
 import "./style.css";
 
@@ -17,13 +19,7 @@ function Companies(){
 
   const [loading,setLoading]=useState(true);
 
-  const [msg,setMsg]=useState("");
-
-
-  const history = useHistory();
-
   useEffect(()=>{
-  	
   	API.getCompanyList()
   	.then((res)=>{
         if(res.data.status==="sucess"){
@@ -31,21 +27,20 @@ function Companies(){
               setCompanyLists(res.data.list);
          }
          else{
-          setMsg(msg);
+         	errorHandler(true,res.data.msg);
          }
    	})
    	.catch((res)=>{
+      setLoading(false);
       if(res.data && res.data.msg){
-          setMsg(msg);
+         	errorHandler(true,res.data.msg);
       }else{
-          setMsg("unable to fetch list");
+         	errorHandler(true);
       }
     });
 
   },[])
-  // const sortList=()=>{
-
-  // }
+  
 
   const search=(val)=>{
   		setSearchContent(val);
@@ -97,7 +92,7 @@ function Companies(){
 						    				  <Link to={"/company/reviews/"+companiesObj._id} className="link"> 
 						    					<p className="companies_content-text">{index+1}.{companiesObj.name}</p>
 						    				  </Link>
-						    					<p className="companies_content-rating">{companiesObj.rating/companiesObj.noOfReviews}<i class="far fa-star"></i> </p>
+						    					<p className="companies_content-rating">{companiesObj.rating && companiesObj.noOfReviews?companiesObj.rating/companiesObj.noOfReviews:0}<i class="far fa-star"></i> </p>
 						    					<p className="companies_content-review">{companiesObj.noOfReviews}<i class="fas fa-user-friends"></i></p>
 						    				</div>
 						    			)

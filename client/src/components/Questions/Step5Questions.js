@@ -1,6 +1,5 @@
 import React from "react";
 
-import "./style.css"
 
 function Step5Questions({ rating,
                           setRating,
@@ -19,7 +18,7 @@ function Step5Questions({ rating,
 return ( <>
                   <div  className="add_review-from">
                    <label for="rating" className="add_review-label">
-                   <span>Rate the company out of 5 </span></label>
+                   <span>Rate the company out of 5 </span><span className="red_color"> *</span></label>
                          <div className="add_review-input-wrapper">
                           <input placeholder="rating"  
                                   name="rating"  

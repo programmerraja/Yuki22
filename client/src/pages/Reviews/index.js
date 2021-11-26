@@ -3,11 +3,11 @@ import {useState,useEffect} from "react";
 import {useHistory ,useParams} from "react-router-dom";
 
 import ReviewCard from "../../components/ReviewCard";
-
 import SquareLoader from "../../components/SquareLoader";
 
-
 import API from "../../utils/API";
+import errorHandler from "../../utils/errorHandler";
+
 
 import "./style.css";
 
@@ -19,8 +19,6 @@ function Reviews(){
   const [loading,setLoading]=useState(true);
 
   const { companyId } = useParams();
-
-  const [msg,setMsg]=useState("");
 
 
   const history = useHistory();
@@ -34,15 +32,15 @@ function Reviews(){
               setReviews(res.data.reviews);
          }
          else{
-          setMsg(msg);
+          errorHandler(true,res.data.msg);
          }
     })
     .catch((res)=>{
       setLoading(false);
       if(res.data && res.data.msg){
-          setMsg(msg);
+          errorHandler(true,res.data.msg);
       }else{
-          setMsg("Something went wrong");
+          errorHandler(true);
       }
     });
   },[])
@@ -58,6 +56,11 @@ function Reviews(){
                       {...review}/>
                 ) 
             })
+        }
+        { 
+          reviews.length==0 && !loading?
+          <p>This company has no reviews yet or reviews may be deleted 
+          </p>:null  
         }
       </div>
         

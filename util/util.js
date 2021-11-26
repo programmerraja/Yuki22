@@ -1,5 +1,10 @@
 var nodemailer = require('nodemailer');
+const crypto=require("crypto");
 
+function generateToken(){
+	const token=crypto.randomBytes(10).toString("hex");
+	return token;
+}	
 function sendMail(subject,body,to_mail)
 {
 	 return new Promise((resolve,reject)=>{
@@ -45,7 +50,7 @@ async function verfiyMail(to_mail,user_name,link){
 
 	let subject="Verfiy Your Mail";
 	let body="<p>Hai "+user_name+",</p>\
-	 		<p>we're happy you signed up for Yuki. To start exploringthe Yuki confirm your email address\
+	 		<p>we're happy you signed up for Yuki. To start exploring the Yuki confirm your email address\
 	 		 <a href='"+link+"'>Verfiy Now</a>"
 
 	let msg=await sendMail(subject,body,to_mail);
@@ -89,10 +94,12 @@ function dbErrorHandler(err){
 // Used to log the error
 function logError(msg,err){
 	console.log("------------------------------------");
-	console.log("Error:",msg);
+	console.log("Error:",err);
 	console.log("------------------------------------");
 
 }
+
+
 
 module.exports=
 {

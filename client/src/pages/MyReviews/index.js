@@ -3,11 +3,11 @@ import {useState,useEffect} from "react";
 import {useHistory ,useParams,Link} from "react-router-dom";
 
 import ReviewCard from "../../components/ReviewCard";
-
 import SquareLoader from "../../components/SquareLoader";
 
-
 import API from "../../utils/API";
+import errorHandler from "../../utils/errorHandler";
+
 
 import "./style.css";
 
@@ -18,14 +18,11 @@ function MyReviews(){
 
   const [loading,setLoading]=useState(true);
 
-
   const [msg,setMsg]=useState("");
-
 
   const history = useHistory();
 
    useEffect(()=>{
-    setLoading(true);
     API.getMyReviews()
     .then((res)=>{
         setLoading(false);
@@ -46,6 +43,32 @@ function MyReviews(){
     });
   },[])
   
+  const deleteReview=(review_id)=>{
+      API.deleteMyReview(review_id)
+      .then((res)=>{
+          setLoading(false);
+          if(res.data.status==="sucess"){
+            let new_review=[]
+            reviews.forEach(review_obj=>{
+              if(review_obj._id!=review_id){
+                new_review.push(review_obj)
+              }
+            });
+            setReviews(new_review);
+            errorHandler(false,res.data.msg);
+          }
+      
+      })
+      .catch((res)=>{
+        setLoading(false);
+        if(res.data && res.data.msg){
+            errorHandler(true,res.data.msg);
+        }else{
+            errorHandler(true);
+        }
+      });
+  }
+
   return ( 
     <>
     <SquareLoader  loading={loading}/>
@@ -55,12 +78,13 @@ function MyReviews(){
               return(
                   <ReviewCard 
                       {...review}
+                      deleteReview={deleteReview}
                       isEditing={true}/>
                 ) 
             })
         }
         { 
-          reviews.length==0?
+          reviews.length==0 && !loading?
           <p>You has added No reviews yet 
             <Link to="/user/addReview"> Add Here</Link>         
           </p>:null  

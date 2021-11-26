@@ -1,13 +1,12 @@
 import React from "react";
 
-import "./style.css"
 
 function Step4Questions({setIsPlaced}) {
    
 return ( <>
                   <div  className="add_review-from">
                    <label for="isPlaced" className="add_review-label">
-                   <span>Are you Placed in the company<span className="color_red"> *</span></span></label>
+                   <span>Are you Placed in the company<span className="red_color"> *</span></span></label>
                          <div className="add_review-input-wrapper">
                            <select id="isPlaced" 
                                    className="add_review-input" 

@@ -4,13 +4,12 @@ import {useState} from "react";
 import Api from "../../utils/API";
 
 
-import "./style.css"
 
 function Step3Questions({round_number,
-                  round_name,rounds_names,setRoundsNames,rounds_details,
+                  rounds_names,setRoundsNames,rounds_details,
                   setRoundsDetails}) {
 
-    const [roundName,setRoundName]=useState(round_name?round_name:"")
+    // const [roundName,setRoundName]=useState(round_name?round_name:"")
     
 return ( <>
              <div  className="add_review-from">
@@ -23,7 +22,6 @@ return ( <>
                                   className="add_review-input" 
                                   value={rounds_names[round_number]}
                                   onChange={(e)=>{
-                                    debugger;
                                     let newArr=[...rounds_names]
                                     newArr[round_number]=e.target.value
                                     setRoundsNames([...newArr]);}}/>

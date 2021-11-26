@@ -16,7 +16,7 @@ import "./style.css"
 
 let isPrev=false;
 
-function AddReview() {
+function EditReview() {
 
    const [steps,setSteps]=useState(1);
    const [error_msg,setErrorMsg]=useState();
@@ -104,20 +104,6 @@ function AddReview() {
         }
 
       }
-      if(steps===5){
-        if(rating){
-          if(rating>=0 && rating<=5){
-            return true
-          }else{
-            setErrorMsg("rating must be between 0 and 5");
-          }
-        }
-        else{
-          setErrorMsg("Plse fill all the data");
-          return false
-        }
-
-      }
       
    }
    let onNext=()=>{
@@ -139,41 +125,39 @@ function AddReview() {
    }
   
    let onSubitReview=()=>{
-      if(validateForm()){
-          setLoading(true);
-          let rounds_detail={};
-          for(let i=0;i<rounds_names.length;i++){
-            rounds_detail[rounds_names[i]]=rounds_details[i]
-          }
-          API.addMyReview({name,attended_on,
-                            placement_type,rounds,
-                            rounds_detail,is_placed,
-                            rating,pros,cons,
-                            salary,mobile_no,
-                            advice
-                          })
-          .then((res)=>{
-                 setLoading(false);
-                 if(res.data.status==="sucess"){
-                   history.push("/user/myReviews");
-                
-                 }
-                 else{
-                    setErrorMsg(res.data.msg);
-                 }
-           })
-           .catch((res)=>{
-              setLoading(false);
-              if(res.data && res.data.msg){
-                setErrorMsg(res.data.msg);
-              }else{
-                setErrorMsg("Something went wrong");
-              }
-        });
+      setLoading(true);
+      let rounds_detail={};
+      for(let i=0;i<rounds_names.length;i++){
+        rounds_detail[rounds_names[i]]=rounds_details[i]
       }
-      
+      API.addMyReview({name,attended_on,
+                        placement_type,rounds,
+                        rounds_detail,is_placed,
+                        rating,pros,cons,
+                        salary,mobile_no,
+                        advice
+                      })
+      .then((res)=>{
+             setLoading(false);
+             if(res.data.status==="sucess"){
+               history.push("/user/myReviews");
+            
+             }
+             else{
+                setErrorMsg(res.data.msg);
+             }
+       })
+       .catch((res)=>{
+          setLoading(false);
+          if(res.data && res.data.msg){
+            setErrorMsg(res.data.msg);
+          }else{
+            setErrorMsg("Something went wrong");
+          }
+    });
    }
 
+   console.log(rounds_names,rounds_details)
                       
    let questions_to_show=null;
    if(steps===1){
@@ -273,4 +257,4 @@ return ( <>
 
 }
 
-export default AddReview;
+export default EditReview;

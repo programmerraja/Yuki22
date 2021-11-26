@@ -40,13 +40,14 @@
 }
 
 .companies_content-wrapper{
-	height: 60px;
-    margin:1rem;
     width: 100%;
-    border-bottom: 1px solid #dcdcdc;
-    padding: 0.5rem;
+    
 }
 .companies_content{
+	height: 60px;
+    margin:1rem;
+    border-bottom: 1px solid #dcdcdc;
+    padding: 0.5rem;
     display: flex;
     width: 50%;
 }

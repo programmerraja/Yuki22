@@ -19,7 +19,6 @@ const company = {
   },
   getReviews: function(req,res){
     if(req.params.companyId){
-
       db.Reviews.find({companyId:req.params.companyId})
       .then(async(reviews)=>{
         async function getUser(index){
@@ -31,7 +30,9 @@ const company = {
             await getUser(index+1);
           }
         }
-        await getUser(0);
+        if(reviews.length){
+          await getUser(0);
+        }
         res.json({status:"sucess",reviews:reviews});
       })
       .catch((err)=>{

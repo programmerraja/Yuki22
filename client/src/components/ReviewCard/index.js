@@ -5,6 +5,7 @@ import userImg from "../../img/user.svg";
 import "./style.css";
 
 function ReviewCard({
+                    _id,
                     placementType,
                     rounds,
                     roundsDetails,
@@ -17,8 +18,12 @@ function ReviewCard({
                     mobileNo,
                     advice,
                     user,
-                    isEditing
+                    isEditing,
+                    deleteReview
                   }){
+
+  
+
   return ( 
     <>
         <div className="review_container">
@@ -123,7 +128,7 @@ function ReviewCard({
           </div>
           {isEditing &&
             <div className="edit_icon">
-              <i class="fas fa-trash-alt"></i>
+              <i class="fas fa-trash-alt" onClick={()=>{deleteReview(_id)}}></i>
             </div>
           }
         </div>

@@ -1,6 +1,5 @@
 import {React,useState} from "react";
 
-import "./style.css"
 
 function Step1Questions({name,
                         attended_on,

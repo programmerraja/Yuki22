@@ -19,7 +19,7 @@
 	margin-bottom: 12px;
 }
 .add_review-error-msg{
-	color: red;
+	color:yellow;
 	text-align: center;
 	margin: 0.2rem;
 }

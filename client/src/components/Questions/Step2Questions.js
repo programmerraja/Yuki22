@@ -4,7 +4,6 @@ import {useState,useEffect} from "react";
 import Api from "../../utils/API";
 
 
-import "./style.css"
 
 function Step2Questions({rounds,setRounds}) {
    

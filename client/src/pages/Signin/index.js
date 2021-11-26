@@ -79,7 +79,7 @@ function Signin({setUser}){
 
           <div className="form_text">
               <small>
-              <a href="/user/forget/password"> Forget password ? </a></small>
+              <a href="/user/forgetPassword"> Forget password ? </a></small>
               <small> New to Yuki ? <a href="/signup"> Create an account </a></small>
           </div>
    

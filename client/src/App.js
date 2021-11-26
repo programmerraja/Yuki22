@@ -22,7 +22,7 @@ import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 
 // import ResetPassword from "./pages/ResetPassword";
-// import ForgetPassword from "./pages/ForgetPassword";
+import ForgetPassword from "./pages/ForgetPassword";
 
 // import EmailVerified from "./pages/EmailVerified";
 import UserProfile from "./pages/UserProfile";
@@ -66,6 +66,7 @@ function App(props) {
           <Route exact path="/signin" component={()=>{return(<Signin setUser={setUser}/>)}}/>
           <Route exact path="/companies" component={Companies} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/user/forgetPassword" component={ForgetPassword} />
          
           <Route exact path="/company/reviews/:companyId"  component={Reviews}/>
 

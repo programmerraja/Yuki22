@@ -3,10 +3,11 @@ function checkMailVerified(req, res, next) {
         next()
         return
     }
-    res.json({
-        status: "failed",
-        msg: "Please verify your mail to add your review"
-    });
+    next()
+    // res.json({
+    //     status: "failed",
+    //     msg: "Please verify your mail to add your review"
+    // });
     return;
 }
 

@@ -10,6 +10,9 @@ export default {
   addMyReview:function(review){
     return axios.post("/user/addMyReview/",review);
   },
+  deleteMyReview:function(review_id){
+    return axios.get("/user/deleteMyReview/"+review_id);
+  },
   getCompanyNames:function(){
     return axios.get("/user/companyNames/");
   },
@@ -19,6 +22,10 @@ export default {
   getMyProfile:function(){
     return axios.get("/user/getMyProfile/");
   },
+  sendForgetPassword:function(email){
+    return axios.post("/user/forget/password",email);
+  },
+
   logout:function(){
     return axios.get("/user/logout/");
   }

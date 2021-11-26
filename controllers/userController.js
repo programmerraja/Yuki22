@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 var validator = require("validator");
 const passport = require("passport");
 
-const {verfiyMail,dbErrorHandler,logError} = require("../util/util");
+const {verfiyMail,dbErrorHandler,logError,generateToken} = require("../util/util");
 
 
 const user = {
@@ -121,6 +121,7 @@ const user = {
     if(name && attended_on && placement_type &&  rounds && rounds_detail  ){
         db.Compaines.findOne({name:name.toLowerCase()})
         .then((companyObj)=>{
+
             //if company exist in our db use the company id 
             if(companyObj){
                 db.Reviews.create({
@@ -146,6 +147,8 @@ const user = {
                             rating:Number(companyObj.rating)+Number(rating)
                           }).then((a)=>{
                             console.log(a)
+                          }).catch(e=>{
+                            console.log(e);
                           })
                       })
                       .catch(err=>{
@@ -210,7 +213,38 @@ const user = {
     }
     
   },
-
+  deleteMyReview:function(req,res){
+      if(req.params.reviewId){
+          db.Reviews.findOneAndRemove({_id:req.params.reviewId,userId:req.user._id})
+          .then((reviewObj)=>{
+              res.json({status:"sucess",msg:"sucessfully deleted your review"})
+              db.Compaines.findOne(
+                {_id:reviewObj.companyId},
+                ).then((companyObj)=>{
+                  console.log(companyObj);
+                    if(companyObj){
+                      let new_rating=companyObj.rating-reviewObj.rating;
+                      db.Compaines.findOneAndUpdate(
+                        {_id:companyObj._id},
+                        {"$inc":{noOfReviews:-1},rating:new_rating},
+                      ).then((companyObj)=>{
+                           console.log(companyObj,"dd",new_rating);
+                         });
+                    }
+                }) 
+          })
+          .catch(err=>{
+            logError(err.msg,err)
+            res.json({status:"failed",
+                              msg: "Sorry Something went wrong. Please try again"
+                      });
+          });
+      }else{
+        res.json({status:"failed",
+                    msg: "Review id missing"
+                    });
+      }
+  },
   getCompanyList:function(req,res){
     db.Compaines.find({})
     .then((list)=>{
@@ -293,8 +327,7 @@ const user = {
 
         }
     },
-  
-    postForgetPassword:async function (req, res) {
+    forgetPassword:async function (req, res) {
 
         if (req.body.email) {
             let email = req.body.email;
@@ -338,11 +371,10 @@ const user = {
         }
     },
 
-    postResetPassword:async function (req, res) {
+    ResetPassword:async function (req, res) {
         let password_reset_token = req.body.id;
         let new_password = req.body.password;
         if (password_reset_token && new_password) {
-
             //finding the user
             var user = await db.User.findOne({
                 password_reset_token: password_reset_token,
@@ -351,7 +383,7 @@ const user = {
                 }
             });
             if (user) {
-                let hash = bcrypt.hashSync(new_password, 2);
+                let hash = bcrypt.hashSync(new_password, 10);
                 let new_user = await db.User.findOneAndUpdate({
                     _id: user._id
                 }, {
