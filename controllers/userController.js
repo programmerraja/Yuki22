@@ -4,8 +4,7 @@ const bcrypt = require("bcryptjs");
 var validator = require("validator");
 const passport = require("passport");
 
-const logError = require("../util/logError");
-const {verfiyMail,dbErrorHandler} = require("../util/util");
+const {verfiyMail,dbErrorHandler,logError} = require("../util/util");
 
 
 const user = {
@@ -39,7 +38,6 @@ const user = {
         regNo,
         department
     } = req.body;
-    console.log(req.body)
     if (name && email && password && regNo && department) {
         if (!validator.isEmail(email)) {
             res.json( {
@@ -49,19 +47,17 @@ const user = {
             return
         }
 
-        let hash = bcrypt.hashSync(password, 2);
         db.User.create({
             name,
             email,
+            password,
             department,
             regno:regNo,
-            password: hash
         })
-        .then(new_user => {
+        .then(async new_user => {
             if (new_user) {
               let link = req.protocol + "://" + req.get("host") + "/user/verifiy/email/" + new_user._id;
-              let msg =true
-               // await verfiyMail(new_user.email, new_user.name, link);
+              let msg =await verfiyMail(new_user.email, new_user.name, link);
 
               if (msg) {
                   res.json({"status":"sucess","msg":"Account created sucessfully"});
@@ -83,6 +79,7 @@ const user = {
             }
         })
         .catch(err=>{
+          // console.log(err)
           logError(err.msg,err)
           res.json({status:"failed",
                             msg: "Sorry Something went wrong. Please try again"
@@ -97,9 +94,24 @@ const user = {
                 }); 
     }
   },
-  
+  emailVerified:function(req,res) {
+    db.User.findOneAndUpdate({_id:req.params.userId},{isEmailVerified:true})
+    .then((user)=>{
+      if(user){
+        res.json({status:"sucess",msg:"email verified sucessfully"})
+      }else{
+        res.json({status:"sucess",msg:"email verified failed"})
+      }
+    })
+    .catch(err=>{
+          logError(err.msg,err)
+          res.json({status:"failed",
+                            msg: "Sorry Something went wrong. Please try again"
+                    });
+    })
+  },
+
   addMyReview:function (req,res){
-    console.log(req.body)
     let{name,attended_on,
           placement_type,rounds,
           rounds_detail,is_placed,
@@ -211,6 +223,12 @@ const user = {
     .catch((err)=>{
       res.json({status:"failed",list:[]});
     })
+  },
+  getProfile:function (req,res){
+      res.json({
+        status:"sucess",
+        name: req.user.name
+    });
   },
   getMyReviews:function(req,res){
     db.Reviews.find({userId:req.user._id})

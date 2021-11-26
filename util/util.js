@@ -1,6 +1,5 @@
 var nodemailer = require('nodemailer');
 
-
 function sendMail(subject,body,to_mail)
 {
 	 return new Promise((resolve,reject)=>{
@@ -35,7 +34,7 @@ async function sendPasswordReset(to_mail,user_name,link)
 {
 	let subject="Reset Your Password";
 	let body="<p>Hai "+user_name+",</p>\
-	 		<p>A request has been recevied to change the password for your InfoG account. This link only work for 20 minutes</p>\
+	 		<p>A request has been recevied to change the password for your Yuki account. This link only work for 20 minutes</p>\
 	 		 <a href='"+link+"'>Reset Password </a>"
 	let msg=await sendMail(subject,body,to_mail);
 	return msg;
@@ -46,7 +45,7 @@ async function verfiyMail(to_mail,user_name,link){
 
 	let subject="Verfiy Your Mail";
 	let body="<p>Hai "+user_name+",</p>\
-	 		<p>we're happy you signed up for InfoG. To start exploringthe InfoG confirm your email address\
+	 		<p>we're happy you signed up for Yuki. To start exploringthe Yuki confirm your email address\
 	 		 <a href='"+link+"'>Verfiy Now</a>"
 
 	let msg=await sendMail(subject,body,to_mail);
@@ -88,9 +87,9 @@ function dbErrorHandler(err){
 }
 
 // Used to log the error
-function logError(err){
+function logError(msg,err){
 	console.log("------------------------------------");
-	console.log("Error:",err);
+	console.log("Error:",msg);
 	console.log("------------------------------------");
 
 }

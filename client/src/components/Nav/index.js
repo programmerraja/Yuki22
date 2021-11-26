@@ -61,7 +61,7 @@ function Nav({user}) {
 return ( <div className="nav">
               <div className="nav-brand">
                     <Link to="/">  
-                      Yuki 
+                      Yuki22 
                     </Link>
               </div>
 

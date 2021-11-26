@@ -4,7 +4,6 @@ const bcrypt = require("bcryptjs");
 var validator = require("validator");
 const passport = require("passport");
 
-const logError = require("../util/logError");
 const {verfiyMail,dbErrorHandler} = require("../util/util");
 
 
@@ -20,12 +19,14 @@ const company = {
   },
   getReviews: function(req,res){
     if(req.params.companyId){
-      
+
       db.Reviews.find({companyId:req.params.companyId})
       .then(async(reviews)=>{
         async function getUser(index){
           let user=await db.User.findOne({_id:reviews[index]["userId"]});
-          reviews[index]["_doc"]["user"]={name:user.name,regno:user.regno,department:user.department};
+          if(user){
+            reviews[index]["_doc"]["user"]={name:user.name,regno:user.regno,department:user.department};
+          }
           if(reviews.length-1>index){
             await getUser(index+1);
           }
@@ -34,6 +35,7 @@ const company = {
         res.json({status:"sucess",reviews:reviews});
       })
       .catch((err)=>{
+        console.log(err)
         res.json({status:"failed",msg:"Something went wrong"});
       })
     }

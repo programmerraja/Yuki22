@@ -2,9 +2,9 @@ import axios from "axios";
 
 export default {
   getCompanyList:function(){
-    return axios.get("http://localhost:3001/company/list/");
+    return axios.get("/company/list/");
   },
   getCompanyReviews:function(compainyId){
-    return axios.get("http://localhost:3001/company/getReviews/"+compainyId);
+    return axios.get("/company/getReviews/"+compainyId);
   }
 };

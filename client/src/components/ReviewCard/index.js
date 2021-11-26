@@ -16,12 +16,18 @@ function ReviewCard({
                     salary,
                     mobileNo,
                     advice,
-                    user
+                    user,
+                    isEditing
                   }){
   return ( 
     <>
         <div className="review_container">
         <div className="wrapper">
+        {isEditing &&
+          <div className="edit_icon">
+             <i class="fas fa-edit"></i>
+          </div>
+        }
           <div  className="user_wrapper">
             <img src={userImg} alt="user" className="user_img"/>
             {isPlaced===1 &&
@@ -45,31 +51,35 @@ function ReviewCard({
                {placementType}</span>
             </p>
             </div>
-            <div className="review_text">
-              <p>No of rounds: 
-                  <span className="review_text-bold">{rounds}</span>
-              </p>
+            <p className="review_text-bold text-underline">Interview Process</p>
+            <div class="padding">
+              <div className="review_text">
+                <p>No of rounds: 
+                    <span className="review_text-bold">{rounds}</span>
+                </p>
+              </div>
+              {
+                Object.keys(roundsDetails).map((roundName,index)=>{
+                  return(
+                    <div className="review_rounds">
+                    <details>
+                        <summary className="review_text-bold d-inline" >
+                        {index+1}.{roundName}</summary>
+                      <div className="review_text">
+                      {
+                        roundsDetails[roundName]
+                        .split("\n")
+                        .map((text)=>{
+                              return(<p className="review_text-point">{text}</p>)
+                         })
+                      }
+                      </div>
+                    </details>
+                    </div>
+                    )
+                })
+              }
             </div>
-            {
-              Object.keys(roundsDetails).map((roundName,index)=>{
-                return(
-                  <div className="review_rounds">
-                     <div className="review_text ">
-                      <p className="review_text-bold">{index+1}.{roundName}</p>
-                    </div>
-                    <div className="review_text">
-                    {
-                      roundsDetails[roundName]
-                      .split("\n")
-                      .map((text)=>{
-                            return(<p className="review_text-point">{text}</p>)
-                       })
-                    }
-                    </div>
-                  </div>
-                  )
-              })
-            }
           </div>
           <div className="wrapper">
             {pros && 
@@ -111,6 +121,11 @@ function ReviewCard({
                 </div>
             }
           </div>
+          {isEditing &&
+            <div className="edit_icon">
+              <i class="fas fa-trash-alt"></i>
+            </div>
+          }
         </div>
     </>);
 

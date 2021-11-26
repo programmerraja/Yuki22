@@ -12,7 +12,7 @@ import user from "../../img/user.png";
 function Signup() {
    const [name,setName]=useState("");
    const [regNo,setRegNo]=useState("");
-   const [department,setDepartment]=useState("");
+   const [department,setDepartment]=useState("CSE");
    const [email,setEmail]=useState("");
    const [msg,setMsg]=useState("");
 

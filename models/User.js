@@ -26,6 +26,16 @@ const UserSchema = new mongoose.Schema(
     department:{
       type: String,
       required:true
+    },
+    isEmailVerified:{
+      type:Boolean,
+      default:false
+    },
+    passwordResetToken:{
+      type:String
+    },
+    passwordResetExpires:{
+      type:Date
     }
   },
   { timestamps: true }

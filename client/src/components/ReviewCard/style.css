@@ -17,6 +17,32 @@
     margin: 0.2rem;
     padding:0.2rem;
 }
+.edit_icon{
+    display: inline;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+.expand_icon i{
+    transform: rotate(180deg);
+    cursor: pointer;
+    margin-left: 1rem;
+
+}
+.d-inline{
+    display: inline;
+}
+summary:hover{
+    cursor: pointer;
+}
+summary:focus{
+    outline: none;
+}
+.text-underline{
+    text-decoration: underline;
+}
+.padding{
+    padding-left: 20px;
+}
 .review_text-bold{
     font-weight: bold;
     margin-bottom: 5px;
@@ -45,4 +71,10 @@
 }
 .review_rounds{
     padding-left:1rem;   
+}
+/* media query for mobile phones */
+@media (max-width:700px) {
+.review_container{
+    width: 75%;
+}
 }

@@ -61,6 +61,7 @@ export default {
   addMyReview:userService.addMyReview,
   getCompanyNames:userService.getCompanyNames,
   getMyReviews:userService.getMyReviews,
+  getMyProfile:userService.getMyProfile,
   logout:userService.logout,
 
   getCompanyList:companyService.getCompanyList,

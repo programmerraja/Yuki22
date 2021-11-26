@@ -20,6 +20,9 @@
   width: auto;
 }
 
+.profile_container {
+  margin-top:1rem; 
+}
 .form_container {
   background-color: #f6f8fa;
   width: 300px;

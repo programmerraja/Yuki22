@@ -30,7 +30,13 @@ function UserProfile() {
 
 
    const [rounds,setRounds]=useState();
+
    const [rounds_detail,setRoundsDetail]=useState({});
+   
+   const [rounds_names,setRoundsNames]=useState([]);
+   
+   const [rounds_details,setRoundsDetails]=useState([]);
+
 
    const [is_placed,setIsPlaced]=useState("1");
 
@@ -145,6 +151,8 @@ function UserProfile() {
           }
     });
    }
+
+   console.log(rounds_names,rounds_details)
                       
    let questions_to_show=null;
    if(steps===1){
@@ -168,7 +176,7 @@ function UserProfile() {
    else if(steps===3){
     let rounds_arr=[]
     let rounds_names=Object.keys(rounds_detail)
-    console.log(rounds_names)
+
     // debugger;
      if(false){//rounds_names.length==rounds){
       // for(let i=1;i<=rounds;i++){
@@ -180,12 +188,14 @@ function UserProfile() {
       //                     setRoundsDetail={setRoundsDetail}
       //                     />)
      }else{
-       for(let i=1;i<=rounds;i++){
+       for(let i=0;i<rounds;i++){
            rounds_arr.push(
                         <Step3Questions  
                             round_number={i}
-                            rounds_detail={rounds_detail}
-                            setRoundsDetail={setRoundsDetail}
+                            rounds_names={rounds_names}
+                            setRoundsNames={setRoundsNames}
+                            rounds_details={rounds_details}
+                            setRoundsDetails={setRoundsDetails}
                             />)
        }
       }

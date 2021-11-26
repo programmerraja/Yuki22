@@ -1,7 +1,7 @@
-import React from "react";
+import {React} from "react";
 import "./style.css";
 
-// import Footer from "../Footer/Footer";
+import Footer from "../../components/Footer";
 
 import hero3 from "../../img/hero3.jpg";
 import image1 from "../../img/image1.svg";
@@ -11,31 +11,62 @@ import image2 from "../../img/image2.svg";
 function Home() {
 
 return ( <>
-    <div className="hero_container">
-    <div className="hero_text">
-    <h3> Find the jobs that suits You </h3>
-    <div className="hero_button">
-    <a href="/signin">
-    <input type="button" name="signin" value="Sign in" className="hero_button1" />
-    </a>
-    <a href="signup">
-    <input type="button" name="signup" value="Sign up" className="hero_button2" />
-    </a>
-    </div>
-    </div>
-    <div className="hero_img">
-    <img src="https://img.freepik.com/free-vector/searching-through-curriculum-vitae-papers-workers_52683-43378.jpg" alt="hero" />
-    </div>
-    </div>
-    <div className="hero_wave">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-    <path fill="#453cc9" fill="#4a5ec9" opacity="1" d="M0,64L80,74.7C160,85,320,107,480,128C640,149,800,171,960,176C1120,181,1280,171,1360,165.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z">
-    </path></svg>
-    </div>
-    <section className="section_container">
-    
-    </section>
+        <div className="hero_container">
+           <div className="hero_text">
+              <h1> Find the company that suits You </h1>
+              <p>Make use of the reviews and interview steps <br/>
+                to place the company that you likes</p>
+              <div className="hero_button">
+                 <a href="/signin">
+                 <input type="button" name="signin" value="Sign in" className="hero_button1" />
+                 </a>
+                 <a href="signup">
+                 <input type="button" name="signup" value="Sign up" className="hero_button2" />
+                 </a>
+              </div>
+           </div>
+           <div className="hero_img">
+              <img src="https://img.freepik.com/free-vector/searching-through-curriculum-vitae-papers-workers_52683-43378.jpg" alt="hero" />
+           </div>
+        </div>
+        <div className="hero_wave">
+           
+        </div>
+        <section className="section_container">
+                <h3 className="section_title">How it Works? </h3>
+                <div className="how_itworks_container">
+                    <div className="how_itworks-card">
+                       <img  className="how_itworks-img" src="https://image.freepik.com/free-vector/job-hunt-concept-illustration_114360-436.jpg"/>
+                       <p className="how_itworks-text-bold">1.Search</p>
+                       <p className="how_itworks-text">
+                       Search for the company you looking for.</p>
+                    </div>
+                     <div className="how_itworks-card">
+                       <img  className="how_itworks-img" src="https://image.freepik.com/free-vector/students-with-magnifier-reading-stack-e-books-smartphone-education-app_335657-3300.jpg"/>
+                       <p className="how_itworks-text-bold">2.Go through </p>
+                       <p className="how_itworks-text">
+                       Go through the review and  
+                       interview <br/> process about the company.
+                       </p>
+                    </div>
+                     <div className="how_itworks-card">
+                       <img  className="how_itworks-img" src="https://image.freepik.com/free-vector/illustrated-online-job-interview_52683-44249.jpg"/>
+                        <p className="how_itworks-text-bold">3.Prepare </p>
+                       <p className="how_itworks-text">
+                       Prepare for the interview based on the interview process.</p>
+                    </div>
+                     <div className="how_itworks-card">
+                        <img  className="how_itworks-img" src="https://image.freepik.com/free-vector/team-happy-cartoon-people-taking-first-place_74855-19910.jpg"/>
+                        <p className="how_itworks-text-bold">4.Nail it down </p>
+                        <p className="how_itworks-text">
+                        Get placed in your dream company. </p>
+                    </div>
+                </div>
+
+        </section>
+        <Footer/>
     </>);
 }
 
 export default Home;
+                        // <i class="fas fa-building"></i>

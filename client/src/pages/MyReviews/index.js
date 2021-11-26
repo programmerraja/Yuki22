@@ -1,6 +1,6 @@
 import React from "react";
 import {useState,useEffect} from "react";
-import {useHistory ,useParams} from "react-router-dom";
+import {useHistory ,useParams,Link} from "react-router-dom";
 
 import ReviewCard from "../../components/ReviewCard";
 
@@ -54,9 +54,16 @@ function MyReviews(){
             !loading && reviews.map((review)=>{
               return(
                   <ReviewCard 
-                      {...review}/>
+                      {...review}
+                      isEditing={true}/>
                 ) 
             })
+        }
+        { 
+          reviews.length==0?
+          <p>You has added No reviews yet 
+            <Link to="/user/addReview"> Add Here</Link>         
+          </p>:null  
         }
       </div>
         
