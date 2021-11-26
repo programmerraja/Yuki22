@@ -18,6 +18,7 @@
 .nav-brand a{
   color: white;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .nav-center {
@@ -98,7 +99,6 @@
   .lines_hide {
     display: none;
   }
-
   .nav_list {
     width: 100%;
     position: absolute;
