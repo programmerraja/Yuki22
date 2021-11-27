@@ -32,7 +32,7 @@ function Signin({setUser}){
         API.setToken(res.data.token);
         API.setAuthHeader();
         setUser(true);
-        history.push("/reviews");
+        history.push("/user/myReviews");
       }
       else{
         setMsg(res.data.msg);
