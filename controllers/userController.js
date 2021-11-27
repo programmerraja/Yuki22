@@ -122,7 +122,6 @@ const user = {
     if(name && attended_on && placement_type &&  rounds && rounds_detail  ){
         db.Compaines.findOne({name:name.toLowerCase()})
         .then((companyObj)=>{
-            console.log(companyObj,name)
             //if company exist in our db use the company id 
             if(companyObj){
                 db.Reviews.create({
@@ -157,7 +156,7 @@ const user = {
             }
             //create new company then use the id
             else{
-              db.Compaines.create({name:name,rating:rating,noOfReviews:1})
+              db.Compaines.create({name:name.toLowerCase(),rating:rating,noOfReviews:1})
               .then((companyObj)=>{
                   if(companyObj){
                       db.Reviews.create({
