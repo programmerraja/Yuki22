@@ -58,6 +58,7 @@ export default {
 
   signIn:userService.signIn,
   signUp:userService.signUp,
+  verfiyEmail:userService.verfiyEmail,
   addMyReview:userService.addMyReview,
   deleteMyReview:userService.deleteMyReview,
   getCompanyNames:userService.getCompanyNames,

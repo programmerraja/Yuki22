@@ -24,7 +24,7 @@ import Signup from "./pages/Signup";
 // import ResetPassword from "./pages/ResetPassword";
 import ForgetPassword from "./pages/ForgetPassword";
 
-// import EmailVerified from "./pages/EmailVerified";
+import EmailVerified from "./pages/EmailVerified";
 import UserProfile from "./pages/UserProfile";
 import AddReview from "./pages/AddReview";
 import Reviews from "./pages/Reviews";
@@ -67,6 +67,7 @@ function App(props) {
           <Route exact path="/companies" component={Companies} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/user/forgetPassword" component={ForgetPassword} />
+          <Route exact path="/user/verifiy/email/:userId"  component={EmailVerified}/>
          
           <Route exact path="/company/reviews/:companyId"  component={Reviews}/>
 

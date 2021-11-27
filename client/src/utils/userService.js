@@ -7,6 +7,9 @@ export default {
   signUp: function (userCred) {
     return axios.post("/user/signup/",userCred);
   },
+  verfiyEmail:function(user_id){
+    return axios.get("/user/verifiyMyEmail/"+user_id);
+  },
   addMyReview:function(review){
     return axios.post("/user/addMyReview/",review);
   },

@@ -20,7 +20,7 @@ router.get("/companyNames",
 router.post("/forget/password",
 	userController.forgetPassword);
 
-router.post("/verifiy/email/:userId",
+router.post("/verifiyMyEmail/:userId",
 	userController.emailVerified);
 
 

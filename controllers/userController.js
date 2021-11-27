@@ -310,9 +310,9 @@ const user = {
                     });
                     if (user) {
                         res.json({
-                            status:"Sucess",
+                            status:"sucess",
                             name: user.name,
-                            msg: "Sucess fully updated"
+                            msg: "sucess fully updated"
                         });
                     }
 
@@ -353,7 +353,7 @@ const user = {
                 //if msg send sucessfully 
                 if (msg) {
                     res.json({
-                        status: "Sucess",
+                        status: "sucess",
                         msg: "Check your mail to reset the password"
                     });
                 } else {
@@ -390,7 +390,7 @@ const user = {
                     password: hash
                 });
                 res.json({
-                    status: "Sucess",
+                    status: "sucess",
                     msg: "Password Updated"
                 });
             } else {
@@ -416,7 +416,7 @@ const user = {
             if (user) {
                 user.is_email_verified = true;
                 new_user = await user.save();
-                res.json({status:"Sucess"});
+                res.json({status:"sucess"});
                 return
             }
             res.json({status:"failed"});
