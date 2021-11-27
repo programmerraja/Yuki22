@@ -41,6 +41,8 @@ function EditReview() {
    const [is_placed,setIsPlaced]=useState("1");
 
    const [rating,setRating]=useState();
+   const [old_rating,setOldRating]=useState();
+
    const [pros,setPros]=useState("");
    const [cons,setCons]=useState("");
    const [salary,setSalary]=useState();
@@ -76,6 +78,7 @@ function EditReview() {
                setRounds(temp_review["rounds"]);
                setIsPlaced(temp_review["isPlaced"])
                setRating(temp_review["rating"]);
+               setOldRating(temp_review["rating"]);
                setSalary(temp_review["salary"]);
                setPros(temp_review["pros"]);
                setCons(temp_review["cons"]);
@@ -179,7 +182,7 @@ function EditReview() {
       API.updateMyReview({id,name,attended_on,
                         placement_type,rounds,
                         rounds_detail,is_placed,
-                        rating,pros,cons,
+                        rating,old_rating,pros,cons,
                         salary,mobile_no,
                         
                       })

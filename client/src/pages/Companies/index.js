@@ -45,7 +45,9 @@ function Companies(){
   const search=(val)=>{
   		setSearchContent(val);
   		company_lists.forEach((companiesObj)=>{
-  			if(!companiesObj.name.startsWith(val.toLowerCase())){
+  			debugger;
+  			console.log(companiesObj.name.startsWith(val.toLowerCase()))
+  			if(!companiesObj.name.toLowerCase().startsWith(val.toLowerCase())){
   				companiesObj.isShow=true;
   			}
   			else{

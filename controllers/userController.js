@@ -215,6 +215,7 @@ const user = {
           placement_type,rounds,
           rounds_detail,is_placed,
           rating,pros,cons,
+          old_rating,
           salary,mobile_no
         }=req.body
     if(name && attended_on && placement_type &&  rounds && rounds_detail  ){
@@ -238,11 +239,13 @@ const user = {
                       })
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully updated your review"})
-                        // db.Compaines.findOneAndUpdate({
-                        //     _id:companyObj._id,
-                        //     noOfReviews:Number(companyObj.noOfReviews)+1,
-                        //     rating:Number(companyObj.rating)+Number(rating)
-                        // })
+                        //if old rating not equal to new rating then update the rating 
+                        if(old_rating!=rating){
+                          db.Compaines.findOneAndUpdate({
+                              _id:companyObj._id},
+                              {rating:(Number(companyObj.rating)-Number(old_rating))+Number(rating)
+                          })
+                        }
                       })
                       .catch(err=>{
                         logError(err.msg,err)
@@ -253,7 +256,7 @@ const user = {
             }
             //create new company then use the id
             else{
-              db.Compaines.create({name:name,rating:rating,noOfReviews:1})
+              db.Compaines.create({name:name.toLowerCase(),rating:rating,noOfReviews:1})
               .then((companyObj)=>{
                   if(companyObj){
                       db.Reviews.findOneAndUpdate({_id:id},
@@ -273,7 +276,8 @@ const user = {
                       })
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully added your review"})
-                        
+                        //change the rating and no of reviews in old company 
+
                       })
                       .catch(err=>{
                         logError(err.msg,err)
