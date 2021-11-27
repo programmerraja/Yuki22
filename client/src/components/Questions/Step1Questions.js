@@ -5,6 +5,7 @@ function Step1Questions({name,
                         attended_on,
                         setName,
                         setAttendedOn,
+                        placement_type,
                         setPlacementType,
                         company_names
                       }) {
@@ -79,8 +80,8 @@ function Step1Questions({name,
                             <select id="placementType" 
                                     className="add_review-input" 
                                     onChange={(e)=>{setPlacementType(e.target.value);}}>
-                              <option value="onCampus">on campus</option>
-                              <option value="offCampus">off campus</option>
+                              <option value="onCampus" selected={placement_type==="onCampus"?true:false}>on campus</option>
+                              <option value="offCampus" selected={placement_type==="offCampus"?true:false}>off campus</option>
                             </select>
                            </div>
                    </div> 

@@ -1,2 +1,2 @@
-# justPlaced2022
+# Yuki22
 A collections reviews about company

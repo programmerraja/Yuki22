@@ -21,7 +21,7 @@ import Companies from './pages/Companies';
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 
-// import ResetPassword from "./pages/ResetPassword";
+import ResetPassword from "./pages/ResetPassword";
 import ForgetPassword from "./pages/ForgetPassword";
 
 import EmailVerified from "./pages/EmailVerified";
@@ -29,6 +29,8 @@ import UserProfile from "./pages/UserProfile";
 import AddReview from "./pages/AddReview";
 import Reviews from "./pages/Reviews";
 import MyReviews from "./pages/MyReviews";
+import EditReviews from "./pages/EditReviews";
+
 
 
 
@@ -68,13 +70,15 @@ function App(props) {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/user/forgetPassword" component={ForgetPassword} />
           <Route exact path="/user/verifiy/email/:userId"  component={EmailVerified}/>
-         
+          <Route path="/user/reset/password/:passwordId" component={ResetPassword} />
           <Route exact path="/company/reviews/:companyId"  component={Reviews}/>
 
           <Route path="/user/logout"  component={()=>{return(<Logout setUser={setUser}/>)}}/>
           <ProtectedRoute path="/user/profile"  component={UserProfile}/>
           <ProtectedRoute path="/user/addReview"  component={AddReview} />
           <ProtectedRoute path="/user/myReviews"  component={MyReviews} />
+          <ProtectedRoute path="/user/edit/review/:reviewId"  
+          component={EditReviews} />
 
 
         </Switch>

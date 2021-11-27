@@ -31,15 +31,16 @@
 .d-inline{
     display: inline;
 }
+summary{
+    text-decoration: underline;
+}
 summary:hover{
     cursor: pointer;
 }
 summary:focus{
     outline: none;
 }
-.text-underline{
-    text-decoration: underline;
-}
+
 .padding{
     padding-left: 20px;
 }

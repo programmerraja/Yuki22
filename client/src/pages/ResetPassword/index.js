@@ -1,56 +1,67 @@
-// import React from "react";
+import {React,useState} from "react";
+import {useParams} from "react-router-dom";
 
-// import {useState} from "react";
+import SquareLoader from "../../components/SquareLoader";
 
-// import Api from "../Api/index.js";
+import API from "../../utils/API";
 
-// import Loading from "../Loading/Loading";
 
-// import reset from "../img/reset.svg";
-// /**
-//  * ResetPassword
-//  * @namespace ResetPassword
-//  */
-// // need to check the id is valid
-// function ResetPassword({match,setLoading}) {
-//   let [password,setPassword]=useState("");
-//   let [msg,setMsg]=useState("");
-// /**
-//  * @memberof Scammer
-//  * @summary A concise summary.
-//  * @param {number} a
-//  * param description
-//  * @returns {number} Sum of a and b
-//  * returns description
-//  *@todo Write the documentation.
-//  * {@link https://github.com GitHub}.
-//  */  
-//   async function sendResetPassword(){
-//     setLoading(true);
-//     let res=await Api.sendResetPassword(match.params.id,password);
-//     setLoading(false);
-//     setMsg(res.msg);
-//   }
+import reset from "../../img/reset.svg";
 
-// return ( <div className="reset_container">
+function ResetPassword() {
+  const[loading,setLoading]=useState(false) 
+  const [password,setPassword]=useState("");
+  const [msg,setMsg]=useState("");
 
-//         <div className="reset_img">
-//         <img src={reset} />
-//         </div>
+  const { passwordId } = useParams();
 
-//         <div className="reset_text">
-//         <h2> Change Password </h2>
-//         <p> Create a new, strong password that you don 't use for other websites. </p>
+  function sendResetPassword(){
+    if(password){
+        setLoading(true);
+        API.sendResetPassword({passwordId,password})
+        .then((res)=>{
+                setLoading(false);
+                setMsg(res.data.msg);
+        })
+        .catch((res)=>{
+          setLoading(false);
+          if(res.data && res.data.msg){
+              setMsg(msg);
+          }else{
+              setMsg("Something went wrong");
+          }
+        });
+    }
+    else{
+        setMsg("Please Enter The Password");
+    }
+   
+  }
+return ( 
+    <>
+    <SquareLoader  loading={loading}/>
 
-//         <input type="password" name="password" className="reset_password" placeholder="Enter a new password"  onChange={(e)=>{setPassword(e.target.value);}}  value={password} />
-//         <input type="button" name="change_password" className="change_password" value="Change Password" onClick={sendResetPassword}/>
-//         </div>
+    <div className="reset_container">
 
-//         <p className="reset_error">
-//         {msg}
-//         </p>
+        <div className="reset_img">
+        <img src={reset} />
+        </div>
 
-//         </div>);
-// }
+        <div className="reset_text">
+        <h2> Change Password </h2>
+        <p> Create a new, strong password that you don 't use for other websites. </p>
 
-// export default Loading(ResetPassword);
+        <input type="password" name="password" className="reset_password" placeholder="Enter a new password"  onChange={(e)=>{setPassword(e.target.value);}}  value={password} />
+        <input type="button" name="change_password" className="change_password" value="Change Password" onClick={sendResetPassword}/>
+        </div>
+
+        <p className="reset_error">
+        {msg}
+        </p>
+
+        </div>
+    </>
+        );
+}
+
+export default ResetPassword;

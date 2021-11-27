@@ -1,6 +1,6 @@
 import React from "react";
 import {useState,useEffect} from "react";
-import {useHistory } from "react-router-dom";
+import {useHistory,useParams } from "react-router-dom";
 
 import SquareLoader from  "../../components/SquareLoader";
 
@@ -11,6 +11,8 @@ import Step4Questions from "../../components/Questions/Step4Questions"
 import Step5Questions from "../../components/Questions/Step5Questions"
 
 import API from "../../utils/API";
+import errorHandler from "../../utils/errorHandler";
+
 
 import "./style.css"
 
@@ -20,7 +22,10 @@ function EditReview() {
 
    const [steps,setSteps]=useState(1);
    const [error_msg,setErrorMsg]=useState();
-   const [loading,setLoading]=useState(false);
+
+   const [loading,setLoading]=useState(true);
+   
+   const [id,setId]=useState("");
 
    const [name,setName]=useState("");
    const [company_names,setCompanyNames]=useState([]);
@@ -40,10 +45,9 @@ function EditReview() {
    const [cons,setCons]=useState("");
    const [salary,setSalary]=useState();
    const [mobile_no,setMobileNo]=useState("");
-   const [advice,setAdvice]=useState("");
 
    const history = useHistory();
-
+   const { reviewId } = useParams();
 
    useEffect(()=>{
       API.getCompanyNames()
@@ -59,6 +63,48 @@ function EditReview() {
               setCompanyNames(["unable to fetch list"]);
           }
        });
+
+       API.getMyReview(reviewId)
+        .then((res)=>{
+          setLoading(false);
+          if(res.data.status==="sucess"){
+               let temp_review=res.data.review;
+               setId(temp_review._id); 
+               setName(temp_review["name"]);
+               setAttendedOn(temp_review["attendedOn"]);
+               setPlacementType(temp_review["placementType"]);
+               setRounds(temp_review["rounds"]);
+               setIsPlaced(temp_review["isPlaced"])
+               setRating(temp_review["rating"]);
+               setSalary(temp_review["salary"]);
+               setPros(temp_review["pros"]);
+               setCons(temp_review["cons"]);
+               setMobileNo(temp_review["mobileNo"]);
+
+               let temp_rounds_names=Object.keys(temp_review.roundsDetails)
+              console.log(temp_rounds_names)
+               setRoundsNames(temp_rounds_names);
+
+               let temp_rounds_details=[]
+               temp_rounds_names.forEach((name)=>{
+                  temp_rounds_details.push(temp_review.roundsDetails[name])
+               })
+
+               setRoundsDetails(temp_rounds_details);
+
+
+               }
+       })
+       .catch((res)=>{
+          setLoading(false);
+          if(res.data && res.data.msg){
+              errorHandler(true,res.data.msg);
+          }else{
+            errorHandler(true);
+            console.log(res)
+          }
+       });
+
        
    },[])
 
@@ -95,8 +141,7 @@ function EditReview() {
 
       }
       if(steps===4){
-        //converting rounds string to int by -0
-        if(is_placed==="0" || is_placed==="1"){
+        if(is_placed+""){
           return true
         }
         else{
@@ -131,12 +176,12 @@ function EditReview() {
       for(let i=0;i<rounds_names.length;i++){
         rounds_detail[rounds_names[i]]=rounds_details[i]
       }
-      API.addMyReview({name,attended_on,
+      API.updateMyReview({id,name,attended_on,
                         placement_type,rounds,
                         rounds_detail,is_placed,
                         rating,pros,cons,
                         salary,mobile_no,
-                        advice
+                        
                       })
       .then((res)=>{
              setLoading(false);
@@ -158,7 +203,7 @@ function EditReview() {
     });
    }
 
-   console.log(rounds_names,rounds_details)
+   
                       
    let questions_to_show=null;
    if(steps===1){
@@ -169,6 +214,7 @@ function EditReview() {
                         attended_on={attended_on}
                         setName={setName}
                         setAttendedOn={setAttendedOn}
+                        placement_type={placement_type}
                         setPlacementType={setPlacementType}
                     />)
    }
@@ -209,6 +255,7 @@ function EditReview() {
    else if(steps===4){
     questions_to_show=(
                       <Step4Questions
+                        is_placed={is_placed}
                         setIsPlaced={setIsPlaced}
                       />)
    }
@@ -225,7 +272,6 @@ function EditReview() {
                             setSalary={setSalary}
                             mobile_no={mobile_no}
                             setMobileNo={setMobileNo}
-                            advice={advice}
                             setAdvice={setAdvice}
                       />)
    }

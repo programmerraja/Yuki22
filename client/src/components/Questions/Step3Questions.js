@@ -14,7 +14,7 @@ function Step3Questions({round_number,
 return ( <>
              <div  className="add_review-from">
                    <label for="roundsName" className="add_review-label">
-                   <span>Enter Round {round_number+1} name <span className="color_red"> *</span></span></label>
+                   <span>Enter Round {round_number+1} name <span className="red_color"> *</span></span></label>
                          <div className="add_review-input-wrapper">
                           <input type="text"
                                   placeholder="Aptitude / group discussion"  
@@ -30,7 +30,7 @@ return ( <>
 
              <div  className="add_review-from">
              <label for="roundDetail" className="add_review-label">
-             <span>Round {round_number+1} <span className="color_red"> *</span></span></label>
+             <span>Round {round_number+1} <span className="red_color"> *</span></span></label>
                    <div className="add_review-input-wrapper">
                     <textarea placeholder="write full details about the round" 
                             rows="7"

@@ -44,29 +44,38 @@ function MyReviews(){
   },[])
   
   const deleteReview=(review_id)=>{
-      API.deleteMyReview(review_id)
-      .then((res)=>{
+     swal({
+      title: "Are you sure?",
+      text: "You want to delete this review.",
+      buttons: ["No", "Yes"],
+      dangerMode: true,
+    }).then((confirm) => {
+      if (confirm) {
+        API.deleteMyReview(review_id)
+        .then((res)=>{
+            setLoading(false);
+            if(res.data.status==="sucess"){
+              let new_review=[]
+              reviews.forEach(review_obj=>{
+                if(review_obj._id!=review_id){
+                  new_review.push(review_obj)
+                }
+              });
+              setReviews(new_review);
+              errorHandler(false,res.data.msg);
+            }
+        
+        })
+        .catch((res)=>{
           setLoading(false);
-          if(res.data.status==="sucess"){
-            let new_review=[]
-            reviews.forEach(review_obj=>{
-              if(review_obj._id!=review_id){
-                new_review.push(review_obj)
-              }
-            });
-            setReviews(new_review);
-            errorHandler(false,res.data.msg);
+          if(res.data && res.data.msg){
+              errorHandler(true,res.data.msg);
+          }else{
+              errorHandler(true);
           }
-      
-      })
-      .catch((res)=>{
-        setLoading(false);
-        if(res.data && res.data.msg){
-            errorHandler(true,res.data.msg);
-        }else{
-            errorHandler(true);
-        }
-      });
+        });
+    }
+    });
   }
 
   return ( 

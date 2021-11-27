@@ -1,4 +1,5 @@
 import React from "react";
+import {Link } from "react-router-dom";
 
 import userImg from "../../img/user.svg";
 
@@ -30,7 +31,9 @@ function ReviewCard({
         <div className="wrapper">
         {isEditing &&
           <div className="edit_icon">
+            <Link to={`/user/edit/review/${_id}`}>
              <i class="fas fa-edit"></i>
+            </Link>
           </div>
         }
           <div  className="user_wrapper">
@@ -51,12 +54,18 @@ function ReviewCard({
 
           <div className="wrapper">
             <div className="review_text">
+              <p>Attended On:
+                <span className="review_text-bold">
+                 {attendedOn}</span>
+              </p>
+            </div>
+            <div className="review_text">
             <p>placement type:
               <span className="review_text-bold">
                {placementType}</span>
             </p>
             </div>
-            <p className="review_text-bold text-underline">Interview Process</p>
+            <p className="review_text-bold">Interview Process</p>
             <div class="padding">
               <div className="review_text">
                 <p>No of rounds: 

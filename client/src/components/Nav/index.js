@@ -25,20 +25,20 @@ function Nav({user}) {
 
   if(user){
     nav_link=(<><div className="nav_link">
-                    <Link to="/companies"> Companies </Link>
+                    <Link onClick={toggle} to="/companies"> Companies </Link>
                 </div>
                 
                 <div className="nav_link">
-                    <Link to="/user/myReviews"> My Reviews </Link>
+                    <Link onClick={toggle} to="/user/myReviews"> My Reviews </Link>
                 </div>
                  <div className="nav_link">
-                    <Link to="/user/addReview"> Add Review </Link>
+                    <Link onClick={toggle} to="/user/addReview"> Add Review </Link>
                 </div>
                 <div className="nav_link">
-                     <Link to="/user/logout"> Logout </Link>
+                     <Link onClick={toggle} to="/user/logout"> Logout </Link>
                 </div>
                 <div className="nav_lin">
-                  <Link to="/user/profile">
+                  <Link onClick={toggle} to="/user/profile">
                   <img src={ userImg } className="user_img"/>
                   </Link>
                 </div>
@@ -46,13 +46,13 @@ function Nav({user}) {
   }
   else{
       nav_link=(<><div className="nav_link">
-                    <Link to="/companies"> Compaines </Link>
+                    <Link onClick={toggle} to="/companies"> Compaines </Link>
                 </div>
                 <div className="nav_link">
-                    <Link to="/user/addReview"> Add Review </Link>
+                    <Link onClick={toggle} to="/user/addReview"> Add Review </Link>
                 </div>
                 <div className="nav_lin">
-                  <Link to="/signin">
+                  <Link onClick={toggle} to="/signin">
                     <img src={userImg} className="user_img"/>
                   </Link>
                 </div></>);

@@ -20,7 +20,8 @@ return ( <>
                    <label for="rating" className="add_review-label">
                    <span>Rate the company out of 5 </span><span className="red_color"> *</span></label>
                          <div className="add_review-input-wrapper">
-                          <input placeholder="rating"  
+                          <input type="number"
+                                  placeholder="rating"  
                                   name="rating"  
                                   className="add_review-input" 
                                   value={rating}
@@ -79,7 +80,9 @@ return ( <>
                        <label for="mobile_no" className="add_review-label">
                        <span>Provide your mobile number for further enquires for students </span></label>
                          <div className="add_review-input-wrapper">
-                           <input placeholder="mobile no"  
+                           <input
+                                  type="number" 
+                                  placeholder="mobile no"  
                                   name="mobile_no"  
                                   className="add_review-input" 
                                   value={mobile_no}

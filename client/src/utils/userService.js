@@ -13,6 +13,9 @@ export default {
   addMyReview:function(review){
     return axios.post("/user/addMyReview/",review);
   },
+  updateMyReview:function(review){
+    return axios.post("/user/updateMyReview/",review);
+  },
   deleteMyReview:function(review_id){
     return axios.get("/user/deleteMyReview/"+review_id);
   },
@@ -22,13 +25,18 @@ export default {
   getMyReviews:function(){
     return axios.get("/user/getMyReviews/");
   },
+  getMyReview:function(review_id){
+    return axios.get("/user/getMyReview/"+review_id);
+  },
   getMyProfile:function(){
     return axios.get("/user/getMyProfile/");
   },
   sendForgetPassword:function(email){
-    return axios.post("/user/forget/password",email);
+    return axios.post("/user/forget/password",{email:email});
   },
-
+  sendResetPassword:function(password_data){
+    return axios.post("/user/reset/password",password_data);
+  },
   logout:function(){
     return axios.get("/user/logout/");
   }

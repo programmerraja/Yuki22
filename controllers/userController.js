@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 var validator = require("validator");
 const passport = require("passport");
 
-const {verfiyMail,dbErrorHandler,logError,generateToken} = require("../util/util");
+const {verfiyMail,dbErrorHandler,logError,generateToken,sendPasswordReset} = require("../util/util");
 
 
 const user = {
@@ -146,11 +146,7 @@ const user = {
                             _id:companyObj._id,
                             noOfReviews:Number(companyObj.noOfReviews)+1,
                             rating:Number(companyObj.rating)+Number(rating)
-                          }).then((a)=>{
-                            console.log(a)
-                          }).catch(e=>{
-                            console.log(e);
-                          })
+                        })
                       })
                       .catch(err=>{
                         logError(err.msg,err)
@@ -214,6 +210,102 @@ const user = {
     }
     
   },
+  updateMyReview:function (req,res){
+    let{id,name,attended_on,
+          placement_type,rounds,
+          rounds_detail,is_placed,
+          rating,pros,cons,
+          salary,mobile_no
+        }=req.body
+    if(name && attended_on && placement_type &&  rounds && rounds_detail  ){
+        db.Compaines.findOne({name:name.toLowerCase()})
+        .then((companyObj)=>{
+            //if company exist in our db use the company id 
+            if(companyObj){
+                db.Reviews.findOneAndUpdate(
+                        {_id:id},
+                        {
+                          placementType:placement_type,
+                          attendedOn:attended_on,
+                          rounds:rounds,
+                          roundsDetails:rounds_detail,
+                          isPlaced:is_placed,
+                          rating:rating,
+                          pros:pros,
+                          cons:cons,
+                          salary:salary,
+                          mobileNo:mobile_no,
+                      })
+                      .then((reviewObj)=>{
+                        res.json({status:"sucess",msg:"sucessfully updated your review"})
+                        // db.Compaines.findOneAndUpdate({
+                        //     _id:companyObj._id,
+                        //     noOfReviews:Number(companyObj.noOfReviews)+1,
+                        //     rating:Number(companyObj.rating)+Number(rating)
+                        // })
+                      })
+                      .catch(err=>{
+                        logError(err.msg,err)
+                        res.json({status:"failed",
+                                          msg: "Sorry Something went wrong. Please try again"
+                                  });
+                      })
+            }
+            //create new company then use the id
+            else{
+              db.Compaines.create({name:name,rating:rating,noOfReviews:1})
+              .then((companyObj)=>{
+                  if(companyObj){
+                      db.Reviews.findOneAndUpdate({_id:id},
+                      {
+                        companyId:companyObj._id,
+                        userId:req.user._id,
+                        placementType:placement_type,
+                        attendedOn:attended_on,
+                        rounds:rounds,
+                        roundsDetails:rounds_detail,
+                        isPlaced:is_placed,
+                        rating:rating,
+                        pros:pros,
+                        cons:cons,
+                        salary:salary,
+                        mobileNo:mobile_no,
+                      })
+                      .then((reviewObj)=>{
+                        res.json({status:"sucess",msg:"sucessfully added your review"})
+                        
+                      })
+                      .catch(err=>{
+                        logError(err.msg,err)
+                        res.json({status:"failed",
+                                          msg: "Sorry Something went wrong. Please try again"
+                                  });
+                      })
+
+                  }
+              })
+              .catch(err=>{
+                  logError(err.msg,err)
+                  res.json({status:"failed",
+                                    msg: "Sorry Something went wrong. Please try again"
+                            });
+              })
+            } 
+        })
+        .catch(err=>{
+          logError(err.msg,err)
+          res.json({status:"failed",
+                    msg: "Sorry Something went wrong. Please try again"
+                    });
+        })
+    }
+    else{
+      res.json({status:"failed",
+                    msg: "Please fill all the data"
+                    });
+    }
+    
+  },
   deleteMyReview:function(req,res){
       if(req.params.reviewId){
           db.Reviews.findOneAndRemove({_id:req.params.reviewId,userId:req.user._id})
@@ -222,15 +314,12 @@ const user = {
               db.Compaines.findOne(
                 {_id:reviewObj.companyId},
                 ).then((companyObj)=>{
-                  console.log(companyObj);
                     if(companyObj){
                       let new_rating=companyObj.rating-reviewObj.rating;
                       db.Compaines.findOneAndUpdate(
                         {_id:companyObj._id},
                         {"$inc":{noOfReviews:-1},rating:new_rating},
-                      ).then((companyObj)=>{
-                           console.log(companyObj,"dd",new_rating);
-                         });
+                      )
                     }
                 }) 
           })
@@ -274,7 +363,26 @@ const user = {
       res.json({status:"sucess",reviews:reviews});
     })
     .catch((err)=>{
-      console.log(err)
+      res.json({status:"failed",msg:"Something went wrong"});
+    })
+  },
+  getMyReview:function(req,res){
+    db.Reviews.findOne({userId:req.user._id,_id:req.params.reviewId})
+    .then((review)=>{
+      db.Compaines.findOne({_id:review.companyId})
+        .then((company)=>{
+          if(company){
+            review._doc.name=company.name
+            res.json({status:"sucess",review:review});
+          }else{
+           res.json({status:"failed",msg:"Something went wrong"});
+          }
+        })
+        .catch((err)=>{
+          res.json({status:"failed",msg:"Something went wrong"});
+        })
+    })
+    .catch((err)=>{
       res.json({status:"failed",msg:"Something went wrong"});
     })
   },
@@ -329,51 +437,54 @@ const user = {
         }
     },
     forgetPassword:async function (req, res) {
-
         if (req.body.email) {
             let email = req.body.email;
-            var user = await db.User.findOne({
-                email: email
-            });
-            if (user) {
-                let token = generateToken();
-                let link = req.protocol + "://" + req.get("host") + "/user/reset/password/" + token;
-
-                //we adding 20 mins to current date and converting in to mili sec
-                let password_reset_expires = Date.now() + 20 * 60 * 1000;
-                //updating the user token
-                let new_user = await db.User.findOneAndUpdate({
-                    _id: user._id
-                }, {
-                    password_reset_token: token,
-                    password_reset_expires: password_reset_expires
+          try{
+                var user = await db.User.findOne({
+                    email: email
                 });
+                if (user) {
+                    let token = generateToken();
+                    let link = req.protocol + "://" + req.get("host") + "/user/reset/password/" + token;
 
-                //sending mail to user
-                let msg = await sendPasswordReset(user.email, user.name, link);
-                //if msg send sucessfully 
-                if (msg) {
-                    res.json({
-                        status: "sucess",
-                        msg: "Check your mail to reset the password"
+                    //we adding 20 mins to current date and converting in to mili sec
+                    let password_reset_expires = Date.now() + 20 * 60 * 1000;
+                    //updating the user token
+                    let new_user = await db.User.findOneAndUpdate({
+                        _id: user._id
+                    }, {
+                        password_reset_token: token,
+                        password_reset_expires: password_reset_expires
                     });
-                } else {
-                    res.json({
-                        status: "failed",
-                        msg: "Sorry Something went wrong. Please try again"
-                    });
+
+                    //sending mail to user
+                    let msg = await sendPasswordReset(user.email, user.name, link);
+                    //if msg send sucessfully 
+                    if (msg) {
+                        res.json({
+                            status: "sucess",
+                            msg: "Check your mail to reset the password"
+                        });
+                    } else {
+                        res.json({
+                            status: "failed",
+                            msg: "Sorry Something went wrong. Please try again"
+                        });
+                    }
+                    return
                 }
-                return
-            }
-            res.json({
-                status: "failed",
-                msg: "No user exit with given gmail"
-            })
+                res.json({
+                    status: "failed",
+                    msg: "No user exit with given gmail"
+                })
+          }
+          catch(e){
+            console.log(e)
+          }
         }
     },
-
-    ResetPassword:async function (req, res) {
-        let password_reset_token = req.body.id;
+    resetPassword:async function (req, res) {
+        let password_reset_token = req.body.passwordId;
         let new_password = req.body.password;
         if (password_reset_token && new_password) {
             //finding the user

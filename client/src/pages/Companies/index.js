@@ -11,13 +11,13 @@ import errorHandler from "../../utils/errorHandler";
 import "./style.css";
 
 
-let isFind=0;
 function Companies(){
   const [company_lists,setCompanyLists]=useState([]);
   const[search_content,setSearchContent]=useState("");
   const[sort_by,setSortBy]=useState();
 
   const [loading,setLoading]=useState(true);
+  let isFind=0;
 
   useEffect(()=>{
   	API.getCompanyList()
@@ -45,7 +45,7 @@ function Companies(){
   const search=(val)=>{
   		setSearchContent(val);
   		company_lists.forEach((companiesObj)=>{
-  			if(!companiesObj.name.startsWith(val)){
+  			if(!companiesObj.name.startsWith(val.toLowerCase())){
   				companiesObj.isShow=true;
   			}
   			else{
@@ -89,16 +89,13 @@ function Companies(){
 					    				isFind=1;
 						    			return(
 						    				<div className="companies_content">
-						    				  <Link to={"/company/reviews/"+companiesObj._id} className="link"> 
-						    					<p className="companies_content-text">{index+1}.{companiesObj.name}</p>
+						    				  <Link to={"/company/reviews/"+companiesObj._id} className="link flex1"> 
+						    					<p className="companies_content-text ">{index+1}.{companiesObj.name}</p>
 						    				  </Link>
-						    					<p className="companies_content-rating">{companiesObj.rating && companiesObj.noOfReviews?companiesObj.rating/companiesObj.noOfReviews:0}<i class="far fa-star"></i> </p>
-						    					<p className="companies_content-review">{companiesObj.noOfReviews}<i class="fas fa-user-friends"></i></p>
+						    					<p className="companies_content-rating flex1">{companiesObj.rating && companiesObj.noOfReviews?companiesObj.rating/companiesObj.noOfReviews:0}<i class="far fa-star"></i> </p>
+						    					<p className="companies_content-review flex1">{companiesObj.noOfReviews}<i class="fas fa-user-friends"></i></p>
 						    				</div>
 						    			)
-						    		}
-						    		else{
-						    			isFind=0;
 						    		}
 					    		})
 

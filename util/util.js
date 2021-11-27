@@ -94,7 +94,7 @@ function dbErrorHandler(err){
 function logError(msg,err){
 	if(process.env.NODE_ENV!= "production"){
 		console.log("------------------------------------");
-		console.log("Error:",err);
+		console.log("Error:",err,msg);
 		console.log("------------------------------------");
 	}
 
@@ -108,5 +108,7 @@ module.exports=
 	verfiyMail,
 	AppError,
 	logError,
-	dbErrorHandler
+	dbErrorHandler,
+	generateToken	
+
 };

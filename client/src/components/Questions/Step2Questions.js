@@ -10,7 +10,7 @@ function Step2Questions({rounds,setRounds}) {
 return ( <>
                   <div  className="add_review-from">
                    <label for="rounds" className="add_review-label">
-                   <span>How many Rounds *</span></label>
+                   <span>How many Rounds <span className="red_color">*</span></span></label>
                          <div className="add_review-input-wrapper">
                           <input type="number"
                                   placeholder="How many rounds"  
