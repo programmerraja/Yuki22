@@ -104,11 +104,11 @@
     position: absolute;
     flex-direction: column;
     justify-content: space-around;
-    height: 150px;
+    height: 350px;
     background: #4a5ec9;
     top: 0px;
     transition: transform 0.5s ease-in;
-    transform: translateY(-200px);
+    transform: translateY(-500px);
   }
 
   .nav_list_show {

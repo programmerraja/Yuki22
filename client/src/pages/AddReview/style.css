@@ -28,6 +28,8 @@
 	outline: 0;
 }
 .suggestion_container{
+	height: 90px;
+	overflow: scroll;
 	margin-top: 0;
     margin-bottom: 1rem;
     position: absolute;
@@ -82,4 +84,13 @@
 }
 .add_review-input option{
 	font-size: 18px;
+}
+
+/* media query for mobile phones */
+@media (max-width:700px) {
+.add_review-container{
+	width: 90%;
+	max-width: 90%;
+	min-width: 90%;
+ }
 }

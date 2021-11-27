@@ -20,9 +20,6 @@ passport.use("user_local",localStrategy.userStrategy);
 passport.use("user_jwt",jwtStrategy.userStrategy);
 
 
-passport.use("admin_local",localStrategy.adminStrategy);
-passport.use("admin_jwt",jwtStrategy.adminStrategy);
-
 
 
 

@@ -45,7 +45,7 @@
 }
 .companies_content{
 	height: 60px;
-    margin:1rem;
+    margin:1rem 0;
     border-bottom: 1px solid #dcdcdc;
     padding: 0.5rem;
     display: flex;
@@ -72,10 +72,10 @@
 /* media query for mobile phones */
 @media (max-width:700px) {
 .companies_container{
-	width: 70%;
+	width: 80%;
 }
 .companies_content{
     display: flex;
-    width: 100%;
+    width: 95%;
 }
 }
