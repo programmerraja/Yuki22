@@ -1,5 +1,6 @@
 import {React,useState} from "react";
 
+import Input from "../Input";
 
 function Step1Questions({name,
                         attended_on,
@@ -20,42 +21,14 @@ function Step1Questions({name,
    return ( <>
                 
                   <div  className="add_review-from">
+                 
                    <label for="companyName" className="add_review-label">
                    <span>Company Name <span className="red_color">*</span></span></label>
                           <div className="add_review-input-wrapper">
-                          <input  type="text" 
-                                  placeholder="Company Name"  
-                                  name="companyName"  
-                                  className="add_review-input" 
-                                  value={name}
-                                  onChange={(e)=>{
-                                      let new_suggestions=[]
-                                      company_names.forEach(companyName=>{
-                                          if(companyName.startsWith(name.toLowerCase())){
-                                            new_suggestions.push(companyName);
-                                          }
-                                      })
-                                      setFilteredSuggestions(new_suggestions);
-                                      if(new_suggestions.length){
-                                        setShowSuggestions(true);
-                                      }
-                                      else{
-                                        setShowSuggestions(false);
-                                      }
-                                      setName(e.target.value);
-                                    }}
-                                  />
-                              {showSuggestions && 
-                                <ul className="suggestion_container" >  
-                                {filteredSuggestions.map((companyName,index)=>{return(
-                                  <li key={index} onClick={(e)=>{
-                                    setName(e.target.innerText);
-                                    setShowSuggestions(false);
-                                  }}>{companyName}</li>)
-                                })
-                              }
-                              </ul>}
-                              
+                               <Input 
+                                    name={name}
+                                    setName={setName}
+                                    company_names={company_names}/>
                          </div>
                    </div>
 

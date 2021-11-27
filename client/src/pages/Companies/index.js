@@ -89,7 +89,7 @@ function Companies(){
 					    				isFind=1;
 						    			return(
 						    				<div className="companies_content">
-						    				  <Link to={"/company/reviews/"+companiesObj._id} className="link flex1"> 
+						    				  <Link to={"/company/reviews/"+companiesObj._id} className="link flex2"> 
 						    					<p className="companies_content-text ">{index+1}.{companiesObj.name}</p>
 						    				  </Link>
 						    					<p className="companies_content-rating flex1">{companiesObj.rating && companiesObj.noOfReviews?companiesObj.rating/companiesObj.noOfReviews:0}<i class="far fa-star"></i> </p>

@@ -67,8 +67,14 @@
 	color: black;
 }
 
+
 .flex1{
 	flex:1;
+	margin: 1rem;
+}
+.flex2{
+	flex:2;
+	margin: 1rem;
 }
 
 /* media query for mobile phones */
@@ -78,6 +84,8 @@
 }
 .companies_content{
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 95%;
 }
 }
