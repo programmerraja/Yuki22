@@ -156,7 +156,6 @@ function AddReview() {
                  setLoading(false);
                  if(res.data.status==="sucess"){
                    history.push("/user/myReviews");
-                
                  }
                  else{
                     setErrorMsg(res.data.msg);

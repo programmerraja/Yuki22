@@ -73,7 +73,6 @@ class AppError extends Error{
  */
 function dbErrorHandler(err){
 	let message = '';
-	console.log(err);
     if (err.code) {
         switch (err.code) {
             case 11000:
@@ -93,9 +92,11 @@ function dbErrorHandler(err){
 
 // Used to log the error
 function logError(msg,err){
-	console.log("------------------------------------");
-	console.log("Error:",err);
-	console.log("------------------------------------");
+	if(process.env.NODE_ENV!= "production"){
+		console.log("------------------------------------");
+		console.log("Error:",err);
+		console.log("------------------------------------");
+	}
 
 }
 

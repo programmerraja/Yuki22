@@ -58,7 +58,8 @@ function EditReview() {
           }else{
               setCompanyNames(["unable to fetch list"]);
           }
-    });
+       });
+       
    },[])
 
    let validateForm=()=>{

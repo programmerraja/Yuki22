@@ -80,9 +80,10 @@ const user = {
         })
         .catch(err=>{
           // console.log(err)
+          let msg=dbErrorHandler(err)
           logError(err.msg,err)
           res.json({status:"failed",
-                            msg: "Sorry Something went wrong. Please try again"
+                            msg: msg
                     });
         })
         

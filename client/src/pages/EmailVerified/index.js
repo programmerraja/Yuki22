@@ -11,15 +11,23 @@ function EmailVerified()
 {
 	
   const [loading,setLoading]=useState(true);
+  const [verified,setVerified]=useState(false);
   
   const { userId } = useParams();
 
 	function verfiyEmail(){
 		API.verfiyEmail(userId)
     .then((res)=>{
+        setLoading(false);
         if(res.data.status==="sucess"){
-          setLoading(false)
+          setVerified(true);
+        }else{
+          setVerified(false);
         }
+    })
+    .catch((e)=>{
+        setLoading(false);
+        setVerified(false);
     })
 	}
   
@@ -28,10 +36,9 @@ function EmailVerified()
  	 },[])
 
 return(
-<>
-  
+  <>
     <SquareLoader  loading={loading}/>
-    { !loading &&
+    { (!loading && verified) &&
       <div class="reset_container">
         <div class="reset_img">
           <img src={verifiy} />
@@ -41,6 +48,14 @@ return(
           <p>You have sucessfully verified the account </p>
         </div>
       </div>
+    }
+    {(!loading && !verified) &&
+      <div class="reset_container">
+        <div class="reset_text">
+          <h2>Email Verification failed</h2>
+        </div>
+      </div>
+
     }
   
 </>);
