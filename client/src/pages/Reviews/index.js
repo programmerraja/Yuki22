@@ -53,9 +53,9 @@ function Reviews(){
          (!loading && reviews[0] && reviews[0].company)? 
          (
             <div className="companies_contents" key={reviews[0].company.name}>
-              <p className="companies_content-text flex1">{reviews[0].company.name}</p>
-              <p className="companies_content-rating flex1">{reviews[0].company.rating && reviews[0].company.noOfReviews?(reviews[0].company.rating/reviews[0].company.noOfReviews).toFixed(1):0}<i className="far fa-star"></i> </p>
-              <p className="companies_content-review flex1">{reviews[0].company.noOfReviews}<i className="fas fa-user-friends"></i></p>
+              <p className="companies_content-text ">{reviews[0].company.name}</p>
+              <p className="companies_content-rating ">{reviews[0].company.rating && reviews[0].company.noOfReviews?(reviews[0].company.rating/reviews[0].company.noOfReviews).toFixed(1):0}<i className="far fa-star"></i> </p>
+              <p className="companies_content-review ">{reviews[0].company.noOfReviews}<i className="fas fa-user-friends"></i></p>
             </div>
           ):null
         }

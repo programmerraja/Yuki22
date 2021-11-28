@@ -54,14 +54,14 @@ function ReviewCard({
                   <i className="far fa-star"></i></span>
                 }
               </div>
-            <p className="user_name">{user.name}</p>
+            <p className="user_name">{user.name}({user.regno})</p>
             <span className="user_text-small">{user.department}</span>
           </div>
         </div>
 
           <div className="wrapper">
             <div className="review_text">
-              <p>Attended On:
+              <p className="margin-0">Attended On:
                 <span className="review_text-bold">
                  {attendedOn}</span>
               </p>
@@ -84,7 +84,7 @@ function ReviewCard({
                   return(
                     <div className="review_rounds" key={roundName}>
                     <details>
-                        <summary className="review_text-bold d-inline" >
+                        <summary className="review_text-bold round_name" >
                         {index+1}.{roundName}</summary>
                       <div className="review_text">
                       {
