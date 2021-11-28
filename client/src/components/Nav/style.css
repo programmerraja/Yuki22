@@ -19,6 +19,9 @@
   color: white;
   font-weight: bold;
   text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .nav-brand img{
   height: 40px;
