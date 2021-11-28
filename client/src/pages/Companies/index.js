@@ -97,7 +97,7 @@ function Companies(){
 				 		value={search_content}
 				 		onChange={(e)=>{search(e.target.value)}}
 				 />
-				 {<div className="filter_option-wrapper">
+				 <div className="filter_option-wrapper">
 					 <label className="filter_option-label">
 	                   <span>Sort By: </span></label>
 					   <select
@@ -105,17 +105,15 @@ function Companies(){
 	                          onChange={(e)=>{
 	                          	setSortBy(e.target.value);
 	                          	sortedCompanyList(e.target.value);}}>
-		                  <option value=""></option>
-		                  <option value="hrating">High Rating</option>
-		                  <option value="lrating">Low Rating</option>
-		                  <option value="hreview">High Reviews</option>
-		                  <option value="lreview">Low Reviews</option>
+		                  <option value="">None</option>
+		                  <option value="hrating">Rating High to Low</option>
+		                  <option value="lrating">Rating Low to High</option>
+		                  <option value="hreview">Reviews High to Low</option>
+		                  <option value="lreview">Reviews Low to High</option>
 		                  <option value="lname">Name(asec)</option>
 		                  <option value="hname">Name(desc)</option>
-
-
 	                 </select>
-                 </div>}
+                 </div>
 				</div>
 			    	{
 				    	 company_lists.length>0

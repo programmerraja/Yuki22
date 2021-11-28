@@ -7,7 +7,10 @@ export default {
   getSortedCompanyList:function({value,type}){
     return axios.get("/company/sortedList/?sortBy="+value+"&type="+type);
   },
-  getCompanyReviews:function(compainyId){
-    return axios.get("/company/getReviews/"+compainyId);
-  }
+  getCompanyReviews:function(companyId){
+    return axios.get("/company/getReviews/"+companyId);
+  },
+  getSortedReviews:function({companyId,value,type}){
+    return axios.get("/company/sortedReviews/"+companyId+"?sortBy="+value+"&type="+type);
+  },
 };

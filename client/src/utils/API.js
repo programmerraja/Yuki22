@@ -80,7 +80,9 @@ export default {
 
   getCompanyList:companyService.getCompanyList,
   getSortedCompanyList:companyService.getSortedCompanyList,
-  getCompanyReviews:companyService.getCompanyReviews
+
+  getCompanyReviews:companyService.getCompanyReviews,
+  getSortedReviews:companyService.getSortedReviews
 };
 
 function setAuthHeader() {

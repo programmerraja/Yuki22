@@ -7,6 +7,9 @@ const sanitizeHtml = require("../middleware/sanitizeHtml.js");
 router.get("/getReviews/:companyId",
 	companyController.getReviews);
 
+router.get("/sortedReviews/:companyId",
+	companyController.getSortedReviews);
+
 router.get("/sortedList/",
 	companyController.getSortedCompanyList);
 

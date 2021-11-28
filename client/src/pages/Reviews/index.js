@@ -12,9 +12,15 @@ import errorHandler from "../../utils/errorHandler";
 import "./style.css";
 
 
-
+const querys={
+  hrating:{value:"rating",type:-1},
+  lrating:{value:"rating",type:1},
+  latest:{value:"createdOn",type:1},
+  oldest:{value:"createdOn",type:-1}
+}
 function Reviews(){
   const [reviews,setReviews]=useState([]);
+  const[sort_by,setSortBy]=useState();
 
   const [loading,setLoading]=useState(true);
 
@@ -44,6 +50,31 @@ function Reviews(){
       }
     });
   },[])
+
+  const sortedReviewsList=(sort_by)=>{
+    if(sort_by){
+      let query={companyId:companyId,...querys[sort_by]}
+      API.getSortedReviews(query)
+      .then((res)=>{
+          if(res.data.status==="sucess"){
+              setReviews(res.data.reviews);
+              setLoading(false);
+           }
+           else{
+            errorHandler(true,res.data.msg);
+           }
+      })
+      .catch((res)=>{
+        setLoading(false);
+        if(res.data && res.data.msg){
+            errorHandler(true,res.data.msg);
+        }else{
+            errorHandler(true);
+        }
+      });
+    }
+  }
+
   
   return ( 
     <>
@@ -59,6 +90,22 @@ function Reviews(){
             </div>
           ):null
         }
+
+        <div className="filter_option-wrapper">
+           <label className="filter_option-label">
+                     <span>Sort By: </span></label>
+                     <select
+                            className="filter_option" 
+                            onChange={(e)=>{
+                              setSortBy(e.target.value);
+                              sortedReviewsList(e.target.value);}}>
+                      <option value="">None</option>
+                      <option value="hrating">Rating: High to Low</option>
+                      <option value="lrating">Rating: Low to High</option>
+                      <option value="latest">Latest</option>
+                      <option value="oldest">Oldest</option>
+                   </select>
+        </div>
         {
             !loading && reviews.map((review)=>{
               return(

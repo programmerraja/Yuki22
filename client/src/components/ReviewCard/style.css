@@ -7,7 +7,7 @@
     margin: 1rem;
     line-height: 24px;
     color: rgb(80, 88, 99);
-    padding: 24px;
+    padding: 10px 24px;
     border-radius: 3px;
     border: 1px solid rgb(222, 224, 227);
     box-shadow: rgb(196 199 204) 0px 0px 2px;
@@ -94,6 +94,6 @@ summary:focus{
 /* media query for mobile phones */
 @media (max-width:700px) {
 .review_container{
-    width: 75%;
+    width: 82%;
 }
 }
