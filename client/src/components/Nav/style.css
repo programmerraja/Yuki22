@@ -20,6 +20,9 @@
   font-weight: bold;
   text-decoration: none;
 }
+.nav-brand img{
+  height: 40px;
+}
 
 .nav-center {
   margin: auto;
