@@ -17,6 +17,10 @@
     margin: 0.2rem;
     padding:0.2rem;
 }
+.d-flex{
+    display: flex;
+    align-items: center;
+}
 .edit_icon{
     display: flex;
     justify-content: flex-end;

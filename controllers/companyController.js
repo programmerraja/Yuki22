@@ -26,6 +26,11 @@ const company = {
           if(user){
             reviews[index]["_doc"]["user"]={name:user.name,regno:user.regno,department:user.department};
           }
+          //if index ==0 append the company details to it 
+          if(index===0){
+            let company=await db.Compaines.findOne({_id:req.params.companyId});
+            reviews[index]["_doc"]["company"]={...company._doc};
+          }
           if(reviews.length-1>index){
             await getUser(index+1);
           }

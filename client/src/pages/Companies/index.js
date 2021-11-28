@@ -90,7 +90,7 @@ function Companies(){
 					    			if(!companiesObj.isShow){
 					    				isFind=1;
 						    			return(
-						    				<div className="companies_content">
+						    				<div className="companies_content" key={companiesObj.name}>
 						    				  <Link to={"/company/reviews/"+companiesObj._id} className="link flex2"> 
 						    					<p className="companies_content-text ">{index+1}.{companiesObj.name}</p>
 						    				  </Link>

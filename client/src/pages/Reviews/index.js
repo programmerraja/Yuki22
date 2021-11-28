@@ -50,6 +50,16 @@ function Reviews(){
     <SquareLoader  loading={loading}/>
       <div className="review_wrapper">
         {
+         (!loading && reviews[0] && reviews[0].company)? 
+         (
+            <div className="companies_contents" key={reviews[0].company.name}>
+              <p className="companies_content-text flex1">{reviews[0].company.name}</p>
+              <p className="companies_content-rating flex1">{reviews[0].company.rating && reviews[0].company.noOfReviews?(reviews[0].company.rating/reviews[0].company.noOfReviews).toFixed(1):0}<i class="far fa-star"></i> </p>
+              <p className="companies_content-review flex1">{reviews[0].company.noOfReviews}<i class="fas fa-user-friends"></i></p>
+            </div>
+          ):null
+        }
+        {
             !loading && reviews.map((review)=>{
               return(
                   <ReviewCard 

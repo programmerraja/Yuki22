@@ -37,16 +37,18 @@ function ReviewCard({
           </div>
         }
           <div  className="user_wrapper">
-            <img src={userImg} alt="user" className="user_img"/>
-            {isPlaced===1 &&
-            <span className="user_text-green">Placed</span>
-            }
-            {rating &&
-              <span className="user_text">
-              {rating}
-            
-              <i class="far fa-star"></i></span>
-            }
+              <div className="d-flex">
+                <img src={userImg} alt="user" className="user_img"/>
+                {isPlaced===1 &&
+                <span className="user_text-green">Placed</span>
+                }
+                {rating &&
+                  <span className="user_text">
+                  {rating}
+                
+                  <i class="far fa-star"></i></span>
+                }
+              </div>
             <p className="user_name">{user.name}</p>
             <span className="user_text-small">{user.department}</span>
           </div>
