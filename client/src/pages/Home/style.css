@@ -83,7 +83,7 @@
 		display: flex;
 	    flex-wrap: wrap;
 	    justify-content: space-between;
-	    margin: 1rem auto;
+	    margin:  auto;
 	    width: 90%;
 	    padding: 1rem;
 	    
@@ -113,9 +113,29 @@
 		text-transform: capitalize;
 	}
 	.how_itworks-text{
-		font-size: 15px;
+		text-align: center;
+		width: 184px;
+		font-size: 14px;
 	}
-	
+	.follow_container{
+		min-height: 170px;
+		display: flex;
+		padding: 1rem;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		border: 1px solid rgb(222, 224, 227);
+	    box-shadow: rgb(196 199 204) 0px 0px 2px;
+	    background-color: rgb(255, 255, 255);
+	    /*margin: 1rem 0;*/
+	}
+	.follow_text h5{
+		margin-top: 0;
+		margin-bottom: 5px;
+	}
+	.follow_icons i{
+		font-size: 50px
+	}
 
 	/* media query for mobile phones */
 	@media (max-width:700px) {

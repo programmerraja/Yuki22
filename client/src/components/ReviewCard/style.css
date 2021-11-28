@@ -21,6 +21,10 @@
     display: flex;
     align-items: center;
 }
+.created_at{
+    font-size: 13px;
+    color: #97a0be;
+}
 .edit_icon{
     display: flex;
     justify-content: flex-end;
@@ -31,6 +35,11 @@
     cursor: pointer;
     margin-left: 1rem;
 
+}
+.rating{
+    font-size: .75rem;
+    font-weight: bold;
+    
 }
 .d-inline{
     display: inline;

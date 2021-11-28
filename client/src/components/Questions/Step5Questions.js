@@ -32,9 +32,8 @@ return ( <>
 
                    <div  className="add_review-from">
                          <label for="pros" className="add_review-label">
-                         <span>Write pros about the company </span></label>
+                         <span>What do you like about working at the company? </span></label>
                          <div className="add_review-input-wrapper">
-
                             <textarea placeholder="example:Good place to work, can learn lot" 
                                 rows="7"
                                 cols="24" 
@@ -48,8 +47,10 @@ return ( <>
                    </div>
                    <div  className="add_review-from">
                          <label for="cons" className="add_review-label">
-                         <span>Write cons about the company </span></label>
+                         <span>What do you dislike about working at the company?</span></label>
                          <div className="add_review-input-wrapper">
+                          <span className="small_text">(Talk about teammates, training, job security, career growth, salary/appraisal, travel, politics, learning, work environment, innovation, work-life balance, etc.)
+                            Please be polite & avoid using offensive language or defame people. This is a place for constructive feedback 😊</span>
                             <textarea placeholder="example:less salary,high work pressure" 
                                 rows="7"
                                 cols="24" 

@@ -19,6 +19,7 @@ function ReviewCard({
                     mobileNo,
                     advice,
                     user,
+                    createdAt,
                     isEditing,
                     deleteReview
                   }){
@@ -29,6 +30,11 @@ function ReviewCard({
     <>
         <div className="review_container">
         <div className="wrapper">
+        {createdAt &&
+          <p className="created_at">
+            Posted on {new Date(createdAt).toDateString()}
+          </p>
+        }
         {isEditing &&
           <div className="edit_icon">
             <Link to={`/user/edit/review/${_id}`}>
@@ -43,9 +49,8 @@ function ReviewCard({
                 <span className="user_text-green">Placed</span>
                 }
                 {rating &&
-                  <span className="user_text">
-                  {rating}
-                
+                  <span className="user_text rating">
+                  {rating.toFixed(1)}
                   <i className="far fa-star"></i></span>
                 }
               </div>
@@ -133,7 +138,7 @@ function ReviewCard({
             }
             {mobileNo && 
                 <div className="review_text">
-                  <p className="review_text-bold">ContactNo:{mobileNo}</p>
+                  <p className="review_text-bold">Contact No:{mobileNo}</p>
                 </div>
             }
           </div>

@@ -87,7 +87,10 @@
 .add_review-input option{
 	font-size: 18px;
 }
-
+.small_text{
+	color: #97a0be;
+	font-size: 14px;
+}
 /* media query for mobile phones */
 @media (max-width:700px) {
 .add_review-container{

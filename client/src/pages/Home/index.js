@@ -64,6 +64,16 @@ return ( <>
                 </div>
 
         </section>
+        <section className="follow_container">  
+            <div className="follow_text">
+                <h3>Connect With Us</h3>
+            </div>
+            <div className="follow_icons">
+                <a href="https://t.me/+o2u1jURL6YZiNWVl">
+                    <i className="fab fa-telegram"></i>
+                </a>
+            </div>
+        </section>
         <Footer/>
     </>);
 }

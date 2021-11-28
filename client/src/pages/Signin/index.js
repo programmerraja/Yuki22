@@ -39,6 +39,7 @@ function Signin({setUser}){
       }
     })
     .catch((res)=>{
+        console.log(res)
         setLoading(false);
         if(res.data && res.data.msg){
           setMsg(res.data.msg);

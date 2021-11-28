@@ -124,35 +124,54 @@ const user = {
         .then((companyObj)=>{
             //if company exist in our db use the company id 
             if(companyObj){
-                db.Reviews.create({
+              //check if user not added his review to same company
+                db.Reviews.findOne({
                         companyId:companyObj._id,
-                        userId:req.user._id,
-                        placementType:placement_type,
-                        attendedOn:attended_on,
-                        rounds:rounds,
-                        roundsDetails:rounds_detail,
-                        isPlaced:is_placed,
-                        rating:rating,
-                        pros:pros,
-                        cons:cons,
-                        salary:salary,
-                        mobileNo:mobile_no,
-                        advice:advice
-                      })
-                      .then((reviewObj)=>{
-                        res.json({status:"sucess",msg:"sucessfully added your review"})
-                        db.Compaines.findOneAndUpdate({
-                            _id:companyObj._id},{
-                            noOfReviews:Number(companyObj.noOfReviews)+1,
-                            rating:Number(companyObj.rating)+Number(rating)
-                        }).then((a)=>{});
-                      })
-                      .catch(err=>{
-                        logError(err.msg,err)
-                        res.json({status:"failed",
-                                          msg: "Sorry Something went wrong. Please try again"
-                                  });
-                      })
+                        userId:req.user._id,})
+                    .then((isHas)=>{
+                          if(!isHas){
+                              db.Reviews.create({
+                                companyId:companyObj._id,
+                                userId:req.user._id,
+                                placementType:placement_type,
+                                attendedOn:attended_on,
+                                rounds:rounds,
+                                roundsDetails:rounds_detail,
+                                isPlaced:is_placed,
+                                rating:rating,
+                                pros:pros,
+                                cons:cons,
+                                salary:salary,
+                                mobileNo:mobile_no,
+                                advice:advice
+                              })
+                              .then((reviewObj)=>{
+                                res.json({status:"sucess",msg:"sucessfully added your review"})
+                                db.Compaines.findOneAndUpdate({
+                                    _id:companyObj._id},{
+                                    noOfReviews:Number(companyObj.noOfReviews)+1,
+                                    rating:Number(companyObj.rating)+Number(rating)
+                                }).then((a)=>{});
+                              })
+                              .catch(err=>{
+                                logError(err.msg,err)
+                                res.json({status:"failed",
+                                                  msg: "Sorry Something went wrong. Please try again"
+                                          });
+                              })
+                          }else{
+                            res.json({status:"failed",
+                                                  msg: "Sorry you already added the review for this company"
+                                          });
+                          }
+                        })
+                        .catch(err=>{
+                                logError(err.msg,err)
+                                res.json({status:"failed",
+                                                  msg: "Sorry Something went wrong. Please try again"
+                                          });
+                              })
+                
             }
             //create new company then use the id
             else{
