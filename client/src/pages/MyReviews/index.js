@@ -86,6 +86,7 @@ function MyReviews(){
             !loading && reviews.map((review)=>{
               return(
                   <ReviewCard 
+                      key={review.user.name}
                       {...review}
                       deleteReview={deleteReview}
                       isEditing={true}/>

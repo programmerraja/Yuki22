@@ -31,11 +31,14 @@ export default {
   getMyProfile:function(){
     return axios.get("/user/getMyProfile/");
   },
+  updateProfile:function(user){
+    return axios.post("/user/updateMyProfile/",user);
+  },
   sendForgetPassword:function(email){
-    return axios.post("/user/forget/password",{email:email});
+    return axios.post("/user/forgetMypassword",{email:email});
   },
   sendResetPassword:function(password_data){
-    return axios.post("/user/reset/password",password_data);
+    return axios.post("/user/resetMypassword",password_data);
   },
   logout:function(){
     return axios.get("/user/logout/");

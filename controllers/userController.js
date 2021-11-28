@@ -239,11 +239,12 @@ const user = {
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully updated your review"})
                         //if old rating not equal to new rating then update the rating 
+                        // console.log(old_rating,rating)
                         if(old_rating!=rating){
                           db.Compaines.findOneAndUpdate({
                               _id:companyObj._id},
                               {rating:(Number(companyObj.rating)-Number(old_rating))+Number(rating)
-                          })
+                          }).then((a)=>{})
                         }
                       })
                       .catch(err=>{
@@ -255,44 +256,10 @@ const user = {
             }
             //create new company then use the id
             else{
-              db.Compaines.create({name:name.toLowerCase(),rating:rating,noOfReviews:1})
-              .then((companyObj)=>{
-                  if(companyObj){
-                      db.Reviews.findOneAndUpdate({_id:id},
-                      {
-                        companyId:companyObj._id,
-                        userId:req.user._id,
-                        placementType:placement_type,
-                        attendedOn:attended_on,
-                        rounds:rounds,
-                        roundsDetails:rounds_detail,
-                        isPlaced:is_placed,
-                        rating:rating,
-                        pros:pros,
-                        cons:cons,
-                        salary:salary,
-                        mobileNo:mobile_no,
-                      })
-                      .then((reviewObj)=>{
-                        res.json({status:"sucess",msg:"sucessfully added your review"})
-                        //change the rating and no of reviews in old company 
-
-                      })
-                      .catch(err=>{
-                        logError(err.msg,err)
-                        res.json({status:"failed",
-                                          msg: "Sorry Something went wrong. Please try again"
+              //if user change company send dont change company name 
+             return res.json({status:"failed",
+                              msg: "Sorry You are not allowed to change company name if you like delete the review and add new review"
                                   });
-                      })
-
-                  }
-              })
-              .catch(err=>{
-                  logError(err.msg,err)
-                  res.json({status:"failed",
-                                    msg: "Sorry Something went wrong. Please try again"
-                            });
-              })
             } 
         })
         .catch(err=>{
@@ -352,11 +319,72 @@ const user = {
       res.json({status:"failed",list:[]});
     })
   },
-  getProfile:function (req,res){
+  getMyProfile:function (req,res){
       res.json({
         status:"sucess",
         name: req.user.name
     });
+  },
+  updateMyProfile:async function(req,res){
+      if (req.body.name && req.body.old_password) {
+
+            let {
+                name,
+                old_password,
+                new_password
+            } = req.body;
+            let user_id = req.user._id;
+            let user = await db.User.findOne({
+                _id: user_id
+            });
+            if (user) {
+
+                if (bcrypt.compareSync(old_password, user.password)) {
+                    if (new_password) {
+                        // new_password = bcrypt.hashSync(new_password, 10);
+                        user.name = name;
+                        user.password = new_password;
+                    } else {
+                        user.name = name;
+                    }
+
+                    user.save()
+                    .then((user)=>{
+                        if (user) {
+                          res.json({
+                              status:"sucess",
+                              name: user.name,
+                              msg: "sucessfully updated"
+                          });
+                        }
+                        else {
+                            res.json( {
+                                status:"failed",
+                                name: req.user.name,
+                                msg: "Something went wrong"
+                            });
+                         }
+                    })
+                    .catch((err) => {
+                        let msg = dbErrorHandler(err)
+                        res.json({
+                            status:"failed",
+                            name: req.user.name,
+                            msg: msg
+                        });
+                    });
+                    
+
+                } else {
+                    res.json( {
+                        status:"failed",
+                        name: req.user.name,
+                        msg: "Password does not match"
+                    });
+                }
+            }
+
+        }
   },
   getMyReviews:function(req,res){
     db.Reviews.find({userId:req.user._id})
@@ -390,57 +418,8 @@ const user = {
       res.json({status:"failed",msg:"Something went wrong"});
     })
   },
-  postUserProfile:async function (req, res) {
-        if (req.body.name && req.body.old_password) {
-
-            let {
-                name,
-                old_password,
-                new_password
-            } = req.body;
-            let user_id = req.user._id;
-            let user = await db.User.findOne({
-                _id: user_id
-            });
-            if (user) {
-
-                if (bcrypt.compareSync(old_password, user.password)) {
-                    if (new_password) {
-                        new_password = bcrypt.hashSync(new_password, 2);
-                        user.name = name;
-                        user.password = new_password;
-                    } else {
-                        user.name = name;
-                    }
-
-                    user = await user.save().catch((err) => {
-                        let msg = dbErrorHandler(err)
-                        res.json({
-                            status:"failed",
-                            name: req.user.name,
-                            msg: msg
-                        });
-                    });
-                    if (user) {
-                        res.json({
-                            status:"sucess",
-                            name: user.name,
-                            msg: "sucess fully updated"
-                        });
-                    }
-
-                } else {
-                    res.json( {
-                        status:"failed",
-                        name: req.user.name,
-                        msg: "Password does not match"
-                    });
-                }
-            }
-
-        }
-    },
-    forgetPassword:async function (req, res) {
+ 
+  forgetMyPassword:async function (req, res) {
         if (req.body.email) {
             let email = req.body.email;
           try{
@@ -457,8 +436,8 @@ const user = {
                     let new_user = await db.User.findOneAndUpdate({
                         _id: user._id
                     }, {
-                        password_reset_token: token,
-                        password_reset_expires: password_reset_expires
+                        passwordResetToken: token,
+                        passwordResetExpires: password_reset_expires
                     });
 
                     //sending mail to user
@@ -487,14 +466,14 @@ const user = {
           }
         }
     },
-    resetPassword:async function (req, res) {
+    resetMyPassword:async function (req, res) {
         let password_reset_token = req.body.passwordId;
         let new_password = req.body.password;
         if (password_reset_token && new_password) {
             //finding the user
             var user = await db.User.findOne({
-                password_reset_token: password_reset_token,
-                password_reset_expires: {
+                passwordResetToken: password_reset_token,
+                passwordResetExpires: {
                     $gt: Date.now()
                 }
             });
@@ -503,6 +482,7 @@ const user = {
                 let new_user = await db.User.findOneAndUpdate({
                     _id: user._id
                 }, {
+                    passwordResetToken:null,
                     password: hash
                 });
                 res.json({
@@ -523,8 +503,8 @@ const user = {
         });
 
     },
-    emailVerified:async function (req, res) {
-        let user_id = req.body.id;
+    verifiyMyEmail:async function (req, res) {
+        let user_id = req.params.userId;
         if (user_id) {
             var user = await db.User.findOne({
                 _id: user_id

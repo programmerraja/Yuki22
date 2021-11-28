@@ -37,6 +37,7 @@ function sendMail(subject,body,to_mail)
 
 async function sendPasswordReset(to_mail,user_name,link)
 {
+	console.log(link)
 	let subject="Reset Your Password";
 	let body="<p>Hai "+user_name+",</p>\
 	 		<p>A request has been recevied to change the password for your Yuki account. This link only work for 20 minutes</p>\
@@ -47,7 +48,7 @@ async function sendPasswordReset(to_mail,user_name,link)
 }
 
 async function verfiyMail(to_mail,user_name,link){
-
+	console.log(link)
 	let subject="Verfiy Your Mail";
 	let body="<p>Hai "+user_name+",</p>\
 	 		<p>we're happy you signed up for Yuki. To start exploring the Yuki confirm your email address\

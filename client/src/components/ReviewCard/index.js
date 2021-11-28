@@ -32,7 +32,7 @@ function ReviewCard({
         {isEditing &&
           <div className="edit_icon">
             <Link to={`/user/edit/review/${_id}`}>
-             <i class="fas fa-edit"></i>
+             <i className="fas fa-edit"></i>
             </Link>
           </div>
         }
@@ -46,7 +46,7 @@ function ReviewCard({
                   <span className="user_text">
                   {rating}
                 
-                  <i class="far fa-star"></i></span>
+                  <i className="far fa-star"></i></span>
                 }
               </div>
             <p className="user_name">{user.name}</p>
@@ -68,7 +68,7 @@ function ReviewCard({
             </p>
             </div>
             <p className="review_text-bold">Interview Process</p>
-            <div class="padding">
+            <div className="padding">
               <div className="review_text">
                 <p>No of rounds: 
                     <span className="review_text-bold">{rounds}</span>
@@ -77,7 +77,7 @@ function ReviewCard({
               {
                 Object.keys(roundsDetails).map((roundName,index)=>{
                   return(
-                    <div className="review_rounds">
+                    <div className="review_rounds" key={roundName}>
                     <details>
                         <summary className="review_text-bold d-inline" >
                         {index+1}.{roundName}</summary>
@@ -85,8 +85,8 @@ function ReviewCard({
                       {
                         roundsDetails[roundName]
                         .split("\n")
-                        .map((text)=>{
-                              return(<p className="review_text-point">{text}</p>)
+                        .map((text,index)=>{
+                              return(<p key={index} className="review_text-point">{text}</p>)
                          })
                       }
                       </div>
@@ -104,8 +104,8 @@ function ReviewCard({
                 {
                         pros
                         .split("\n")
-                        .map((text)=>{
-                              return(<p className="review_text-point">{text}</p>)
+                        .map((text,index)=>{
+                              return(<p key={index} className="review_text-point">{text}</p>)
                          })
                 }
               </div>
@@ -116,8 +116,8 @@ function ReviewCard({
                 {
                         cons
                         .split("\n")
-                        .map((text)=>{
-                              return(<p className="review_text-point">{text}</p>)
+                        .map((text,index)=>{
+                              return(<p key={index} className="review_text-point">{text}</p>)
                          })
                 }
               </div>
@@ -139,7 +139,7 @@ function ReviewCard({
           </div>
           {isEditing &&
             <div className="edit_icon">
-              <i class="fas fa-trash-alt" onClick={()=>{deleteReview(_id)}}></i>
+              <i className="fas fa-trash-alt" onClick={()=>{deleteReview(_id)}}></i>
             </div>
           }
         </div>

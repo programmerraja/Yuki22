@@ -53,7 +53,7 @@ function App(props) {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>JustPlaced</title>
+        <title>Yuki22</title>
         <meta
           name="description"
           content="!"

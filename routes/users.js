@@ -17,19 +17,22 @@ router.post("/signup",
 router.get("/companyNames",
 	userController.getCompanyList);
 
-router.post("/forget/password",
-	userController.forgetPassword);
+router.post("/forgetMypassword",
+	userController.forgetMyPassword);
 
-router.post("/reset/password",
-	userController.resetPassword);
+router.post("/resetMypassword",
+	userController.resetMyPassword);
 
-router.post("/verifiyMyEmail/:userId",
-	userController.emailVerified);
-
+router.get("/verifiyMyEmail/:userId",
+	userController.verifiyMyEmail);
 
 router.get("/getMyProfile",
 			auth.isAuthenticatedUser(),
-			userController.getProfile);
+			userController.getMyProfile);
+
+router.post("/updateMyProfile",
+			auth.isAuthenticatedUser(),
+			userController.updateMyProfile);
 
 router.get("/getMyReviews",auth.isAuthenticatedUser(),
 	userController.getMyReviews);

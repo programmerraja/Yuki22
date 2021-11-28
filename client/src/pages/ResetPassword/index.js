@@ -4,38 +4,40 @@ import {useParams} from "react-router-dom";
 import SquareLoader from "../../components/SquareLoader";
 
 import API from "../../utils/API";
-
+import errorHandler from "../../utils/errorHandler";
 
 import reset from "../../img/reset.svg";
 
 function ResetPassword() {
   const[loading,setLoading]=useState(false) 
   const [password,setPassword]=useState("");
-  const [msg,setMsg]=useState("");
 
   const { passwordId } = useParams();
 
   function sendResetPassword(){
-    if(password){
+    if(password ){
         setLoading(true);
         API.sendResetPassword({passwordId,password})
         .then((res)=>{
-                setLoading(false);
-                setMsg(res.data.msg);
+              setLoading(false);
+              if(res.data.status==="sucess"){
+                errorHandler(false,res.data.msg);
+              }else{
+                  errorHandler(true,res.data.msg);
+              }
         })
         .catch((res)=>{
           setLoading(false);
           if(res.data && res.data.msg){
-              setMsg(msg);
+            errorHandler(true,res.data.msg);
           }else{
-              setMsg("Something went wrong");
+            errorHandler(true);
           }
         });
     }
     else{
-        setMsg("Please Enter The Password");
+        errorHandler(true,"Please Enter The Password");
     }
-   
   }
 return ( 
     <>
@@ -54,10 +56,6 @@ return (
         <input type="password" name="password" className="reset_password" placeholder="Enter a new password"  onChange={(e)=>{setPassword(e.target.value);}}  value={password} />
         <input type="button" name="change_password" className="change_password" value="Change Password" onClick={sendResetPassword}/>
         </div>
-
-        <p className="reset_error">
-        {msg}
-        </p>
 
         </div>
     </>

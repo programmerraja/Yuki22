@@ -66,8 +66,12 @@ export default {
   getCompanyNames:userService.getCompanyNames,
   getMyReviews:userService.getMyReviews,
   getMyReview:userService.getMyReview,
+  updateMyReview:userService.updateMyReview,
+
+
   
   getMyProfile:userService.getMyProfile,
+  updateProfile:userService.updateProfile,
   
   sendForgetPassword:userService.sendForgetPassword,
   sendResetPassword:userService.sendResetPassword,

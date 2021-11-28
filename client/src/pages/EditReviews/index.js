@@ -28,6 +28,8 @@ function EditReview() {
    const [id,setId]=useState("");
 
    const [name,setName]=useState("");
+   const [old_name,setOldName]=useState("");
+
    const [company_names,setCompanyNames]=useState([]);
 
    const [attended_on,setAttendedOn]=useState("");
@@ -73,6 +75,7 @@ function EditReview() {
                let temp_review=res.data.review;
                setId(temp_review._id); 
                setName(temp_review["name"]);
+               setOldName(temp_review["name"]);
                setAttendedOn(temp_review["attendedOn"]);
                setPlacementType(temp_review["placementType"]);
                setRounds(temp_review["rounds"]);
@@ -113,6 +116,10 @@ function EditReview() {
 
    let validateForm=()=>{
       if(steps===1){
+        if(old_name!==name){
+          setErrorMsg("Plse don't change company name if you like to chnage delete this review and create new one");
+          return false
+        }
         if(name && attended_on && placement_type){
           return true
         }
@@ -184,7 +191,6 @@ function EditReview() {
                         rounds_detail,is_placed,
                         rating,old_rating,pros,cons,
                         salary,mobile_no,
-                        
                       })
       .then((res)=>{
              setLoading(false);
@@ -233,7 +239,8 @@ function EditReview() {
      if(rounds_details.length==rounds && isPrev){
       for(let i=0;i<rounds;i++){
          rounds_arr.push(
-                      <Step3Questions  
+                      <Step3Questions 
+                          key={i} 
                           round_number={i}
                           rounds_names={rounds_names}
                           setRoundsNames={setRoundsNames}
@@ -245,6 +252,7 @@ function EditReview() {
        for(let i=0;i<rounds;i++){
            rounds_arr.push(
                         <Step3Questions  
+                            key={i}
                             round_number={i}
                             rounds_names={rounds_names}
                             setRoundsNames={setRoundsNames}
@@ -275,7 +283,6 @@ function EditReview() {
                             setSalary={setSalary}
                             mobile_no={mobile_no}
                             setMobileNo={setMobileNo}
-                            setAdvice={setAdvice}
                       />)
    }
 
@@ -295,7 +302,7 @@ return ( <>
                     }
                      {
                       steps==5?
-                      <button onClick={onSubitReview}>Submit</button>
+                      <button onClick={onSubitReview}>Update</button>
                       :
                       <button onClick={onNext} >Next</button>
                      }

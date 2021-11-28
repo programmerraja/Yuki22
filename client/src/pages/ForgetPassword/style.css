@@ -48,7 +48,7 @@
 
 .send_link,
 .change_password {
-  background-color: var(--secondary-color);
+  background-color:  #4a5ec9;
   color: white;
   height: 35px;
   width: 130px;

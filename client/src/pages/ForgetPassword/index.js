@@ -4,6 +4,8 @@ import {useState} from "react";
 import SquareLoader from "../../components/SquareLoader";
 
 import API from "../../utils/API";
+import errorHandler from "../../utils/errorHandler";
+
 
 
 import forget from "../../img/forget.svg";
@@ -11,32 +13,34 @@ import forget from "../../img/forget.svg";
 import "./style.css";
 
 function ForgetPassword(){
+    
   const[loading,setLoading]=useState(false) 
   const [email,setEmail]=useState("");
-  const [msg,setMsg]=useState("");
 
   function sendForgetPassword(){
-    setLoading(true);
-    if(email){   
+    if(email){ 
+        setLoading(true);
         API.sendForgetPassword(email)
         .then((res)=>{
-                setLoading(false);
-                setMsg(res.data.msg);
+              setLoading(false);
+              if(res.data.status==="sucess"){
+                errorHandler(false,res.data.msg);
+              }else{
+                  errorHandler(true,res.data.msg);
+              }
         })
         .catch((res)=>{
           setLoading(false);
           if(res.data && res.data.msg){
-              setMsg(msg);
+            errorHandler(true,res.data.msg);
           }else{
-              setMsg("Something went wrong");
+            errorHandler(true);
           }
         });
     }
     else{
-        setMsg("Please Enter The Email");
+        errorHandler(true,"Please Enter The Email");
     }
-    setLoading(false);
-   
   }
     
 return ( 
@@ -55,11 +59,7 @@ return (
     <input type="email" name="email" placeholder="Email Address" class="forget_email"  onChange={(e)=>{setEmail(e.target.value);}}  value={email} />
     <input type="button" name="send_link" class="send_link" value="Send Link"  onClick={sendForgetPassword}/>
     </div>
-
     <div>
-    <p class="forget_error">
-    {msg}
-    </p>
     </div>
     </div>
     </>
