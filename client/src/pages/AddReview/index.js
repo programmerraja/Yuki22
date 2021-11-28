@@ -54,9 +54,9 @@ function AddReview() {
        })
        .catch((res)=>{
           if(res.data && res.data.list){
-              setCompanyNames(res.data.list);
+              setCompanyNames([]);
           }else{
-              setCompanyNames(["unable to fetch list"]);
+              setCompanyNames([]);
           }
     });
    },[])

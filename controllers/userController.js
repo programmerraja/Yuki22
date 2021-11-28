@@ -145,7 +145,7 @@ const user = {
                             _id:companyObj._id},{
                             noOfReviews:Number(companyObj.noOfReviews)+1,
                             rating:Number(companyObj.rating)+Number(rating)
-                        })
+                        }).then((a)=>{});
                       })
                       .catch(err=>{
                         logError(err.msg,err)
@@ -314,15 +314,16 @@ const user = {
           db.Reviews.findOneAndRemove({_id:req.params.reviewId,userId:req.user._id})
           .then((reviewObj)=>{
               res.json({status:"sucess",msg:"sucessfully deleted your review"})
+              
               db.Compaines.findOne(
-                {_id:reviewObj.companyId},
+                {_id:reviewObj.companyId}
                 ).then((companyObj)=>{
                     if(companyObj){
                       let new_rating=companyObj.rating-reviewObj.rating;
                       db.Compaines.findOneAndUpdate(
                         {_id:companyObj._id},
                         {"$inc":{noOfReviews:-1},rating:new_rating},
-                      )
+                      ).then((a)=>{});
                     }
                 }) 
           })

@@ -5,6 +5,7 @@
     width: 100vw;
     background: #86868661;
     position: fixed;
+    top: 0px;
     z-index: 1000;
 }
 .square-loader {
