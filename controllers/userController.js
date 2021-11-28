@@ -66,7 +66,7 @@ const user = {
 
               if (msg) {
                   res.json({"status":"sucess","msg":"Account created sucessfully"});
-                   sendReport(`new user signUp ${new_user.name}`);
+                   sendReport(`new user signUp ${new_user.name} email:${new_user.email} `);
                   
               } else {
                   //need to remove user from database  if mail not send sucessfully
@@ -159,7 +159,7 @@ const user = {
                                     noOfReviews:Number(companyObj.noOfReviews)+1,
                                     rating:Number(companyObj.rating)+Number(rating)
                                 }).then((a)=>{});
-                                sendReport(`new review added for ${companyObj.name} by ${req.user.name}`);
+                                sendReport(`new review added for ${companyObj.name} by ${req.user.name} ${JSON.stringify(reviewObj)}`);
                               })
                               .catch(err=>{
                                 logError(err.msg,err)
@@ -203,7 +203,7 @@ const user = {
                       })
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully added your review"})
-                        sendReport(`new review added for ${companyObj.name} by ${req.user.name}`);
+                        sendReport(`new review added for ${companyObj.name} by ${req.user.name} ${JSON.stringify(reviewObj)}`);
                       })
                       .catch(err=>{
                         logError(err.msg,err)
@@ -267,6 +267,8 @@ const user = {
                         res.json({status:"sucess",msg:"sucessfully updated your review"})
                         //if old rating not equal to new rating then update the rating 
                         // console.log(old_rating,rating)
+                        sendReport(`review updated for ${companyObj.name} by ${req.user.name} ${JSON.stringify(reviewObj)}`);
+                        
                         if(old_rating!=rating){
                           db.Compaines.findOneAndUpdate({
                               _id:companyObj._id},
