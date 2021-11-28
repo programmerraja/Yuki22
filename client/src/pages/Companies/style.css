@@ -14,7 +14,6 @@
 .companies_search-wrapper{
 	width: 100%;
 	display: flex;
-	justify-content: space-between;
 	flex-wrap: wrap;
 }
 .companies_search{
@@ -32,11 +31,14 @@
 }
 .filter_option-label,
 .filter_option{
+	margin: 0 1rem;
 	display: block;
 }
 .filter_option{
 	height: 30px;
 	width: 100px;
+	font-size: 15px;
+	outline: none;
 }
 
 .companies_content-wrapper{

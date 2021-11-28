@@ -9,7 +9,14 @@ import errorHandler from "../../utils/errorHandler";
 
 
 import "./style.css";
-
+const querys={
+	hrating:{value:"rating",type:-1},
+	lrating:{value:"rating",type:1},
+	hreview:{value:"review",type:-1},
+	lreview:{value:"review",type:1},
+	hname:{value:"name",type:-1},
+	lname:{value:"name",type:1}
+}
 
 function Companies(){
   const [company_lists,setCompanyLists]=useState([]);
@@ -40,7 +47,30 @@ function Companies(){
     });
 
   },[])
-  
+
+  const sortedCompanyList=(sort_by)=>{
+  	if(sort_by){
+	  	let query={...querys[sort_by]}
+	  	API.getSortedCompanyList(query)
+	  	.then((res)=>{
+	        if(res.data.status==="sucess"){
+	        	  setLoading(false);
+	              setCompanyLists(res.data.list);
+	         }
+	         else{
+	         	errorHandler(true,res.data.msg);
+	         }
+	   	})
+	   	.catch((res)=>{
+	      setLoading(false);
+	      if(res.data && res.data.msg){
+	         	errorHandler(true,res.data.msg);
+	      }else{
+	         	errorHandler(true);
+	      }
+	    });
+	}
+  }
 
   const search=(val)=>{
   		setSearchContent(val);
@@ -67,17 +97,25 @@ function Companies(){
 				 		value={search_content}
 				 		onChange={(e)=>{search(e.target.value)}}
 				 />
-				 {/*<div className="filter_option-wrapper">
+				 {<div className="filter_option-wrapper">
 					 <label className="filter_option-label">
 	                   <span>Sort By: </span></label>
 					   <select
 	                          className="filter_option" 
-	                          onChange={(e)=>{setSortBy(e.target.value);sortList()}}>
+	                          onChange={(e)=>{
+	                          	setSortBy(e.target.value);
+	                          	sortedCompanyList(e.target.value);}}>
 		                  <option value=""></option>
-		                  <option value="0">Rating</option>
-		                  <option value="1">Reviews</option>
+		                  <option value="hrating">High Rating</option>
+		                  <option value="lrating">Low Rating</option>
+		                  <option value="hreview">High Reviews</option>
+		                  <option value="lreview">Low Reviews</option>
+		                  <option value="lname">Name(asec)</option>
+		                  <option value="hname">Name(desc)</option>
+
+
 	                 </select>
-                 </div>*/}
+                 </div>}
 				</div>
 			    	{
 				    	 company_lists.length>0

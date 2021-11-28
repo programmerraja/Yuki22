@@ -79,6 +79,7 @@ export default {
   logout:userService.logout,
 
   getCompanyList:companyService.getCompanyList,
+  getSortedCompanyList:companyService.getSortedCompanyList,
   getCompanyReviews:companyService.getCompanyReviews
 };
 

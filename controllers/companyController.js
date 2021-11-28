@@ -8,7 +8,7 @@ const {verfiyMail,dbErrorHandler} = require("../util/util");
 
 
 const company = {
-    getCompanyList:function(req,res){
+  getCompanyList:function(req,res){
       db.Compaines.find({})
       .then((list)=>{
         res.json({status:"sucess",list:list});
@@ -16,6 +16,18 @@ const company = {
       .catch((err)=>{
         res.json({status:"failed",msg:"Something went wrong"});
       })
+  },
+  getSortedCompanyList:function(req,res){
+    if(req.query.sortBy && req.query.type){
+      db.Compaines.find({})
+      .sort({[req.query.sortBy]:req.query.type})
+      .then((list)=>{
+        res.json({status:"sucess",list:list});
+      })
+      .catch((err)=>{
+        res.json({status:"failed",msg:"Something went wrong"});
+      })
+    }
   },
   getReviews: function(req,res){
     if(req.params.companyId){
