@@ -142,7 +142,7 @@ const user = {
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully added your review"})
                         db.Compaines.findOneAndUpdate({
-                            _id:companyObj._id,
+                            _id:companyObj._id},{
                             noOfReviews:Number(companyObj.noOfReviews)+1,
                             rating:Number(companyObj.rating)+Number(rating)
                         })
