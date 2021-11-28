@@ -3,9 +3,13 @@ import "./style.css";
 
 import Footer from "../../components/Footer";
 
-import hero3 from "../../img/hero3.jpg";
-import image1 from "../../img/image1.svg";
-import image2 from "../../img/image2.svg";
+import hero from "../../img/hero.jpg";
+
+import search from "../../img/search.jpg";
+import gothrough from "../../img/gothrough.jpg";
+import prepare from "../../img/prepare.jpg";
+import nailitdown from "../../img/nailitdown.jpg";
+
 
 
 function Home() {
@@ -26,7 +30,7 @@ return ( <>
               </div>
            </div>
            <div className="hero_img">
-              <img src="https://img.freepik.com/free-vector/searching-through-curriculum-vitae-papers-workers_52683-43378.jpg" alt="hero" />
+              <img src={hero} alt="hero" />
            </div>
         </div>
         <div className="hero_wave">
@@ -36,13 +40,13 @@ return ( <>
                 <h3 className="section_title">How it Works? </h3>
                 <div className="how_itworks_container">
                     <div className="how_itworks-card">
-                       <img  className="how_itworks-img" src="https://image.freepik.com/free-vector/job-hunt-concept-illustration_114360-436.jpg"/>
+                       <img  className="how_itworks-img" src={search}/>
                        <p className="how_itworks-text-bold">1.Search</p>
                        <p className="how_itworks-text">
                        Search for the company you looking for.</p>
                     </div>
                      <div className="how_itworks-card">
-                       <img  className="how_itworks-img" src="https://image.freepik.com/free-vector/students-with-magnifier-reading-stack-e-books-smartphone-education-app_335657-3300.jpg"/>
+                       <img  className="how_itworks-img" src={gothrough}/>
                        <p className="how_itworks-text-bold">2.Go through </p>
                        <p className="how_itworks-text">
                        Go through the review and  
@@ -50,13 +54,13 @@ return ( <>
                        </p>
                     </div>
                      <div className="how_itworks-card">
-                       <img  className="how_itworks-img" src="https://image.freepik.com/free-vector/illustrated-online-job-interview_52683-44249.jpg"/>
+                       <img  className="how_itworks-img" src={prepare}/>
                         <p className="how_itworks-text-bold">3.Prepare </p>
                        <p className="how_itworks-text">
                        Prepare for the interview based on the interview process.</p>
                     </div>
                      <div className="how_itworks-card">
-                        <img  className="how_itworks-img" src="https://image.freepik.com/free-vector/team-happy-cartoon-people-taking-first-place_74855-19910.jpg"/>
+                        <img  className="how_itworks-img" src={nailitdown}/>
                         <p className="how_itworks-text-bold">4.Nail it down </p>
                         <p className="how_itworks-text">
                         Get placed in your dream company. </p>
@@ -71,6 +75,14 @@ return ( <>
             <div className="follow_icons">
                 <a href="https://t.me/+o2u1jURL6YZiNWVl">
                     <i className="fab fa-telegram"></i>
+                </a>
+            </div>
+            <div className="follow_text">
+                <h3>Contribute</h3>
+            </div>
+            <div className="follow_icons">
+                <a href="https://github.com/programmerraja/Yuki22">
+                    <i style={{color:"black"}} className="fab fa-github"></i>
                 </a>
             </div>
         </section>

@@ -118,14 +118,13 @@
 		font-size: 14px;
 	}
 	.follow_container{
-		min-height: 170px;
+		min-height: 120px;
 		display: flex;
 		padding: 1rem;
-		justify-content: center;
 		align-items: center;
 		flex-direction: column;
 		border: 1px solid rgb(222, 224, 227);
-	    box-shadow: rgb(196 199 204) 0px 0px 2px;
+	    /*box-shadow: rgb(196 199 204) 0px 0px 2px;*/
 	    background-color: rgb(255, 255, 255);
 	    /*margin: 1rem 0;*/
 	}

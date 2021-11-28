@@ -56,9 +56,9 @@ function App(props) {
         <title>Yuki22</title>
         <meta
           name="description"
-          content="!"
+          content="website for posting company review and interview process build by cse 2022 batch"
         />
-        <meta name="keywords" content="" />
+    
       </Helmet>
       <Router>
       <Nav user={API.isAuth()}/>
