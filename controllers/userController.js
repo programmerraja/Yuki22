@@ -4,7 +4,11 @@ const bcrypt = require("bcryptjs");
 var validator = require("validator");
 const passport = require("passport");
 
-const {verfiyMail,dbErrorHandler,logError,generateToken,sendPasswordReset} = require("../util/util");
+const {verfiyMail,
+      dbErrorHandler,logError,
+      generateToken,sendPasswordReset,
+      sendReport
+    } = require("../util/util");
 
 
 const user = {
@@ -21,6 +25,7 @@ const user = {
                    if (err) {
                        res.status(500).json({status:"failed",msg:err});
                    }
+                   sendReport(`new user login ${user.name}`);
                    //filtering user id and email for payload and setting exp time as 7 day
                    let payload=JSON.stringify({"id":user._id,username:user.username,"email":user.email, exp: Math.floor(Date.now() / 1000) + (60 * 60*24*7)});
                    // generate a signed son web token with the contents of user object and return it in the response
@@ -61,6 +66,8 @@ const user = {
 
               if (msg) {
                   res.json({"status":"sucess","msg":"Account created sucessfully"});
+                   sendReport(`new user signUp ${new_user.name}`);
+                  
               } else {
                   //need to remove user from database  if mail not send sucessfully
                      db.User.deleteOne({
@@ -152,6 +159,7 @@ const user = {
                                     noOfReviews:Number(companyObj.noOfReviews)+1,
                                     rating:Number(companyObj.rating)+Number(rating)
                                 }).then((a)=>{});
+                                sendReport(`new review added for ${companyObj.name}`);
                               })
                               .catch(err=>{
                                 logError(err.msg,err)

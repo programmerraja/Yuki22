@@ -1,5 +1,19 @@
 var nodemailer = require('nodemailer');
 const crypto=require("crypto");
+const axios=require("axios");
+
+
+function sendReport(msg){
+	msg=encodeURIComponent(msg)
+	axios
+	.get(`https://api.telegram.org/bot${process.env.telegramToken}/sendMessage?chat_id=${process.env.chatId}&text=${msg}`)
+	.then((res)=>{
+		// console.log(res)
+	})
+	.catch((res)=>{
+
+	})
+}
 
 function generateToken(){
 	const token=crypto.randomBytes(10).toString("hex");
@@ -110,6 +124,6 @@ module.exports=
 	AppError,
 	logError,
 	dbErrorHandler,
-	generateToken	
-
+	generateToken,
+	sendReport
 };
