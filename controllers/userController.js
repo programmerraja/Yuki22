@@ -159,7 +159,7 @@ const user = {
                                     noOfReviews:Number(companyObj.noOfReviews)+1,
                                     rating:Number(companyObj.rating)+Number(rating)
                                 }).then((a)=>{});
-                                sendReport(`new review added for ${companyObj.name}`);
+                                sendReport(`new review added for ${companyObj.name} by ${req.user.name}`);
                               })
                               .catch(err=>{
                                 logError(err.msg,err)
@@ -203,7 +203,7 @@ const user = {
                       })
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully added your review"})
-                        
+                        sendReport(`new review added for ${companyObj.name} by ${req.user.name}`);
                       })
                       .catch(err=>{
                         logError(err.msg,err)
@@ -308,11 +308,11 @@ const user = {
           db.Reviews.findOneAndRemove({_id:req.params.reviewId,userId:req.user._id})
           .then((reviewObj)=>{
               res.json({status:"sucess",msg:"sucessfully deleted your review"})
-              
               db.Compaines.findOne(
                 {_id:reviewObj.companyId}
                 ).then((companyObj)=>{
                     if(companyObj){
+                      sendReport(`new review deleted for ${companyObj.name} by ${req.user.name}`);
                       let new_rating=companyObj.rating-reviewObj.rating;
                       db.Compaines.findOneAndUpdate(
                         {_id:companyObj._id},

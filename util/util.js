@@ -11,7 +11,7 @@ function sendReport(msg){
 		// console.log(res)
 	})
 	.catch((res)=>{
-
+		// console.log(res)
 	})
 }
 
