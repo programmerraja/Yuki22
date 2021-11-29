@@ -250,7 +250,7 @@ const user = {
             //if company exist in our db use the company id 
             if(companyObj){
                 db.Reviews.findOneAndUpdate(
-                        {_id:id},
+                        {_id:id,userId:req.user._id},
                         {
                           placementType:placement_type,
                           attendedOn:attended_on,

@@ -1,0 +1,21 @@
+/*FOOTER STYLE */
+.footer_container {
+  position: absolute;
+  width: 100%;
+}
+
+.copyright {
+  text-align: center;
+  background-color: #4a5ec9;
+  color: white;
+  padding: 10px;
+
+}
+
+/* media query for mobile phones */
+@media (max-width:500px) {
+  .copyright {
+    font-size: 13px;
+  }
+
+}

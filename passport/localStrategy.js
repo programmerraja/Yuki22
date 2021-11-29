@@ -22,7 +22,6 @@ const userStrategy = new LocalStrategy(
 );
 
 
-
 strategy={userStrategy};
 
 module.exports = strategy;

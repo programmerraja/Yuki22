@@ -247,7 +247,16 @@ function AddReview() {
 
 return ( <>
             <SquareLoader  loading={loading}/>
+            <div className="header-content">
+            <p className="heading">
+                Write a Review
+            </p>
+            <p className="sub-title">
+                Help junior's in choosing the right company.
+            </p>
+            </div>
             <div className="add_review-wrapper">
+            
               <div className="add_review-container">
                     {questions_to_show} 
                     <p className="add_review-error-msg">

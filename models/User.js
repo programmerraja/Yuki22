@@ -32,7 +32,7 @@ const UserSchema = new mongoose.Schema(
       default:false
     },
     isAdmin:{
-      type:Boolean,
+      type:Number,
     }, 
     passwordResetToken:{
       type:String

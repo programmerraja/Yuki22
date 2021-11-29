@@ -17,15 +17,6 @@ router.post("/signup",
 router.get("/companyNames",
 	userController.getCompanyList);
 
-router.post("/forgetMypassword",
-	userController.forgetMyPassword);
-
-router.post("/resetMypassword",
-	userController.resetMyPassword);
-
-router.get("/verifiyMyEmail/:userId",
-	userController.verifiyMyEmail);
-
 router.get("/getMyProfile",
 			auth.isAuthenticatedUser(),
 			userController.getMyProfile);

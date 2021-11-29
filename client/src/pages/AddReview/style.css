@@ -4,7 +4,22 @@
 	align-items: center;
 	margin: 1rem;
 }
-
+.header-content{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.header-content .heading{
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+.sub-title {
+    font-size: 13px;
+    margin: 10px;
+    opacity: .9;
+}
 .add_review-container{
 	background-color:#f1efef;
     box-shadow: rgb(196 199 204) 0px 0px 2px;
