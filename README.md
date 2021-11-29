@@ -1,2 +1,2 @@
 # Yuki22
-A collections reviews about company
+A website for adding review and interview process of company
