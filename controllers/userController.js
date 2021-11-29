@@ -102,7 +102,7 @@ const user = {
                 }); 
     }
   },
-  emailVerified:function(req,res) {
+  verifiyMyEmail:function(req,res) {
     db.User.findOneAndUpdate({_id:req.params.userId},{isEmailVerified:true})
     .then((user)=>{
       if(user){
@@ -531,23 +531,7 @@ const user = {
             msg: "Link not found"
         });
 
-    },
-    verifiyMyEmail:async function (req, res) {
-        let user_id = req.params.userId;
-        if (user_id) {
-            var user = await db.User.findOne({
-                _id: user_id
-            });
-            if (user) {
-                user.is_email_verified = true;
-                new_user = await user.save();
-                res.json({status:"sucess"});
-                return
-            }
-            res.json({status:"failed"});
-        }
     }
-
 };
 
 module.exports = user;

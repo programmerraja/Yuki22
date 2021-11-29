@@ -17,6 +17,9 @@ router.post("/signup",
 router.get("/companyNames",
 	userController.getCompanyList);
 
+router.get("/verifiyMyEmail/:userId",
+	userController.verifiyMyEmail);
+
 router.get("/getMyProfile",
 			auth.isAuthenticatedUser(),
 			userController.getMyProfile);
