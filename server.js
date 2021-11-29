@@ -30,20 +30,8 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("admin/build"));
 }
 
-
-// app.use(
-//   session({
-//     name: "justPlaced",
-//     secret: "keyboard cat",
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: {
-//       maxAge: 24 * 60 * 60 * 1000, // 24 hrs
-//     }
-//   })
-// );
 app.use(passport.initialize());
-// app.use(passport.session());
+
 // use API routes here
 app.use(routes);
 
