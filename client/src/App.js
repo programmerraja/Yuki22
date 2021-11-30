@@ -38,7 +38,7 @@ import Logout from "./pages/Logout";
 import NotFound from "./pages/NotFound";
 
 //utils
-import ProtectedRoute from './utils/ProtectedRoute';
+import MyRoute from './utils/Route';
 
 import API from "./utils/API";
 
@@ -65,19 +65,19 @@ function App(props) {
         <Switch>
           <Route exact path="/" component={Home}/>
 
-          <Route exact path="/signin" component={()=>{return(<Signin setUser={setUser}/>)}}/>
+          <MyRoute.UserRestrictedRoute  path="/signin" component={()=>{return(<Signin setUser={setUser}/>)}}/>
+          <MyRoute.UserRestrictedRoute  path="/signup" component={Signup} />
           <Route exact path="/companies" component={Companies} />
-          <Route exact path="/signup" component={Signup} />
           <Route exact path="/user/forgetPassword" component={ForgetPassword} />
           <Route exact path="/user/verifiy/email/:userId"  component={EmailVerified}/>
           <Route path="/user/reset/password/:passwordId" component={ResetPassword} />
           <Route exact path="/company/reviews/:companyId"  component={Reviews}/>
 
           <Route path="/user/logout"  component={()=>{return(<Logout setUser={setUser}/>)}}/>
-          <ProtectedRoute path="/user/profile"  component={UserProfile}/>
-          <ProtectedRoute path="/user/addReview"  component={AddReview} />
-          <ProtectedRoute path="/user/myReviews"  component={MyReviews} />
-          <ProtectedRoute path="/user/edit/review/:reviewId"  
+          <MyRoute.ProtectedRoute path="/user/profile"  component={UserProfile}/>
+          <MyRoute.ProtectedRoute path="/user/addReview"  component={AddReview} />
+          <MyRoute.ProtectedRoute path="/user/myReviews"  component={MyReviews} />
+          <MyRoute.ProtectedRoute path="/user/edit/review/:reviewId"  
           component={EditReviews} />
           <Route component={NotFound}/>
           

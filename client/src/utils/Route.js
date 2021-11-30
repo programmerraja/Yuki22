@@ -3,7 +3,6 @@ import { Route, Redirect } from "react-router-dom";
 import API from "./API";
 
 function ProtectedRoute({ path, component: Component }) {
-	console.log(API.isAuth(),API.checkTokenExp())
 	return(<Route exact
 				path={path}
 				render={(props) => (	
@@ -14,4 +13,18 @@ function ProtectedRoute({ path, component: Component }) {
 				/>);
 }
 
-export default ProtectedRoute;
+function UserRestrictedRoute({ path, component: Component }) {
+	return(<Route exact
+				path={path}
+				render={(props) => (	
+				!API.isAuth() ? 
+				<Component  /> :
+				<Redirect to='/user/myReviews' />
+				)}
+				/>);
+}
+
+export default {
+	UserRestrictedRoute:UserRestrictedRoute,
+	ProtectedRoute:ProtectedRoute
+};
