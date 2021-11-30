@@ -30,7 +30,11 @@ return ( <>
 
              <div  className="add_review-from">
              <label for="roundDetail" className="add_review-label">
-             <span>Round {round_number+1} <span className="red_color"> *</span></span></label>
+             <span>Round {round_number+1} details
+             <span className="red_color"> *</span>
+             </span><br/>
+              <span className="small_text">(Explain in detailed manner and give some sample questions)</span>
+             </label>
                    <div className="add_review-input-wrapper">
                     <textarea placeholder="write full details about the round" 
                             rows="7"

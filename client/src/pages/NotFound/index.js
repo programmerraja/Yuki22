@@ -1,12 +1,12 @@
-// import React from "react";
+import React from "react";
 
-// import image2 from "../img/image2.svg";
+import image2 from "../../img/image2.svg";
 
-// function NotFound (){
+function NotFound (){
   
-//   return (<div class="error_container">  
-//       			<img src={image2} Style="height:100vh;width: 100vw;"/>
-// 		</div>);
-// }
+  return (<div class="error_container">  
+      			<img src={image2} Style="height:90vh;width: 90vw;"/>
+		</div>);
+}
 
-// export default NotFound;
+export default NotFound;

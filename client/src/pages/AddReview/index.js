@@ -252,7 +252,7 @@ return ( <>
                 Write a Review
             </p>
             <p className="sub-title">
-                Help junior's in choosing the right company.
+                Help junior's in choosing the right company and help them to placed in a company.
             </p>
             </div>
             <div className="add_review-wrapper">

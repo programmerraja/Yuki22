@@ -35,7 +35,7 @@ import EditReviews from "./pages/EditReviews";
 
 
 import Logout from "./pages/Logout";
-// import NotFound from "./pages/NotFound";
+import NotFound from "./pages/NotFound";
 
 //utils
 import ProtectedRoute from './utils/ProtectedRoute';
@@ -79,6 +79,8 @@ function App(props) {
           <ProtectedRoute path="/user/myReviews"  component={MyReviews} />
           <ProtectedRoute path="/user/edit/review/:reviewId"  
           component={EditReviews} />
+          <Route component={NotFound}/>
+          
 
 
         </Switch>
