@@ -12,7 +12,6 @@ const auth = require("../middleware/auth.js");
 router.post("/user/signin",
 	userController.signIn);
 
-
 router.get("/user/getCounts",
 	auth.isAuthenticatedUser(),
 	auth.isAdmin,
@@ -43,11 +42,10 @@ router.get("/user/getAllUsers",
 	auth.isAdmin,
 	adminController.getAllUsers);
 
-// router.get("/user/getMyProfile",
-// 	adminController.getMyProfile);
-
-// router.post("/user/updateMyProfile",
-// 	   adminController.updateMyProfile);
+router.get("/user/deleteUser/:userId",
+	auth.isAuthenticatedUser(),
+	auth.isAdmin,
+	adminController.deleteUser);
 
 
 module.exports = router;

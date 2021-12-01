@@ -71,6 +71,7 @@ export default {
 
 
   getAllUsers:userService.getAllUsers,
+  deleteUser:userService.deleteUser,
   getMyProfile:userService.getMyProfile,
   updateProfile:userService.updateProfile,
   

@@ -185,6 +185,19 @@ const admin = {
                     });
       }
   },
+  deleteUser:function(req,res){
+      db.User.findOneAndRemove({_id:req.params.userId})
+      .then((res)=>{
+              res.json({status:"sucess",msg:"sucessfully deleted the user"})
+
+      })
+      .catch(err=>{
+            logError(err.msg,err)
+            res.json({status:"failed",
+                              msg: "Sorry Something went wrong. Please try again"
+                      });
+          });
+  },
   getCompanyList:function(req,res){
     db.Compaines.find({})
     .then((list)=>{

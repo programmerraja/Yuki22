@@ -15,6 +15,9 @@ export default {
         page
     );
   },
+  deleteUser:function (user_id) {
+      return axios.get("/admin/user/deleteUser/"+user_id);
+  },
   verfiyEmail:function(user_id){
     return axios.get("/admin/user/verifiyMyEmail/"+user_id);
   },

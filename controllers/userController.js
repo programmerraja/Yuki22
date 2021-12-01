@@ -419,7 +419,7 @@ const user = {
     db.Reviews.find({userId:req.user._id})
     .then((reviews)=>{
       reviews.forEach((review)=>{
-          review._doc.user={name:req.user.name,department:req.user.department};
+          review._doc.user={name:req.user.name,department:req.user.department,regno:req.user.regno};
       })
       res.json({status:"sucess",reviews:reviews});
     })

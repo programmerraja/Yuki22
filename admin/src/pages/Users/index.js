@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { 
     Box,
     Paper,
-    Button,
+    IconButton,
     makeStyles,
     Grid ,
     Table,
@@ -17,7 +16,7 @@ import {
     Container
     } from "@material-ui/core";
 
-import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
+import {Delete} from "@material-ui/icons";
 import { Pagination } from "@material-ui/lab";
 
 import API from "../../utils/API";
@@ -99,15 +98,21 @@ function Users(){
             </TableHead>
             <TableBody>
               {users.map((user) => (
-                <TableRow key={user._id}>
+                <TableRow key={user._id} >
                   <Link to={`/user/userReviews/${user._id}`}>
-                    <TableCell align="left">{user.name}</TableCell>
+                    <TableCell align="left" style={{"padding": "29px"}}>{user.name}</TableCell>
                   </Link>
                   <TableCell align="left">{user.email}</TableCell>
                   <TableCell align="left">{user.regno}</TableCell>
                   <TableCell align="left">{user.department}</TableCell>
                   <TableCell align="left">{user.isEmailVerified?"Yes":"No"}</TableCell>
                   <TableCell align="left">{new Date(user.createdAt).toDateString()}</TableCell>
+                  <TableCell align="left" onClick={()=>{API.deleteUser(user._id)}}>
+                  <IconButton aria-label="delete">
+                      <Delete />
+                    </IconButton>
+                      </TableCell>
+                  
                 </TableRow>
               ))}
             </TableBody>
