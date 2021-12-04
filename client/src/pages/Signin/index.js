@@ -1,5 +1,5 @@
 import React from "react";
-import {useState} from "react";
+import {useState,useEffect} from "react";
 import {useHistory } from "react-router-dom";
 
 
@@ -9,7 +9,6 @@ import API from "../../utils/API";
 
 import user from "../../img/user.png";
 import "./style.css";
-
 
 
 function Signin({setUser}){
@@ -60,12 +59,12 @@ function Signin({setUser}){
 
           <div className="form_input">
             <label for="name"> Email </label>
-            <input type="email" placeholder="Email..." name="email" required="true" onChange={(e)=>{setEmail(e.target.value);}} value={email}/>
+            <input type="email" placeholder="Email..." name="email" required={true} onChange={(e)=>{setEmail(e.target.value);}} value={email}/>
           </div>
 
           <div className="form_input">
             <label for="password"> Password </label>
-            <input type="password" placeholder="Password..." name="password" required="true" onChange={(e)=>{setPassword(e.target.value);}}value={password} />
+            <input type="password" placeholder="Password..." name="password" required={true} onChange={(e)=>{setPassword(e.target.value);}}value={password} />
           </div>
 
           <div className="form_button">
