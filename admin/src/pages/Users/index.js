@@ -21,6 +21,8 @@ import { Pagination } from "@material-ui/lab";
 
 import API from "../../utils/API";
 import SquareLoader from "../../components/SquareLoader";
+import errorHandler from "../../utils/errorHandler";
+
 
 const useStyles = makeStyles({
     table: {
@@ -74,6 +76,40 @@ function Users(){
       });
   }, [page,limit]);
 
+   const deleteUser=(user_id)=>{
+       swal({
+      title: "Are you sure?",
+      text: "You want to delete this review.",
+      buttons: ["No", "Yes"],
+      dangerMode: true,
+    }).then((confirm) => {
+      if (confirm) {
+        API.deleteUser(user._id)
+        .then((res)=>{
+            setLoading(false);
+            if(res.data.status==="sucess"){
+              let new_users=[]
+              users.forEach(user_obj=>{
+                if(user_obj._id!=user_id){
+                  new_users.push(user_obj)
+                }
+              });
+              setUsers(new_review);
+              errorHandler(false,res.data.msg);
+            }
+        
+        })
+        .catch((res)=>{
+          setLoading(false);
+          if(res.data && res.data.msg){
+              errorHandler(true,res.data.msg);
+          }else{
+              errorHandler(true);
+          }
+        });
+    }
+    });
+   }
 
   return (
     <div>
@@ -107,7 +143,7 @@ function Users(){
                   <TableCell align="left">{user.department}</TableCell>
                   <TableCell align="left">{user.isEmailVerified?"Yes":"No"}</TableCell>
                   <TableCell align="left">{new Date(user.createdAt).toDateString()}</TableCell>
-                  <TableCell align="left" onClick={()=>{API.deleteUser(user._id)}}>
+                  <TableCell align="left" onClick={()=>deleteUser(user._id)}>
                   <IconButton aria-label="delete">
                       <Delete />
                     </IconButton>
