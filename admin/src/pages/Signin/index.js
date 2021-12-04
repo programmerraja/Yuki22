@@ -32,7 +32,7 @@ function Signin({setUser}){
         API.setToken(res.data.token);
         API.setAuthHeader();
         setUser(true);
-        history.push("/user/myReviews");
+        history.push("/yukiAdmin/user/myReviews");
       }
       else{
         setMsg(res.data.msg);

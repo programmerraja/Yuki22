@@ -23,7 +23,6 @@ import API from "../../utils/API";
 import SquareLoader from "../../components/SquareLoader";
 import errorHandler from "../../utils/errorHandler";
 
-
 const useStyles = makeStyles({
     table: {
       minWidth: 650,
@@ -135,7 +134,7 @@ function Users(){
             <TableBody>
               {users.map((user) => (
                 <TableRow key={user._id} >
-                  <Link to={`/user/userReviews/${user._id}`}>
+                  <Link to={`/yukiAdmin/user/userReviews/${user._id}`}>
                     <TableCell align="left" style={{"padding": "29px"}}>{user.name}</TableCell>
                   </Link>
                   <TableCell align="left">{user.email}</TableCell>

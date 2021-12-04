@@ -58,16 +58,16 @@ function App(props) {
         <Switch>
           <ProtectedRoute exact path="/" component={Home}/>
 
-          <ProtectedRoute exact path="/signin" component={()=>{return(<Signin setUser={setUser}/>)}}/>
-          <ProtectedRoute exact path="/companies" component={Companies} />
-          <ProtectedRoute exact path="/company/reviews/:companyId"  component={Reviews}/>
+          <ProtectedRoute exact path="/yukiAdmin/signin" component={()=>{return(<Signin setUser={setUser}/>)}}/>
+          <ProtectedRoute exact path="/yukiAdmin/companies" component={Companies} />
+          <ProtectedRoute exact path="/yukiAdmin/company/reviews/:companyId"  component={Reviews}/>
 
-          <ProtectedRoute path="/user/logout"  component={()=>{return(<Logout setUser={setUser}/>)}}/>
-          <ProtectedRoute path="/users/"  component={Users} />
+          <ProtectedRoute path="/yukiAdmin/user/logout"  component={()=>{return(<Logout setUser={setUser}/>)}}/>
+          <ProtectedRoute path="/yukiAdmin/users/"  component={Users} />
           
-          <ProtectedRoute path="/user/addReview"  component={AddReview} />
-          <ProtectedRoute path="/user/userReviews/:userId"  component={UserReviews} />
-          <ProtectedRoute path="/user/edit/review/:reviewId"  
+          <ProtectedRoute path="/yukiAdmin/user/addReview"  component={AddReview} />
+          <ProtectedRoute path="/yukiAdmin/user/userReviews/:userId"  component={UserReviews} />
+          <ProtectedRoute path="/yukiAdmin/user/edit/review/:reviewId"  
           component={EditReviews} />
         </Switch>
         </div>

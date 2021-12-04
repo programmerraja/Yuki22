@@ -98,7 +98,7 @@ function UserReviews(){
         { 
           reviews.length==0 && !loading?
           <p>He has added No reviews yet 
-            <Link to="/user/addReview"> Add Here</Link>         
+            <Link to="/yukiAdmin/user/addReview"> Add Here</Link>         
           </p>:null  
         }
       </div>

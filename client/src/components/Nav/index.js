@@ -45,12 +45,17 @@ function Nav({user}) {
                 </>);
   }
   else{
-      nav_link=(<><div className="nav_link">
+      nav_link=(<>
+                <div className="nav_link">
+                    <Link onClick={toggle} to="/user/signup">Signup</Link>
+                </div>
+                <div className="nav_link">
                     <Link onClick={toggle} to="/companies"> Compaines </Link>
                 </div>
                 <div className="nav_link">
                     <Link onClick={toggle} to="/user/addReview"> Add Review </Link>
                 </div>
+                 
                 <div className="nav_lin">
                   <Link onClick={toggle} to="/signin">
                     <img src={userImg} className="user_img"/>
