@@ -91,21 +91,23 @@ function Reviews(){
           ):null
         }
 
-        <div className="filter_option-wrapper">
-           <label className="filter_option-label">
-                     <span>Sort By: </span></label>
-                     <select
-                            className="filter_option" 
-                            onChange={(e)=>{
-                              setSortBy(e.target.value);
-                              sortedReviewsList(e.target.value);}}>
-                      <option value="">None</option>
-                      <option value="hrating">Rating: High to Low</option>
-                      <option value="lrating">Rating: Low to High</option>
-                      <option value="latest">Latest</option>
-                      <option value="oldest">Oldest</option>
-                   </select>
-        </div>
+        { !loading && reviews.length>0 &&
+            <div className="filter_option-wrapper">
+              <label className="filter_option-label">
+                       <span>Sort By: </span></label>
+                       <select
+                              className="filter_option" 
+                              onChange={(e)=>{
+                                setSortBy(e.target.value);
+                                sortedReviewsList(e.target.value);}}>
+                        <option value="">None</option>
+                        <option value="hrating">Rating: High to Low</option>
+                        <option value="lrating">Rating: Low to High</option>
+                        <option value="latest">Latest</option>
+                        <option value="oldest">Oldest</option>
+                     </select>
+            </div>
+        }
         {
             !loading && reviews.map((review)=>{
               return(

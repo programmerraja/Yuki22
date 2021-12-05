@@ -112,7 +112,6 @@ return ( <>
                 </a>
             </div>
         </section>
-        <Footer/>
     </>);
 }
 

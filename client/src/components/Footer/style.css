@@ -1,7 +1,9 @@
 /*FOOTER STYLE */
 .footer_container {
-  position: absolute;
-  width: 100%;
+  	position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
 }
 
 .copyright {

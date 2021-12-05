@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 
 //components
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 import SquareLoader from './components/SquareLoader';
 
 //pages
@@ -64,7 +65,6 @@ function App(props) {
       <Nav user={API.isAuth()}/>
         <Switch>
           <Route exact path="/" component={Home}/>
-
           <MyRoute.UserRestrictedRoute  path="/signin" component={()=>{return(<Signin setUser={setUser}/>)}}/>
           <MyRoute.UserRestrictedRoute  path="/signup" component={Signup} />
           <Route exact path="/companies" component={Companies} />
@@ -80,10 +80,8 @@ function App(props) {
           <MyRoute.ProtectedRoute path="/user/edit/review/:reviewId"  
           component={EditReviews} />
           <Route component={NotFound}/>
-          
-
-
         </Switch>
+        <Footer/>
       </Router>
     </>
   );
