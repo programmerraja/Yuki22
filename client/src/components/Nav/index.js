@@ -47,7 +47,7 @@ function Nav({user}) {
   else{
       nav_link=(<>
                 <div className="nav_link">
-                    <Link onClick={toggle} to="/user/signup">Signup</Link>
+                    <Link onClick={toggle} to="/signup">Signup</Link>
                 </div>
                 <div className="nav_link">
                     <Link onClick={toggle} to="/companies"> Compaines </Link>

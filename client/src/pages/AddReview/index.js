@@ -40,7 +40,7 @@ function AddReview() {
    const [cons,setCons]=useState("");
    const [salary,setSalary]=useState();
    const [mobile_no,setMobileNo]=useState("");
-   const [advice,setAdvice]=useState("");
+   const [role,setRole]=useState("");
 
    const history = useHistory();
 
@@ -150,7 +150,7 @@ function AddReview() {
                             rounds_detail,is_placed,
                             rating,pros,cons,
                             salary,mobile_no,
-                            advice
+                            role
                           })
           .then((res)=>{
                  setLoading(false);
@@ -239,8 +239,8 @@ function AddReview() {
                             setSalary={setSalary}
                             mobile_no={mobile_no}
                             setMobileNo={setMobileNo}
-                            advice={advice}
-                            setAdvice={setAdvice}
+                            role={role}
+                            setRole={setRole}
                       />)
    }
 

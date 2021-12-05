@@ -48,6 +48,8 @@ function EditReview() {
    const [pros,setPros]=useState("");
    const [cons,setCons]=useState("");
    const [salary,setSalary]=useState();
+   const [role,setRole]=useState();
+
    const [mobile_no,setMobileNo]=useState("");
 
    const history = useHistory();
@@ -83,6 +85,7 @@ function EditReview() {
                setRating(temp_review["rating"]);
                setOldRating(temp_review["rating"]);
                setSalary(temp_review["salary"]);
+               setRole(temp_review["role"]);
                setPros(temp_review["pros"]);
                setCons(temp_review["cons"]);
                setMobileNo(temp_review["mobileNo"]);
@@ -188,7 +191,7 @@ function EditReview() {
                         placement_type,rounds,
                         rounds_detail,is_placed,
                         rating,old_rating,pros,cons,
-                        salary,mobile_no,
+                        salary,mobile_no,role
                       })
       .then((res)=>{
              setLoading(false);
@@ -281,6 +284,7 @@ function EditReview() {
                             setSalary={setSalary}
                             mobile_no={mobile_no}
                             setMobileNo={setMobileNo}
+                            role={setRole}
                       />)
    }
 

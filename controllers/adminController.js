@@ -94,7 +94,7 @@ const admin = {
           rounds_detail,is_placed,
           rating,pros,cons,
           old_rating,
-          salary,mobile_no
+          salary,mobile_no,role
         }=req.body
     if(name && attended_on && placement_type &&  rounds && rounds_detail  ){
         db.Compaines.findOne({name:name.toLowerCase()})
@@ -114,6 +114,7 @@ const admin = {
                           cons:cons,
                           salary:salary,
                           mobileNo:mobile_no,
+                          role:role
                       })
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully updated your review"})

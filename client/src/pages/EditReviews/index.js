@@ -48,6 +48,8 @@ function EditReview() {
    const [pros,setPros]=useState("");
    const [cons,setCons]=useState("");
    const [salary,setSalary]=useState();
+   const [role,setRole]=useState("");
+
    const [mobile_no,setMobileNo]=useState("");
 
    const history = useHistory();
@@ -86,6 +88,7 @@ function EditReview() {
                setPros(temp_review["pros"]);
                setCons(temp_review["cons"]);
                setMobileNo(temp_review["mobileNo"]);
+               setRole(temp_review["role"]);
 
                let temp_rounds_names=Object.keys(temp_review.roundsDetails)
               console.log(temp_rounds_names)
@@ -190,7 +193,7 @@ function EditReview() {
                         placement_type,rounds,
                         rounds_detail,is_placed,
                         rating,old_rating,pros,cons,
-                        salary,mobile_no,
+                        salary,mobile_no,role
                       })
       .then((res)=>{
              setLoading(false);
@@ -283,6 +286,8 @@ function EditReview() {
                             setSalary={setSalary}
                             mobile_no={mobile_no}
                             setMobileNo={setMobileNo}
+                            role={role}
+                            setRole={setRole}
                       />)
    }
 

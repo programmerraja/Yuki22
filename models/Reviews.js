@@ -33,7 +33,7 @@ const ReviewsSchema = new mongoose.Schema(
     mobileNo:{
       type:Number
     },
-    advice:{
+    role:{
       type:String
     },
     pros:{

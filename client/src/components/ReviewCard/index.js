@@ -17,7 +17,7 @@ function ReviewCard({
                     cons,
                     salary,
                     mobileNo,
-                    advice,
+                    role,
                     user,
                     createdAt,
                     isEditing,
@@ -133,7 +133,12 @@ function ReviewCard({
           <div className="wrapper">
             { salary && 
                 <div className="review_text">
-                  <p className="review_text-bold">salary:{salary}</p>
+                  <p className="review_text-bold">Salary:{salary}</p>
+                </div>
+            }
+            {role && 
+                <div className="review_text">
+                  <p className="review_text-bold">Role:{role}</p>
                 </div>
             }
             {mobileNo && 

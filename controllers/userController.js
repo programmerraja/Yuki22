@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 var validator = require("validator");
 const passport = require("passport");
 
+
 const {verfiyMail,
       dbErrorHandler,logError,
       generateToken,sendPasswordReset,
@@ -124,7 +125,7 @@ const user = {
           placement_type,rounds,
           rounds_detail,is_placed,
           rating,pros,cons,
-          salary,mobile_no,advice
+          salary,mobile_no,role
         }=req.body
     if(name && attended_on && placement_type &&  rounds && rounds_detail  ){
         db.Compaines.findOne({name:name.toLowerCase()})
@@ -150,7 +151,7 @@ const user = {
                                 cons:cons,
                                 salary:salary,
                                 mobileNo:mobile_no,
-                                advice:advice
+                                role:role
                               })
                               .then((reviewObj)=>{
                                 res.json({status:"sucess",msg:"sucessfully added your review"})
@@ -199,7 +200,7 @@ const user = {
                         cons:cons,
                         salary:salary,
                         mobileNo:mobile_no,
-                        advice:advice
+                        role:role
                       })
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully added your review"})
@@ -242,7 +243,7 @@ const user = {
           rounds_detail,is_placed,
           rating,pros,cons,
           old_rating,
-          salary,mobile_no
+          salary,mobile_no,role
         }=req.body
     if(name && attended_on && placement_type &&  rounds && rounds_detail  ){
         db.Compaines.findOne({name:name.toLowerCase()})
@@ -262,6 +263,7 @@ const user = {
                           cons:cons,
                           salary:salary,
                           mobileNo:mobile_no,
+                          role:role
                       })
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully updated your review"})

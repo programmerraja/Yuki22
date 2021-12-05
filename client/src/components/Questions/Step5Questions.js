@@ -11,8 +11,8 @@ function Step5Questions({ rating,
                           setSalary,
                           mobile_no,
                           setMobileNo,
-                          advice,
-                          setAdvice
+                          role,
+                          setRole
                         }) {
    
 return ( <>
@@ -73,6 +73,20 @@ return ( <>
                                   className="add_review-input" 
                                   value={salary}
                                   onChange={(e)=>{setSalary(e.target.value);}}
+                                  />
+                         </div>
+                   </div>
+                   <div  className="add_review-from">
+                       <label for="role" className="add_review-label">
+                       <span>What are roles that company offer for you or what role you currently working on. </span></label>
+                         <div className="add_review-input-wrapper">
+                           <input
+                                  type="text" 
+                                  placeholder="Software Developer/Web Developer.."  
+                                  name="role"  
+                                  className="add_review-input" 
+                                  value={role}
+                                  onChange={(e)=>{setRole(e.target.value);}}
                                   />
                          </div>
                    </div>
