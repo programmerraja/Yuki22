@@ -25,11 +25,15 @@ app.use(express.json());
 app.use(cors())
 
 
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  sendWhoIs(req);
+});
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-}
-if (process.env.NODE_ENV === "production") {
   app.use(express.static("admin/build"));
 }
 
@@ -57,11 +61,6 @@ app.get("/yukiAdmin/*", (req, res) => {
 
 // Send every other request to the React app  
 // Define any API routes before this runs
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-  sendWhoIs(req);
-});
-
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
   //sendWhoIs(req);
