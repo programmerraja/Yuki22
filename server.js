@@ -59,8 +59,9 @@ app.get("/yukiAdmin/*", (req, res) => {
 // Define any API routes before this runs
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  console.log(req.path);
   if(req.path==="/"){
-		sendWhoIs(req);
+	sendWhoIs(req);
   }
 });
 
