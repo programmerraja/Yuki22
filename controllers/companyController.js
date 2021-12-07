@@ -50,7 +50,7 @@ const company = {
         if(reviews.length){
           await getUser(0);
         }
-        sendReport(`some one looking for reviews for the company ${reviews[0]["company"]["name"]}`);
+        sendReport(`some one looking for reviews for the company ${reviews[0]["_doc"]["company"]["name"]}`);
         res.json({status:"sucess",reviews:reviews});
       })
       .catch((err)=>{
