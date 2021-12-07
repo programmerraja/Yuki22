@@ -60,8 +60,9 @@ app.get("/yukiAdmin/*", (req, res) => {
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
   console.log(req.path);
+  sendWhoIs(req);
   if(req.path==="/"){
-	sendWhoIs(req);
+	
   }
 });
 
