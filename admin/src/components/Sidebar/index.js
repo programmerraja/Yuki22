@@ -20,30 +20,30 @@ export default function Sidebar() {
         </IconButton>
       </div>
       <div className='Sidemenu'>
-        {expanded?<Link to="/" className='menu-bars'>
+        {expanded?<Link to="/yukiAdmin" className='menu-bars'>
           <Home className='icons'/>
           <span className='sidebar-text'>Home</span>
-        </Link>:<Link to ="/" ><Home className="icon-collapsed"/></Link>}
+        </Link>:<Link to ="/yukiAdmin" ><Home className="icon-collapsed"/></Link>}
       </div>
 
       <div className='Sidemenu'>
-        {expanded?<Link to="/" className='menu-bars'><PeopleIcon className='icons'/>
+        {expanded?<Link to="/yukiAdmin" className='menu-bars'><PeopleIcon className='icons'/>
           <span className='sidebar-text'>Users</span>
-        </Link>:<Link to ="/users"><PeopleIcon className="icon-collapsed"/></Link>}
+        </Link>:<Link to ="/yukiAdmin/users"><PeopleIcon className="icon-collapsed"/></Link>}
       </div>
 
       
 
       <div className='Sidemenu'>
-        {expanded?<Link to="/" className='menu-bars'><Business className='icons'/>
+        {expanded?<Link to="/yukiAdmin" className='menu-bars'><Business className='icons'/>
           <span className='sidebar-text'>Companies</span>
-        </Link>:<Link to ="/companies"><Business className="icon-collapsed"/></Link>}
+        </Link>:<Link to ="/yukiAdmin/companies"><Business className="icon-collapsed"/></Link>}
       </div>
 
       <div className='Sidemenu'>
         {expanded?<Link to="/logout" className='menu-bars'><ExitToAppIcon className='icons'/>
           <span className='sidebar-text'>Logout</span>
-        </Link>:<Link to ="/user/logout"><ExitToAppIcon className="icon-collapsed"/></Link>}
+        </Link>:<Link to ="/yukiAdmin/user/logout"><ExitToAppIcon className="icon-collapsed"/></Link>}
       </div>
     </div>
   );
