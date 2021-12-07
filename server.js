@@ -63,7 +63,7 @@ app.get("/yukiAdmin/*", (req, res) => {
 // Define any API routes before this runs
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-  //sendWhoIs(req);
+  sendWhoIs(req);
 });
 
 app.listen(PORT, () => {

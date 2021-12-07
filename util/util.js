@@ -19,7 +19,7 @@ function sendWhoIs(req){
     				
     		`);
     }
-    sendReport(`New user visting page \n\n 
+    sendReport(`user visting page \n\n 
     				path:${req.path} \n\n
     				from  \n\n 
     				ip: ${ip} \n\n 
@@ -31,7 +31,13 @@ function sendWhoIs(req){
     		`);
 }
 
-function sendReport(msg){
+function sendReport(msg,isDevice=true,req){
+	if(isDevice && req){
+		let ip = req.headers["x-forwarded-for"] || req.ip;
+		let device = useragent["device"];
+		let os = useragent["os"]["name"];
+		msg+=`\n Ip:${ip} \n device:${device} \n os:${os}`
+	}
 	msg=encodeURIComponent(msg)
 	axios
 	.get(`https://api.telegram.org/bot${process.env.telegramToken}/sendMessage?chat_id=${process.env.chatId}&text=${msg}`)
