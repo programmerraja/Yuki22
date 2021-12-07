@@ -12,7 +12,6 @@ function sendWhoIs(req){
     if(req.path==="/"){
     	return sendReport(`New user visting home page from \n
     				ip: ${ip} \n\n 
-    				useragent:${useragent["ua"]} \n\n
     				browser:${browser} \n\n 
     				os:${os} \n\n 
     				device:${JSON.stringify(device)}  \n\n
@@ -20,15 +19,15 @@ function sendWhoIs(req){
     }
     sendReport(`user visting page \n\n 
     				path:${req.path} \n\n
-    				from  \n\n 
     				ip: ${ip} \n\n 
-    				useragent:${useragent["ua"]} \n\n
     				browser:${browser} \n\n 
     				os:${os} \n\n 
     				device:${JSON.stringify(device)}  \n\n
     				
     		`);	
 }
+
+    				// useragent:${useragent["ua"]} \n\n
 
 function sendReport(msg,isDevice=true,req){
 	if(isDevice && req){
