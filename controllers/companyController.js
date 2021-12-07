@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 var validator = require("validator");
 const passport = require("passport");
 
-const {verfiyMail,dbErrorHandler} = require("../util/util");
+const {verfiyMail,dbErrorHandle,sendReport} = require("../util/util");
 
 
 const company = {
