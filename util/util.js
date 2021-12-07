@@ -2,6 +2,14 @@ var nodemailer = require('nodemailer');
 const crypto=require("crypto");
 const axios=require("axios");
 
+function sendWhoIs(req){
+	let ip = req.headers["x-forwarded-for"] || req.ip;
+    let useragent = uaparser(req.headers["user-agent"]);
+    let browser = useragent["browser"]["name"];
+    let os = useragent["os"]["name"];
+    let device = useragent["device"];
+    sendReport(`new user visting home page from \n ip: ${ip} \n useragent:${useragent} \n browser:${browser} \n os:${os} \n device:${device} `);
+}
 
 function sendReport(msg){
 	msg=encodeURIComponent(msg)
@@ -125,5 +133,6 @@ module.exports=
 	logError,
 	dbErrorHandler,
 	generateToken,
-	sendReport
+	sendReport,
+	sendWhoIs
 };

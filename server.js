@@ -9,6 +9,9 @@ require("dotenv").config();
 const app = express();
 const passport = require("./passport");
 const routes = require("./routes");
+const {sendWhoIs} = require("./util/util");
+
+
 const PORT = process.env.PORT || 3001;
 
 // // Define middleware here
@@ -48,9 +51,16 @@ app.get("/yukiAdmin", (req, res) => {
   res.sendFile(path.join(__dirname, "./admin/build/index.html"));
 });
 
+app.get("/yukiAdmin/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./admin/build/index.html"));
+});
+
 // Send every other request to the React app  
 // Define any API routes before this runs
 app.get("*", (req, res) => {
+	if(req.path==="/"){
+		sendWhoIs(req);
+	}
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
