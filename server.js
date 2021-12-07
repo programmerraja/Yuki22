@@ -58,10 +58,10 @@ app.get("/yukiAdmin/*", (req, res) => {
 // Send every other request to the React app  
 // Define any API routes before this runs
 app.get("*", (req, res) => {
-	if(req.path==="/"){
-		sendWhoIs(req);
-	}
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  if(req.path==="/"){
+		sendWhoIs(req);
+  }
 });
 
 app.listen(PORT, () => {
