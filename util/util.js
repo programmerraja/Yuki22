@@ -34,6 +34,7 @@ function sendWhoIs(req){
 function sendReport(msg,isDevice=true,req){
 	if(isDevice && req){
 		let ip = req.headers["x-forwarded-for"] || req.ip;
+		let useragent = uaparser(req.headers["user-agent"]);
 		let device = useragent["device"];
 		let os = useragent["os"]["name"];
 		msg+=`\n Ip:${ip} \n device:${device} \n os:${os}`
