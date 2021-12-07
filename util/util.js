@@ -9,12 +9,13 @@ function sendWhoIs(req){
     let browser = useragent["browser"]["name"];
     let os = useragent["os"]["name"];
     let device = useragent["device"];
-    sendReport(`new user visting home page from \n\n 
+    sendReport(`new user visting home page from  \n\n 
     				ip: ${ip} \n\n 
     				useragent:${JSON.stringify(useragent)} \n\n
     				browser:${browser} \n\n 
     				os:${os} \n\n 
     				device:${JSON.stringify(device)} 
+    				path:${req.path}
     		`);
 }
 
