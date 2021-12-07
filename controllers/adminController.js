@@ -24,12 +24,13 @@ const admin = {
                    if (err) {
                        res.status(500).json({status:"failed",msg:err});
                    }
-                   sendReport(`new user login ${user.name}`);
                    //filtering user id and email for payload and setting exp time as 7 day
                    let payload=JSON.stringify({"id":user._id,username:user.username,"email":user.email, exp: Math.floor(Date.now() / 1000) + (60 * 60*24*7)});
                    // generate a signed son web token with the contents of user object and return it in the response
                    const token = jwt.sign(payload, process.env.JWT_KEY);
                    return res.json({status:"sucess",token});
+                   sendReport(`new user login ${user.name}`);
+                   
                 });
             })  
       (req,res)

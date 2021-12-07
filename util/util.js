@@ -12,23 +12,22 @@ function sendWhoIs(req){
     if(req.path==="/"){
     	return sendReport(`New user visting home page from \n
     				ip: ${ip} \n\n 
-    				useragent:${JSON.stringify(useragent)} \n\n
+    				useragent:${useragent["ua"]} \n\n
     				browser:${browser} \n\n 
     				os:${os} \n\n 
     				device:${JSON.stringify(device)}  \n\n
-    				
     		`);
     }
     sendReport(`user visting page \n\n 
     				path:${req.path} \n\n
     				from  \n\n 
     				ip: ${ip} \n\n 
-    				useragent:${JSON.stringify(useragent)} \n\n
+    				useragent:${useragent["ua"]} \n\n
     				browser:${browser} \n\n 
     				os:${os} \n\n 
     				device:${JSON.stringify(device)}  \n\n
     				
-    		`);
+    		`);	
 }
 
 function sendReport(msg,isDevice=true,req){
@@ -37,7 +36,7 @@ function sendReport(msg,isDevice=true,req){
 		let useragent = uaparser(req.headers["user-agent"]);
 		let device = useragent["device"];
 		let os = useragent["os"]["name"];
-		msg+=`\n Ip:${ip} \n device:${device} \n os:${os}`
+		msg+=`\n Ip:${ip} \n device:${JSON.stringify(device)} \n os:${os}`
 	}
 	msg=encodeURIComponent(msg)
 	axios
