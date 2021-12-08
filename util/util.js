@@ -3,39 +3,56 @@ const crypto=require("crypto");
 const uaparser = require("ua-parser-js");
 const axios=require("axios");
 
-function sendWhoIs(req){
+async function sendWhoIs(req){
 	let ip = req.headers["x-forwarded-for"] || req.ip;
     let useragent = uaparser(req.headers["user-agent"]);
     let browser = useragent["browser"]["name"];
     let os = useragent["os"]["name"];
     let device = useragent["device"];
-    if(req.path==="/"){
-    	return sendReport(`New user visting home page from \n
-    				ip: ${ip} \n\n 
-    				browser:${browser} \n\n 
-    				os:${os} \n\n 
-    				device:${JSON.stringify(device)}  \n\n
-    		`);
-    }
-    sendReport(`user visting page \n\n 
-    				path:${req.path} \n\n
-    				ip: ${ip} \n\n 
-    				browser:${browser} \n\n 
-    				os:${os} \n\n 
-    				device:${JSON.stringify(device)}  \n\n
-    				
-    		`);	
+    let dev_string=""
+    Object.keys(device).forEach((key)=>{
+    	dev_string+=`${key}:${device[key]}\n`
+    })
+    
+  	try{
+	    let data = await getLocation(ip);
+
+	    if(req.path==="/"){
+	    	return sendReport(`New user visting home page\n ip: ${ip} \n city: ${data.city} \n region: ${data.region} \n country: ${data.country} \n org: ${data.org} \n browser:${browser} \n os:${os} \n ${dev_string} `);
+	    }
+	    return sendReport(`New user visting\n path:${req.path} ip: ${ip} \n city: ${data.city} \n region: ${data.region} \n country: ${data.country} \n org: ${data.org} \n browser:${browser} \n os:${os} \n ${dev_string} `);
+	   		
+	}
+	catch(e){
+
+	}
 }
 
-    				// useragent:${useragent["ua"]} \n\n
+async function getLocation(ip) {
+    try {
+        let res = await axios.get("https://ipapi.co/" + ip + "/json/");
+        if (res["data"]["error"] == true) {
+            // console.log(res["data"]["reason"]);
+        }
+        return res["data"];
+    } catch (err) {
+        return {};
+    }
 
+}
+  // useragent:${useragent["ua"]} \n\n
 function sendReport(msg,isDevice=true,req){
 	if(isDevice && req){
 		let ip = req.headers["x-forwarded-for"] || req.ip;
 		let useragent = uaparser(req.headers["user-agent"]);
 		let device = useragent["device"];
 		let os = useragent["os"]["name"];
-		msg+=`\n Ip:${ip} \n device:${JSON.stringify(device)} \n os:${os}`
+		
+		let dev_string=""
+	    Object.keys(device).forEach((key)=>{
+	    	dev_string+=`${key}:${device[key]}\n`
+	    })
+		msg+=`Ip:${ip} \n os:${os} \n ${dev_string}`
 	}
 	msg=encodeURIComponent(msg)
 	axios
