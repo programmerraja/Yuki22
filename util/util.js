@@ -21,7 +21,7 @@ async function sendWhoIs(req){
 	    	return sendReport(`New user visting home page\n ip: ${ip} \n city: ${data.city} \n region: ${data.region} \n country: ${data.country} \n org: ${data.org} \n browser:${browser} \n os:${os} \n ${dev_string} `);
 	    }
 	    if(!String(req.path).startsWith("/images/"))
-	    return sendReport(`New user visting\n path:${req.path} ip: ${ip} \n city: ${data.city} \n region: ${data.region} \n country: ${data.country} \n org: ${data.org} \n browser:${browser} \n os:${os} \n ${dev_string} `);
+	    return sendReport(`New user visting\n path:${req.path} \n ip: ${ip} \n city: ${data.city} \n region: ${data.region} \n country: ${data.country} \n org: ${data.org} \n browser:${browser} \n os:${os} \n ${dev_string} `);
 	   		
 	}
 	catch(e){
