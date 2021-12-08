@@ -11,7 +11,7 @@ async function sendWhoIs(req){
     let device = useragent["device"];
     let dev_string=""
     Object.keys(device).forEach((key)=>{
-    	dev_string+=`${key}:${device[key]}\n`
+    	dev_string+=` ${key}:${device[key]}\n`
     })
     
   	try{
@@ -20,6 +20,7 @@ async function sendWhoIs(req){
 	    if(req.path==="/"){
 	    	return sendReport(`New user visting home page\n ip: ${ip} \n city: ${data.city} \n region: ${data.region} \n country: ${data.country} \n org: ${data.org} \n browser:${browser} \n os:${os} \n ${dev_string} `);
 	    }
+	    if(!String(req.path).startsWith("/images/"))
 	    return sendReport(`New user visting\n path:${req.path} ip: ${ip} \n city: ${data.city} \n region: ${data.region} \n country: ${data.country} \n org: ${data.org} \n browser:${browser} \n os:${os} \n ${dev_string} `);
 	   		
 	}

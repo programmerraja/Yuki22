@@ -6,6 +6,7 @@ import {useHistory } from "react-router-dom";
 import SquareLoader from "../../components/SquareLoader";
 
 import API from "../../utils/API";
+import errorHandler from "../../utils/errorHandler";
 
 import user from "../../img/user.png";
 import "./style.css";
@@ -17,35 +18,43 @@ function Signin({setUser}){
   const [error,setError]=useState("");
   const [loading,setLoading]=useState("");
 
-  const [msg,setMsg]=useState("");
-
-
   const history = useHistory();
 
+  function validate(){
+      if(email && password){
+        return true
+      }
+      return false;
+   }
   function HandleForm(){
-    setLoading(true);
-    let res=  API.signIn({email,password})
-    .then((res)=>{
-      setLoading(false);
-      if(res.data.status==="sucess"){
-        API.setToken(res.data.token);
-        API.setAuthHeader();
-        setUser(true);
-        history.push("/user/myReviews");
+     if(validate()){
+          setLoading(true);
+          let res=  API.signIn({email,password})
+          .then((res)=>{
+            setLoading(false);
+            if(res.data.status==="sucess"){
+              API.setToken(res.data.token);
+              API.setAuthHeader();
+              setUser(true);
+              history.push("/user/myReviews");
+            }
+            else{
+                errorHandler(true,res.data.msg);
+
+            }
+          })
+          .catch((res)=>{
+              setLoading(false);
+              if(res.data && res.data.msg){
+                errorHandler(true,res.data.msg);
+              }else{
+                errorHandler(true,"Something went wrong");
+              }
+          });
       }
       else{
-        setMsg(res.data.msg);
+          errorHandler(true,"Fill all detail");
       }
-    })
-    .catch((res)=>{
-        console.log(res)
-        setLoading(false);
-        if(res.data && res.data.msg){
-          setMsg(res.data.msg);
-        }else{
-          setMsg("Something went wrong");
-        }
-    });
   };
 
   return ( 
@@ -71,16 +80,10 @@ function Signin({setUser}){
              <input type="submit" name="signin" value="SIgn In" className="signin_button" onClick={HandleForm}  />
           </div>
 
-          <div className="error_msg">
-              <span>
-              {msg}
-              </span>
-          </div>
-
           <div className="form_text">
               <small>
               <a href="/user/forgetPassword"> Forget password ? </a></small>
-              <small> New to Yuki ? <a href="/signup"> Create an account </a></small>
+              <small> New to Yuki22 ? <a href="/signup"> Create an account </a></small>
           </div>
    
       </div>

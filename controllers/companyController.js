@@ -51,7 +51,7 @@ const company = {
           await getUser(0);
         }
         res.json({status:"sucess",reviews:reviews});
-        sendReport(`some one looking for reviews for the company ${reviews[0]["_doc"]["company"]["name"]}`);
+        sendReport(`some one looking for reviews for the company ${reviews[0]["_doc"]["company"]["name"]}`,true,req);
       })
       .catch((err)=>{
         console.log(err)
