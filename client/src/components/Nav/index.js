@@ -66,7 +66,7 @@ function Nav({user}) {
 return ( <div className="nav">
               <div className="nav-brand">
                     <Link to="/">  
-                        <img src={logo}/><p>Yuki22</p>                   
+                        <img src={logo}/><p></p>                   
                     </Link>
               </div>
 
