@@ -1,8 +1,8 @@
 {
-  "name": "yuki",
+  "name": "yuki22",
   "version": "1.0.0",
   "proxy": "http://localhost:3001/",
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "description": "admin dashboard for yuki",
   "main": "index.js",
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
@@ -12,8 +12,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "K.boopathi",
+  "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",

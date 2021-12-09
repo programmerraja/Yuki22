@@ -22,7 +22,6 @@ async function sendWhoIs(req){
 	    }
 	    if(!String(req.path).startsWith("/images/"))
 	    return sendReport(`New user visting\n path:${req.path} \n ip: ${ip} \n city: ${data.city} \n region: ${data.region} \n country: ${data.country} \n org: ${data.org} \n browser:${browser} \n os:${os} \n ${dev_string} `);
-	   		
 	}
 	catch(e){
 
@@ -91,10 +90,10 @@ function sendMail(subject,body,to_mail)
 			transporter.sendMail(mailOptions, function(err, info){
 			  if(err) {
 					logError(err);
-					 resolve(false);
+					resolve(false);
 			  } else {
-			    console.log('Email sent: ' + info.response);
-			      resolve(true);
+			    // console.log('Email sent: ' + info.response);
+			    resolve(true);
 			  }
 			});
 	});
@@ -102,7 +101,6 @@ function sendMail(subject,body,to_mail)
 
 async function sendPasswordReset(to_mail,user_name,link)
 {
-	console.log(link)
 	let subject="Reset Your Password";
 	let body="<p>Hai "+user_name+",</p>\
 	 		<p>A request has been recevied to change the password for your Yuki22 account. This link only work for 20 minutes</p>\

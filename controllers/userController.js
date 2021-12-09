@@ -159,7 +159,11 @@ const user = {
                                     noOfReviews:Number(companyObj.noOfReviews)+1,
                                     rating:Number(companyObj.rating)+Number(rating)
                                 }).then((a)=>{});
-                                sendReport(`new review added for ${companyObj.name} by ${req.user.name} ${JSON.stringify(reviewObj)}`);
+                                let msg=`new review added for ${companyObj.name} by ${req.user.name} \n`
+                                Object.keys(reviewObj).forEach(key=>{
+                                  msg+=`${key} : ${reviewObj[key]}\n`
+                                })
+                                sendReport(msg);
                               })
                               .catch(err=>{
                                 logError(err.msg,err)
@@ -203,7 +207,11 @@ const user = {
                       })
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully added your review"})
-                        sendReport(`new review added for ${companyObj.name} by ${req.user.name} ${JSON.stringify(reviewObj)}`);
+                        let msg=`new review added for ${companyObj.name} by ${req.user.name} \n`
+                        Object.keys(reviewObj).forEach(key=>{
+                          msg+=`${key} : ${reviewObj[key]}\n`
+                        })
+                        sendReport(msg);
                       })
                       .catch(err=>{
                         logError(err.msg,err)
@@ -267,9 +275,11 @@ const user = {
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully updated your review"})
                         //if old rating not equal to new rating then update the rating 
-                        // console.log(old_rating,rating)
-                        sendReport(`review updated for ${companyObj.name} by ${req.user.name} ${JSON.stringify(reviewObj)}`);
-                        
+                        let msg=`review updated added for ${companyObj.name} by ${req.user.name} \n`
+                        Object.keys(reviewObj).forEach(key=>{
+                          msg+=`${key} : ${reviewObj[key]}\n`
+                        })
+                        sendReport(msg);
                         if(old_rating!=rating){
                           db.Compaines.findOneAndUpdate({
                               _id:companyObj._id},
@@ -377,7 +387,6 @@ const user = {
                     } else {
                         user.name = name;
                     }
-
                     user.save()
                     .then((user)=>{
                         if (user) {

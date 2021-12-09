@@ -2,18 +2,16 @@
   "name": "yuki",
   "version": "1.0.0",
   "proxy": "http://localhost:3001/",
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "description": "Yuki a website for posting company reviews and interview process",
   "main": "index.js",
   "scripts": {
-    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
-    "build-doc": "jsdoc -c jsdoc.json -r .",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "K.boopathi",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.21.1",
     "react": "^17.0.2",

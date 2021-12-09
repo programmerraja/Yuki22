@@ -1,7 +1,7 @@
 {
   "name": "Yuki",
   "version": "1.0.0",
-  "description": "Yuki a website for posting company reviews",
+  "description": "Yuki a website for posting company reviews and interview process",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -14,8 +14,8 @@
     "build2": "cd admin && npm install && npm run build ",
     "heroku-postbuild": " npm run build && npm run build2"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "K.boopathi",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.24.0",
     "bcryptjs": "^2.4.3",
