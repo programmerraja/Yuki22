@@ -263,7 +263,7 @@ return ( <>
                       {error_msg}
                     </p>
                     <div className="add_review-button">
-                    {steps!===1?
+                    {steps!==1?
                      <button onClick={onPrevious} >Previous</button>
                      :null 
                     }
