@@ -113,9 +113,7 @@ function EditReview() {
             console.log(res)
           }
        });
-
-       
-   },[])
+   },[reviewId])
 
    let validateForm=()=>{
       if(steps===1){
@@ -239,7 +237,7 @@ function EditReview() {
    }
    else if(steps===3){
     let rounds_arr=[]
-     if(rounds_details.length==rounds && isPrev){
+     if(rounds_details.length===rounds && isPrev){
       for(let i=0;i<rounds;i++){
          rounds_arr.push(
                       <Step3Questions 
@@ -306,7 +304,7 @@ return ( <>
                      :null 
                     }
                      {
-                      steps==5?
+                      steps===5?
                       <button onClick={onSubitReview}>Update</button>
                       :
                       <button onClick={onNext} >Next</button>

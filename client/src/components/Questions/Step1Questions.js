@@ -11,13 +11,6 @@ function Step1Questions({name,
                         company_names
                       }) {
 
-  const [showSuggestions, setShowSuggestions] = useState(false);
-
-  const [filteredSuggestions, setFilteredSuggestions] = useState([]);
-
-  const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
-  
-
    return ( <>
                 
                   <div  className="add_review-from">

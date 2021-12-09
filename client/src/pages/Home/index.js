@@ -1,10 +1,7 @@
 import {React} from "react";
 import "./style.css";
 
-import Footer from "../../components/Footer";
-
 import hero from "../../img/hero.jpg";
-
 import search from "../../img/search.jpg";
 import gothrough from "../../img/gothrough.jpg";
 import prepare from "../../img/prepare.jpg";

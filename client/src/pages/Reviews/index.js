@@ -1,6 +1,6 @@
 import React from "react";
 import {useState,useEffect} from "react";
-import {useHistory ,useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 
 import ReviewCard from "../../components/ReviewCard";
 import SquareLoader from "../../components/SquareLoader";
@@ -26,10 +26,7 @@ function Reviews(){
 
   const { companyId } = useParams();
 
-
-  const history = useHistory();
-
-   useEffect(()=>{
+  useEffect(()=>{
     setLoading(true);
     API.getCompanyReviews(companyId)
     .then((res)=>{
@@ -49,7 +46,7 @@ function Reviews(){
           errorHandler(true);
       }
     });
-  },[])
+  },[companyId])
 
   const sortedReviewsList=(sort_by)=>{
     if(sort_by){

@@ -195,7 +195,7 @@ function AddReview() {
    }
    else if(steps===3){
     let rounds_arr=[]
-     if(rounds_details.length==rounds && isPrev){
+     if(rounds_details.length===rounds && isPrev){
       for(let i=0;i<rounds;i++){
          rounds_arr.push(
                       <Step3Questions  
@@ -263,12 +263,12 @@ return ( <>
                       {error_msg}
                     </p>
                     <div className="add_review-button">
-                    {steps!==1?
+                    {steps!===1?
                      <button onClick={onPrevious} >Previous</button>
                      :null 
                     }
                      {
-                      steps==5?
+                      steps===5?
                       <button onClick={onSubitReview}>Submit</button>
                       :
                       <button onClick={onNext} >Next</button>

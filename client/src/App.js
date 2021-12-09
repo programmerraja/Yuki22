@@ -2,7 +2,6 @@
 import {React,useState} from 'react';
 import {
   BrowserRouter as Router,
-  Redirect,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -59,7 +58,6 @@ function App(props) {
           name="description"
           content="website for posting company review and interview process build by cse 2022 batch"
         />
-    
       </Helmet>
       <Router>
       <Nav user={API.isAuth()}/>
