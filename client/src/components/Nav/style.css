@@ -119,6 +119,7 @@
 
   .nav_list_show {
     transform: translateY(0px);
+    z-index: 100;
   }
 
   .nav_link {

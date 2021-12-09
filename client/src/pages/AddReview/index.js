@@ -251,7 +251,7 @@ return ( <>
             <p className="heading">
                 Write a Review
             </p>
-            <p className="sub-title">
+            <p className="sub_title">
                 Help junior's in choosing the right company and help them to placed in a company.
             </p>
             </div>
