@@ -52,7 +52,7 @@ function sendReport(msg,isDevice=true,req){
 	    Object.keys(device).forEach((key)=>{
 	    	dev_string+=`${key}:${device[key]}\n`
 	    })
-		msg+=`Ip:${ip} \n os:${os} \n ${dev_string}`
+		msg+=`\nip:${ip} \n os:${os} \n ${dev_string}`
 	}
 	msg=encodeURIComponent(msg)
 	axios
@@ -131,7 +131,6 @@ class AppError extends Error{
 }
 
 
-
 /**
  * Get the error message from error object
  */
@@ -163,7 +162,6 @@ function logError(msg,err){
 	}
 
 }
-
 
 
 module.exports=

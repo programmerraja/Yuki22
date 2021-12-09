@@ -284,7 +284,8 @@ function EditReview() {
                             setSalary={setSalary}
                             mobile_no={mobile_no}
                             setMobileNo={setMobileNo}
-                            role={setRole}
+                            role={role}
+                            setRole={setRole}
                       />)
    }
 
