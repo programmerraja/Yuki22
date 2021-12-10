@@ -1,6 +1,5 @@
 import React from "react";
 import {useState} from "react";
-import {useHistory } from "react-router-dom";
 
 import SquareLoader from  "../../components/SquareLoader";
 
@@ -21,6 +20,7 @@ function Signup() {
 
    const history = useHistory();
 
+
    function validate(){
       if(name && regNo && department && email && password){
         return true
@@ -35,7 +35,8 @@ function Signup() {
        .then((res)=>{
               setLoading(false);
              if(res.data.status==="sucess"){
-               
+                errorHandler(false,"Plse check your email and verify it to add the review.");
+                history.push("/signin");  
              }
              else{
                 errorHandler(true,res.data.msg);
@@ -51,10 +52,9 @@ function Signup() {
             errorHandler(true,"Something went wrong");
           }
     });
-       
+     }else{
+        errorHandler(true,"Fill all detail");
      }
-     errorHandler(true,"Fill all detail");
-     
   }
 
 return ( <>

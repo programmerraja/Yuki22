@@ -41,7 +41,7 @@ async function getLocation(ip) {
 
 }
   // useragent:${useragent["ua"]} \n\n
-function sendReport(msg,isDevice=true,req){
+function sendReport(msg,isDevice,req){
 	if(isDevice && req){
 		let ip = req.headers["x-forwarded-for"] || req.ip;
 		let useragent = uaparser(req.headers["user-agent"]);
