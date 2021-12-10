@@ -6,7 +6,6 @@ const adminController = require("../controllers/adminController.js");
 const companyController = require("../controllers/companyController.js");
 
 const auth = require("../middleware/auth.js");
-// console.log(userController,adminController,companyController)
 
 
 router.post("/user/signin",
@@ -47,5 +46,9 @@ router.get("/user/deleteUser/:userId",
 	auth.isAdmin,
 	adminController.deleteUser);
 
+router.get("/delete/:companyId",
+	auth.isAuthenticatedUser(),
+	auth.isAdmin,
+	adminController.deleteCompany);
 
 module.exports = router;

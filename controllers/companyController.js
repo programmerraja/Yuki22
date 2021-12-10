@@ -6,7 +6,6 @@ const passport = require("passport");
 
 const {verfiyMail,dbErrorHandle,sendReport} = require("../util/util");
 
-
 const company = {
   getCompanyList:function(req,res){
       db.Compaines.find({})

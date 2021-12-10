@@ -1,6 +1,7 @@
 import React from "react";
 import {useState,useEffect} from "react";
 import {useHistory ,useParams,Link} from "react-router-dom";
+import swal from "sweetalert";
 
 import ReviewCard from "../../components/ReviewCard";
 import SquareLoader from "../../components/SquareLoader";
@@ -8,10 +9,7 @@ import SquareLoader from "../../components/SquareLoader";
 import API from "../../utils/API";
 import errorHandler from "../../utils/errorHandler";
 
-
 import "./style.css";
-
-
 
 function UserReviews(){
   const [reviews,setReviews]=useState([]);

@@ -81,7 +81,8 @@ export default {
   logout:userService.logout,
 
   getCompanyList:companyService.getCompanyList,
-  getCompanyReviews:companyService.getCompanyReviews
+  getCompanyReviews:companyService.getCompanyReviews,
+  deleteCompany:companyService.deleteCompany
 };
 
 function setAuthHeader() {

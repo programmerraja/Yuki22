@@ -6,5 +6,8 @@ export default {
   },
   getCompanyReviews:function(compainyId){
     return axios.get("/company/getReviews/"+compainyId);
+  },
+  deleteCompany:function(compainyId){
+    return axios.get("/company/delete/"+compainyId);
   }
 };

@@ -289,6 +289,31 @@ const admin = {
             }
             res.json({status:"failed"});
         }
+    },
+    deleteCompany:function (req,res) {
+       if(req.params.companyId){
+          db.Compaines.findOneAndRemove({_id:req.params.companyId})
+          .then((companyObj)=>{
+              res.json({status:"sucess",msg:"sucessfully deleted company"})
+              db.Reviews.findOneAndRemove(
+                {companyId:companyObj._id}
+                ).then((reviewObj)=>{
+                    if(companyObj){
+                      sendReport(`new company deleted for ${companyObj.name} by admin`);
+                    }
+                }) 
+          })
+          .catch(err=>{
+            logError(err.msg,err)
+            res.json({status:"failed",
+                              msg: "Sorry Something went wrong. Please try again"
+                      });
+          });
+      }else{
+        res.json({status:"failed",
+                    msg: "company id missing"
+                    });
+      }
     }
 
 };

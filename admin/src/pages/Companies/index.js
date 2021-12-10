@@ -1,6 +1,7 @@
 import React from "react";
 import {useState,useEffect} from "react";
 import {useHistory,Link } from "react-router-dom";
+import swal from "sweetalert";
 import {Box,Container} from "@material-ui/core";
 
 import SquareLoader from "../../components/SquareLoader";
@@ -55,6 +56,40 @@ function Companies(){
   			}
   		})
   }
+  const deleteCompany=(company_id)=>{
+     swal({
+      title: "Are you sure?",
+      text: "You want to delete this company.",
+      buttons: ["No", "Yes"],
+      dangerMode: true,
+    }).then((confirm) => {
+      if (confirm) {
+        API.deleteCompany(company_id)
+        .then((res)=>{
+            setLoading(false);
+            if(res.data.status==="sucess"){
+              let new_company=[]
+              company_lists.forEach(company_obj=>{
+                if(company_obj._id!=company_id){
+                  new_company.push(company_obj)
+                }
+              });
+              setCompanyLists(new_company);
+              errorHandler(false,res.data.msg);
+            }
+        
+        })
+        .catch((res)=>{
+          setLoading(false);
+          if(res.data && res.data.msg){
+              errorHandler(true,res.data.msg);
+          }else{
+              errorHandler(true);
+          }
+        });
+    }
+    });
+  }
 
   if(!loading){
 	  return ( 
@@ -96,6 +131,9 @@ function Companies(){
 						    				  </Link>
 						    					<p className="companies_content-rating flex1">{companiesObj.rating && companiesObj.noOfReviews?(companiesObj.rating/companiesObj.noOfReviews).toFixed(1):0}<i className="far fa-star"></i> </p>
 						    					<p className="companies_content-review flex1">{companiesObj.noOfReviews}<i className="fas fa-user-friends"></i></p>
+						    					 <div className="edit_icon">
+									             	 <i className="fas fa-trash-alt" onClick={()=>{deleteCompany(companiesObj._id)}}></i>
+									             </div>
 						    				</div>
 						    			)
 						    		}
