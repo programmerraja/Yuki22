@@ -20,7 +20,7 @@ const user = {
                         status:"failed",
                         msg: info ? info.message : 'Login failed',
                     });
-                }
+                } 
                 req.login(user, {session: false}, (err) => {
                    if (err) {
                        res.status(500).json({status:"failed",msg:err});
@@ -288,7 +288,7 @@ const user = {
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully updated your review"})
                         //if old rating not equal to new rating then update the rating 
-                        let msg=`review updated added for ${companyObj.name} by ${req.user.name} \n`
+                        let msg=`review updated  for ${companyObj.name} by ${req.user.name} \n`
                         Object.keys(reviewObj["_doc"]).forEach(key=>{
                           if(key==="roundsDetails"){
                              Object.keys(reviewObj["_doc"][key]).forEach(key2=>{

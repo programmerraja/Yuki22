@@ -119,7 +119,18 @@ const admin = {
                       })
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully updated your review"})
-                        sendReport(`review updated for ${companyObj.name} by admin ${JSON.stringify(reviewObj)}`);
+                        let msg=`review updated for  ${companyObj.name} by admin \n`
+                        Object.keys(reviewObj["_doc"]).forEach(key=>{
+                          if(key==="roundsDetails"){
+                             Object.keys(reviewObj["_doc"][key]).forEach(key2=>{
+                                msg+=`${key2} : ${reviewObj["_doc"][key[key2]]}\n`
+                             })
+                          }
+                          if(key!="_id"){
+                            msg+=`${key} : ${reviewObj["_doc"][key]}\n`
+                          }
+                        })
+                        sendReport(msg);
                         //if old rating not equal to new rating then update the rating 
                         if(old_rating!=rating){
                           db.Compaines.findOneAndUpdate({
@@ -222,7 +233,9 @@ const admin = {
                 {_id:reviewObj.companyId}
                 ).then((companyObj)=>{
                     if(companyObj){
+                      
                       sendReport(`new review deleted for ${companyObj.name} by admin`);
+
                       let new_rating=companyObj.rating-reviewObj.rating;
                       db.Compaines.findOneAndUpdate(
                         {_id:companyObj._id},

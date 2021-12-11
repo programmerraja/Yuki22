@@ -50,7 +50,7 @@ function Nav({user}) {
                     <Link onClick={toggle} to="/signup">Signup</Link>
                 </div>
                 <div className="nav_link">
-                    <Link onClick={toggle} to="/companies"> Compaines </Link>
+                    <Link onClick={toggle} to="/companies"> Companies </Link>
                 </div>
                 <div className="nav_link">
                     <Link onClick={toggle} to="/user/addReview"> Add Review </Link>

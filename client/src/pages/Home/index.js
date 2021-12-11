@@ -69,7 +69,7 @@ return ( <>
         <section className="company_container">
             <div className="company_heading_wrap">
               <h2 className="company_heading">
-                Over 2+ companies
+                Over 5+ companies
               </h2>
               <p className="company_subheading">
                 Get information about companies.
