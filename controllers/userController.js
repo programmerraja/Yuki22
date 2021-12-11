@@ -29,8 +29,8 @@ const user = {
                    let payload=JSON.stringify({"id":user._id,username:user.name,"email":user.email, exp: Math.floor(Date.now() / 1000) + (60 * 60*24*7)});
                    // generate a signed json web token with the contents of user object and return it in the response
                    const token = jwt.sign(payload, process.env.JWT_KEY);
-                   return res.json({status:"sucess",token});
-                   sendReport(`new user login ${user.name}`,true,req);
+                   res.json({status:"sucess",token});
+                   return sendReport(`new user login ${user.name}`,true,req);
                 });
             })  
       (req,res)
