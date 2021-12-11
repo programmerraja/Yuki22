@@ -94,7 +94,7 @@ function Users(){
                   new_users.push(user_obj)
                 }
               });
-              setUsers(new_review);
+              setUsers(new_users);
               errorHandler(false,res.data.msg);
             }
         
