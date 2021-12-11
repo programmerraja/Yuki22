@@ -83,7 +83,8 @@ function Users(){
       dangerMode: true,
     }).then((confirm) => {
       if (confirm) {
-        API.deleteUser(user._id)
+        setLoading(true);
+        API.deleteUser(user_id)
         .then((res)=>{
             setLoading(false);
             if(res.data.status==="sucess"){
