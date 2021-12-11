@@ -160,7 +160,14 @@ const user = {
                                 }).then((a)=>{});
                                 let msg=`new review added for ${companyObj.name} by ${req.user.name} \n`
                                 Object.keys(reviewObj["_doc"]).forEach(key=>{
-                                  msg+=`${key} : ${reviewObj["_doc"][key]}\n`
+                                    if(key==="roundsDetails"){
+                                       Object.keys(reviewObj["_doc"][key]).forEach(key2=>{
+                                          msg+=`${key2} : ${reviewObj["_doc"][key[key2]]}\n`
+                                       })
+                                    }
+                                    if(key!="_id"){
+                                      msg+=`${key} : ${reviewObj["_doc"][key]}\n`
+                                    }
                                 })
                                 sendReport(msg);
                               })
@@ -207,8 +214,15 @@ const user = {
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully added your review"})
                         let msg=`new review added for ${companyObj.name} by ${req.user.name} \n`
-                        Object.keys(reviewObj["_doc"]).forEach(key=>{
-                          msg+=`${key} : ${reviewObj["_doc"][key]}\n`
+                         Object.keys(reviewObj["_doc"]).forEach(key=>{
+                          if(key==="roundsDetails"){
+                             Object.keys(reviewObj["_doc"][key]).forEach(key2=>{
+                                msg+=`${key2} : ${reviewObj["_doc"][key[key2]]}\n`
+                             })
+                          }
+                          if(key!="_id"){
+                            msg+=`${key} : ${reviewObj["_doc"][key]}\n`
+                          }
                         })
                         sendReport(msg);
                       })
@@ -276,7 +290,14 @@ const user = {
                         //if old rating not equal to new rating then update the rating 
                         let msg=`review updated added for ${companyObj.name} by ${req.user.name} \n`
                         Object.keys(reviewObj["_doc"]).forEach(key=>{
-                          msg+=`${key} : ${reviewObj["_doc"][key]}\n`
+                          if(key==="roundsDetails"){
+                             Object.keys(reviewObj["_doc"][key]).forEach(key2=>{
+                                msg+=`${key2} : ${reviewObj["_doc"][key[key2]]}\n`
+                             })
+                          }
+                          if(key!="_id"){
+                            msg+=`${key} : ${reviewObj["_doc"][key]}\n`
+                          }
                         })
                         sendReport(msg);
                         if(old_rating!=rating){
