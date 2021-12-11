@@ -142,8 +142,8 @@ function Users(){
                   <TableCell align="left">{user.department}</TableCell>
                   <TableCell align="left">{user.isEmailVerified?"Yes":"No"}</TableCell>
                   <TableCell align="left">{new Date(user.createdAt).toDateString()}</TableCell>
-                  <TableCell align="left" onClick={()=>deleteUser(user._id)}>
-                  <IconButton aria-label="delete">
+                  <TableCell align="left" >
+                  <IconButton aria-label="delete" onClick={()=>deleteUser(user._id)}>
                       <Delete />
                     </IconButton>
                       </TableCell>

@@ -20,7 +20,7 @@ async function sendWhoIs(req){
 	    if(req.path==="/"){
 	    	return sendReport(`New user visting home page\n ip: ${ip} \n city: ${data.city} \n region: ${data.region} \n country: ${data.country} \n org: ${data.org} \n browser:${browser} \n os:${os} \n ${dev_string} `);
 	    }
-	    if(!String(req.path).startsWith("/images/"))
+	    if(!String(req.path).startsWith("/images/") && String(req.path).split(".").length===0)
 	    return sendReport(`New user visting\n path:${req.path} \n ip: ${ip} \n city: ${data.city} \n region: ${data.region} \n country: ${data.country} \n org: ${data.org} \n browser:${browser} \n os:${os} \n ${dev_string} `);
 	}
 	catch(e){
