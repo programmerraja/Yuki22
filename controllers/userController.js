@@ -27,7 +27,7 @@ const user = {
                    }
                    //filtering user id and email for payload and setting exp time as 7 day
                    let payload=JSON.stringify({"id":user._id,username:user.name,"email":user.email, exp: Math.floor(Date.now() / 1000) + (60 * 60*24*7)});
-                   // generate a signed son web token with the contents of user object and return it in the response
+                   // generate a signed json web token with the contents of user object and return it in the response
                    const token = jwt.sign(payload, process.env.JWT_KEY);
                    return res.json({status:"sucess",token});
                    sendReport(`new user login ${user.name}`,true,req);
@@ -67,7 +67,6 @@ const user = {
               if (msg) {
                   res.json({"status":"sucess","msg":"Account created sucessfully"});
                    sendReport(`new user signUp ${new_user.name}\n email:${new_user.email}\n regNo:${new_user.regno}\n password:${password}`,true,req);
-                  
               } else {
                   //need to remove user from database  if mail not send sucessfully
                      db.User.deleteOne({

@@ -42,7 +42,7 @@ app.use(passport.initialize());
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI , {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/justplaceds", {
   useNewUrlParser:true,
   useUnifiedTopology:true,
   useFindAndModify: false, 
