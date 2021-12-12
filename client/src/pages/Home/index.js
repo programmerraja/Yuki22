@@ -96,7 +96,7 @@ return ( <>
                 <h3>Connect With Us</h3>
             </div>
             <div className="follow_icons">
-                <a href="https://t.me/+o2u1jURL6YZiNWVl">
+                <a href="https://t.me/+9_4feGpoutgwMjc1">
                     <i className="fab fa-telegram"></i>
                 </a>
             </div>
