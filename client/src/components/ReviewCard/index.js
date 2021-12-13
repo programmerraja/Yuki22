@@ -8,6 +8,7 @@ import "./style.css";
 function ReviewCard({
                     _id,
                     placementType,
+                    offCampusDetail,
                     rounds,
                     roundsDetails,
                     attendedOn,
@@ -48,6 +49,9 @@ function ReviewCard({
                 {isPlaced===1 &&
                 <span className="user_text-green">Placed</span>
                 }
+                {isPlaced===0 &&
+                  <span className="user_text-red">Not Placed</span>
+                }
                 {rating &&
                   <span className="user_text rating">
                   {rating.toFixed(1)}
@@ -72,6 +76,13 @@ function ReviewCard({
                {placementType}</span>
             </p>
             </div>
+            {offCampusDetail && <div className="review_text">
+                                  <p>How he get the offCampus:
+                                    <span className="review_text-bold">
+                                    {offCampusDetail}</span>
+                                  </p>
+                                </div>
+            }
             <p className="review_text-bold">Interview Process</p>
             <div className="padding">
               <div className="review_text">

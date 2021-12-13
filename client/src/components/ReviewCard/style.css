@@ -76,13 +76,17 @@ summary:focus{
     font-weight: bold;
     margin: 0;
 }
-.user_text-green{
+.user_text-green,
+.user_text-red{
     color: green;
     font-weight: bold;
     padding: 0.1rem;
     border: 1px solid green;
     margin: 0.5rem;
     font-size: 12px;
+}
+.user_text-red{
+    color: red;
 }
 .user_text-small{
     font-size: 12px;
