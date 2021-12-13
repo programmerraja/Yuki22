@@ -34,6 +34,8 @@ function EditReview() {
 
    const [attended_on,setAttendedOn]=useState("");
    const [placement_type,setPlacementType]=useState("onCampus");
+   const [off_campus_detail,setOffCampusDetail]=useState("");
+   
 
    const [rounds,setRounds]=useState();
 
@@ -48,7 +50,7 @@ function EditReview() {
    const [pros,setPros]=useState("");
    const [cons,setCons]=useState("");
    const [salary,setSalary]=useState();
-   const [role,setRole]=useState();
+   const [role,setRole]=useState("");
 
    const [mobile_no,setMobileNo]=useState("");
 
@@ -70,7 +72,7 @@ function EditReview() {
           }
        });
 
-       API.getUserReview(reviewId)
+       API.getMyReview(reviewId)
         .then((res)=>{
           setLoading(false);
           if(res.data.status==="sucess"){
@@ -80,15 +82,16 @@ function EditReview() {
                setOldName(temp_review["name"]);
                setAttendedOn(temp_review["attendedOn"]);
                setPlacementType(temp_review["placementType"]);
+               setOffCampusDetail(temp_review["offCampusDetail"])
                setRounds(temp_review["rounds"]);
                setIsPlaced(temp_review["isPlaced"])
                setRating(temp_review["rating"]);
                setOldRating(temp_review["rating"]);
                setSalary(temp_review["salary"]);
-               setRole(temp_review["role"]);
                setPros(temp_review["pros"]);
                setCons(temp_review["cons"]);
                setMobileNo(temp_review["mobileNo"]);
+               setRole(temp_review["role"]);
 
                let temp_rounds_names=Object.keys(temp_review.roundsDetails)
               console.log(temp_rounds_names)
@@ -98,7 +101,9 @@ function EditReview() {
                temp_rounds_names.forEach((name)=>{
                   temp_rounds_details.push(temp_review.roundsDetails[name])
                })
+
                setRoundsDetails(temp_rounds_details);
+
 
                }
        })
@@ -111,18 +116,26 @@ function EditReview() {
             console.log(res)
           }
        });
-
-       
-   },[])
+   },[reviewId])
 
    let validateForm=()=>{
       if(steps===1){
         if(old_name!==name){
-          setErrorMsg("Plse don't change company name if you like to chnage delete this review and create new one");
+          setErrorMsg("Plse don't change company name if you like to change delete this review and create new one");
           return false
         }
         if(name && attended_on && placement_type){
-          return true
+          if(placement_type==="onCampus"){
+            return true;
+          }else{
+            if(off_campus_detail){
+              return true;
+            }
+            else{
+              setErrorMsg("Plse fill all the data");
+              return false;
+            }
+          }
         }
         else{
           setErrorMsg("Plse fill all the data");
@@ -187,8 +200,8 @@ function EditReview() {
       for(let i=0;i<rounds_names.length;i++){
         rounds_detail[rounds_names[i]]=rounds_details[i]
       }
-      API.updateUserReview({id,name,attended_on,
-                        placement_type,rounds,
+      API.updateMyReview({id,name,attended_on,
+                        placement_type,off_campus_detail,rounds,
                         rounds_detail,is_placed,
                         rating,old_rating,pros,cons,
                         salary,mobile_no,role
@@ -196,7 +209,7 @@ function EditReview() {
       .then((res)=>{
              setLoading(false);
              if(res.data.status==="sucess"){
-               history.push("/users/");
+               history.push("/user/myReviews");
             
              }
              else{
@@ -226,6 +239,8 @@ function EditReview() {
                         setAttendedOn={setAttendedOn}
                         placement_type={placement_type}
                         setPlacementType={setPlacementType}
+                        off_campus_detail={off_campus_detail}
+                        setOffCampusDetail={setOffCampusDetail}
                     />)
    }
    else if(steps===2){
@@ -237,7 +252,7 @@ function EditReview() {
    }
    else if(steps===3){
     let rounds_arr=[]
-     if(rounds_details.length==rounds && isPrev){
+     if(rounds_details.length===rounds && isPrev){
       for(let i=0;i<rounds;i++){
          rounds_arr.push(
                       <Step3Questions 
@@ -304,7 +319,7 @@ return ( <>
                      :null 
                     }
                      {
-                      steps==5?
+                      steps===5?
                       <button onClick={onSubitReview}>Update</button>
                       :
                       <button onClick={onNext} >Next</button>

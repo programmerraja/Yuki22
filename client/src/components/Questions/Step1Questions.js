@@ -1,6 +1,7 @@
 import {React,useState} from "react";
 
 import Input from "../Input";
+import Step1_1Questions from "./Step1_1Questions";
 
 function Step1Questions({name,
                         attended_on,
@@ -9,6 +10,8 @@ function Step1Questions({name,
                         placement_type,
                         setPlacementType,
                         company_names
+                        off_campus_detail,
+                        setOffCampusDetail
                       }) {
 
    return ( <>
@@ -51,6 +54,7 @@ function Step1Questions({name,
                             </select>
                            </div>
                    </div> 
+                   {placement_type==="offCampus" && <Step1_1Questions off_campus_detail={off_campus_detail} setOffCampusDetail={setOffCampusDetail}/>}
           </>);
 
 }

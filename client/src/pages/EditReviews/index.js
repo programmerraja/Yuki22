@@ -34,6 +34,8 @@ function EditReview() {
 
    const [attended_on,setAttendedOn]=useState("");
    const [placement_type,setPlacementType]=useState("onCampus");
+   const [off_campus_detail,setOffCampusDetail]=useState("");
+   
 
    const [rounds,setRounds]=useState();
 
@@ -80,6 +82,7 @@ function EditReview() {
                setOldName(temp_review["name"]);
                setAttendedOn(temp_review["attendedOn"]);
                setPlacementType(temp_review["placementType"]);
+               setOffCampusDetail(temp_review["offCampusDetail"])
                setRounds(temp_review["rounds"]);
                setIsPlaced(temp_review["isPlaced"])
                setRating(temp_review["rating"]);
@@ -118,11 +121,21 @@ function EditReview() {
    let validateForm=()=>{
       if(steps===1){
         if(old_name!==name){
-          setErrorMsg("Plse don't change company name if you like to chnage delete this review and create new one");
+          setErrorMsg("Plse don't change company name if you like to change delete this review and create new one");
           return false
         }
         if(name && attended_on && placement_type){
-          return true
+          if(placement_type==="onCampus"){
+            return true;
+          }else{
+            if(off_campus_detail){
+              return true;
+            }
+            else{
+              setErrorMsg("Plse fill all the data");
+              return false;
+            }
+          }
         }
         else{
           setErrorMsg("Plse fill all the data");
@@ -188,7 +201,7 @@ function EditReview() {
         rounds_detail[rounds_names[i]]=rounds_details[i]
       }
       API.updateMyReview({id,name,attended_on,
-                        placement_type,rounds,
+                        placement_type,off_campus_detail,rounds,
                         rounds_detail,is_placed,
                         rating,old_rating,pros,cons,
                         salary,mobile_no,role
@@ -226,6 +239,8 @@ function EditReview() {
                         setAttendedOn={setAttendedOn}
                         placement_type={placement_type}
                         setPlacementType={setPlacementType}
+                        off_campus_detail={off_campus_detail}
+                        setOffCampusDetail={setOffCampusDetail}
                     />)
    }
    else if(steps===2){

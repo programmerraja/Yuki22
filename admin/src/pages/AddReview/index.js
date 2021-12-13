@@ -27,6 +27,7 @@ function AddReview() {
 
    const [attended_on,setAttendedOn]=useState("");
    const [placement_type,setPlacementType]=useState("onCampus");
+   const [off_campus_detail,setOffCampusDetail]=useState("");
 
    const [rounds,setRounds]=useState();
 
@@ -40,7 +41,7 @@ function AddReview() {
    const [cons,setCons]=useState("");
    const [salary,setSalary]=useState();
    const [mobile_no,setMobileNo]=useState("");
-   const [advice,setAdvice]=useState("");
+   const [role,setRole]=useState("");
 
    const history = useHistory();
 
@@ -64,7 +65,17 @@ function AddReview() {
    let validateForm=()=>{
       if(steps===1){
         if(name && attended_on && placement_type){
-          return true
+          if(placement_type==="onCampus"){
+            return true;
+          }else{
+            if(off_campus_detail){
+              return true;
+            }
+            else{
+              setErrorMsg("Plse fill all the data");
+              return false;
+            }
+          }
         }
         else{
           setErrorMsg("Plse fill all the data");
@@ -146,11 +157,11 @@ function AddReview() {
             rounds_detail[rounds_names[i]]=rounds_details[i]
           }
           API.addMyReview({name,attended_on,
-                            placement_type,rounds,
+                            placement_type,off_campus_detail,rounds,
                             rounds_detail,is_placed,
                             rating,pros,cons,
                             salary,mobile_no,
-                            advice
+                            role
                           })
           .then((res)=>{
                  setLoading(false);
@@ -184,6 +195,8 @@ function AddReview() {
                         setName={setName}
                         setAttendedOn={setAttendedOn}
                         setPlacementType={setPlacementType}
+                        off_campus_detail={off_campus_detail}
+                        setOffCampusDetail={setOffCampusDetail}
                     />)
    }
    else if(steps===2){
@@ -195,7 +208,7 @@ function AddReview() {
    }
    else if(steps===3){
     let rounds_arr=[]
-     if(rounds_details.length==rounds && isPrev){
+     if(rounds_details.length===rounds && isPrev){
       for(let i=0;i<rounds;i++){
          rounds_arr.push(
                       <Step3Questions  
@@ -239,15 +252,24 @@ function AddReview() {
                             setSalary={setSalary}
                             mobile_no={mobile_no}
                             setMobileNo={setMobileNo}
-                            advice={advice}
-                            setAdvice={setAdvice}
+                            role={role}
+                            setRole={setRole}
                       />)
    }
 
 
 return ( <>
             <SquareLoader  loading={loading}/>
+            <div className="header-content">
+            <p className="heading">
+                Write a Review
+            </p>
+            <p className="sub_title">
+                Help junior's in choosing the right company and help them to placed in a company.
+            </p>
+            </div>
             <div className="add_review-wrapper">
+            
               <div className="add_review-container">
                     {questions_to_show} 
                     <p className="add_review-error-msg">
@@ -259,7 +281,7 @@ return ( <>
                      :null 
                     }
                      {
-                      steps==5?
+                      steps===5?
                       <button onClick={onSubitReview}>Submit</button>
                       :
                       <button onClick={onNext} >Next</button>

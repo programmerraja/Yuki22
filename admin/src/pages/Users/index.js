@@ -91,7 +91,7 @@ function Users(){
               let new_users=[]
               users.forEach(user_obj=>{
                 if(user_obj._id!=user_id){
-                  new_users.push(user_obj)
+                  new_users.push(user_obj);
                 }
               });
               setUsers(new_users);
