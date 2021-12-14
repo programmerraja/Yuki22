@@ -194,6 +194,7 @@ function AddReview() {
                         attended_on={attended_on}
                         setName={setName}
                         setAttendedOn={setAttendedOn}
+                        placement_type={placement_type}
                         setPlacementType={setPlacementType}
                         off_campus_detail={off_campus_detail}
                         setOffCampusDetail={setOffCampusDetail}
