@@ -87,6 +87,7 @@ summary:focus{
 }
 .user_text-red{
     color: red;
+    border: 1px solid red;
 }
 .user_text-small{
     font-size: 12px;
