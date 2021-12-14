@@ -9,7 +9,7 @@ function Step1Questions({name,
                         setAttendedOn,
                         placement_type,
                         setPlacementType,
-                        company_names
+                        company_names,
                         off_campus_detail,
                         setOffCampusDetail
                       }) {
