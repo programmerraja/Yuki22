@@ -28,4 +28,4 @@ function Step1_1Questions({off_campus_detail,setOffCampusDetail}) {
 
 }
 
-export default Step1Questions;
+export default Step1_1Questions;
