@@ -200,12 +200,24 @@ function EditReview() {
       for(let i=0;i<rounds_names.length;i++){
         rounds_detail[rounds_names[i]]=rounds_details[i]
       }
-      API.updateMyReview({id,name,attended_on,
+      let obj;
+      if(placement_type==="onCampus"){
+        obj={id,name,attended_on,
+                        placement_type,rounds,
+                        rounds_detail,is_placed,
+                        rating,old_rating,pros,cons,
+                        salary,mobile_no,role
+                      }
+      }
+      else{
+        obj={id,name,attended_on,
                         placement_type,off_campus_detail,rounds,
                         rounds_detail,is_placed,
                         rating,old_rating,pros,cons,
                         salary,mobile_no,role
-                      })
+                      }
+      }
+      API.updateMyReview(obj)
       .then((res)=>{
              setLoading(false);
              if(res.data.status==="sucess"){

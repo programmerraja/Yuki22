@@ -156,13 +156,26 @@ function AddReview() {
           for(let i=0;i<rounds_names.length;i++){
             rounds_detail[rounds_names[i]]=rounds_details[i]
           }
-          API.addMyReview({name,attended_on,
-                            placement_type,off_campus_detail,rounds,
-                            rounds_detail,is_placed,
-                            rating,pros,cons,
-                            salary,mobile_no,
-                            role
-                          })
+          let obj;
+          if(placement_type==="onCampus"){
+            obj={name,
+                attended_on,
+                placement_type,rounds,
+                rounds_detail,is_placed,
+                rating,pros,cons,
+                salary,mobile_no,
+                role}
+          }
+          else{
+            obj={name,
+                attended_on,
+                placement_type,off_campus_detail,rounds,
+                rounds_detail,is_placed,
+                rating,pros,cons,
+                salary,mobile_no,
+                role}
+          }
+          API.addMyReview(obj)
           .then((res)=>{
                  setLoading(false);
                  if(res.data.status==="sucess"){

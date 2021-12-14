@@ -18,7 +18,7 @@ function Step1_1Questions({off_campus_detail,setOffCampusDetail}) {
                                     className="add_review-textarea" 
                                     value={off_campus_detail}
                                     onChange={(e)=>{
-                                           setOffCampusDetail(e.target);
+                                           setOffCampusDetail(e.target.value);
                                   }}
                                 >
                              </textarea>
