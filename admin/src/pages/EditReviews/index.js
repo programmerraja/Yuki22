@@ -217,7 +217,7 @@ function EditReview() {
                         salary,mobile_no,role
                       }
       }
-      API.updateMyReview(obj)
+      API.updateUserReview(obj)
       .then((res)=>{
              setLoading(false);
              if(res.data.status==="sucess"){
