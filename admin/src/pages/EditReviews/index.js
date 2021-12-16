@@ -72,7 +72,7 @@ function EditReview() {
           }
        });
 
-       API.getMyReview(reviewId)
+       API.getUserReview(reviewId)
         .then((res)=>{
           setLoading(false);
           if(res.data.status==="sucess"){

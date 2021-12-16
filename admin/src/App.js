@@ -56,7 +56,7 @@ function App(props) {
             }}
           >
         <Switch>
-          <ProtectedRoute exact path="/" component={Home}/>
+          <ProtectedRoute exact path="/yukiAdmin" component={Home}/>
 
           <ProtectedRoute exact path="/yukiAdmin/signin" component={()=>{return(<Signin setUser={setUser}/>)}}/>
           <ProtectedRoute exact path="/yukiAdmin/companies" component={Companies} />
