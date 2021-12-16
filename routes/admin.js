@@ -46,7 +46,7 @@ router.get("/user/deleteUser/:userId",
 	auth.isAdmin,
 	adminController.deleteUser);
 
-router.get("/delete/:companyId",
+router.get("/company/delete/:companyId",
 	auth.isAuthenticatedUser(),
 	auth.isAdmin,
 	adminController.deleteCompany);

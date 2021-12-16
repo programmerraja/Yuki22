@@ -8,6 +8,6 @@ export default {
     return axios.get("/company/getReviews/"+compainyId);
   },
   deleteCompany:function(compainyId){
-    return axios.get("/company/delete/"+compainyId);
+    return axios.get("/admin/company/delete/"+compainyId);
   }
 };
