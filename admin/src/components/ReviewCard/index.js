@@ -84,7 +84,7 @@ function ReviewCard({
                                 </div>
             }
             <p className="review_text-bold">Interview Process</p>
-            <div className="padding"
+            <div className="padding">
               <div className="review_text">
                 <p className="review_text-bold">No of rounds: 
                     <span >{rounds}</span>
@@ -154,7 +154,7 @@ function ReviewCard({
             }
             {mobileNo && 
                 <div className="review_text">
-                  <p className="review_text-bold">Contact No:<span>{mobileNo}</span></p>
+                  <p className="review_text-bold">Contact No:<span>{mobil</span>eNo}</p>
                 </div>
             }
           </div>
