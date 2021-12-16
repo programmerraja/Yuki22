@@ -8,6 +8,7 @@ import "./style.css";
 function ReviewCard({
                     _id,
                     placementType,
+                    offCampusDetail,
                     rounds,
                     roundsDetails,
                     attendedOn,
@@ -17,7 +18,7 @@ function ReviewCard({
                     cons,
                     salary,
                     mobileNo,
-                    advice,
+                    role,
                     user,
                     createdAt,
                     isEditing,
@@ -37,7 +38,7 @@ function ReviewCard({
         }
         {isEditing &&
           <div className="edit_icon">
-            <Link to={`/yukiAdmin/user/edit/review/${_id}`}>
+            <Link to={`/user/edit/review/${_id}`}>
              <i className="fas fa-edit"></i>
             </Link>
           </div>
@@ -48,35 +49,45 @@ function ReviewCard({
                 {isPlaced===1 &&
                 <span className="user_text-green">Placed</span>
                 }
+                {isPlaced===0 &&
+                  <span className="user_text-red">Not Placed</span>
+                }
                 {rating &&
                   <span className="user_text rating">
                   {rating.toFixed(1)}
                   <i className="far fa-star"></i></span>
                 }
               </div>
-            <p className="user_name">{user.name}</p>
+            <p className="user_name">{user.name}({user.regno})</p>
             <span className="user_text-small">{user.department}</span>
           </div>
         </div>
 
           <div className="wrapper">
             <div className="review_text">
-              <p>Attended On:
-                <span className="review_text-bold">
+              <p className="margin-0 review_text-bold">Passed out year:
+                <span className="">
                  {attendedOn}</span>
               </p>
             </div>
-            <div className="review_text">
-            <p>placement type:
-              <span className="review_text-bold">
+            <div className="review_text ">
+            <p className="review_text-bold">placement type:
+              <span className="">
                {placementType}</span>
             </p>
             </div>
+            {offCampusDetail && <div className="review_text">
+                                  <p className="review_text-bold">offCampus Detail:
+                                    <span >
+                                    {offCampusDetail}</span>
+                                  </p>
+                                </div>
+            }
             <p className="review_text-bold">Interview Process</p>
             <div className="padding">
               <div className="review_text">
-                <p>No of rounds: 
-                    <span className="review_text-bold">{rounds}</span>
+                <p className="review_text-bold">No of rounds: 
+                    <span >{rounds}</span>
                 </p>
               </div>
               {
@@ -84,7 +95,7 @@ function ReviewCard({
                   return(
                     <div className="review_rounds" key={roundName}>
                     <details>
-                        <summary className="review_text-bold d-inline" >
+                        <summary className="review_text-bold round_name" >
                         {index+1}.{roundName}</summary>
                       <div className="review_text">
                       {
@@ -133,12 +144,17 @@ function ReviewCard({
           <div className="wrapper">
             { salary && 
                 <div className="review_text">
-                  <p className="review_text-bold">salary:{salary}</p>
+                  <p className="review_text-bold">Salary:<span>{salary}</span></p>
+                </div>
+            }
+            {role && 
+                <div className="review_text">
+                  <p className="review_text-bold">Role:<span>{role}</span></p>
                 </div>
             }
             {mobileNo && 
                 <div className="review_text">
-                  <p className="review_text-bold">Contact No:{mobileNo}</p>
+                  <p className="review_text-bold">Contact No:<span>{mobil</span>eNo}</p>
                 </div>
             }
           </div>

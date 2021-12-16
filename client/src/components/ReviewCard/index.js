@@ -65,20 +65,20 @@ function ReviewCard({
 
           <div className="wrapper">
             <div className="review_text">
-              <p className="margin-0">Attended On:
-                <span className="review_text-bold">
+              <p className="margin-0 review_text-bold">Passed out year:
+                <span className="">
                  {attendedOn}</span>
               </p>
             </div>
-            <div className="review_text">
-            <p>placement type:
-              <span className="review_text-bold">
+            <div className="review_text ">
+            <p className="review_text-bold">placement type:
+              <span className="">
                {placementType}</span>
             </p>
             </div>
             {offCampusDetail && <div className="review_text">
-                                  <p>How he get the offCampus:
-                                    <span className="review_text-bold">
+                                  <p className="review_text-bold">offCampus Detail:
+                                    <span >
                                     {offCampusDetail}</span>
                                   </p>
                                 </div>
@@ -86,8 +86,8 @@ function ReviewCard({
             <p className="review_text-bold">Interview Process</p>
             <div className="padding">
               <div className="review_text">
-                <p>No of rounds: 
-                    <span className="review_text-bold">{rounds}</span>
+                <p className="review_text-bold">No of rounds: 
+                    <span >{rounds}</span>
                 </p>
               </div>
               {
@@ -144,17 +144,17 @@ function ReviewCard({
           <div className="wrapper">
             { salary && 
                 <div className="review_text">
-                  <p className="review_text-bold">Salary:{salary}</p>
+                  <p className="review_text-bold">Salary:<span>{salary}</span></p>
                 </div>
             }
             {role && 
                 <div className="review_text">
-                  <p className="review_text-bold">Role:{role}</p>
+                  <p className="review_text-bold">Role:<span>{role}</span></p>
                 </div>
             }
             {mobileNo && 
                 <div className="review_text">
-                  <p className="review_text-bold">Contact No:{mobileNo}</p>
+                  <p className="review_text-bold">Contact No:<span>{mobil</span>eNo}</p>
                 </div>
             }
           </div>

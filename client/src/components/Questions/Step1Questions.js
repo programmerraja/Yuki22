@@ -30,7 +30,7 @@ function Step1Questions({name,
 
                    <div  className="add_review-from">
                    <label for="attendedOn" className="add_review-label">
-                   <span>Attended the interview on year  <span className="red_color">*</span></span></label>
+                   <span>Passed out year<span className="red_color">*</span></span></label>
                          <div className="add_review-input-wrapper">
                           <input  type="number" 
                                   placeholder="attended on  year"  
