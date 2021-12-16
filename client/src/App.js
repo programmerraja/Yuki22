@@ -49,7 +49,7 @@ function App(props) {
         <title>Yuki22</title>
         <meta
           name="description"
-          content="website for posting company review and interview process build by cse 2022 batch"
+          content="Website for posting company interview process and review build by cse2022 batch.yuki22"
         />
       </Helmet>
       <Router>

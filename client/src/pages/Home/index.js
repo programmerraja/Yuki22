@@ -55,8 +55,8 @@ return ( <>
                        <img  className="how_itworks-img" src={gothrough}/>
                        <p className="how_itworks-text-bold">2.Go through </p>
                        <p className="how_itworks-text">
-                       Go through the review and  
-                       interview process about the company.
+                       Go through the interview process and reviews
+                        about the company.
                        </p>
                     </div>
                      <div className="how_itworks-card">
