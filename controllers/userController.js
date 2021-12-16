@@ -120,7 +120,7 @@ const user = {
 
   addMyReview:function (req,res){
     let{name,attended_on,
-          placement_type,rounds,
+          placement_type,off_campus_detail,rounds,
           rounds_detail,is_placed,
           rating,pros,cons,
           salary,mobile_no,role
@@ -140,6 +140,7 @@ const user = {
                                 companyId:companyObj._id,
                                 userId:req.user._id,
                                 placementType:placement_type,
+                                offCampusDetail:off_campus_detail,
                                 attendedOn:attended_on,
                                 rounds:rounds,
                                 roundsDetails:rounds_detail,
@@ -162,7 +163,7 @@ const user = {
                                 Object.keys(reviewObj["_doc"]).forEach(key=>{
                                     if(key==="roundsDetails"){
                                        Object.keys(reviewObj["_doc"][key]).forEach(key2=>{
-                                          msg+=`${key2} : ${reviewObj["_doc"][key[key2]]}\n`
+                                          msg+=`${key2} : ${reviewObj["_doc"][key][key2]}\n`
                                        })
                                     }
                                     if(key!="_id"){
@@ -200,6 +201,7 @@ const user = {
                         companyId:companyObj._id,
                         userId:req.user._id,
                         placementType:placement_type,
+                        offCampusDetail:off_campus_detail,
                         attendedOn:attended_on,
                         rounds:rounds,
                         roundsDetails:rounds_detail,
@@ -217,7 +219,7 @@ const user = {
                          Object.keys(reviewObj["_doc"]).forEach(key=>{
                           if(key==="roundsDetails"){
                              Object.keys(reviewObj["_doc"][key]).forEach(key2=>{
-                                msg+=`${key2} : ${reviewObj["_doc"][key[key2]]}\n`
+                                msg+=`${key2} : ${reviewObj["_doc"][key][key2]}\n`
                              })
                           }
                           if(key!="_id"){
@@ -259,7 +261,7 @@ const user = {
   },
   updateMyReview:function (req,res){
     let{id,name,attended_on,
-          placement_type,rounds,
+          placement_type,off_campus_detail,rounds,
           rounds_detail,is_placed,
           rating,pros,cons,
           old_rating,
@@ -274,6 +276,7 @@ const user = {
                         {_id:id,userId:req.user._id},
                         {
                           placementType:placement_type,
+                          offCampusDetail:off_campus_detail,
                           attendedOn:attended_on,
                           rounds:rounds,
                           roundsDetails:rounds_detail,
@@ -292,7 +295,7 @@ const user = {
                         Object.keys(reviewObj["_doc"]).forEach(key=>{
                           if(key==="roundsDetails"){
                              Object.keys(reviewObj["_doc"][key]).forEach(key2=>{
-                                msg+=`${key2} : ${reviewObj["_doc"][key[key2]]}\n`
+                                msg+=`${key2} : ${reviewObj["_doc"][key][key2]}\n`
                              })
                           }
                           if(key!="_id"){

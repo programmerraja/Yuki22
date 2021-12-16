@@ -27,6 +27,9 @@ const ReviewsSchema = new mongoose.Schema(
     placementType:{
       type:String
     },
+    offCampusDetail:{
+      type:String
+    },
     attendedOn:{
       type:String
     },

@@ -27,6 +27,7 @@ function AddReview() {
 
    const [attended_on,setAttendedOn]=useState("");
    const [placement_type,setPlacementType]=useState("onCampus");
+   const [off_campus_detail,setOffCampusDetail]=useState("");
 
    const [rounds,setRounds]=useState();
 
@@ -64,7 +65,17 @@ function AddReview() {
    let validateForm=()=>{
       if(steps===1){
         if(name && attended_on && placement_type){
-          return true
+          if(placement_type==="onCampus"){
+            return true;
+          }else{
+            if(off_campus_detail){
+              return true;
+            }
+            else{
+              setErrorMsg("Plse fill all the data");
+              return false;
+            }
+          }
         }
         else{
           setErrorMsg("Plse fill all the data");
@@ -145,13 +156,26 @@ function AddReview() {
           for(let i=0;i<rounds_names.length;i++){
             rounds_detail[rounds_names[i]]=rounds_details[i]
           }
-          API.addMyReview({name,attended_on,
-                            placement_type,rounds,
-                            rounds_detail,is_placed,
-                            rating,pros,cons,
-                            salary,mobile_no,
-                            role
-                          })
+          let obj;
+          if(placement_type==="onCampus"){
+            obj={name,
+                attended_on,
+                placement_type,rounds,
+                rounds_detail,is_placed,
+                rating,pros,cons,
+                salary,mobile_no,
+                role}
+          }
+          else{
+            obj={name,
+                attended_on,
+                placement_type,off_campus_detail,rounds,
+                rounds_detail,is_placed,
+                rating,pros,cons,
+                salary,mobile_no,
+                role}
+          }
+          API.addMyReview(obj)
           .then((res)=>{
                  setLoading(false);
                  if(res.data.status==="sucess"){
@@ -183,7 +207,10 @@ function AddReview() {
                         attended_on={attended_on}
                         setName={setName}
                         setAttendedOn={setAttendedOn}
+                        placement_type={placement_type}
                         setPlacementType={setPlacementType}
+                        off_campus_detail={off_campus_detail}
+                        setOffCampusDetail={setOffCampusDetail}
                     />)
    }
    else if(steps===2){
