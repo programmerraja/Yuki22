@@ -7,7 +7,6 @@ const checkMailVerified = require("../middleware/checkMailVerified.js");
 const sanitizeHtml = require("../middleware/sanitizeHtml.js");
 
 
-// console.log(userController)
 router.post("/signin",
 	userController.signIn);
 
