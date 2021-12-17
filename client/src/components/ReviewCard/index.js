@@ -154,7 +154,7 @@ function ReviewCard({
             }
             {mobileNo && 
                 <div className="review_text">
-                  <p className="review_text-bold">Contact No:<span>{mobil</span>eNo}</p>
+                  <p className="review_text-bold">Contact No:<span>{mobileNo}</span></p>
                 </div>
             }
           </div>
