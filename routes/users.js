@@ -42,4 +42,8 @@ router.post("/updateMyReview",auth.isAuthenticatedUser(),checkMailVerified,
 router.post("/addMyReview",auth.isAuthenticatedUser(),checkMailVerified,
 	userController.addMyReview);
 
+router.post("/forgetMyPassword",userController.forgetMyPassword);
+
+router.post("/resetMyPassword",userController.resetMyPassword);
+
 module.exports = router;
