@@ -490,7 +490,7 @@ const user = {
                 });
                 if (user) {
                     let token = generateToken();
-                    let link = req.protocol + "://" + req.get("host") + "/user/reset/password/" + token;
+                    let link = req.protocol + "://" + req.get("host") + "/user/resetMyPassword/" + token;
 
                     //we adding 20 mins to current date and converting in to mili sec
                     let password_reset_expires = Date.now() + 20 * 60 * 1000;
