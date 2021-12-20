@@ -48,6 +48,7 @@ function Signin({setUser}){
                 errorHandler(true,res.data.msg);
               }else{
                 errorHandler(true,"Something went wrong");
+alert(res.msg);
               }
           });
       }
