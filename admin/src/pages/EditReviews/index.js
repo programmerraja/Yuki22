@@ -94,9 +94,7 @@ function EditReview() {
                setRole(temp_review["role"]);
 
                let temp_rounds_names=Object.keys(temp_review.roundsDetails)
-              console.log(temp_rounds_names)
                setRoundsNames(temp_rounds_names);
-
                let temp_rounds_details=[]
                temp_rounds_names.forEach((name)=>{
                   temp_rounds_details.push(temp_review.roundsDetails[name])

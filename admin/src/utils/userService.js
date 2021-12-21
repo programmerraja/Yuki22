@@ -37,7 +37,7 @@ export default {
     return axios.get("/admin/user/getUserReviews/"+user_id);
   },
   getUserReview:function(review_id){
-    return axios.get("/admin/user/getUserReview/"+review_id);
+  return axios.get("/admin/user/getUserReview/"+review_id);
   },
   getMyProfile:function(){
     return axios.get("/admin/user/getMyProfile/");
