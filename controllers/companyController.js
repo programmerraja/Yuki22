@@ -60,6 +60,7 @@ const company = {
   },
   getSortedReviews:function(req,res){
     if(req.params.companyId && req.query.sortBy && req.query.type){
+      console.log(req.query)
       db.Reviews.find({companyId:req.params.companyId})
       .sort({[req.query.sortBy]:req.query.type})
       .then(async(reviews)=>{

@@ -15,8 +15,8 @@ import "./style.css";
 const querys={
   hrating:{value:"rating",type:-1},
   lrating:{value:"rating",type:1},
-  latest:{value:"createdOn",type:1},
-  oldest:{value:"createdOn",type:-1}
+  latest:{value:"createdAt",type:-1},
+  oldest:{value:"createdAt",type:1}
 }
 function Reviews(){
   const [reviews,setReviews]=useState([]);

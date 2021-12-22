@@ -10,7 +10,6 @@ const {verfiyMail,
       sendReport
     } = require("../util/util");
 
-
 const user = {
   signIn:function (req, res,next ){
            return passport.authenticate("user_local",{session: false},

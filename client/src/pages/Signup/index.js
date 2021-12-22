@@ -77,7 +77,8 @@ return ( <>
             </div>
 
             <div className="form_input">
-              <label for="email"> Email </label>
+              <label for="email"> Email 
+              <span className="sub_title">(if you have college mail use it)</span></label>
               <input name="email" required={true} type="email" onChange={(e)=>{setEmail(e.target.value);}} value={email} />
             </div>
 

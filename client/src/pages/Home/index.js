@@ -8,6 +8,7 @@ import prepare from "../../img/prepare.jpg";
 import nailitdown from "../../img/nailitdown.jpg";
 
 import tcs from "../../img/company/tcs.png";
+import zoho from "../../img/company/zoho.png";
 import softsquare from "../../img/company/softsquare.png";
 import mobius from "../../img/company/mobius.png";
 import vcidex from "../../img/company/vcidex.png";
@@ -17,15 +18,14 @@ import chainsys from "../../img/company/chainsys.png";
 import zuci from "../../img/company/zuci.png";
 
 
-
 function Home() {
 
 return ( <>
         <div className="hero_container">
            <div className="hero_text">
               <h1> Find the company that suits You </h1>
-              <p>Make use of the reviews and interview steps <br/>
-                to place the company that you likes</p>
+              <p>Make use of the interview process and reviews<br/>
+                to place the company that you like.</p>
               <div className="hero_button">
                  <a href="/signin">
                  <input type="button" name="signin" value="Sign in" className="hero_button1" />
@@ -38,9 +38,6 @@ return ( <>
            <div className="hero_img">
               <img src={hero} alt="hero" />
            </div>
-        </div>
-        <div className="hero_wave">
-           
         </div>
         <section className="section_container">
                 <h3 className="section_title">How it Works? </h3>
@@ -85,6 +82,9 @@ return ( <>
                 Know about their interview process and prepare for it.</p>
             </div>
             <div className="company_wrapper">
+                <div className="company_img">
+                  <img src={zoho}/>
+                </div>
                 <div className="company_img">
                   <img src={tcs}/>
                 </div>
