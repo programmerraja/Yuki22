@@ -20,6 +20,13 @@
   display: flex;
   align-items: center;
 }
+.company_name {
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
 .created_at {
   font-size: 13px;
   color: #97a0be;
@@ -69,6 +76,7 @@ summary:focus {
 .round_name {
   text-transform: capitalize;
 }
+
 .user_wrapper {
   margin-left: auto;
 }

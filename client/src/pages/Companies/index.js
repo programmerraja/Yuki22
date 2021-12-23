@@ -12,8 +12,8 @@ import "./style.css";
 const querys={
 	hrating:{value:"rating",type:-1},
 	lrating:{value:"rating",type:1},
-	hreview:{value:"review",type:-1},
-	lreview:{value:"review",type:1},
+	hreview:{value:"noOfReviews",type:-1},
+	lreview:{value:"noOfReviews",type:1},
 	hname:{value:"name",type:-1},
 	lname:{value:"name",type:1}
 }
@@ -48,27 +48,65 @@ function Companies(){
 
   },[])
 
+  const sortByRatingAsec=()=>{
+	  const new_list=[...company_lists];
+	  for(let i=0;i<new_list.length;i++){
+		  for (let j=i+1;j<new_list.length;j++){
+				if(new_list[i].rating/new_list[i].noOfReviews>
+				   new_list[j].rating/new_list[j].noOfReviews){
+					let temp=new_list[i];
+					new_list[i]=new_list[j];
+					new_list[j]=temp;
+				}
+		  }
+	  }
+	  return new_list;
+  }
+
+  const sortByRatingDsec=()=>{
+	const new_list=[...company_lists];
+	for(let i=0;i<new_list.length;i++){
+		for (let j=i+1;j<new_list.length;j++){
+			  if(new_list[i].rating/new_list[i].noOfReviews<
+				 new_list[j].rating/new_list[j].noOfReviews){
+				  let temp=new_list[i];
+				  new_list[i]=new_list[j];
+				  new_list[j]=temp;
+			  }
+		}
+	}
+	return new_list;
+  }
+  
   const sortedCompanyList=(sort_by)=>{
   	if(sort_by){
 	  	let query={...querys[sort_by]}
-	  	API.getSortedCompanyList(query)
-	  	.then((res)=>{
-	        if(res.data.status==="sucess"){
-	        	  setLoading(false);
-	              setCompanyLists(res.data.list);
-	         }
-	         else{
-	         	errorHandler(true,res.data.msg);
-	         }
-	   	})
-	   	.catch((res)=>{
-	      setLoading(false);
-	      if(res.data && res.data.msg){
-	         	errorHandler(true,res.data.msg);
-	      }else{
-	         	errorHandler(true);
-	      }
-	    });
+		if(querys[sort_by]["value"]==="rating"){
+			let new_list=[]
+			if(querys[sort_by]["type"]===1){
+				 new_list=sortByRatingAsec();
+			}else{
+				 new_list=sortByRatingDsec();
+			}
+			setCompanyLists(new_list);
+		}else{
+				API.getSortedCompanyList(query)
+				.then((res)=>{
+					if(res.data.status==="sucess"){
+						setCompanyLists(res.data.list);
+					}
+					else{
+						errorHandler(true,res.data.msg);
+					}
+				})
+				.catch((res)=>{
+				if(res.data && res.data.msg){
+						errorHandler(true,res.data.msg);
+				}else{
+						errorHandler(true);
+				}
+				});
+		}
 	}
   }
 

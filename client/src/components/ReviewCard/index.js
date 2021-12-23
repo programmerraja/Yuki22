@@ -20,6 +20,7 @@ function ReviewCard({
                     mobileNo,
                     role,
                     user,
+                    company,
                     createdAt,
                     isEditing,
                     deleteReview
@@ -30,6 +31,11 @@ function ReviewCard({
   return ( 
     <>
         <div className="review_container">
+        {company && company.name && 
+          <p className="company_name margin-0">
+            {company.name}
+          </p>
+        }
         <div className="wrapper">
         {createdAt &&
           <p className="created_at">

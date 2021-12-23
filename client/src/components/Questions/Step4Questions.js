@@ -10,9 +10,10 @@ return ( <>
                          <div className="add_review-input-wrapper">
                            <select id="isPlaced" 
                                    className="add_review-input" 
-                                   onChange={(e)=>{setIsPlaced(e.target.value);}}>
-                              <option value="1" selected={is_placed==="1"?true:false}>Yes</option>
-                              <option value="0" selected={is_placed==="0"?true:false}>No</option>
+                                   onChange={(e)=>{setIsPlaced(e.target.value);}}
+                                   defaultValue={is_placed}>
+                              <option value="1" >Yes</option>
+                              <option value="0" >No</option>
                             </select>
                          </div>
                    </div>

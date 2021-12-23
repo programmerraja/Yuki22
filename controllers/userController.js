@@ -11,8 +11,6 @@ const {verfiyMail,
     } = require("../util/util");
 
 // let name="test",email="test123@gmail.com",password="pass",department="cse",regNo=950619;
-
-
   //   db.User.create({
   //     name,
   //     email,
@@ -458,18 +456,30 @@ const user = {
 
         }
   },
+  
   getMyReviews:function(req,res){
     db.Reviews.find({userId:req.user._id})
-    .then((reviews)=>{
-      reviews.forEach((review)=>{
-          review._doc.user={name:req.user.name,department:req.user.department,regno:req.user.regno};
-      })
+    .then(async (reviews)=>{
+      async function appendCompanyAndUser(index){
+        let company=await db.Compaines.findOne({_id:reviews[index]["companyId"]});
+        if(company){
+          reviews[index]["_doc"]["user"]={name:req.user.name,department:req.user.department,regno:req.user.regno};
+          reviews[index]["_doc"]["company"]={name:company.name};
+        }
+        if(reviews.length-1>index){
+          await appendCompanyAndUser(index+1);
+        }
+      }
+      if(reviews.length){
+        await appendCompanyAndUser(0);
+      }
       res.json({status:"sucess",reviews:reviews});
     })
     .catch((err)=>{
       res.json({status:"failed",msg:"Something went wrong"});
     })
   },
+
   getMyReview:function(req,res){
     db.Reviews.findOne({userId:req.user._id,_id:req.params.reviewId})
     .then((review)=>{
