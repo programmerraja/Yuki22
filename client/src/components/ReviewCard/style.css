@@ -24,7 +24,7 @@
   text-align: center;
   font-weight: bold;
   font-size: 18px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   letter-spacing: 0.2rem;
 }
 .created_at {

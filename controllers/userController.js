@@ -464,7 +464,7 @@ const user = {
         let company=await db.Compaines.findOne({_id:reviews[index]["companyId"]});
         if(company){
           reviews[index]["_doc"]["user"]={name:req.user.name,department:req.user.department,regno:req.user.regno};
-          reviews[index]["_doc"]["company"]={name:company.name};
+          reviews[index]["_doc"]["myCompany"]={name:company.name};
         }
         if(reviews.length-1>index){
           await appendCompanyAndUser(index+1);
