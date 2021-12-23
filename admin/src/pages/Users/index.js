@@ -90,7 +90,6 @@ function Users(){
         API.deleteUser(user_id)
         .then((res)=>{
             setLoading(false);
-            debugger;
             if(res.data.status==="sucess"){
               let new_users=[]
               users.forEach(user_obj=>{
@@ -122,7 +121,6 @@ function Users(){
     if(val===""){
       isFind=1;
     }
-    debugger;
     new_users.forEach((usersObj)=>{
       if(!usersObj.name.toLowerCase().includes(val.toLowerCase())){
         usersObj.isShow=true;
