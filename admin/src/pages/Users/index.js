@@ -37,13 +37,16 @@ const useStyles = makeStyles({
   },
   });  
 
+let isFind=1;
+
 function Users(){
    
    const classes = useStyles();
    const [loading, setLoading] = useState(true);
+   const[search_content,setSearchContent]=useState("");
    const [users,setUsers]=useState([]);
    const [page, setPage] = useState(1);
-   const [limit, setLimit] = useState(20);
+   const [limit, setLimit] = useState(5);
    const [count, setCount] = useState(0);
 
    useEffect(() => {
@@ -87,6 +90,7 @@ function Users(){
         API.deleteUser(user_id)
         .then((res)=>{
             setLoading(false);
+            debugger;
             if(res.data.status==="sucess"){
               let new_users=[]
               users.forEach(user_obj=>{
@@ -96,8 +100,9 @@ function Users(){
               });
               setUsers(new_users);
               errorHandler(false,res.data.msg);
+            }else{
+              errorHandler(false,res.data.msg); 
             }
-        
         })
         .catch((res)=>{
           setLoading(false);
@@ -111,6 +116,26 @@ function Users(){
     });
    }
 
+  const search=(val)=>{
+    let new_users=[...users]
+    isFind=0;
+    if(val===""){
+      isFind=1;
+    }
+    debugger;
+    new_users.forEach((usersObj)=>{
+      if(!usersObj.name.toLowerCase().includes(val.toLowerCase())){
+        usersObj.isShow=true;
+      }
+      else{
+        isFind=1;
+        usersObj.isShow=false;
+      }
+    })
+    setUsers(new_users);
+    setSearchContent(val);
+  }
+
   return (
     <div>
       <SquareLoader loading={loading} />  
@@ -118,8 +143,14 @@ function Users(){
        <Container maxWidth="false">
       <Box m={1}>
         <h3 >All Users</h3>
+				 <input type="text" 
+				 		className="companies_search" 
+				 		placeholder="Search here.."
+				 		value={search_content}
+				 		onChange={(e)=>{search(e.target.value)}}
+				 />
       </Box>
-      {(users.length>0 && !loading) &&
+      {(users.length>0 && !loading && isFind) &&
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">
             <TableHead>
@@ -133,30 +164,40 @@ function Users(){
               </TableRow>
             </TableHead>
             <TableBody>
-              {users.map((user) => (
-                <TableRow key={user._id} >
-                  <Link to={`/yukiAdmin/user/userReviews/${user._id}`}>
-                    <TableCell align="left" style={{"padding": "29px"}}>{user.name}</TableCell>
-                  </Link>
-                  <TableCell align="left">{user.email}</TableCell>
-                  <TableCell align="left">{user.regno}</TableCell>
-                  <TableCell align="left">{user.department}</TableCell>
-                  <TableCell align="left">{user.isEmailVerified?"Yes":"No"}</TableCell>
-                  <TableCell align="left">{new Date(user.createdAt).toDateString()}</TableCell>
-                  <TableCell align="left" >
-                  <IconButton aria-label="delete" onClick={()=>deleteUser(user._id)}>
-                      <Delete />
-                    </IconButton>
-                      </TableCell>
-                  
-                </TableRow>
-              ))}
+              {users.map((user) =>{
+                 if(!user.isShow){
+                    return (
+                    <TableRow key={user._id} >
+                      <Link to={`/yukiAdmin/user/userReviews/${user._id}`}>
+                        <TableCell align="left" style={{"padding": "29px"}}>{user.name}</TableCell>
+                      </Link>
+                      <TableCell align="left">{user.email}</TableCell>
+                      <TableCell align="left">{user.regno}</TableCell>
+                      <TableCell align="left">{user.department}</TableCell>
+                      <TableCell align="left">{user.isEmailVerified?"Yes":"No"}</TableCell>
+                      <TableCell align="left">{new Date(user.createdAt).toDateString()}</TableCell>
+                      <TableCell align="left" >
+                      <IconButton aria-label="delete" onClick={()=>deleteUser(user._id)}>
+                          <Delete />
+                        </IconButton>
+                          </TableCell>
+                      
+                    </TableRow>
+                    )
+                 }
+                }
+              )}
             </TableBody>
           </Table>
         </TableContainer>
       }
       {(users.length===0 && !loading)  &&
             <h3>No Users Found</h3>
+      }
+      {!isFind && 
+          (<div className="companies_content">
+						    	<p className="companies_content-text">No users find with name {search_content}</p>
+					</div>)
       }
     </Container>
     {count > limit ? (

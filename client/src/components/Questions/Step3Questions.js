@@ -33,7 +33,9 @@ return ( <>
              <span>Round {round_number+1} details
              <span className="red_color"> *</span>
              </span><br/>
-              <span className="small_text">(Explain in detailed manner and give some sample questions)</span>
+              <span className="small_text">
+                (Explain in detailed manner and plse give some questions)
+               </span>
              </label>
                    <div className="add_review-input-wrapper">
                     <textarea placeholder="write full details about the round" 

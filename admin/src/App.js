@@ -53,6 +53,7 @@ function App(props) {
         <div
             style={{
               maxWidth: "calc(100vw - 80px)",
+              width:"100%"
             }}
           >
         <Switch>

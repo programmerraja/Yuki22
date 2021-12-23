@@ -201,9 +201,8 @@ const admin = {
   },
   deleteUser:function(req,res){
         db.User.findOneAndRemove({_id:req.params.userId})
-        .then((res)=>{
+        .then((user)=>{
                 res.json({status:"sucess",msg:"sucessfully deleted the user"})
-
         })
         .catch(err=>{
               logError(err.msg,err)
@@ -289,7 +288,7 @@ const admin = {
       res.json({status:"failed",msg:"Something went wrong"});
     })
   },
-    verifiyMyEmail:async function (req, res) {
+  verifiyMyEmail:async function (req, res) {
         let user_id = req.params.userId;
         if (user_id) {
             var user = await db.User.findOne({

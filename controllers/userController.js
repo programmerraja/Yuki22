@@ -10,6 +10,17 @@ const {verfiyMail,
       sendReport
     } = require("../util/util");
 
+// let name="test",email="test123@gmail.com",password="pass",department="cse",regNo=950619;
+
+
+  //   db.User.create({
+  //     name,
+  //     email,
+  //     password,
+  //     department,
+  //     regno:regNo,
+  // }).then((A)=>console.log(A));
+
 const user = {
   signIn:function (req, res,next ){
            return passport.authenticate("user_local",{session: false},
