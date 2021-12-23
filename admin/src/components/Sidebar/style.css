@@ -36,7 +36,7 @@
   flex-direction: column;
 }
 
-.menu-bars{
+.menu-bars {
   margin-left: 2rem;
   width: 242px;
   font-size: 20px;
@@ -48,7 +48,7 @@
   display: inline-flex;
 }
 
-h3{
+h3 {
   padding-left: 30px;
 }
 
@@ -57,20 +57,26 @@ h3{
   font-size: 25px;
 }
 
-.sidebar-text{
+.sidebar-text {
   padding: 0 16px;
   color: rgb(9, 58, 21);
 }
 
-.icon-collapsed{
+.icon-collapsed {
   color: rgb(9, 58, 21);
   font-size: 25px;
   margin-left: 10px;
   margin-bottom: 10px;
 }
 
-.Sidemenu{
+.Sidemenu {
   display: flex;
   align-items: center;
   padding-bottom: 18px;
+}
+
+@media (max-width: 500px) {
+  .sidebar {
+    display: none;
+  }
 }
