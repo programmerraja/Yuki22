@@ -2,11 +2,19 @@ const { Telegraf } = require('telegraf')
 	
 const bot = new Telegraf(process.env.telegramToken)
 
-bot.start((ctx) => ctx.reply('Welcome To yuki bot'))
-bot.help((ctx) => ctx.reply('I am the King'))
+let help_text="hai"
 
-bot.on('sticker', (ctx) => ctx.reply('👍'))
-bot.hears('hi', (ctx) => ctx.reply('Hey there'))
+
+bot.start((ctx) => ctx.reply(`Hai ${ctx.message.from.username} \
+							 Welcome To yuki bot.\n \
+							 Check our website for more https://yuki22.herokuapp.com`))
+
+bot.command('help', (ctx) => ctx.reply(`Hey ${ctx.message.from.username} \
+										i am stil not fully compeleted`))
+
+bot.command('joke', (ctx) => ctx.reply(`Hai ${ctx.message.from.username}\n \
+										do you know that ${ctx.message.from.username} 
+										\ was very bad boy`))
 
 bot.launch()
 
