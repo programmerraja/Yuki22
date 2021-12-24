@@ -11,6 +11,7 @@ import Step4Questions from "../../components/Questions/Step4Questions"
 import Step5Questions from "../../components/Questions/Step5Questions"
 
 import API from "../../utils/API";
+import errorHandler from "../../utils/errorHandler";
 
 import "./style.css"
 
@@ -19,7 +20,6 @@ let isPrev=false;
 function AddReview() {
 
    const [steps,setSteps]=useState(1);
-   const [error_msg,setErrorMsg]=useState();
    const [loading,setLoading]=useState(false);
 
    const [name,setName]=useState("");
@@ -179,18 +179,22 @@ function AddReview() {
           .then((res)=>{
                  setLoading(false);
                  if(res.data.status==="sucess"){
-                   history.push("/user/myReviews");
+                   errorHandler(false,
+                    "Thank's a lot for adding interview process and review.\
+                    Your post will help someone to get a job."
+                    ).then(()=>{history.push("/user/myReviews");});
+                   
                  }
                  else{
-                    setErrorMsg(res.data.msg);
+                    errorHandler(true,res.data.msg);
                  }
            })
            .catch((res)=>{
               setLoading(false);
               if(res.data && res.data.msg){
-                setErrorMsg(res.data.msg);
+                    errorHandler(true,res.data.msg);
               }else{
-                setErrorMsg("Something went wrong");
+                    errorHandler(true);
               }
         });
       }
@@ -286,9 +290,6 @@ return ( <>
             
               <div className="add_review-container">
                     {questions_to_show} 
-                    <p className="add_review-error-msg">
-                      {error_msg}
-                    </p>
                     <div className="add_review-button">
                     {steps!==1?
                      <button onClick={onPrevious} >Previous</button>

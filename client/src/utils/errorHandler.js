@@ -3,7 +3,7 @@ import swal from "sweetalert";
 export default function errorHandler(isError,msg) {
 	
 	if(!isError){
-		swal({
+		return swal({
               title: "Success",
               text: msg,
               icon: "success",
@@ -12,7 +12,7 @@ export default function errorHandler(isError,msg) {
 		if(!msg){
 			msg="Something went wrong"
 		}
-		 swal({
+		return swal({
               title: "Error",
               text: msg,
               icon: "error",

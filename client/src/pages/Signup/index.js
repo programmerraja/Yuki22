@@ -78,7 +78,7 @@ return ( <>
 
             <div className="form_input">
               <label for="email"> Email 
-              <span className="sub_title">(if you have college mail use it)</span></label>
+                <span className="sub_title">(if you have college mail use it)</span></label>
               <input name="email" required={true} type="email" onChange={(e)=>{setEmail(e.target.value);}} value={email} />
             </div>
 
@@ -99,11 +99,12 @@ return ( <>
             <input type="password" name="password" required={true} onChange={(e)=>{setPassword(e.target.value);}} value={password} />
             </div>
 
-
             <div className="form_button">
             <input type="submit" name="login" value="Sign Up" className="signup" onClick={siginUp}/>
             </div>
-
+             <div className="form_text">
+               <small> Already have account? <a href="/signin"> Signin </a></small>
+            </div>
         </div>
     </div>
     </>);
