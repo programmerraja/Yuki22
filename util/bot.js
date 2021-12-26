@@ -26,6 +26,9 @@ bot.on("text",(ctx)=>{
 			else if(msg==="/rajastop"){
 				isstop=1
 			}
+			else if(msg==="/rajastart"){
+				isstop=0
+			}
 			else if(msg.startsWith("/")){
 				ctx.reply(`Hai  ${ctx.message.from.first_name} 👋 you saying ${msg}`)
 			}
