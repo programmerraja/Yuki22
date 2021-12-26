@@ -18,21 +18,31 @@ bot.command('raja', (ctx) => ctx.reply(`Hai ${ctx.message.from.first_name}\n Do 
 bot.command('dim', (ctx) => ctx.reply(`Hai ${ctx.message.from.first_name}\n Do you know that dim is foodie. he loves doesa`))
 
 bot.on("text",(ctx)=>{
-	let msg=string(ctx.update.message.text)
+	console.log()
+	let msg=String(ctx.update.message.text)
 	if(!isstop){
 			if(msg==="/i love you"){
 				ctx.reply(`Hai  ${ctx.message.from.first_name} 👋 I love you 😘 TOO`)
 			}
-			else if(msg==="/rajastop"){
+			else if(msg==="/stop" &&  ctx.update.message.from.username==='programmerraja'  ){
+				ctx.reply(`Hai  ${ctx.message.from.first_name} 👋 I will be stopped because my guru said to stop me `)
 				isstop=1
 			}
-			else if(msg==="/rajastart"){
+			else if(msg==="/rajastart" && ctx.update.message.from.username==='programmerraja' ){
+				ctx.reply(`Hai  ${ctx.message.from.first_name} 👋 I will be stopped because my guru said to start me `)
 				isstop=0
+			}
+			else if(msg==="/stop" ){
+				ctx.reply(`Hai  ${ctx.message.from.first_name} 👋 I will not be stopped because my guru(raja) don't said to stop me.\n hello ${ctx.message.from.first_name} i won't obey your word `)
+			}
+			else if(msg==="/start" ){
+				ctx.reply(`Hai  ${ctx.message.from.first_name} 👋 I will not be start because my guru(raja) don't said to start me.\n hello ${ctx.message.from.first_name} i won't obey your word `)
 			}
 			else if(msg.startsWith("/")){
 				ctx.reply(`Hai  ${ctx.message.from.first_name} 👋 you saying ${msg}`)
 			}
 			else{
+				ctx.reply(`Hai  ${ctx.message.from.first_name} 👋 I love you 😘 TOO`)
 				return ;
 			}
 	}
