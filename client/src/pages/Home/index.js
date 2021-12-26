@@ -16,6 +16,9 @@ import jilaba from "../../img/company/jilaba.png";
 import avasoft from "../../img/company/avasoft.png";
 import chainsys from "../../img/company/chainsys.png";
 import zuci from "../../img/company/zuci.png";
+import centizen from "../../img/company/centizen.png";
+import ami from "../../img/company/ami.png";
+
 
 
 function Home() {
@@ -103,10 +106,16 @@ return ( <>
                 <div className="company_img">
                   <img src={zuci}/>
                 </div>
-                <div className="company_img">
-                  <img src={vcidex}/>
+                 <div className="company_img">
+                  <img src={ami}/>
                 </div>
                 <div className="company_img">
+                  <img src={centizen}/>
+                </div>
+                 <div className="company_img">
+                  <img src={vcidex}/>
+                </div>
+                 <div className="company_img">
                   <img src={jilaba}/>
                 </div>
 

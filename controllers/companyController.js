@@ -6,6 +6,11 @@ const passport = require("passport");
 
 const {verfiyMail,dbErrorHandle,sendReport} = require("../util/util");
 
+// db.Compaines.find({}).then((a)=>{a.forEach(g=>{console.log(g)})})
+
+db.Compaines.findOneAndUpdate({_id:"61c9c88eef4e99002903a767"},{name:"american mega trends"}).then((a)=>console.log(a))
+
+
 const company = {
   getCompanyList:function(req,res){
       db.Compaines.find({})
