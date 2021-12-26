@@ -29,7 +29,7 @@ bot.on("text",(ctx)=>{
 				isstop=1
 			}
 			else if(msg==="/rajastart" && ctx.update.message.from.username==='programmerraja' ){
-				ctx.reply(`Hai  ${ctx.message.from.first_name} 👋 I will be stopped because my guru said to start me `)
+				ctx.reply(`Hai  ${ctx.message.from.first_name} 👋 I will be start because my guru said to start me `)
 				isstop=0
 			}
 			else if(msg==="/stop" ){
@@ -42,7 +42,6 @@ bot.on("text",(ctx)=>{
 				ctx.reply(`Hai  ${ctx.message.from.first_name} 👋 you saying ${msg}`)
 			}
 			else{
-				ctx.reply(`Hai  ${ctx.message.from.first_name} 👋 I love you 😘 TOO`)
 				return ;
 			}
 	}
