@@ -18,7 +18,7 @@ bot.command('raja', (ctx) => ctx.reply(`Hai ${ctx.message.from.first_name}\n Do 
 
 bot.command('dim', (ctx) => ctx.reply(`Hai ${ctx.message.from.first_name}\n Do you know that dim is foodie he loves doesa`))
 
-bot.on("text",(ctx)=>ctx.reply("Hai I love you "));
+bot.on("text",(ctx)=>ctx.reply(`Hai  ${ctx.message.from.first_name}👋 I love you 😘`));
 
 bot.launch()
 
