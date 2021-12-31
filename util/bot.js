@@ -66,6 +66,9 @@ bot.on("text",(ctx)=>{
 			else if(msg==="/start" ){
 				ctx.reply(`Hai  ${ctx.message.from.first_name} 👋 I will not be start because my guru(raja) don't said to start me.\n hello ${ctx.message.from.first_name} i won't obey your word `)
 			}
+			else if(msg==="/ask"){
+				ctx.reply(`Hai  @juicyheck i am yuki a bot.\n Plse add intriew process for wipro.`)
+			}
 			else if(msg.startsWith("/")){
 				ctx.reply(`Hai  ${ctx.message.from.first_name} 👋 you saying ${msg}`)
 			}
