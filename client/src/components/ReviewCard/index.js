@@ -55,9 +55,6 @@ function ReviewCard({
                 {isPlaced===1 &&
                 <span className="user_text-green">Placed</span>
                 }
-                {isPlaced===0 &&
-                  <span className="user_text-red">Not Placed</span>
-                }
                 {rating &&
                   <span className="user_text rating">
                   {rating.toFixed(1)}

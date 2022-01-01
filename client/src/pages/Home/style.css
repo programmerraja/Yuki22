@@ -8,12 +8,8 @@
   align-items: center;
   height: 95vh;
 }
-.hero_text
-{
-  font-family: 'Ubuntu', sans-serif;
-}
 .hero_text h1 {
-
+  font-family: 'Ubuntu', sans-serif;
   margin-bottom: 5px;
 }
 .hero_text p {
