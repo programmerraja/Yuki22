@@ -13,7 +13,6 @@ import Step5Questions from "../../components/Questions/Step5Questions"
 import API from "../../utils/API";
 import errorHandler from "../../utils/errorHandler";
 
-
 import "./style.css"
 
 let isPrev=false;
@@ -35,14 +34,13 @@ function EditReview() {
    const [attended_on,setAttendedOn]=useState("");
    const [placement_type,setPlacementType]=useState("onCampus");
    const [off_campus_detail,setOffCampusDetail]=useState("");
-   
 
    const [rounds,setRounds]=useState();
 
    const [rounds_names,setRoundsNames]=useState([]);
    const [rounds_details,setRoundsDetails]=useState([]);
 
-   const [is_placed,setIsPlaced]=useState("1");
+   const [is_placed,setIsPlaced]=useState(1);
 
    const [rating,setRating]=useState();
    const [old_rating,setOldRating]=useState();
@@ -53,6 +51,7 @@ function EditReview() {
    const [role,setRole]=useState("");
 
    const [mobile_no,setMobileNo]=useState("");
+   const[is_anonymous,setIsAnonymous]=useState(false);
 
    const history = useHistory();
    const { reviewId } = useParams();
@@ -92,6 +91,7 @@ function EditReview() {
                setCons(temp_review["cons"]);
                setMobileNo(temp_review["mobileNo"]);
                setRole(temp_review["role"]);
+               setIsAnonymous(temp_review["isAnonymous"])
 
                let temp_rounds_names=Object.keys(temp_review.roundsDetails)
               console.log(temp_rounds_names)
@@ -126,29 +126,31 @@ function EditReview() {
         }
         if(name && attended_on && placement_type){
           if(placement_type==="onCampus"){
+           
             return true;
           }else{
             if(off_campus_detail){
+              
               return true;
             }
             else{
-              setErrorMsg("Plse fill all the data");
+              errorHandler(true,"Plse fill all the data");
               return false;
             }
           }
         }
         else{
-          setErrorMsg("Plse fill all the data");
+          errorHandler(true,"Plse fill all the data");
           return false
         }
 
       }
       if(steps===2){
-        if(rounds){
-          return true
+        if(parseInt(rounds)>0){
+           return true;
         }
         else{
-          setErrorMsg("Plse fill all the data");
+          errorHandler(true,"No of rounds must greater then 0");
           return false
         }
 
@@ -156,20 +158,37 @@ function EditReview() {
       if(steps===3){
         //converting rounds string to int by -0
         if(rounds_names.length===rounds-0 && rounds_details.length===rounds-0){
+          
           return true
         }
         else{
-          setErrorMsg("Plse fill all the data");
+          errorHandler(true,"Plse fill all the data");
           return false
         }
 
       }
       if(steps===4){
-        if(is_placed+""){
+        if(parseInt(is_placed)===0 || parseInt(is_placed)===1){ 
           return true
         }
         else{
-          setErrorMsg("Plse fill all the data");
+          errorHandler(true,"Plse fill all the data");
+          return false
+        }
+
+      }
+      if(steps===5){
+        if(rating){
+          if(rating>=0 && rating<=5){
+            
+            return true
+          }else{
+            errorHandler(true,"rating must be between 0 and 5");
+            return false
+          }
+        }
+        else{
+          errorHandler(true,"Plse fill all the data");
           return false
         }
 
@@ -206,7 +225,7 @@ function EditReview() {
                         placement_type,rounds,
                         rounds_detail,is_placed,
                         rating,old_rating,pros,cons,
-                        salary,mobile_no,role
+                        salary,mobile_no,role,is_anonymous
                       }
       }
       else{
@@ -214,7 +233,7 @@ function EditReview() {
                         placement_type,off_campus_detail,rounds,
                         rounds_detail,is_placed,
                         rating,old_rating,pros,cons,
-                        salary,mobile_no,role
+                        salary,mobile_no,role,is_anonymous
                       }
       }
       API.updateMyReview(obj)
@@ -313,6 +332,8 @@ function EditReview() {
                             setMobileNo={setMobileNo}
                             role={role}
                             setRole={setRole}
+                            is_anonymous={is_anonymous}
+                            setIsAnonymous={setIsAnonymous}
                       />)
    }
 

@@ -9,6 +9,7 @@ import nailitdown from "../../img/nailitdown.jpg";
 
 import tcs from "../../img/company/tcs.png";
 import zoho from "../../img/company/zoho.png";
+import wipro from "../../img/company/wipro.png";
 import softsquare from "../../img/company/softsquare.png";
 import mobius from "../../img/company/mobius.png";
 import vcidex from "../../img/company/vcidex.png";
@@ -18,6 +19,7 @@ import chainsys from "../../img/company/chainsys.png";
 import zuci from "../../img/company/zuci.png";
 import centizen from "../../img/company/centizen.png";
 import ami from "../../img/company/ami.png";
+import smackcoders from "../../img/company/smackcoders.png";
 
 
 
@@ -28,13 +30,13 @@ return ( <>
            <div className="hero_text">
               <h1> Find the company that suits You </h1>
               <p>Make use of the interview process and reviews<br/>
-                to place the company that you like.</p>
+                to get placed in the company.</p>
               <div className="hero_button">
                  <a href="/signin">
                  <input type="button" name="signin" value="Sign in" className="hero_button1" />
                  </a>
                  <a href="/companies">
-                 <input type="button" name="companies" value="See Companies" className="hero_button2" />
+                 <input type="button" name="companies" value="Companies" className="hero_button2" />
                  </a>
               </div>
            </div>
@@ -91,6 +93,9 @@ return ( <>
                 <div className="company_img">
                   <img src={tcs}/>
                 </div>
+                 <div className="company_img">
+                  <img src={wipro}/>
+                </div>
                 <div className="company_img">
                   <img src={softsquare}/>
                 </div>
@@ -98,16 +103,16 @@ return ( <>
                   <img src={avasoft}/>
                 </div>
                 <div className="company_img">
-                  <img src={chainsys}/>
-                </div>
-                <div className="company_img">
-                  <img src={mobius}/>
-                </div>
-                <div className="company_img">
                   <img src={zuci}/>
+                </div>
+                <div className="company_img">
+                  <img src={chainsys}/>
                 </div>
                  <div className="company_img">
                   <img src={ami}/>
+                </div>
+                <div className="company_img">
+                  <img src={mobius}/>
                 </div>
                 <div className="company_img">
                   <img src={centizen}/>
@@ -117,8 +122,10 @@ return ( <>
                 </div>
                  <div className="company_img">
                   <img src={jilaba}/>
-                </div>
-
+                 </div>
+                 <div className="company_img">
+                    <img src={smackcoders}/>
+                 </div>
             </div>
         </section>
         <section className="follow_container">  

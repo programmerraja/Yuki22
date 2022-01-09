@@ -33,7 +33,7 @@ function Step1Questions({name,
                    <span>Passed out year<span className="red_color">*</span></span></label>
                          <div className="add_review-input-wrapper">
                           <input  type="number" 
-                                  placeholder="attended on  year"  
+                                  placeholder="Passed out year"  
                                   name="attendedOn"  
                                   className="add_review-input" 
                                   value={attended_on}

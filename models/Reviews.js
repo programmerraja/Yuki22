@@ -47,6 +47,10 @@ const ReviewsSchema = new mongoose.Schema(
     },
     rating: {
       type:Number
+    },
+    isAnonymous:{
+      type:Boolean,
+      default:false
     }
   },
   { timestamps: true }

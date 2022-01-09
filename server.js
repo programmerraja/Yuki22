@@ -11,8 +11,8 @@ const passport = require("./passport");
 const routes = require("./routes");
 const {sendWhoIs} = require("./util/util");
 const bot = require("./util/bot");
- 
-const PORT = process.env.PORT || 3002;
+
+const PORT = process.env.PORT || 3001;
 
 // // Define middleware here
 // app.use(compression({filter:(req,res)=>{

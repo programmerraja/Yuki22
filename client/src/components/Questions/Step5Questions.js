@@ -12,7 +12,9 @@ function Step5Questions({ rating,
                           mobile_no,
                           setMobileNo,
                           role,
-                          setRole
+                          setRole,
+                          is_anonymous,
+                          setIsAnonymous
                         }) {
    
 return ( <>
@@ -103,6 +105,18 @@ return ( <>
                                   value={mobile_no}
                                   onChange={(e)=>{setMobileNo(e.target.value);}}
                                   />
+                         </div>
+                   </div>
+                     <div  className="add_review-from">
+                         <div className="add_review-input-wrapper">
+                          <input
+                                  type="checkbox" 
+                                  checked={is_anonymous}
+                                  onChange={(e)=>{setIsAnonymous(!is_anonymous);}}
+                                  />
+                           <label  className="add_review-label">
+                           <span>Post as anonymous (your name and other personal details won't shown on website) </span></label>
+                           
                          </div>
                    </div>
             

@@ -61,7 +61,10 @@ function ReviewCard({
                   <i className="far fa-star"></i></span>
                 }
               </div>
-            <p className="user_name">{user.name}({user.regno})</p>
+            <p className="user_name">{user.name}
+            {user.regno && 
+              (user.regno)
+            }</p>
             <span className="user_text-small">{user.department}</span>
           </div>
         </div>

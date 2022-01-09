@@ -1,5 +1,5 @@
 import React from "react";
-import {useState,useEffect} from "react";
+import {useState,useEffect,useCallback} from "react";
 import {useHistory } from "react-router-dom";
 
 import SquareLoader from  "../../components/SquareLoader";
@@ -34,7 +34,7 @@ function AddReview() {
    const [rounds_names,setRoundsNames]=useState([]);
    const [rounds_details,setRoundsDetails]=useState([]);
 
-   const [is_placed,setIsPlaced]=useState("1");
+   const [is_placed,setIsPlaced]=useState(1);
 
    const [rating,setRating]=useState();
    const [pros,setPros]=useState("");
@@ -42,6 +42,7 @@ function AddReview() {
    const [salary,setSalary]=useState();
    const [mobile_no,setMobileNo]=useState("");
    const [role,setRole]=useState("");
+   const[is_anonymous,setIsAnonymous]=useState(false);
 
    const history = useHistory();
 
@@ -60,35 +61,80 @@ function AddReview() {
               setCompanyNames([]);
           }
     });
+      setReviewFromLocal();
    },[])
 
+   let setReviewFromLocal=useCallback(()=>{
+        let review=JSON.parse(localStorage.getItem("review"));
+        if(review){
+               setName(review["name"]?review["name"]:"");
+               setAttendedOn(review["attended_on"]?review["attended_on"]:"");
+               setPlacementType(review["placement_type"]?review["placement_type"]:"");
+               setOffCampusDetail(review["off_campus_detail"]?review["off_campus_detail"]:"")
+               setRounds(review["rounds"]?review["rounds"]:"");
+               setRoundsDetails(review["rounds_details"]?review["rounds_details"]:"");
+               setRoundsNames(review["rounds_names"]?review["rounds_names"]:"");
+               setIsPlaced(review["is_placed"]?review["is_placed"]:"")
+               setRating(review["rating"]?review["rating"]:"");
+               setSalary(review["salary"]?review["salary"]:"");
+               setPros(review["pros"]?review["pros"]:"");
+               setCons(review["cons"]?review["cons"]:"");
+               setMobileNo(review["mobile_no"]?review["mobile_no"]:"");
+               setRole(review["role"]?review["role"]:"");
+               setIsAnonymous(review["is_anonymous"]?review["is_anonymous"]:"");
+               setSteps(review["steps"]?review["steps"]:1);
+        }
+   },[])
+   
    let validateForm=()=>{
       if(steps===1){
         if(name && attended_on && placement_type){
           if(placement_type==="onCampus"){
+            let review=JSON.parse(localStorage.getItem("review"));
+            if(review){
+              localStorage.setItem("review",JSON.stringify({...review,name,attended_on,placement_type,steps:2}))
+            }else{
+              localStorage.setItem("review",JSON.stringify({name,attended_on,placement_type,steps:2}))
+            }
             return true;
+            
           }else{
             if(off_campus_detail){
+            //storing on local storage
+            let review=JSON.parse(localStorage.getItem("review"));
+            if(review){
+              localStorage.setItem("review",JSON.stringify({...review,name,attended_on,placement_type,off_campus_detail,steps:2}))
+            }else{
+              localStorage.setItem("review",JSON.stringify({name,attended_on,placement_type,off_campus_detail,steps:2}))
+            }
               return true;
             }
             else{
-              setErrorMsg("Plse fill all the data");
+              errorHandler(true,"Plse fill all the data");
               return false;
             }
           }
         }
         else{
-          setErrorMsg("Plse fill all the data");
+          errorHandler(true,"Plse fill all the data");
           return false
         }
 
       }
       if(steps===2){
-        if(rounds){
+        if(parseInt(rounds)>0){
+           //storing on local storage
+           let review=JSON.parse(localStorage.getItem("review"));
+
+           if(review){
+              localStorage.setItem("review",JSON.stringify({...review,rounds,steps:3}))
+            }else{
+              localStorage.setItem("review",JSON.stringify({rounds,steps:3}))
+            }
           return true
         }
         else{
-          setErrorMsg("Plse fill all the data");
+          errorHandler(true,"No of rounds must greater then 0");
           return false
         }
 
@@ -96,21 +142,35 @@ function AddReview() {
       if(steps===3){
         //converting rounds string to int by -0
         if(rounds_names.length===rounds-0 && rounds_details.length===rounds-0){
+           //storing on local storage
+            let review=JSON.parse(localStorage.getItem("review"));
+
+            if(review){
+              localStorage.setItem("review",JSON.stringify({...review,rounds_details,rounds_names,steps:4}))
+            }else{
+              localStorage.setItem("review",JSON.stringify({rounds_details,rounds_names,steps:4}))
+            }
           return true
         }
         else{
-          setErrorMsg("Plse fill all the data");
+          errorHandler(true,"Plse fill all the data");
           return false
         }
 
       }
       if(steps===4){
-        //converting rounds string to int by -0
-        if(is_placed==="0" || is_placed==="1"){
+        if(parseInt(is_placed)===0 || parseInt(is_placed)===1){ 
+           //storing on local storage
+            let review=JSON.parse(localStorage.getItem("review"));
+            if(review){
+              localStorage.setItem("review",JSON.stringify({...review,is_placed,steps:5}))
+            }else{
+              localStorage.setItem("review",JSON.stringify({is_placed,steps:5}))
+            }
           return true
         }
         else{
-          setErrorMsg("Plse fill all the data");
+          errorHandler(true,"Plse fill all the data");
           return false
         }
 
@@ -118,26 +178,34 @@ function AddReview() {
       if(steps===5){
         if(rating){
           if(rating>=0 && rating<=5){
+             //storing on local storage
+            let review=JSON.parse(localStorage.getItem("review"));
+            if(review){
+              localStorage.setItem("review",JSON.stringify({...review,rating,pros,cons,mobile_no,salary,role,is_anonymous,steps:5}))
+            }else{
+              localStorage.setItem("review",JSON.stringify({rating,pros,cons,mobile_no,salary,role,is_anonymous,steps:5}))
+            }
             return true
           }else{
-            setErrorMsg("rating must be between 0 and 5");
+            errorHandler(true,"rating must be between 0 and 5");
+            return false
           }
         }
         else{
-          setErrorMsg("Plse fill all the data");
+          errorHandler(true,"Plse fill all the data");
           return false
         }
 
       }
       
    }
+
    let onNext=()=>{
       if(steps+1===3){
         isPrev=false
       }
       if(validateForm()){
         setSteps(steps+1);
-        setErrorMsg("");
       }
    }
 
@@ -146,11 +214,12 @@ function AddReview() {
         isPrev=true;
       }
       setSteps(steps-1);
-      setErrorMsg("");
    }
   
    let onSubitReview=()=>{
       if(validateForm()){
+          //removeing from local storage
+          localStorage.removeItem("review");
           setLoading(true);
           let rounds_detail={};
           for(let i=0;i<rounds_names.length;i++){
@@ -164,7 +233,7 @@ function AddReview() {
                 rounds_detail,is_placed,
                 rating,pros,cons,
                 salary,mobile_no,
-                role}
+                role,is_anonymous}
           }
           else{
             obj={name,
@@ -173,7 +242,7 @@ function AddReview() {
                 rounds_detail,is_placed,
                 rating,pros,cons,
                 salary,mobile_no,
-                role}
+                role,is_anonymous}
           }
           API.addMyReview(obj)
           .then((res)=>{
@@ -272,6 +341,8 @@ function AddReview() {
                             setMobileNo={setMobileNo}
                             role={role}
                             setRole={setRole}
+                            is_anonymous={is_anonymous}
+                            setIsAnonymous={setIsAnonymous}
                       />)
    }
 

@@ -38,7 +38,12 @@ const company = {
       db.Reviews.find({companyId:req.params.companyId})
       .then(async(reviews)=>{
         async function getUser(index){
-          let user=await db.User.findOne({_id:reviews[index]["userId"]});
+          let user;
+          if(!reviews[index]["_doc"]["isAnonymous"]){
+             user=await db.User.findOne({_id:reviews[index]["userId"]});
+          }else{
+            user={name:"Anonymous",regno:"",department:""};
+          }
           if(user){
             reviews[index]["_doc"]["user"]={name:user.name,regno:user.regno,department:user.department};
           }

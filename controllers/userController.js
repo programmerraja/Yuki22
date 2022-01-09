@@ -131,7 +131,7 @@ const user = {
           placement_type,off_campus_detail,rounds,
           rounds_detail,is_placed,
           rating,pros,cons,
-          salary,mobile_no,role
+          salary,mobile_no,role,is_anonymous
         }=req.body
     if(name && attended_on && placement_type &&  rounds && rounds_detail  ){
         db.Compaines.findOne({name:name.toLowerCase()})
@@ -158,7 +158,8 @@ const user = {
                                 cons:cons,
                                 salary:salary,
                                 mobileNo:mobile_no,
-                                role:role
+                                role:role,
+                                isAnonymous:is_anonymous
                               })
                               .then((reviewObj)=>{
                                 res.json({status:"sucess",msg:"sucessfully added your review"})
@@ -219,7 +220,8 @@ const user = {
                         cons:cons,
                         salary:salary,
                         mobileNo:mobile_no,
-                        role:role
+                        role:role,
+                        isAnonymous:is_anonymous
                       })
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully added your review"})
@@ -273,7 +275,7 @@ const user = {
           rounds_detail,is_placed,
           rating,pros,cons,
           old_rating,
-          salary,mobile_no,role
+          salary,mobile_no,role,is_anonymous
         }=req.body
     if(name && attended_on && placement_type &&  rounds && rounds_detail  ){
         db.Compaines.findOne({name:name.toLowerCase()})
@@ -294,7 +296,8 @@ const user = {
                           cons:cons,
                           salary:salary,
                           mobileNo:mobile_no,
-                          role:role
+                          role:role,
+                          isAnonymous:is_anonymous
                       })
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully updated your review"})
