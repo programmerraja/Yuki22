@@ -463,6 +463,7 @@ const user = {
   getMyReviews:function(req,res){
     db.Reviews.find({userId:req.user._id})
     .then(async (reviews)=>{
+      
       async function appendCompanyAndUser(index){
         let company=await db.Compaines.findOne({_id:reviews[index]["companyId"]});
         if(company){
@@ -473,6 +474,7 @@ const user = {
           await appendCompanyAndUser(index+1);
         }
       }
+      
       if(reviews.length){
         await appendCompanyAndUser(0);
       }
