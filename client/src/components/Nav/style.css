@@ -115,12 +115,13 @@
     height: 350px;
     background: var(--primary-color);
     top: 0px;
-    transition: transform 0.5s ease-in;
-    transform: translateY(-500px);
+    transition: transform  0.3s ease-in;
+    transform: translateX(-390px);
+    z-index: 100;
   }
 
   .nav_list_show {
-    transform: translateY(0px);
+    transform: translateX(0px);
     z-index: 100;
   }
 
