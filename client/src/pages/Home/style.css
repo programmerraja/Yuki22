@@ -6,7 +6,7 @@
   flex-wrap: wrap;
   text-transform: capitalize;
   align-items: center;
-  /*height: 5vh;*/
+  /*height: 5vh;*/  
 }
 .hero_text h1 {
   font-family: 'Ubuntu', sans-serif;
@@ -72,7 +72,8 @@
   justify-content: space-between;
   margin: auto;
   width: 90%;
-  padding: 0.4rem;
+  padding: 10px;
+  padding-bottom: 20px;
 }
 .how_itworks-card {
   color: rgb(80, 88, 99);
@@ -84,17 +85,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 0.5rem;
+  /*border-radius: 0.5rem;*/
   border: 1px solid rgb(222, 224, 227);
   box-shadow: rgb(196 199 204) 0px 0px 2px;
   background-color: rgb(255, 255, 255);
   /* background: linear-gradient(45deg, #9341d4 0%, #d98efb 100%);
-	    filter: drop-shadow(0px 40px 15px rgba(147,65,212,0.4));
+	    filter: drop-shad
+      ow(0px 40px 15px rgba(147,65,212,0.4));
 	    -webkit-filter: drop-shadow(0px 40px 15px rgba(147,65,212,0.4));
 	    -moz-filter: drop-shadow(0px 40px 15px rgba(147,65,212,0.4));*/
 }
 .how_itworks-img {
   height: 150px;
+  border-radius: 25%;
+  /*background-color: var(--primary-color);*/
   width: 150px;
 }
 .how_itworks-text-bold {
