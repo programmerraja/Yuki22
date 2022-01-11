@@ -3,7 +3,8 @@
   	position: absolute;
     width: 100%;
     height: 1px;
-    bottom: 0px;
+    bottom:0px;
+    margin-top: 10px;
 }
 
 .copyright {

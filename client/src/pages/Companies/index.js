@@ -127,67 +127,69 @@ function Companies(){
 	  return ( 
 	    <>
 	    <SquareLoader  loading={loading}/>
-			<div className="companies_container">
-				<div className="companies_search-wrapper">
-				 <input type="text" 
-				 		className="companies_search" 
-				 		placeholder="Search here.."
-				 		value={search_content}
-				 		onChange={(e)=>{search(e.target.value)}}
-				 />
-				 <div className="filter_option-wrapper">
-					 <label className="filter_option-label">
-	                   <span>Sort By: </span></label>
-					   <select
-	                          className="filter_option" 
-	                          onChange={(e)=>{
-	                          	setSortBy(e.target.value);
-	                          	sortedCompanyList(e.target.value);}}>
-		                  <option value="">None</option>
-		                  <option value="hrating">Rating High to Low</option>
-		                  <option value="lrating">Rating Low to High</option>
-		                  <option value="hreview">Reviews High to Low</option>
-		                  <option value="lreview">Reviews Low to High</option>
-		                  <option value="lname">Name(asec)</option>
-		                  <option value="hname">Name(desc)</option>
-	                 </select>
-                 </div>
-				</div>
-			    	{
-				    	 company_lists.length>0
-				    	?
-				    	(
-				    		<div className="companies_content-wrapper">
-					    		{company_lists.map((companiesObj,index)=>
-					    		{
-					    			if(!companiesObj.isShow){
-					    				isFind=1;
-						    			return(
-						    				<div className="companies_content" key={companiesObj.name}>
-						    				  <Link to={"/company/reviews/"+companiesObj._id} className="link flex2"> 
-						    					<p className="companies_content-text "><i className="far fa-building"></i>{companiesObj.name}</p>
-						    				  </Link>
-						    					<p className="companies_content-rating flex1">{companiesObj.rating && companiesObj.noOfReviews?(companiesObj.rating/companiesObj.noOfReviews).toFixed(1):0}<i className="far fa-star"></i> </p>
-						    					<p className="companies_content-review flex1">{companiesObj.noOfReviews}<i className="fas fa-user-friends"></i></p>
-						    				</div>
-						    			)
-						    		}
-					    		})
+	    <div className="companies_wrapper">
+				<div className="companies_container">
+					<div className="companies_search-wrapper">
+					 <input type="text" 
+					 		className="companies_search" 
+					 		placeholder="Search here.."
+					 		value={search_content}
+					 		onChange={(e)=>{search(e.target.value)}}
+					 />
+					 <div className="filter_option-wrapper">
+						 <label className="filter_option-label">
+		                   <span>Sort By: </span></label>
+						   <select
+		                          className="filter_option" 
+		                          onChange={(e)=>{
+		                          	setSortBy(e.target.value);
+		                          	sortedCompanyList(e.target.value);}}>
+			                  <option value="">None</option>
+			                  <option value="hrating">Rating High to Low</option>
+			                  <option value="lrating">Rating Low to High</option>
+			                  <option value="hreview">Reviews High to Low</option>
+			                  <option value="lreview">Reviews Low to High</option>
+			                  <option value="lname">Name(asec)</option>
+			                  <option value="hname">Name(desc)</option>
+		                 </select>
+	                 </div>
+					</div>
+				    	{
+					    	 company_lists.length>0
+					    	?
+					    	(
+					    		<div className="companies_content-wrapper">
+						    		{company_lists.map((companiesObj,index)=>
+						    		{
+						    			if(!companiesObj.isShow){
+						    				isFind=1;
+							    			return(
+							    				<div className="companies_content" key={companiesObj.name}>
+							    				  <Link to={"/company/reviews/"+companiesObj._id} className="link flex2"> 
+							    					<p className="companies_content-text "><i className="far fa-building"></i>{companiesObj.name}</p>
+							    				  </Link>
+							    					<p className="companies_content-rating flex1">{companiesObj.rating && companiesObj.noOfReviews?(companiesObj.rating/companiesObj.noOfReviews).toFixed(1):0}<i className="far fa-star"></i> </p>
+							    					<p className="companies_content-review flex1">{companiesObj.noOfReviews}<i className="fas fa-user-friends"></i></p>
+							    				</div>
+							    			)
+							    		}
+						    		})
 
-					    	}
-					    	{!isFind && (<div className="companies_content">
-						    					<p className="companies_content-text">No compaines find with name {search_content}</p>
-						    				</div>)}
-						   </div>
-				    	)
-				    	:
-				    	(	
-				    	<div className="companiesContainer">
-				    		<p> No companies found</p>
-				    	</div>
-				    	)
-			    }
-			 </div>
+						    	}
+						    	{!isFind && (<div className="companies_content">
+							    					<p className="companies_content-text">No compaines find with name {search_content}</p>
+							    				</div>)}
+							   </div>
+					    	)
+					    	:
+					    	(	
+					    	<div className="companiesContainer">
+					    		<p> No companies found</p>
+					    	</div>
+					    	)
+				    }
+				 </div>
+				</div>
 			    
 	    </>);
 	  }
