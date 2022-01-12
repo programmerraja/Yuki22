@@ -55,7 +55,7 @@ const company = {
                 if(review.isAnonymous){
                   review.user={name:"anonymous",dept:"",regNo:""};
                 }else{
-                  review.user={name:review.user[0].name,department:review.user[0].department,regNo:review.user[0].regno};
+                  review.user={name:review.user[0].name,department:review.user[0].department,regno:review.user[0].regno};
                 }
              })
 
@@ -80,8 +80,7 @@ const company = {
            {$lookup:lookup},
            {$sort:{[req.query.sortBy]:parseInt(req.query.type)}}
         ]
-        )
-        .then(async(reviews)=>{
+        ).then(async(reviews)=>{
              //appending company data to first one
              let company=await db.Compaines.findOne({_id:req.params.companyId});
              reviews[0]["company"]={...company._doc};
@@ -91,7 +90,7 @@ const company = {
                 if(review.isAnonymous){
                   review.user={name:"anonymous",dept:"",regNo:""};
                 }else{
-                  review.user={name:review.user[0].name,department:review.user[0].department,regNo:review.user[0].regno};
+                  review.user={name:review.user[0].name,department:review.user[0].department,regno:review.user[0].regno};
                 }
              })
              res.json({status:"sucess",reviews:reviews});

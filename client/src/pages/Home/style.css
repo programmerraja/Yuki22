@@ -171,7 +171,25 @@
 .follow_icons i {
   font-size: 50px;
 }
-
+/*.float_icon{
+  position: fixed;
+  right: 10px;
+  bottom: 70px;
+}
+.float_icon a{
+  position: relative;
+}
+.float_icon a::before{
+  content: "Telegram";
+  position: absolute;
+  bottom: 4px;
+  right: 50px;
+  background-color: yellow;
+  padding: 0.4rem;
+  border-radius: 1rem;
+  display: block;
+ 
+}*/
 @media (max-width: 990px) {
   .how_itworks_container {
     flex-wrap: wrap;

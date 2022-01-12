@@ -63,7 +63,7 @@ function ReviewCard({
               </div>
             <p className="user_name">{user.name}
             {user.regno && 
-              (user.regno)
+              <span>({user.regno})</span>
             }</p>
             <span className="user_text-small">{user.department}</span>
           </div>
