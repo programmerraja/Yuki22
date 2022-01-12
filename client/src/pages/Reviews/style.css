@@ -3,17 +3,6 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	 display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 1rem auto;
-  width: 75%;
-  color: rgb(80, 88, 99);
-  padding: 24px;
-  border-radius: 3px;
-  border: 1px solid rgb(222, 224, 227);
-  box-shadow: rgb(196 199 204) 0px 0px 2px;
-  background-color: rgb(255, 255, 255);
 }
 .companies_contents{
 	min-height: 20px;
