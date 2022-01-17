@@ -7,7 +7,8 @@
   /*backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   box-shadow: 0 8px 3px 0 rgba(31, 38, 135, 0.37);*/
-  color: white;
+  /*box-shadow: rgb(196 199 204) 0px 0px 2px;*/
+  color: var(--font-color);
   margin:0;
   height: 50px;
 }
