@@ -9,12 +9,12 @@
   align-items: center;
   margin: 1rem auto;
   width: 75%;
-  color: rgb(80, 88, 99);
+  color: var(--font-color);
   padding: 24px;
   border-radius: 3px;
   border: 1px solid rgb(222, 224, 227);
   box-shadow: rgb(196 199 204) 0px 0px 2px;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--secondary-color-light);
 }
 .companies_search-wrapper {
   width: 100%;
@@ -28,10 +28,13 @@
   border-right: 0;
   border-left: 0;
   outline: none;
+  color: var(--font-color);
+  background-color: var(--secondary-color-light);
 }
 .filter_option-wrapper,
 .companies_search-wrapper input {
   margin: 1rem;
+ 
 }
 .filter_option-label,
 .filter_option {
@@ -43,6 +46,8 @@
   width: 110px;
   font-size: 15px;
   outline: none;
+  color: var(--font-color);
+  background-color: var(--secondary-color-light);
 }
 
 .companies_content-wrapper {
@@ -68,7 +73,7 @@
   font-size: 19px;
 }
 .link {
-  color: black;
+  color: var(--font-color);
 }
 
 .flex1 {

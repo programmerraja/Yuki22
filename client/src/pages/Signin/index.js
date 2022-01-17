@@ -60,7 +60,7 @@ function Signin({setUser}){
     <>
     <SquareLoader  loading={loading}/>
     <div className="user">
-      <img src={ user } className="user-img" />
+      <p>Welcome Back</p>
     </div>  
     <div className="signin_container">
       <div className="form_container">

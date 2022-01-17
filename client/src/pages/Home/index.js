@@ -1,4 +1,6 @@
 import {React} from "react";
+import Footer from "../../components/Footer";
+
 import "./style.css";
 
 import hero from "../../img/hero.jpg";
@@ -142,10 +144,11 @@ return ( <>
             </div>
             <div className="follow_icons">
                 <a href="https://github.com/programmerraja/Yuki22">
-                    <i style={{color:"black"}} className="fab fa-github"></i>
+                    <i className="fab fa-github"></i>
                 </a>
             </div>
         </section>
+        <Footer/>
     </>);
 }
 

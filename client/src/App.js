@@ -76,7 +76,7 @@ function App(props) {
           
           <Route component={NotFound}/>
         </Switch>
-        <Footer/>
+       
       </Router>
     </>
   );

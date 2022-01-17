@@ -21,9 +21,10 @@
     opacity: .9;
 }
 .add_review-container{
-	background-color:#f1efef;
+    background-color: var(--secondary-color-light);
+    color: var(--font-color);
     box-shadow: rgb(196 199 204) 0px 0px 2px;
-    border: 1px solid rgb(222, 224, 227);
+    /*border: 1px solid rgb(222, 224, 227);*/
     border-radius: 3px;
     padding: 1rem;
     margin: 0.5rem 0;
@@ -31,7 +32,7 @@
     min-width: 450px;
 }
 .add_review-container label{
-	color:black;
+    color: var(--font-color);
 }
 .add_review-from{
 	margin-bottom: 12px;
@@ -44,6 +45,7 @@
 .add_review-input{
 	border: 0;
 	outline: 0;
+    background-color: var(--secondary-color-light);
 }
 .suggestion_container{
 	height: 90px;
@@ -76,8 +78,8 @@
 	align-items: center;
 }
 .add_review-button button{
-	color: #fff;
-    background-color: orange;
+	color: var(--font-color);
+    background-color: var(--primary-color);
     padding: 7px 16px;
     outline: none;
     border: 0;
@@ -94,8 +96,14 @@
     padding: 0 12px;
     padding-right: 12px;
     padding-left: 12px;
-    color: #505863;
+    color: var(--font-color);
     width: 100%;
+    background-color: var(--secondary-color-input);
+}
+.add_review-input::placeholder,
+.add_review-textarea::placeholder{
+	text-transform: capitalize;
+	padding: 0.3rem 0;
 }
 .add_review-textarea{
 	height: auto;

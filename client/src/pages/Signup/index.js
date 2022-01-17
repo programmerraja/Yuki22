@@ -7,9 +7,6 @@ import SquareLoader from  "../../components/SquareLoader";
 import API from "../../utils/API";
 import errorHandler from "../../utils/errorHandler";
 
-
-import user from "../../img/user.png";
-
 function Signup() {
    const [name,setName]=useState("");
    const [regNo,setRegNo]=useState("");
@@ -59,12 +56,9 @@ function Signup() {
   }
 
 return ( <>
-    <SquareLoader  loading={loading}/>
-    <div className="user">
-       <img src={ user } className="user-img" />
-    </div>
-
-    <div className="signup_container">
+    <SquareLoader  loading={loading}/>  
+    <div className="signup_wrapper">
+     <div className="signup_container">
         <div className="form_container">
             <div className="form_input">
               <label for="name"> Name </label>
@@ -106,6 +100,7 @@ return ( <>
                <small> Already have account? <a href="/signin"> Signin </a></small>
             </div>
         </div>
+     </div>
     </div>
     </>);
 

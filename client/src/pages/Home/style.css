@@ -7,6 +7,8 @@
   text-transform: capitalize;
   align-items: center;
   /*height: 5vh;*/  
+  color: var(--font-color);
+
 }
 .hero_text h1 {
   font-family: 'Ubuntu', sans-serif;
@@ -33,7 +35,8 @@
   text-align: center;
   border-radius: 0.5em;
   outline: none;
-  border: 2px solid white;
+  /*border: 2px solid white;*/
+  border: none;
   font-weight: 400;
 }
 
@@ -59,7 +62,7 @@
 /*	SECTION STYLE 		*/
 
 .section_container {
-  background-color: #f7f7f7;
+  background-color: var(--secondary-color-light);
 }
 
 .section_title {
@@ -76,7 +79,7 @@
   padding-bottom: 20px;
 }
 .how_itworks-card {
-  color: rgb(80, 88, 99);
+  /*color: rgb(80, 88, 99);*/
   padding: 24px;
   margin: 0.5rem;
   width: 250px;
@@ -89,11 +92,8 @@
   border: 1px solid rgb(222, 224, 227);
   box-shadow: rgb(196 199 204) 0px 0px 2px;
   background-color: rgb(255, 255, 255);
-  /* background: linear-gradient(45deg, #9341d4 0%, #d98efb 100%);
-	    filter: drop-shad
-      ow(0px 40px 15px rgba(147,65,212,0.4));
-	    -webkit-filter: drop-shadow(0px 40px 15px rgba(147,65,212,0.4));
-	    -moz-filter: drop-shadow(0px 40px 15px rgba(147,65,212,0.4));*/
+  background-color: var(--secondary-color);
+  color: var(--font-color);
 }
 .how_itworks-img {
   height: 150px;
@@ -160,9 +160,11 @@
   padding: 1rem;
   align-items: center;
   flex-direction: column;
-  border: 1px solid rgb(222, 224, 227);
+  /*border: 1px solid rgb(222, 224, 227);*/
   /*box-shadow: rgb(196 199 204) 0px 0px 2px;*/
-  background-color: #f7f7f7;
+  /*background-color: #f7f7f7;*/
+  background-color: var(--secondary-color-light);
+
 }
 .follow_text h5 {
   margin-top: 0;
@@ -170,6 +172,7 @@
 }
 .follow_icons i {
   font-size: 50px;
+  color: var(--primary-color);
 }
 /*.float_icon{
   position: fixed;
@@ -200,7 +203,7 @@
 @media (max-width: 700px) {
   /*	HERO STYLE */
   .hero_container {
-    height: 85vh;
+    height: 80vh;
   }
   .hero_text{
     margin-top: 1.7rem;
@@ -211,9 +214,12 @@
   .hero_text p {
     font-size: 11px;
   }
-
+  .hero_img{
+    margin: auto;
+    max-width: 90%;
+  }
   .hero_img img {
-    height: 385px;
+    /*height: 385px;*/
     max-width: 100%;
   }
 
@@ -221,6 +227,10 @@
   .how_itworks_container {
     flex-wrap: wrap;
     justify-content: center;
+  }
+  .how_itworks-card{
+    height: 200px;
+    width: 200px;
   }
   .company_wrapper {
     width: 100%;
