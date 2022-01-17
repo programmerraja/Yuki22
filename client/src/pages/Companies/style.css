@@ -12,7 +12,7 @@
   color: var(--font-color);
   padding: 24px;
   border-radius: 3px;
-  border: 1px solid rgb(222, 224, 227);
+  /*border: 1px solid rgb(222, 224, 227);*/
   box-shadow: rgb(196 199 204) 0px 0px 2px;
   background-color: var(--secondary-color-light);
 }
