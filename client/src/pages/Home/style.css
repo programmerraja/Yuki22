@@ -237,4 +237,7 @@
   .company_wrapper {
     width: 100%;
   }
+  .company_subheading {
+    font-size: 11px;
+  }
 }

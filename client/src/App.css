@@ -17,3 +17,25 @@ body{
   background-color: var(--secondary-color);
   font-family: 'Poppins',sans-serif;
 }
+
+.swal-modal{
+  background-color:rgba(21,34,81,0.8);
+  color: var(--font-color);
+}
+
+.swal-title,
+.swal-text{
+  color: var(--font-color);
+}
+.swal_text{
+  margin: 0;
+}
+.swal-button{
+  background-color: var(--primary-color);
+  border-radius: 0.2rem;
+  outline: none;
+  box-shadow: none;
+}
+.swal-button:hover{
+  box-shadow: none;
+}

@@ -34,7 +34,7 @@ return ( <>
              <span className="red_color"> *</span>
              </span><br/>
               <span className="small_text">
-                (Explain in detailed manner and plse give some questions)
+                (Explain in detailed manner and plse give some questions asked during your interview)
                </span>
              </label>
                    <div className="add_review-input-wrapper">

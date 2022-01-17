@@ -10,12 +10,17 @@ export default function errorHandler(isError,msg) {
             });
 	}else{
 		if(!msg){
-			msg="Something went wrong"
+			msg="Something went wrong plse try again later"
 		}
 		return swal({
               title: "Error",
-              text: msg,
-              icon: "error",
+              content:{
+              	element:"p",
+              	attributes:{
+              		innerText:msg,
+              		className:"swal_text"
+              	}
+              }
             });
 	}
 }

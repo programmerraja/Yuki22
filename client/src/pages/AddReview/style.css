@@ -19,6 +19,8 @@
     font-size: 13px;
     margin: 10px;
     opacity: .9;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
 }
 .add_review-container{
     background-color: var(--secondary-color-light);
@@ -112,8 +114,8 @@
 	font-size: 18px;
 }
 .small_text{
-	color: #97a0be;
-	font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+	font-size: 12px;
 }
 /* media query for mobile phones */
 @media (max-width:700px) {
