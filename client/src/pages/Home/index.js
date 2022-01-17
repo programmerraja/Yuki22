@@ -47,7 +47,7 @@ return ( <>
            </div>
         </div>
         <section className="section_container">
-                <h3 className="section_title">How it Works? </h3>
+                <h2 className="section_title">How it Works? </h2>
                 <div className="how_itworks_container">
                     <div className="how_itworks-card">
                        <img  className="how_itworks-img" src={search}/>
