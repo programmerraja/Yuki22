@@ -6,6 +6,7 @@
 	--primary-color:#0ab377;
 	--secondary-color:#152251;
   --secondary-color-light:#182045;
+  --secondary-color-lightr:rgba(24,32,69,0.3);
   --secondary-color-input:#152248;
   --font-color: white;
 }
@@ -14,4 +15,5 @@ body{
   padding: 0;
   color: var(--font-color);
   background-color: var(--secondary-color);
+  font-family: 'Poppins',sans-serif;
 }

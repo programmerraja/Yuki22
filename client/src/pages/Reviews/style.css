@@ -8,10 +8,19 @@
 	min-height: 20px;
     margin:1rem 0;
 	box-shadow: rgb(196 199 204) 0px 0px 2px;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 1rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 50%;
+}
+.companies_content-text{
+	flex:4;
+}
+.companies_content-rating{
+	flex:2;
+}
+.companies_content-review{
+	flex:1;
 }
 /* media query for mobile phones */
 @media (max-width:700px) {

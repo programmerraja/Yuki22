@@ -36,10 +36,9 @@
   justify-content: flex-end;
   cursor: pointer;
 }
-.edit_icon a
+.edit_icon i
 {
   color: var(--primary-color);
-
 }
 .expand_icon i {
   transform: rotate(180deg);
@@ -68,7 +67,7 @@ summary:focus {
   margin: 0;
 }
 .review_text-bold {
-  font-weight: bold;
+  font-weight: 500;
   margin-bottom: 5px;
 }
 .review_text-bold span {
@@ -91,10 +90,10 @@ summary:focus {
 }
 .user_text-green,
 .user_text-red {
-  color: green;
+  color:var(--primary-color);
   font-weight: bold;
   padding: 0.1rem;
-  border: 1px solid green;
+  border: 1px solid var(--primary-color);
   margin: 0.5rem;
   font-size: 12px;
 }
@@ -104,7 +103,7 @@ summary:focus {
 }
 .user_text-small {
   font-size: 12px;
-  color: red;
+  color: yellow;
 }
 .review_rounds {
   padding-left: 1rem;

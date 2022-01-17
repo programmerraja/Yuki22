@@ -3,7 +3,7 @@ import Footer from "../../components/Footer";
 
 import "./style.css";
 
-import hero from "../../img/hero.jpg";
+import hero from "../../img/hero.png";
 import search from "../../img/search.jpg";
 import gothrough from "../../img/gothrough.jpg";
 import prepare from "../../img/prepare.jpg";

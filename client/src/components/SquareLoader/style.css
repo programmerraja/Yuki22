@@ -3,7 +3,7 @@
     align-items: center;
     height: 100vh;
     width: 100vw;
-    background: #86868661;
+    background: var(--secondary-color-lightr);
     position: fixed;
     top: 0px;
     z-index: 1000;
