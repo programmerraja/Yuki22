@@ -11,7 +11,8 @@
     padding: 0.5rem 1rem;
     display: flex;
     justify-content: space-between;
-    width: 50%;
+	width: 90%;
+    background-color: rgba(196,199,204,0.2);	
 }
 .companies_content-text{
 	flex:4;
@@ -25,6 +26,6 @@
 /* media query for mobile phones */
 @media (max-width:700px) {
 	.companies_contents{
-	    width: 78%;
+	    width: 88%;
 	}
 }

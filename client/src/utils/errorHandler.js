@@ -10,14 +10,14 @@ export default function errorHandler(isError,msg) {
             });
 	}else{
 		if(!msg){
-			msg="Something went wrong plse try again later"
+			msg="<p>Something went wrong <br>Plse try again later</p>"
 		}
 		return swal({
-              title: "Error",
+              title: "     ",
               content:{
               	element:"p",
               	attributes:{
-              		innerText:msg,
+              		innerHTML:msg,
               		className:"swal_text"
               	}
               }
