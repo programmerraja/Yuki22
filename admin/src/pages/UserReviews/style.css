@@ -4,3 +4,6 @@
 	align-items: center;
 	flex-direction: column;
 }
+a{
+	color: var(--primary-color);
+}

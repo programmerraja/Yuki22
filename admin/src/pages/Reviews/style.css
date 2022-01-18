@@ -3,19 +3,29 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	margin-left: 80px;
 }
 .companies_contents{
 	min-height: 20px;
     margin:1rem 0;
-    border: 1px solid #dcdcdc;
-    padding: 0.5rem;
+	box-shadow: rgb(196 199 204) 0px 0px 2px;
+    padding: 0.5rem 1rem;
     display: flex;
-    width: 70vw;
+    justify-content: space-between;
+	width: 90%;
+    background-color: rgba(196,199,204,0.2);	
+}
+.companies_content-text{
+	flex:4;
+}
+.companies_content-rating{
+	flex:2;
+}
+.companies_content-review{
+	flex:1;
 }
 /* media query for mobile phones */
 @media (max-width:700px) {
 	.companies_contents{
-	    width: 75vw;
+	    width: 88%;
 	}
 }
