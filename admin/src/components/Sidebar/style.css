@@ -2,10 +2,10 @@
   position: sticky;
   left: 0%;
   top: 0;
-  border-right: solid 2px rgb(8, 34, 16);
+  border-right: solid 2px var(--primary-color);
   height: 100vh;
   width: 56px;
-  background: rgb(255, 255, 255);
+  background: var(--primary-color);
   z-index: 200;
   top: 66px;
   display: flex;
@@ -17,11 +17,11 @@
 
 .sidebar {
   left: 0%;
-  border-right: solid 2px rgb(8, 34, 16);
+  border-right: solid 2px var(--primary-color);
   width: 80px;
   display: flex;
   padding: 15px;
-  background: rgb(255, 255, 255);
+  background: var(--primary-color);
   z-index: 100;
 }
 .label {
@@ -31,7 +31,7 @@
 }
 .expanded {
   width: 300px;
-  background: rgb(255, 255, 255);
+  background: var(--primary-color);
   display: flex;
   flex-direction: column;
 }
@@ -53,17 +53,17 @@ h3 {
 }
 
 .icons {
-  color: rgb(9, 58, 21);
+  color: var(--font-color);
   font-size: 25px;
 }
 
 .sidebar-text {
   padding: 0 16px;
-  color: rgb(9, 58, 21);
+  color: var(--font-color);
 }
 
 .icon-collapsed {
-  color: rgb(9, 58, 21);
+  color: var(--font-color);
   font-size: 25px;
   margin-left: 10px;
   margin-bottom: 10px;

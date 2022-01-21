@@ -10,6 +10,8 @@ const {verfiyMail,
       sendReport
     } = require("../util/util");
 
+const controllerUtil=require("../util/controllerUtil");
+
 // let name="test",email="test123@gmail.com",password="pass",department="cse",regNo=950619;
   //   db.User.create({
   //     name,
@@ -127,14 +129,8 @@ const user = {
   },
 
   addMyReview:function (req,res){
-    let{name,attended_on,
-          placement_type,off_campus_detail,rounds,
-          rounds_detail,is_placed,
-          rating,pros,cons,
-          salary,mobile_no,role,is_anonymous
-        }=req.body
-    if(name && attended_on && placement_type &&  rounds && rounds_detail  ){
-        db.Compaines.findOne({name:name.toLowerCase()})
+    if(controllerUtil.checkReview(req.body)){
+        db.Compaines.findOne({name:req.body.name.toLowerCase()})
         .then((companyObj)=>{
             //if company exist in our db use the company id 
             if(companyObj){
@@ -144,23 +140,8 @@ const user = {
                         userId:req.user._id,})
                     .then((isHas)=>{
                           if(!isHas){
-                              db.Reviews.create({
-                                companyId:companyObj._id,
-                                userId:req.user._id,
-                                placementType:placement_type,
-                                offCampusDetail:off_campus_detail,
-                                attendedOn:attended_on,
-                                rounds:rounds,
-                                roundsDetails:rounds_detail,
-                                isPlaced:is_placed,
-                                rating:rating,
-                                pros:pros,
-                                cons:cons,
-                                salary:salary,
-                                mobileNo:mobile_no,
-                                role:role,
-                                isAnonymous:is_anonymous
-                              })
+                              let review=controllerUtil.createReview({...req.body,companyId:companyObj._id,userId:req.user._id})
+                              db.Reviews.create(review)
                               .then((reviewObj)=>{
                                 res.json({status:"sucess",msg:"sucessfully added your review"})
                                 db.Compaines.findOneAndUpdate({
@@ -168,7 +149,9 @@ const user = {
                                     noOfReviews:Number(companyObj.noOfReviews)+1,
                                     rating:Number(companyObj.rating)+Number(rating)
                                 }).then((a)=>{});
+
                                 let msg=`new review added for ${companyObj.name} by ${req.user.name} \n`
+                                
                                 Object.keys(reviewObj["_doc"]).forEach(key=>{
                                     if(key==="roundsDetails"){
                                        Object.keys(reviewObj["_doc"][key]).forEach(key2=>{
@@ -203,28 +186,14 @@ const user = {
             }
             //create new company then use the id
             else{
-              db.Compaines.create({name:name.toLowerCase(),rating:rating,noOfReviews:1})
+              db.Compaines.create({name:req.body.name.toLowerCase(),rating:req.body.rating,noOfReviews:1})
               .then((companyObj)=>{
                   if(companyObj){
-                      db.Reviews.create({
-                        companyId:companyObj._id,
-                        userId:req.user._id,
-                        placementType:placement_type,
-                        offCampusDetail:off_campus_detail,
-                        attendedOn:attended_on,
-                        rounds:rounds,
-                        roundsDetails:rounds_detail,
-                        isPlaced:is_placed,
-                        rating:rating,
-                        pros:pros,
-                        cons:cons,
-                        salary:salary,
-                        mobileNo:mobile_no,
-                        role:role,
-                        isAnonymous:is_anonymous
-                      })
+                      let review=controllerUtil.createReview({...req.body,companyId:companyObj._id,userId:req.user._id})
+                      db.Reviews.create(review)
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully added your review"})
+                        
                         let msg=`new review added for ${companyObj.name} by ${req.user.name} \n`
                          Object.keys(reviewObj["_doc"]).forEach(key=>{
                           if(key==="roundsDetails"){
@@ -270,35 +239,13 @@ const user = {
     
   },
   updateMyReview:function (req,res){
-    let{id,name,attended_on,
-          placement_type,off_campus_detail,rounds,
-          rounds_detail,is_placed,
-          rating,pros,cons,
-          old_rating,
-          salary,mobile_no,role,is_anonymous
-        }=req.body
-    if(name && attended_on && placement_type &&  rounds && rounds_detail  ){
-        db.Compaines.findOne({name:name.toLowerCase()})
+    if(controllerUtil.checkReview(req.body)){
+        db.Compaines.findOne({name:req.body.name.toLowerCase()})
         .then((companyObj)=>{
             //if company exist in our db use the company id 
             if(companyObj){
-                db.Reviews.findOneAndUpdate(
-                        {_id:id,userId:req.user._id},
-                        {
-                          placementType:placement_type,
-                          offCampusDetail:off_campus_detail,
-                          attendedOn:attended_on,
-                          rounds:rounds,
-                          roundsDetails:rounds_detail,
-                          isPlaced:is_placed,
-                          rating:rating,
-                          pros:pros,
-                          cons:cons,
-                          salary:salary,
-                          mobileNo:mobile_no,
-                          role:role,
-                          isAnonymous:is_anonymous
-                      })
+                let new_review=controllerUtil.createNewReview(req.body)
+                db.Reviews.findOneAndUpdate({_id:req.body.id,userId:req.user._id},{new_review})
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully updated your review"})
                         //if old rating not equal to new rating then update the rating 

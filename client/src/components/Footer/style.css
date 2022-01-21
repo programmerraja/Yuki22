@@ -7,7 +7,6 @@
   background-color: var(--primary-color);
   color: white;
   padding:6px;
-
 }
 
 /* media query for mobile phones */
@@ -15,5 +14,4 @@
   .copyright {
     font-size: 13px;
   }
-
 }

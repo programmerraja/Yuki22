@@ -10,6 +10,8 @@ const {verfiyMail,
       sendReport
     } = require("../util/util");
 
+const controllerUtil=require("../util/controllerUtil");
+
 const admin = {
   signIn:function (req, res,next ){
            return passport.authenticate("admin_local",{session: false},
@@ -90,34 +92,13 @@ const admin = {
       });
   },
   updateUserReview:function (req,res){
-    let{id,name,attended_on,
-          placement_type,off_campus_detail,rounds,
-          rounds_detail,is_placed,
-          rating,pros,cons,
-          old_rating,
-          salary,mobile_no,role
-        }=req.body
-    if(name && attended_on && placement_type &&  rounds && rounds_detail  ){
+    if(controllerUtil.checkReview(req.body)){
         db.Compaines.findOne({name:name.toLowerCase()})
         .then((companyObj)=>{
             //if company exist in our db use the company id 
             if(companyObj){
-                db.Reviews.findOneAndUpdate(
-                        {_id:id},
-                        {
-                          placementType:placement_type,
-                          offCampusDetail:off_campus_detail,
-                          attendedOn:attended_on,
-                          rounds:rounds,
-                          roundsDetails:rounds_detail,
-                          isPlaced:is_placed,
-                          rating:rating,
-                          pros:pros,
-                          cons:cons,
-                          salary:salary,
-                          mobileNo:mobile_no,
-                          role:role
-                      })
+                let new_review=controllerUtil.createNewReview(req.body)
+                db.Reviews.findOneAndUpdate({_id:req.body.id,userId:req.user._id},{new_review})
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully updated your review"})
                         let msg=`review updated for  ${companyObj.name} by admin \n`

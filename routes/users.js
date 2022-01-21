@@ -6,18 +6,17 @@ const checkMailVerified = require("../middleware/checkMailVerified.js");
 
 const sanitizeHtml = require("../middleware/sanitizeHtml.js");
 
-
 router.post("/signin",
-	userController.signIn);
+			userController.signIn);
 
 router.post("/signup",
-	userController.signUp);
+			userController.signUp);
 
 router.get("/companyNames",
-	userController.getCompanyList);
+			userController.getCompanyList);
 
 router.get("/verifiyMyEmail/:userId",
-	userController.verifiyMyEmail);
+			userController.verifiyMyEmail);
 
 router.get("/getMyProfile",
 			auth.isAuthenticatedUser(),
@@ -27,23 +26,30 @@ router.post("/updateMyProfile",
 			auth.isAuthenticatedUser(),
 			userController.updateMyProfile);
 
-router.get("/getMyReviews",auth.isAuthenticatedUser(),
-	userController.getMyReviews);
+router.get("/getMyReviews",
+			auth.isAuthenticatedUser(),
+			userController.getMyReviews);
 
-router.get("/getMyReview/:reviewId",auth.isAuthenticatedUser(),
-	userController.getMyReview);
+router.get("/getMyReview/:reviewId",
+			auth.isAuthenticatedUser(),
+			userController.getMyReview);
 
-router.get("/deleteMyReview/:reviewId",auth.isAuthenticatedUser(),
-	userController.deleteMyReview);
+router.get("/deleteMyReview/:reviewId",
+			auth.isAuthenticatedUser(),
+			userController.deleteMyReview);
 
-router.post("/updateMyReview",auth.isAuthenticatedUser(),checkMailVerified,
-	userController.updateMyReview);
+router.post("/updateMyReview",
+			auth.isAuthenticatedUser(),checkMailVerified,
+			userController.updateMyReview);
 
-router.post("/addMyReview",auth.isAuthenticatedUser(),checkMailVerified,
-	userController.addMyReview);
+router.post("/addMyReview",
+			auth.isAuthenticatedUser(),checkMailVerified,
+			userController.addMyReview);
 
-router.post("/forgetMyPassword",userController.forgetMyPassword);
+router.post("/forgetMyPassword",
+			userController.forgetMyPassword);
 
-router.post("/resetMyPassword",userController.resetMyPassword);
+router.post("/resetMyPassword",
+			userController.resetMyPassword);
 
 module.exports = router;

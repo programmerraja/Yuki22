@@ -38,3 +38,9 @@ body{
 .swal-button:hover{
   box-shadow: none;
 }
+
+@media (max-width:500px) {
+	.section_wrapper{
+		max-width: 100% !important;
+	}
+}

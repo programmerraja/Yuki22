@@ -55,6 +55,7 @@ function App(props) {
               maxWidth: "calc(100vw - 80px)",
               width:"100%"
             }}
+            className="section_wrapper"
           >
         <Switch>
           <ProtectedRoute exact path="/yukiAdmin" component={Home}/>

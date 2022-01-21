@@ -1,0 +1,10 @@
+table{
+	background-color: var(--secondary-color-light);
+	color:var(--font-color);
+}
+th{
+	color:var(--font-color);
+}
+.delete_icon{
+	color: var(--primary-color);
+}

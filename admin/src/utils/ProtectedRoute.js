@@ -9,7 +9,7 @@ function ProtectedRoute({ path, component: Component }) {
 				render={(props) => (	
 				API.isAuth() && !API.checkTokenExp()? 
 				<Component  /> :
-				<Redirect to='/signin' />
+				<Redirect to='/yukiAdmin/signin' />
 				)}
 				/>);
 }

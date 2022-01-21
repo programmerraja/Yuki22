@@ -1,8 +1,4 @@
 :root{
-  /*2196f3*/
-  /*#182045
-  #CA7FC8
-  #8859E5*/
 	--primary-color:#0ab377;
 	--secondary-color:#152251;
   --secondary-color-light:#182045;
@@ -18,9 +14,13 @@ body{
   font-family: 'Poppins',sans-serif;
 }
 
-.swal-modal{
+.swal-modal,
+.swal-icon{
   background-color:rgba(21,34,81,0.8);
   color: var(--font-color);
+}
+.swal-icon{
+  display: none;
 }
 
 .swal-title,

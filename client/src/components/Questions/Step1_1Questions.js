@@ -11,7 +11,7 @@ function Step1_1Questions({off_campus_detail,setOffCampusDetail}) {
                    <label for="off_campus_detail" className="add_review-label">
                    <span>Plse explain how you get the opportunity for the off campus? <span className="red_color">*</span></span></label>
                           <div className="add_review-input-wrapper">
-                              <textarea className="add_review-input" placeholder="example: Applied through LinkedIn/applied through pool campus drive " 
+                              <textarea placeholder="example: Applied through LinkedIn/applied through pool campus drive " 
                                     rows="7"
                                     cols="24" 
                                     name="off_campus_detail"  

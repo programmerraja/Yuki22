@@ -23,6 +23,8 @@ import API from "../../utils/API";
 import SquareLoader from "../../components/SquareLoader";
 import errorHandler from "../../utils/errorHandler";
 
+import "./style.css";
+
 const useStyles = makeStyles({
     table: {
       minWidth: 650,
@@ -175,7 +177,7 @@ function Users(){
                       <TableCell align="left">{user.isEmailVerified?"Yes":"No"}</TableCell>
                       <TableCell align="left">{new Date(user.createdAt).toDateString()}</TableCell>
                       <TableCell align="left" >
-                      <IconButton aria-label="delete" onClick={()=>deleteUser(user._id)}>
+                      <IconButton className="delete_icon" aria-label="delete" onClick={()=>deleteUser(user._id)}>
                           <Delete />
                         </IconButton>
                           </TableCell>

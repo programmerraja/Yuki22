@@ -4,7 +4,6 @@ import {useHistory,Link } from "react-router-dom";
 
 import "./style.css";
 
-import logo from "../../img/logo.png";
 import userImg from "../../img/user.svg";
 
 
@@ -44,7 +43,7 @@ function Nav({user}) {
 return ( <div className="nav">
               <div className="nav-brand">
                     <Link to="/yukiAdmin">  
-                        <img src={logo}/><p>Yuki22</p>                   
+                        <p>Yuki22</p>                   
                     </Link>
               </div>
 

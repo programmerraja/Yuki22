@@ -94,7 +94,6 @@ function EditReview() {
                setIsAnonymous(temp_review["isAnonymous"])
 
                let temp_rounds_names=Object.keys(temp_review.roundsDetails)
-              console.log(temp_rounds_names)
                setRoundsNames(temp_rounds_names);
 
                let temp_rounds_details=[]
@@ -250,9 +249,9 @@ function EditReview() {
        .catch((res)=>{
           setLoading(false);
           if(res.data && res.data.msg){
-            setErrorMsg(res.data.msg);
+               errorHandler(true,res.data.msg);
           }else{
-            setErrorMsg("Something went wrong");
+              errorHandler(true);            
           }
     });
    }

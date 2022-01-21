@@ -1,11 +1,15 @@
-/*		NAVIGATION STYLE		*/
+/*    NAVIGATION STYLE    */
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #4a5ec9;
-  color: white;
-  margin: 0;
+  background-color: var(--primary-color);
+  /*backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 8px 3px 0 rgba(31, 38, 135, 0.37);*/
+  /*box-shadow: rgb(196 199 204) 0px 0px 2px;*/
+  color: var(--font-color);
+  margin:0;
   height: 50px;
 }
 
@@ -14,6 +18,8 @@
   justify-content: center;
   align-items: center;
   margin: 0 0.5rem;
+  z-index: 10;
+
 }
 .nav-brand a{
   color: white;
@@ -69,7 +75,7 @@
 /* media query for mobile phones */
 @media (max-width:500px) {
 
-  /*	NAVIGATION */
+  /*  NAVIGATION */
   .crosslines {
     position: absolute;
     right: 10px;
@@ -84,7 +90,7 @@
 
   .crosslines:after {
     content: "x";
-    color: var(--primary-color);
+    color: white;
     font-weight: 600;
     font-size: 25px;
     font-family: Arial;
@@ -111,14 +117,16 @@
     flex-direction: column;
     justify-content: space-around;
     height: 350px;
-    background: #4a5ec9;
+    background: var(--primary-color);
     top: 0px;
-    transition: transform 0.5s ease-in;
-    transform: translateY(-500px);
+    transition: transform  0.3s ease-in;
+    transform: translateX(-390px);
+    z-index: 100;
   }
 
   .nav_list_show {
-    transform: translateY(0px);
+    transform: translateX(0px);
+    z-index: 100;
   }
 
   .nav_link {

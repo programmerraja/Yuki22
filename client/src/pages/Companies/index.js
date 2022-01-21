@@ -25,12 +25,11 @@ function Companies(){
 
   const [loading,setLoading]=useState(true);
   let isFind=0;
-
   useEffect(()=>{
   	API.getCompanyList()
   	.then((res)=>{
         if(res.data.status==="sucess"){
-        	  setLoading(false);
+	        	  setLoading(false);
               setCompanyLists(res.data.list);
          }
          else{

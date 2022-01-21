@@ -7,7 +7,6 @@ import SquareLoader from "../../components/SquareLoader";
 
 import API from "../../utils/API";
 
-import user from "../../img/user.png";
 import "./style.css";
 
 
@@ -53,7 +52,6 @@ function Signin({setUser}){
     <>
     <SquareLoader  loading={loading}/>
     <div className="user">
-      <img src={ user } className="user-img" />
     </div>  
     <div className="signin_container">
       <div className="form_container">
@@ -77,13 +75,6 @@ function Signin({setUser}){
               {msg}
               </span>
           </div>
-
-          <div className="form_text">
-              <small>
-              <a href="/user/forgetPassword"> Forget password ? </a></small>
-              <small> New to Yuki ? <a href="/signup"> Create an account </a></small>
-          </div>
-   
       </div>
     </div>
     </>);
