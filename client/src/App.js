@@ -14,6 +14,7 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import SquareLoader from './components/SquareLoader';
 
+
 //pages
 import Home from './pages/Home';
 import Companies from './pages/Companies';
@@ -55,6 +56,7 @@ function App(props) {
       <Router>
       <Nav user={API.isAuth()}/>
         <Switch>
+
           <Route exact path="/" component={Home}/>
           
           <MyRoute.UserRestrictedRoute  path="/signin" component={()=>{return(<Signin setUser={setUser}/>)}}/>

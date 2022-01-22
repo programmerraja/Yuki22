@@ -20,6 +20,7 @@ export default function errorHandler(isError,msg) {
               		innerHTML:msg,
               		className:"swal_text"
               	}
+              	
               }
             });
 	}

@@ -248,7 +248,7 @@ const user = {
                 db.Reviews.findOneAndUpdate({_id:req.body.id,userId:req.user._id},{new_review})
                       .then((reviewObj)=>{
                         res.json({status:"sucess",msg:"sucessfully updated your review"})
-                        //if old rating not equal to new rating then update the rating 
+
                         let msg=`review updated  for ${companyObj.name} by ${req.user.name} \n`
                         Object.keys(reviewObj["_doc"]).forEach(key=>{
                           if(key==="roundsDetails"){
@@ -261,6 +261,8 @@ const user = {
                           }
                         })
                         sendReport(msg);
+
+                        //if old rating not equal to new rating then update the rating 
                         if(old_rating!=rating){
                           db.Compaines.findOneAndUpdate({
                               _id:companyObj._id},

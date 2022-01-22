@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 
 import ReviewCard from "../../components/ReviewCard";
 import SquareLoader from "../../components/SquareLoader";
+import CardLoader from '../../components/CardLoader';
 
 import API from "../../utils/API";
 import errorHandler from "../../utils/errorHandler";
@@ -75,7 +76,7 @@ function Reviews(){
   
   return ( 
     <>
-    <SquareLoader  loading={loading}/>
+     
       <div className="review_wrapper">
         {
          (!loading && reviews[0] && reviews[0].company)? 
@@ -105,6 +106,7 @@ function Reviews(){
                      </select>
             </div>
         }
+         <CardLoader loading={loading}/>
         {
             !loading && reviews.map((review)=>{
               return(
