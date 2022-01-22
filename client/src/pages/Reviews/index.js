@@ -106,7 +106,7 @@ function Reviews(){
                      </select>
             </div>
         }
-         <CardLoader loading={loading}/>
+         <CardLoader loading={loading} is_review={true}/>
         {
             !loading && reviews.map((review)=>{
               return(

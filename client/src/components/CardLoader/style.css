@@ -1,4 +1,13 @@
-
+.lreview_container{
+  /*margin-top: 6.4rem;*/
+  /*display: none;*/
+}
+.lcompanies_contents{
+  position: relative;
+  overflow: hidden;
+  display: none;
+  height: 55px;
+}
 .lwrapper{
   margin-top: 0.5rem;
 }
@@ -7,7 +16,6 @@
   border-radius: 50%;
   position: relative;
   overflow: hidden;
-
   margin: 1rem 0;
   display: block;
 }
@@ -16,9 +24,16 @@
   height: 10px;
   overflow: hidden;
   position: relative;
-  width: 80px;
+  width: 130px;
   margin: 1rem 0;
 }
+.luser_small-text{
+  background-color: #8080805c;
+  height: 8px;
+  width: 30px;
+  margin: 1rem 1rem;
+}
+
 .lwrapper2{
   display: flex;
   justify-content: center;
@@ -49,14 +64,7 @@
 .luser_big-text5{
   width: 210px;
 }
-.lreview_container{
-  margin-top: 8rem;
-}
-.lcompanies_contents{
-  position: relative;
-  overflow: hidden;
-  height: 55px;
-}
+
 .lcompanies_contents::after,
 .luser_img::after, 
 .luser_text::after{

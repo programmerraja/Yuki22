@@ -4,7 +4,7 @@ import {useHistory ,useParams,Link} from "react-router-dom";
 import swal from "sweetalert";
 
 import ReviewCard from "../../components/ReviewCard";
-import SquareLoader from "../../components/SquareLoader";
+import CardLoader from "../../components/CardLoader";
 
 import API from "../../utils/API";
 import errorHandler from "../../utils/errorHandler";
@@ -81,8 +81,8 @@ function MyReviews(){
 
   return ( 
     <>
-    <SquareLoader  loading={loading}/>
       <div className="review_wrapper">
+        <CardLoader  loading={loading} />
         {
             !loading && reviews.map((review)=>{
               return(
