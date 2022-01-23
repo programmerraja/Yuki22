@@ -2,7 +2,7 @@ import React from "react";
 import {useState,useEffect} from "react";
 import {useHistory,Link } from "react-router-dom";
 
-import SquareLoader from "../../components/SquareLoader";
+import Loader from "../../components/Loader";
 
 import API from "../../utils/API";
 import errorHandler from "../../utils/errorHandler";
@@ -121,11 +121,8 @@ function Companies(){
   			}
   		})
   }
-
-  if(!loading){
-	  return ( 
+	return ( 
 	    <>
-	    <SquareLoader  loading={loading}/>
 	    <div className="companies_wrapper">
 				<div className="companies_container">
 					<div className="companies_search-wrapper">
@@ -153,6 +150,8 @@ function Companies(){
 		                 </select>
 	                 </div>
 					</div>
+			    	<Loader  loading={loading}/>
+
 				    	{
 					    	 company_lists.length>0
 					    	?
@@ -180,25 +179,19 @@ function Companies(){
 							    				</div>)}
 							   </div>
 					    	)
-					    	:
+					    	: !loading ?
 					    	(	
 					    	<div className="companiesContainer">
 					    		<p> No companies found</p>
 					    	</div>
-					    	)
+					    	):null
 				    }
 				 </div>
 				</div>
 			    
 	    </>);
-	  }
-	else{
-		return ( 
-	    <>
-	    	<SquareLoader  loading={loading}/>
-	    </>
-	    )
-	}
+	
+
 }
 
 export default Companies;

@@ -1,0 +1,14 @@
+
+.lcompanies_content-text{
+   background-color: #8080805c;
+  height: 30px;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+}
+.lcompanies_content{
+  min-height: 60px;
+  margin: 1rem 0;
+  padding: 0.5rem;
+}
+

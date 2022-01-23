@@ -67,7 +67,8 @@
 
 .lcompanies_contents::after,
 .luser_img::after, 
-.luser_text::after{
+.luser_text::after,
+.lcompanies_content-text::after{
   display: block;
   content: "";
   position: absolute;
