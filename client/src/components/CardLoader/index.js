@@ -17,8 +17,17 @@ function CardLoader({loading,is_review}) {
             </div>
           }
            <div className="review_container lreview_container" style={style}>
-              <div className="wrapper">
-                <p className="luser_text"></p>
+              
+              {!is_review &&
+                <>
+                <p className="company_name luser_text" style={{margin:"auto"}}></p>
+                <p className="company_name luser_text"></p>
+                  <div className="edit_icon">
+                    <i className="fas fa-edit" style={{opacity:"0",margin:"0.7rem 0"}}></i>
+                  </div>
+                </>
+              }
+            <div className="wrapper">
             <div  className="user_wrapper">
               <div className="d-flex">
                 <span className="user_img luser_img"/>
