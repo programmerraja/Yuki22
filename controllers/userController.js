@@ -362,13 +362,14 @@ const user = {
             });
             if (user) {
 
-                if (bcrypt.compareSync(old_password, user.password)) {
+                if (user.checkPassword(old_password)) {
                     if (new_password) {
                         // new_password = bcrypt.hashSync(new_password, 10);
                         user.name = name;
                         user.password = new_password;
                     } else {
                         user.name = name;
+                        user.password=old_password;
                     }
                     user.save()
                     .then((user)=>{
