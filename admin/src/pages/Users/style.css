@@ -2,9 +2,14 @@ table{
 	background-color: var(--secondary-color-light);
 	color:var(--font-color);
 }
-th{
-	color:var(--font-color);
+.MuiTableContainer-root{
+	margin: 2rem 0;
+}
+th,
+td,
+li button{
+	color:var(--font-color) !important;
 }
 .delete_icon{
-	color: var(--primary-color);
+	color: var(--primary-color) !important;
 }

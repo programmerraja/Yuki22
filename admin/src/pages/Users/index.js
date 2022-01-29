@@ -48,7 +48,7 @@ function Users(){
    const[search_content,setSearchContent]=useState("");
    const [users,setUsers]=useState([]);
    const [page, setPage] = useState(1);
-   const [limit, setLimit] = useState(5);
+   const [limit, setLimit] = useState(10);
    const [count, setCount] = useState(0);
 
    useEffect(() => {
@@ -140,7 +140,7 @@ function Users(){
     <div>
       <SquareLoader loading={loading} />  
       <Box m={5}>
-       <Container maxWidth="false">
+      <Container maxWidth="false">
       <Box m={1}>
         <h3 >All Users</h3>
 				 <input type="text" 
@@ -161,6 +161,7 @@ function Users(){
                 <TableCell align="left" className={classes.head}>Department</TableCell>
                 <TableCell align="left" className={classes.head}>Is Email Verified</TableCell>
                 <TableCell align="left" className={classes.head}>Created At</TableCell>
+                <TableCell align="left" className={classes.head}></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -168,9 +169,12 @@ function Users(){
                  if(!user.isShow){
                     return (
                     <TableRow key={user._id} >
-                      <Link to={`/yukiAdmin/user/userReviews/${user._id}`}>
-                        <TableCell align="left" style={{"padding": "29px"}}>{user.name}</TableCell>
-                      </Link>
+                      
+                      <TableCell align="left">
+                        <Link to={`/yukiAdmin/user/userReviews/${user._id}`}>
+                          {user.name}
+                        </Link>
+                      </TableCell>
                       <TableCell align="left">{user.email}</TableCell>
                       <TableCell align="left">{user.regno}</TableCell>
                       <TableCell align="left">{user.department}</TableCell>

@@ -361,10 +361,8 @@ const user = {
                 _id: user_id
             });
             if (user) {
-
                 if (user.checkPassword(old_password)) {
                     if (new_password) {
-                        // new_password = bcrypt.hashSync(new_password, 10);
                         user.name = name;
                         user.password = new_password;
                     } else {

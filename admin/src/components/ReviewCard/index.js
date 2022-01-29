@@ -20,6 +20,7 @@ function ReviewCard({
                     mobileNo,
                     role,
                     user,
+                    myCompany,
                     createdAt,
                     isEditing,
                     deleteReview
@@ -30,6 +31,11 @@ function ReviewCard({
   return ( 
     <>
         <div className="review_container">
+        {myCompany && myCompany.name && 
+          <p className="company_name margin-0">
+            {myCompany.name}
+          </p>
+        }
         <div className="wrapper">
         {createdAt &&
           <p className="created_at">
@@ -38,7 +44,7 @@ function ReviewCard({
         }
         {isEditing &&
           <div className="edit_icon">
-            <Link to={`/yukiAdmin/user/edit/review/${_id}`}>
+            <Link to={`/yukiAdmin/user/review/edit/${_id}`}>
              <i className="fas fa-edit"></i>
             </Link>
           </div>
@@ -49,16 +55,16 @@ function ReviewCard({
                 {isPlaced===1 &&
                 <span className="user_text-green">Placed</span>
                 }
-                {isPlaced===0 &&
-                  <span className="user_text-red">Not Placed</span>
-                }
                 {rating &&
                   <span className="user_text rating">
                   {rating.toFixed(1)}
                   <i className="far fa-star"></i></span>
                 }
               </div>
-            <p className="user_name">{user.name}({user.regno})</p>
+            <p className="user_name">{user.name}
+            {user.regno && 
+              <span>({user.regno})</span>
+            }</p>
             <span className="user_text-small">{user.department}</span>
           </div>
         </div>

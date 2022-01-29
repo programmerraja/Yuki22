@@ -4,10 +4,6 @@
   align-items: center;
   justify-content: space-between;
   background-color: var(--primary-color);
-  /*backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  box-shadow: 0 8px 3px 0 rgba(31, 38, 135, 0.37);*/
-  /*box-shadow: rgb(196 199 204) 0px 0px 2px;*/
   color: var(--font-color);
   margin:0;
   height: 50px;
@@ -42,6 +38,7 @@
   margin-right: 13px;
   justify-content: space-between;
   align-items: center;
+  width: 29%;
 }
 
 .logo {
@@ -60,12 +57,6 @@
   border-radius: 5px;
 }
 
-.nav_link a:hover {
-  border: 1px solid white;
-  color:white;
-  text-decoration: none;
-
-}
 
 .user_img {
   height: 30px;

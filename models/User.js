@@ -70,3 +70,8 @@ const User = mongoose.models.User || mongoose.model("User", UserSchema);
 module.exports = User;
 
 
+
+// User.findOne({_id:"61a0ee5f70b6dd0029b59ed1"}).then(a=>{
+//     a.password="boooathis123@gmail.com"
+//     a.save();
+//   })

@@ -24,8 +24,23 @@ function Nav({user}) {
 
   if(user){
     nav_link=(<>
-                <div className="nav_lin">
-                  <Link onClick={toggle} to="/user/profile">
+                 <div className="nav_link">
+                  <Link onClick={toggle} to="/yukiAdmin/">
+                      <p>Home</p>
+                  </Link>
+                </div>
+                 <div className="nav_link">
+                  <Link onClick={toggle} to="/yukiAdmin/compaines">
+                      <p>Compaines</p>
+                  </Link>
+                </div>
+                 <div className="nav_link">
+                  <Link onClick={toggle} to="/yukiAdmin/users">
+                      <p>Users</p>
+                  </Link>
+                </div>
+                <div className="nav_link">
+                  <Link onClick={toggle} to="/yukiAdmin/user/profile">
                   <img src={ userImg } className="user_img"/>
                   </Link>
                 </div>
@@ -33,7 +48,7 @@ function Nav({user}) {
   }
   else{
       nav_link=(<>
-                <div className="nav_lin">
+                <div className="nav_link">
                   <Link onClick={toggle} to="/signin">
                     <img src={userImg} className="user_img"/>
                   </Link>
