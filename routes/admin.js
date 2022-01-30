@@ -7,7 +7,6 @@ const companyController = require("../controllers/companyController.js");
 
 const auth = require("../middleware/auth.js");
 
-
 router.post("/user/signin",
 			userController.signIn);
 

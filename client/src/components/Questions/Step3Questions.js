@@ -37,12 +37,12 @@ return ( <>
                 (Explain in detailed manner and plse give some questions asked during your interview)
                </span>
              </label>
-                   <div className="add_review-input-wrapper">
+                   <div className="add_review-input-wrapper show_suggestion">
                     <textarea placeholder="write full details about the round" 
                             rows="7"
                             cols="24" 
                             name="roundDetail"  
-                            className="add_review-textarea" 
+                            className="add_review-textarea " 
                             value={rounds_details[round_number]}
                             onChange={(e)=>{
                                     let newArr=[...rounds_details]

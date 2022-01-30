@@ -1,3 +1,4 @@
+
 .add_review-wrapper{
 	display: flex;
 	justify-content: center;
@@ -117,6 +118,34 @@
     color: rgba(255, 255, 255, 0.6);
 	font-size: 12px;
 }
+.show_suggestion{
+  position: relative !important;
+}
+
+.show_suggestion:hover:before{
+  position: absolute;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  background: var(--primary-color);
+  border-radius: 8px;
+  color: #fff;
+  content: "plse mention questions that asked for you during interview";
+  margin: -82px auto 0;
+  font-size: 16px;
+  padding: 13px;
+  width: 220px; 
+  top: -17%;
+
+}
+/*.show_suggestion:hover:after{
+    top: -27%;
+    border: solid;
+    border-color: var(--primary-color) transparent;
+    border-width: 21px 11px 0 21px;
+    content: "";
+}*/
 /* media query for mobile phones */
 @media (max-width:700px) {
 .add_review-container{

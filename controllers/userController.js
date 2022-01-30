@@ -501,7 +501,7 @@ const user = {
             let new_review = controllerUtil.createNewReview(req.body);
             db.Reviews.findOneAndUpdate(
               { _id: req.body.id, userId: req.user._id },
-              { new_review }
+              { ...new_review }
             )
               .then((reviewObj) => {
                 res.json({
@@ -523,7 +523,7 @@ const user = {
                 sendReport(msg);
 
                 //if old rating not equal to new rating then update the rating
-                if (old_rating != rating) {
+                if (req.body.old_rating != req.body.rating) {
                   db.Compaines.findOneAndUpdate(
                     {
                       _id: companyObj._id,
@@ -531,8 +531,8 @@ const user = {
                     {
                       rating:
                         Number(companyObj.rating) -
-                        Number(old_rating) +
-                        Number(rating),
+                        Number(req.body.old_rating) +
+                        Number(req.body.rating),
                     }
                   ).then((a) => {});
                 }

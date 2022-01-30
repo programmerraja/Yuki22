@@ -17,7 +17,6 @@ import SquareLoader from './components/SquareLoader';
 import Home from './pages/Home';
 import Companies from './pages/Companies';
 
-
 import Signin from "./pages/Signin";
 
 import AddReview from "./pages/AddReview";
@@ -25,8 +24,6 @@ import Reviews from "./pages/Reviews";
 import UserReviews from "./pages/UserReviews";
 import EditReviews from "./pages/EditReviews";
 import Users from "./pages/Users";
-
-
 
 import Logout from "./pages/Logout";
 // import NotFound from "./pages/NotFound";
