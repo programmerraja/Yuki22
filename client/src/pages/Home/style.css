@@ -34,6 +34,7 @@
   outline: none;
   border: none;
   font-weight: 400;
+  cursor: pointer;
 }
 
 .hero_button2 {

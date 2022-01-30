@@ -26,6 +26,13 @@ router.post("/updateMyProfile",
 			auth.isAuthenticatedUser(),
 			userController.updateMyProfile);
 
+router.post("/forgetMyPassword",
+			userController.forgetMyPassword);
+
+router.post("/resetMyPassword",
+			userController.resetMyPassword);
+
+
 router.get("/getMyReviews",
 			auth.isAuthenticatedUser(),
 			userController.getMyReviews);
@@ -34,22 +41,16 @@ router.get("/getMyReview/:reviewId",
 			auth.isAuthenticatedUser(),
 			userController.getMyReview);
 
-router.get("/deleteMyReview/:reviewId",
-			auth.isAuthenticatedUser(),
-			userController.deleteMyReview);
+router.post("/addMyReview",
+			auth.isAuthenticatedUser(),checkMailVerified,
+			userController.addMyReview);
 
 router.post("/updateMyReview",
 			auth.isAuthenticatedUser(),checkMailVerified,
 			userController.updateMyReview);
 
-router.post("/addMyReview",
-			auth.isAuthenticatedUser(),checkMailVerified,
-			userController.addMyReview);
-
-router.post("/forgetMyPassword",
-			userController.forgetMyPassword);
-
-router.post("/resetMyPassword",
-			userController.resetMyPassword);
+router.get("/deleteMyReview/:reviewId",
+			auth.isAuthenticatedUser(),
+			userController.deleteMyReview);
 
 module.exports = router;

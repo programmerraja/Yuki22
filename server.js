@@ -3,7 +3,6 @@ const session = require("express-session");
 const path = require("path");
 const mongoose = require("mongoose");
 const cors = require("cors");
-// const compression = require('compression');
 require("dotenv").config();
 
 const app = express();
@@ -13,12 +12,6 @@ const {sendWhoIs} = require("./util/util");
 const bot = require("./util/bot");
 
 const PORT = process.env.PORT || 3001;
-
-// // Define middleware here
-// app.use(compression({filter:(req,res)=>{
-//     //such that it will compress all thing
-//    return compression.filter(req, res)
-// }}));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());  
