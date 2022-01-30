@@ -130,9 +130,10 @@
   justify-content: center;
   background: var(--primary-color);
   border-radius: 8px;
-  color: #fff;
-  content: "plse mention questions that asked for you during interview";
+  color: var(--font-color);
+  content: "Plse mention questions that asked for you during interview";
   margin: -82px auto 0;
+  text-transform: capitalize;
   font-size: 16px;
   padding: 13px;
   width: 220px; 
@@ -146,6 +147,7 @@
     border-width: 21px 11px 0 21px;
     content: "";
 }*/
+
 /* media query for mobile phones */
 @media (max-width:700px) {
 .add_review-container{
@@ -153,4 +155,9 @@
 	max-width: 90%;
 	min-width: 90%;
  }
+.show_suggestion:hover:before{
+  padding: 0.5rem;
+  font-size: 13px;
+  top: 0%;
+}
 }
