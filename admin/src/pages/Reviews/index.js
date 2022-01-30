@@ -45,6 +45,40 @@ function Reviews(){
     });
   },[])
   
+  const deleteReview=(review_id)=>{
+     swal({
+      title: "Are you sure?",
+      text: "You want to delete this review.",
+      buttons: ["No", "Yes"],
+      dangerMode: true,
+    }).then((confirm) => {
+      if (confirm) {
+        API.deleteUserReview(review_id)
+        .then((res)=>{
+            setLoading(false);
+            if(res.data.status==="sucess"){
+              let new_review=[]
+              reviews.forEach(review_obj=>{
+                if(review_obj._id!=review_id){
+                  new_review.push(review_obj)
+                }
+              });
+              setReviews(new_review);
+              errorHandler(false,res.data.msg);
+            }
+        
+        })
+        .catch((res)=>{
+          setLoading(false);
+          if(res.data && res.data.msg){
+              errorHandler(true,res.data.msg);
+          }else{
+              errorHandler(true);
+          }
+        });
+    }
+    });
+  }
   return ( 
     <>
     <SquareLoader  loading={loading}/>
@@ -63,8 +97,10 @@ function Reviews(){
             !loading && reviews.map((review)=>{
               return(
                   <ReviewCard 
-                      key={review.user.name}
-                      {...review}/>
+                      key={review._id}
+                      {...review}
+                      deleteReview={deleteReview}
+                      isEditing={true}/>
                 ) 
             })
         }
