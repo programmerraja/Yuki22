@@ -118,7 +118,7 @@ const admin = {
           message: "Some Error Occured. Try Again!",
         });
       });
-  },
+  },  
   updateUserReview: function (req, res) {
     if (controllerUtil.checkReview(req.body)) {
       db.Compaines.findOne({ name: name.toLowerCase() })
@@ -156,8 +156,8 @@ const admin = {
                     {
                       rating:
                         Number(companyObj.rating) -
-                        Number(old_rating) +
-                        Number(rating),
+                        Number(req.body.old_rating) +
+                        Number(req.body.rating),
                     }
                   ).then((a) => {});
                 }
