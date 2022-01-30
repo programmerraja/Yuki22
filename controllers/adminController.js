@@ -127,7 +127,7 @@ const admin = {
           if (companyObj) {
             let new_review = controllerUtil.createNewReview(req.body);
             db.Reviews.findOneAndUpdate(
-              { _id: req.body.id, userId: req.user._id },
+              { _id: req.body.id },
               { ...new_review }
             )
               .then((reviewObj) => {
@@ -191,7 +191,7 @@ const admin = {
     } else {
       res.json({ status: "failed", msg: "Please fill all the data" });
     }
-  },
+  },    
   deleteUserReview: function (req, res) {
     if (req.params.reviewId) {
       db.Reviews.findOneAndRemove({ _id: req.params.reviewId })
