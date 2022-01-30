@@ -111,6 +111,19 @@ summary:focus {
 /* media query for mobile phones */
 @media (max-width: 700px) {
   .review_container {
-    width: 82%;
+    padding: 0.5rem;
+    width: 92%;
+  }
+  .padding {
+    padding-left: 1px;
+  }
+  .review_rounds {
+    padding-left: 0.5rem;
+  }
+  .review_text-point {
+    margin: 0.2rem;
+    padding-left: 0.6rem;
+    font-size: 13px;
+    width: 100%;
   }
 }
