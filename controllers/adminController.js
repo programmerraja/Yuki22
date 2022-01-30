@@ -121,21 +121,22 @@ const admin = {
   },  
   updateUserReview: function (req, res) {
     if (controllerUtil.checkReview(req.body)) {
-      db.Compaines.findOne({ name: name.toLowerCase() })
+      db.Compaines.findOne({ name: req.body.name.toLowerCase() })
         .then((companyObj) => {
           //if company exist in our db use the company id
           if (companyObj) {
             let new_review = controllerUtil.createNewReview(req.body);
             db.Reviews.findOneAndUpdate(
               { _id: req.body.id, userId: req.user._id },
-              {...new_review }
+              { ...new_review }
             )
               .then((reviewObj) => {
                 res.json({
                   status: "sucess",
                   msg: "sucessfully updated your review",
                 });
-                let msg = `review updated for  ${companyObj.name} by admin \n`;
+
+                let msg = `review updated  for ${companyObj.name} by ${req.user.name} \n`;
                 Object.keys(reviewObj["_doc"]).forEach((key) => {
                   if (key === "roundsDetails") {
                     Object.keys(reviewObj["_doc"][key]).forEach((key2) => {
@@ -147,6 +148,7 @@ const admin = {
                   }
                 });
                 sendReport(msg);
+
                 //if old rating not equal to new rating then update the rating
                 if (req.body.old_rating != req.body.rating) {
                   db.Compaines.findOneAndUpdate(
