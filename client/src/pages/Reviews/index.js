@@ -40,12 +40,9 @@ function Reviews(){
          }
     })
     .catch((res)=>{
-      setLoading(false);
-      if(res.data && res.data.msg){
-          errorHandler(true,res.data.msg);
-      }else{
-          errorHandler(true);
-      }
+         res=res.response;
+         setLoading(false);
+         errorHandler(true,res.data.msg);
     });
   },[companyId])
 
@@ -63,12 +60,9 @@ function Reviews(){
            }
       })
       .catch((res)=>{
-        setLoading(false);
-        if(res.data && res.data.msg){
-            errorHandler(true,res.data.msg);
-        }else{
-            errorHandler(true);
-        }
+         res=res.response;
+         setLoading(false);
+         errorHandler(true,res.data.msg);
       });
     }
   }

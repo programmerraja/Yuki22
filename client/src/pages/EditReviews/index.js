@@ -64,11 +64,7 @@ function EditReview() {
              }
        })
        .catch((res)=>{
-          if(res.data && res.data.list){
-              setCompanyNames(res.data.list);
-          }else{
-              setCompanyNames(["unable to fetch list"]);
-          }
+              setCompanyNames([]);
        });
 
        API.getMyReview(reviewId)
@@ -100,20 +96,13 @@ function EditReview() {
                temp_rounds_names.forEach((name)=>{
                   temp_rounds_details.push(temp_review.roundsDetails[name])
                })
-
                setRoundsDetails(temp_rounds_details);
-
-
                }
        })
        .catch((res)=>{
-          setLoading(false);
-          if(res.data && res.data.msg){
-              errorHandler(true,res.data.msg);
-          }else{
-            errorHandler(true);
-            console.log(res)
-          }
+         res=res.response;
+         setLoading(false);
+         errorHandler(true,res.data.msg);
        });
    },[reviewId])
 
@@ -218,9 +207,9 @@ function EditReview() {
       for(let i=0;i<rounds_names.length;i++){
         rounds_detail[rounds_names[i]]=rounds_details[i]
       }
-      let obj;
+      let review_obj;
       if(placement_type==="onCampus"){
-        obj={id,name,attended_on,
+        review_obj={id,name,attended_on,
                         placement_type,rounds,
                         rounds_detail,is_placed,
                         rating,old_rating,pros,cons,
@@ -228,14 +217,14 @@ function EditReview() {
                       }
       }
       else{
-        obj={id,name,attended_on,
+        review_obj={id,name,attended_on,
                         placement_type,off_campus_detail,rounds,
                         rounds_detail,is_placed,
                         rating,old_rating,pros,cons,
                         salary,mobile_no,role,is_anonymous
                       }
       }
-      API.updateMyReview(obj)
+      API.updateMyReview(review_obj)
       .then((res)=>{
              setLoading(false);
              if(res.data.status==="sucess"){
@@ -246,12 +235,9 @@ function EditReview() {
              }
        })
        .catch((res)=>{
-          setLoading(false);
-          if(res.data && res.data.msg){
-               errorHandler(true,res.data.msg);
-          }else{
-              errorHandler(true);            
-          }
+         res=res.response;
+         setLoading(false);
+         errorHandler(true,res.data.msg);
     });
    }
 

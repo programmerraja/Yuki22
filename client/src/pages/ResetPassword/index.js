@@ -27,12 +27,9 @@ function ResetPassword() {
               }
         })
         .catch((res)=>{
+          res=res.response;
           setLoading(false);
-          if(res.data && res.data.msg){
-            errorHandler(true,res.data.msg);
-          }else{
-            errorHandler(true);
-          }
+          errorHandler(true,res.data.msg);
         });
     }
     else{

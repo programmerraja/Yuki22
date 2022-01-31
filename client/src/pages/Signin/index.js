@@ -43,12 +43,9 @@ function Signin({setUser}){
             }
           })
           .catch((res)=>{
-              setLoading(false);
-              if(res.data && res.data.msg){
-                errorHandler(true,res.data.msg);
-              }else{
-                errorHandler(true,"Something went wrong");
-              }
+             res=res.response;
+             setLoading(false);
+             errorHandler(true,res.data.msg);
           });
       }
       else{

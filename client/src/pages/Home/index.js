@@ -22,7 +22,8 @@ import zuci from "../../img/company/zuci.png";
 import centizen from "../../img/company/centizen.png";
 import ami from "../../img/company/ami.png";
 import smackcoders from "../../img/company/smackcoders.png";
-
+import datalogic from "../../img/company/datalogic.png";
+import gigamon from "../../img/company/gigamon.png";
 
 
 function Home() {
@@ -82,7 +83,7 @@ return ( <>
         <section className="company_container">
             <div className="company_heading_wrap">
               <h2 className="company_heading">
-                Over 10+ companies
+                Over 15+ companies
               </h2>
               <p className="company_subheading">
                 Get information about companies.
@@ -112,6 +113,12 @@ return ( <>
                 </div>
                  <div className="company_img">
                   <img src={ami}/>
+                </div>
+                <div className="company_img">
+                  <img src={gigamon}/>
+                </div>
+                <div className="company_img">
+                  <img src={datalogic}/>
                 </div>
                 <div className="company_img">
                   <img src={mobius}/>

@@ -55,12 +55,8 @@ function AddReview() {
              }
        })
        .catch((res)=>{
-          if(res.data && res.data.list){
               setCompanyNames([]);
-          }else{
-              setCompanyNames([]);
-          }
-    });
+        });
       setReviewFromLocal();
    },[])
 
@@ -259,12 +255,9 @@ function AddReview() {
                  }
            })
            .catch((res)=>{
-              setLoading(false);
-              if(res.data && res.data.msg){
-                    errorHandler(true,res.data.msg);
-              }else{
-                    errorHandler(true);
-              }
+             res=res.response;
+             setLoading(false);
+             errorHandler(true,res.data.msg);
         });
       }
       
