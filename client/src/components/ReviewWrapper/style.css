@@ -1,0 +1,146 @@
+
+.add_review-wrapper{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 1rem;
+}
+
+.add_review-container{
+    background-color: var(--secondary-color-light);
+    color: var(--font-color);
+    box-shadow: rgb(196 199 204) 0px 0px 2px;
+    /*border: 1px solid rgb(222, 224, 227);*/
+    border-radius: 3px;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    max-width: 540px;
+    min-width: 450px;
+}
+.add_review-container label{
+    color: var(--font-color);
+}
+.add_review-from{
+	margin-bottom: 12px;
+}
+.add_review-error-msg{
+	color:red;
+	text-align: center;
+	margin: 0.2rem;
+}
+.add_review-input{
+	border: 0;
+	outline: 0;
+    background-color: var(--secondary-color-light);
+}
+.suggestion_container{
+	height: 90px;
+	overflow: scroll;
+	margin-top: 0;
+    margin-bottom: 1rem;
+    position: absolute;
+    background: white;
+    padding: 1rem;
+    min-width: 250px;
+    flex-direction: ju;
+    list-style: none;
+}
+.suggestion_container li{
+	padding: 0.25rem;
+}
+
+.suggestion_container li:hover{
+	background-color: #cbc9c9cf;
+	cursor: pointer;
+	width: 100%;
+}
+
+.red_color{
+	color: red;
+}
+.add_review-button{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.add_review-button button{
+	color: var(--font-color);
+    background-color: var(--primary-color);
+    padding: 7px 16px;
+    outline: none;
+    border: 0;
+    width: 90px;
+    border-radius: 2px;
+}
+.add_review-input,
+.add_review-textarea{
+	box-sizing: border-box;
+    font-size: 15px;
+    height: 40px;
+    border-radius: 3px;
+    border: solid 1px #c4c7cc;
+    padding: 0 12px;
+    padding-right: 12px;
+    padding-left: 12px;
+    color: var(--font-color);
+    width: 100%;
+    background-color: var(--secondary-color-input);
+}
+.add_review-input::placeholder,
+.add_review-textarea::placeholder{
+	text-transform: capitalize;
+	padding: 0.3rem 0;
+}
+.add_review-textarea{
+	height: auto;
+}
+.add_review-input option{
+	font-size: 18px;
+}
+.small_text{
+    color: rgba(255, 255, 255, 0.6);
+	font-size: 12px;
+}
+.show_suggestion{
+  position: relative !important;
+}
+
+.show_suggestion:hover:before{
+  position: absolute;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  background: var(--primary-color);
+  border-radius: 8px;
+  color: var(--font-color);
+  content: "Plse mention questions that asked for you during interview";
+  margin: -82px auto 0;
+  text-transform: capitalize;
+  font-size: 16px;
+  padding: 13px;
+  width: 220px; 
+  top: -17%;
+
+}
+/*.show_suggestion:hover:after{
+    top: -27%;
+    border: solid;
+    border-color: var(--primary-color) transparent;
+    border-width: 21px 11px 0 21px;
+    content: "";
+}*/
+
+/* media query for mobile phones */
+@media (max-width:700px) {
+.add_review-container{
+	width: 90%;
+	max-width: 90%;
+	min-width: 90%;
+ }
+.show_suggestion:hover:before{
+  padding: 0.5rem;
+  font-size: 13px;
+  top: 0%;
+}
+}

@@ -30,8 +30,8 @@ function Nav({user}) {
                   </Link>
                 </div>
                  <div className="nav_link">
-                  <Link onClick={toggle} to="/yukiAdmin/compaines">
-                      <p>Compaines</p>
+                  <Link onClick={toggle} to="/yukiAdmin/companies">
+                      <p>Companies</p>
                   </Link>
                 </div>
                  <div className="nav_link">

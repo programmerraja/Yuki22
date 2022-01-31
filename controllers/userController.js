@@ -385,7 +385,7 @@ const user = {
                         },
                         {
                           noOfReviews: Number(companyObj.noOfReviews) + 1,
-                          rating: Number(companyObj.rating) + Number(rating),
+                          rating: Number(companyObj.rating) + Number(req.body.rating),
                         }
                       ).then((a) => {});
 
