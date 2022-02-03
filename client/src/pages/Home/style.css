@@ -146,7 +146,19 @@
   background-color: rgba(196,199,204,0.2);
   /*box-shadow: 0 0 0.4rem 0.2rem rgb(0 0 0 / 10%);*/
   box-shadow: rgb(196 199 204) 0px 0px 1px;
+  
+}
+.how_itworks-img  {
+  animation:rotateme 5000ms  ease-in ;
+  animation-iteration-count: 2;
+}
+@keyframes rotateme{
+  from{
+    transform: scale(0.5);
+  }to{
+    transform:  scale(1);
 
+  }
 }
 .company_img img {
   height: 100%;

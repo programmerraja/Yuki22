@@ -182,6 +182,20 @@ function ReviewWrapper({onSucess,loading,setLoading,isEdit=false,reviewId=null})
 
       }
       if(steps===3){
+        
+        //it means user trying to remove one round so pop up out from array which above round
+        //this bug fixed in feb 4   
+        if(rounds_names.length>rounds){
+          for(let i=rounds;i<rounds_names.length;i++){
+            rounds_names.pop()
+          }
+        }
+        if(rounds_details.length>rounds){
+          for(let i=rounds;i<rounds_details.length;i++){
+            rounds_details.pop()
+          }
+        }
+
         //converting rounds string to int by -0
         if(rounds_names.length===rounds-0 && rounds_details.length===rounds-0){
            //storing on local storage
