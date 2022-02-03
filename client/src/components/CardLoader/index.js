@@ -12,10 +12,13 @@ function CardLoader({loading,is_review}) {
   if(loading){
       return (
           <>
+
           {is_review &&
             <div className="companies_contents lcompanies_contents">
             </div>
           }
+          <p className="text-small">Please wait while we fetching reviews</p>
+
            <div className="review_container lreview_container" style={style}>
               
               {!is_review &&

@@ -5,21 +5,20 @@ import "./style.css";
 function SquareLoader(props) {
   return (
     <div
-      className={
-        props.position ? "loader-wrapper position-static" : "loader-wrapper"
-      }
+      className="loader-wrapper"
       style={
         props.loading
           ? { display: "flex", marginTop: "0", ...props.style }
           : { display: "none", ...props.style }
       }
     >
-      <div className="square-loader">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+    <div className="loader_container">
+      <p className="loader">
+        {props.msg?props.msg:"Loading....."}
+      </p>
     </div>
+    </div>
+     
   );
 }
 

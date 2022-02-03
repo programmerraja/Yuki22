@@ -1,46 +1,27 @@
 .loader-wrapper{
     justify-content: center;
     align-items: center;
+    position: fixed;
     height: 100vh;
     width: 100vw;
     background: var(--secondary-color-lightr);
-    position: fixed;
     top: 0px;
     z-index: 1000;
 }
-.square-loader {
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
+.loader_container{
+    width: 80%;
+    margin: auto;
 }
-.square-loader div {
-  display: inline-block;
-  position: absolute;
-  left: 8px;
-  width: 16px;
-  background-color:var(--primary-color);
-  animation: square-loader 1.5s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+.loader{
+  background:linear-gradient(#0ab377 0 0) bottom left/0% 3px no-repeat;
+  animation:loadings 4s linear infinite ;
+  padding-bottom: 8px;
+  text-transform: capitalize;
 }
-.square-loader div:nth-child(1) {
-  left: 8px;
-  animation-delay: -0.24s;
-}
-.square-loader div:nth-child(2) {
-  left: 32px;
-  animation-delay: -0.12s;
-}
-.square-loader div:nth-child(3) {
-  left: 56px;
-  animation-delay: 0;
-}
-@keyframes square-loader {
-  0% {
-    top: 8px;
-    height: 64px;
-  }
-  50%, 100% {
-    top: 24px;
-    height: 32px;
+
+@keyframes loadings{
+  to{
+    background-size:100% 3px ;
   }
 }
+

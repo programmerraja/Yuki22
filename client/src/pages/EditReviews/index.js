@@ -20,7 +20,7 @@ function EditReview() {
    }  
 
    return ( <>
-           <SquareLoader  loading={loading}/>  
+           <SquareLoader  loading={loading}  msg={"Your review is updating please wait.East are west you are the best."}/>  
            
            <ReviewWrapper 
               onSucess={onSucess} 

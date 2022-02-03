@@ -59,7 +59,7 @@ function UserProfile() {
       }
    },[])
 return ( <>
-          <SquareLoader  loading={loading}/>
+          <SquareLoader  loading={loading} msg={"Plse wait while we fetching your profile."}/>
           <div className="profile_container">
               <div className="form_container">
                   <div className="form_input">

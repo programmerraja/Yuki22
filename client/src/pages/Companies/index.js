@@ -28,8 +28,8 @@ function Companies(){
   useEffect(()=>{
   	API.getCompanyList()
   	.then((res)=>{
+	      setLoading(false);
         if(res.data.status==="sucess"){
-	        	  setLoading(false);
               setCompanyLists(res.data.list);
          }
          else{

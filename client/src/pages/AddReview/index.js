@@ -2,6 +2,8 @@ import React from "react";
 import {useState,useEffect} from "react";
 import {useHistory} from "react-router-dom";
 
+
+import SquareLoader from  "../../components/SquareLoader";
 import ReviewWrapper from  "../../components/ReviewWrapper";
 
 import API from "../../utils/API";
@@ -17,7 +19,7 @@ import "./style.css"
 
 function AddReview() {
 
-   const [loading,setLoading]=useState(true);
+   const [loading,setLoading]=useState(false);
    const history = useHistory();
 
   
@@ -32,6 +34,7 @@ function AddReview() {
 
    
 return ( <>
+          <SquareLoader loading={loading} msg={"Your review is adding please wait.You are such a good heart person."}/>
             <div className="header-content">
               <p className="heading">
                   Write a Review
@@ -40,13 +43,11 @@ return ( <>
                   Help junior's in choosing the right company and help them to placed in a company.
               </p>
             </div>
-
             <ReviewWrapper 
                 onSucess={onSucess} 
                 loading={loading} 
                 setLoading={setLoading} 
             />
-
           </>);
 
 }

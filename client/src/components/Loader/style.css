@@ -1,4 +1,8 @@
-
+.text-small{
+  font-size: 12px;
+  text-transform: capitalize;
+  margin: 10px 0 0 0;
+}
 .lcompanies_content-text{
    background-color: #8080805c;
   height: 30px;
