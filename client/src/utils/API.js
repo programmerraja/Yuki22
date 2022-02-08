@@ -60,13 +60,14 @@ export default {
   signUp:userService.signUp,
   verfiyEmail:userService.verfiyEmail,
 
-  addMyReview:userService.addMyReview,
-  deleteMyReview:userService.deleteMyReview,
-  
   getCompanyNames:userService.getCompanyNames,
+
+  addMyReview:userService.addMyReview,
   getMyReviews:userService.getMyReviews,
   getMyReview:userService.getMyReview,
+  likeTheReview:userService.likeTheReview,
   updateMyReview:userService.updateMyReview,
+  deleteMyReview:userService.deleteMyReview,
 
 
   

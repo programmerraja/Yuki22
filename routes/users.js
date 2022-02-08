@@ -41,6 +41,12 @@ router.get("/getMyReview/:reviewId",
 			auth.isAuthenticatedUser(),
 			userController.getMyReview);
 
+router.get("/likeTheReview/:reviewId",
+			auth.isAuthenticatedUser(),
+			checkMailVerified,
+			userController.likeTheReview);
+
+
 router.post("/addMyReview",
 			auth.isAuthenticatedUser(),checkMailVerified,
 			userController.addMyReview);

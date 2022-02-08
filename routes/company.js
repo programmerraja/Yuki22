@@ -4,10 +4,10 @@ const companyController = require("../controllers/companyController.js");
 const auth = require("../middleware/auth.js");
 const sanitizeHtml = require("../middleware/sanitizeHtml.js");
 
-router.get("/getReviews/:companyId",
+router.get("/getReviews/:companyId",auth.isAuthenticated(),
 			companyController.getReviews);
 
-router.get("/sortedReviews/:companyId",
+router.get("/sortedReviews/:companyId",auth.isAuthenticated(),
 			companyController.getSortedReviews);
 
 router.get("/sortedList/",

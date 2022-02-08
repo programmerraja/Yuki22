@@ -49,6 +49,21 @@
   font-size: 0.75rem;
   font-weight: bold;
 }
+.reviewcard_like-icon{
+  cursor: pointer;
+  background-color: transparent;
+  border:0;
+  outline: 0;
+}
+.reviewcard_like-icon i{
+  color: white;
+}
+.reviewcard_edit-icon i{
+  color: var(--primary-color);
+}
+.liked i{
+  color: var(--primary-color);
+}
 
 summary {
   text-decoration: underline;

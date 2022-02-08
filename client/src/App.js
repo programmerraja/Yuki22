@@ -65,7 +65,7 @@ function App(props) {
           <MyRoute.UserRestrictedRoute  path="/signup" component={Signup} />
           
           <Route exact path="/companies" component={Companies} />
-          <Route exact path="/company/reviews/:companyId"  component={Reviews}/>
+          <Route exact path="/company/reviews/:companyId"  component={()=>{return(<Reviews isLoggedin={API.isAuth()}/>)}}/>
           
           <Route exact path="/user/forgetPassword" component={ForgetPassword} />
           <Route exact path="/user/verifiy/email/:userId"  component={EmailVerified}/>

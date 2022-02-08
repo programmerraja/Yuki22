@@ -57,12 +57,13 @@ const company = {
           //removing user detail if it is Anonymous and put as obj
           reviews.forEach((review) => {
             if (review.isAnonymous) {
-              review.user = { name: "anonymous", dept: "", regNo: "" };
+              review.user = { name: "anonymous", dept: "", regNo: "" ,isLiked:review.likes?.includes(req.user.id)};
             } else {
               review.user = {
                 name: review.user[0].name,
                 department: review.user[0].department,
                 regno: review.user[0].regno,
+                isLiked:review.likes?.includes(req.user.id)
               };
             }
           });
@@ -106,12 +107,14 @@ const company = {
           //removing user detail if it is Anonymous and put as obj
           reviews.forEach((review) => {
             if (review.isAnonymous) {
-              review.user = { name: "anonymous", dept: "", regNo: "" };
+              review.user = { name: "anonymous", dept: "", regNo: "" ,isLiked:review.likes?.includes(req.user.id)};
             } else {
               review.user = {
                 name: review.user[0].name,
                 department: review.user[0].department,
                 regno: review.user[0].regno,
+                isLiked:review.likes?.includes(req.user.id)
+
               };
             }
           });

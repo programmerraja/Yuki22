@@ -355,6 +355,27 @@ const user = {
         res.json({ status: "failed", msg: "Something went wrong" });
       });
   },
+  likeTheReview:function(req,res){
+    if(req.params.reviewId){
+      db.Reviews
+        .findOneAndUpdate({_id:req.params.reviewId,likes:{"$nin":[String(req.user._id)]}},
+                        {"$push":{likes:[String(req.user._id)]}}
+                      )
+        .then((review_obj)=>{
+          if(!review_obj){
+            //if user already liked remove his id
+             db.Reviews
+               .findOneAndUpdate({_id:req.params.reviewId},
+                        {"$pull":{
+                                  likes:{ $in:[String(req.user._id)]}
+                                 }
+                        }
+                      ) .then((review_obj)=>{});
+          }
+          res.send()
+        })
+    }
+  },
   addMyReview: function (req, res) {
     if (controllerUtil.checkReview(req.body)) {
       db.Compaines.findOne({ name: req.body.name.toLowerCase() })

@@ -51,6 +51,9 @@ const ReviewsSchema = new mongoose.Schema(
     isAnonymous:{
       type:Boolean,
       default:false
+    },
+    likes:{
+      type: [{type: String}]
     }
   },
   { timestamps: true }

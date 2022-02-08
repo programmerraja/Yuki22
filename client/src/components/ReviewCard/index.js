@@ -1,32 +1,31 @@
-import React from "react";
+import {React,useState} from "react";
 import {Link } from "react-router-dom";
 
 import userImg from "../../img/user.svg";
 
 import "./style.css";
 
-function ReviewCard({
-                    _id,
-                    placementType,
-                    offCampusDetail,
-                    rounds,
-                    roundsDetails,
-                    attendedOn,
-                    isPlaced,
-                    rating,
-                    pros,
-                    cons,
-                    salary,
-                    mobileNo,
-                    role,
-                    user,
-                    myCompany,
-                    createdAt,
-                    isEditing,
-                    deleteReview
-                  }){
+function ReviewCard({_id,placementType,offCampusDetail,rounds,roundsDetails,
+                    attendedOn,isPlaced,rating,pros,cons,salary,mobileNo,role,user,
+                    myCompany,createdAt,isEditing,deleteReview,isLoggedin,likes=[],likeTheReview}){
 
-  
+  const [isLiked,setIsLiked]=useState(user.isLiked)
+  const[likes_count,setLikesCount]=useState(likes.length)
+
+  const likeReview=()=>{
+    if(isLoggedin){
+      likeTheReview(_id)
+      if(isLiked){
+        setLikesCount((likes_count)=>likes_count-1);
+      }else{
+        setLikesCount((likes_count)=>likes_count+1);
+      }
+      setIsLiked((isLiked)=>!isLiked);
+    }
+    else{
+      likeTheReview(false)
+    }
+  }
 
   return ( 
     <>
@@ -164,6 +163,13 @@ function ReviewCard({
                 </div>
             }
           </div>
+           {likeTheReview && <div>
+               <button onClick={likeReview} className={isLiked?"reviewcard_like-icon liked":"reviewcard_like-icon"}>
+                <i className="fas fa-thumbs-up " ></i>
+               </button>
+               {" "}{likes_count}
+              </div>
+            }
           {isEditing &&
             <div className="edit_icon">
               <i className="fas fa-trash-alt" onClick={()=>{deleteReview(_id)}}></i>

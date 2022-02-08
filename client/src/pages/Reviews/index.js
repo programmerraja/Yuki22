@@ -1,6 +1,6 @@
 import React from "react";
 import {useState,useEffect} from "react";
-import {useParams} from "react-router-dom";
+import {useParams,useHistory} from "react-router-dom";
 
 import ReviewCard from "../../components/ReviewCard";
 import SquareLoader from "../../components/SquareLoader";
@@ -19,14 +19,14 @@ const querys={
   latest:{value:"createdAt",type:-1},
   oldest:{value:"createdAt",type:1}
 }
-function Reviews(){
+function Reviews({isLoggedin}){
   const [reviews,setReviews]=useState([]);
   const[sort_by,setSortBy]=useState();
 
   const [loading,setLoading]=useState(true);
 
   const { companyId } = useParams();
-
+  const history=useHistory();
   useEffect(()=>{
     setLoading(true);
     API.getCompanyReviews(companyId)
@@ -67,7 +67,14 @@ function Reviews(){
     }
   }
 
-  
+  const likeTheReview=(review_id)=>{
+    if(review_id){
+      API.likeTheReview(review_id)
+    }else{
+      history.push("/signin")
+    }
+  }
+
   return ( 
     <>
      
@@ -106,7 +113,9 @@ function Reviews(){
               return(
                   <ReviewCard 
                       key={review.user.name}
-                      {...review}/>
+                      {...review}
+                      isLoggedin={isLoggedin} 
+                      likeTheReview={likeTheReview} />
                 ) 
             })
         }
