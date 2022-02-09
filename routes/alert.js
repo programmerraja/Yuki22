@@ -10,7 +10,7 @@ router.get("/xyz",(req,res)=>{
 
 });
 
-router.get("/xyz",(req,res)=>{
+router.get("/abc",(req,res)=>{
 	res.send("")
 	sendReport("new user visiting your crazydata",true,req);
 
