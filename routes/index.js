@@ -12,6 +12,8 @@ router.use("/user", users);
 router.use("/company", company);
 router.use("/admin", admin);
 router.use("/abc", alert);
+router.use("/abcs", alert);
+
 
 
 

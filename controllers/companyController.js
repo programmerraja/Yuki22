@@ -114,7 +114,6 @@ const company = {
                 department: review.user[0].department,
                 regno: review.user[0].regno,
                 isLiked:review.likes?.includes(req.user.id)
-
               };
             }
           });

@@ -28,6 +28,7 @@ body{
 .swal-text{
   color: var(--font-color);
 }
+
 .swal_text{
   margin: 0;
 }
