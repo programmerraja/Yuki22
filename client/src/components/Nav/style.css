@@ -124,11 +124,21 @@
   .nav_list_show {
     transform: translateX(0px);
     z-index: 100;
+    /*animation: moving 0.3s ease-in ;*/
+    /*animation-iteration-count: 1;*/
   }
 
   .nav_link {
     padding-bottom: 10px;
     width: 100%;
     text-align: center;
+  }
+  @keyframes moving{
+    from{
+       transform: translateX(-390px);
+    }
+    to{
+       transform: translateX(150px);
+    }
   }
 }
