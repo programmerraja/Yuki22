@@ -8,9 +8,11 @@ import ReviewWrapper from  "../../components/ReviewWrapper";
 import API from "../../utils/API";
 import errorHandler from "../../utils/errorHandler";
 
+let msg="Your review is updating please wait."
+let msg2="Please wait we getting Your review."
 function EditReview() {
    
-   const [loading,setLoading]=useState(true); 
+   const [loading,setLoading]=useState("initial"); 
 
    const history = useHistory();
    const { reviewId } = useParams();
@@ -20,7 +22,7 @@ function EditReview() {
    }  
 
    return ( <>
-           <SquareLoader  loading={loading}  msg={"Your review is updating please wait.East are west you are the best."}/>  
+           <SquareLoader  loading={loading}  msg={loading==="initial"?msg2:msg}/>  
            
            <ReviewWrapper 
               onSucess={onSucess} 

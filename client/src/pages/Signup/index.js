@@ -51,7 +51,7 @@ function Signup() {
   }
 
 return ( <>
-    <SquareLoader  loading={loading}/>  
+    <SquareLoader  loading={loading} msg={"Plse wait we creating account for you"}/>  
     <div className="signup_wrapper">
      <div className="signup_container">
         <div className="form_container">

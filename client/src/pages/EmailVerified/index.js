@@ -9,7 +9,6 @@ import verifiy from "../../img/verifiy.svg";
 
 function EmailVerified()
 {
-	
   const [loading,setLoading]=useState(true);
   const [verified,setVerified]=useState(false);
   
@@ -37,7 +36,7 @@ function EmailVerified()
 
 return(
   <>
-    <SquareLoader  loading={loading}/>
+    <SquareLoader  loading={loading} msg={"Plse wait we verifiying your email"}/>
     { (!loading && verified) &&
       <div class="reset_container">
         <div class="reset_img">

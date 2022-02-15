@@ -8,12 +8,15 @@ import errorHandler from "../../utils/errorHandler";
 
 import user from "../../img/user.svg";
 
+const msg="Your profile is updating please wait."
+const msg2="Please wait we getting Your profile."
+
 function UserProfile() {
    const [name,setName]=useState("");
    const [old_password,setOldPassword]=useState("");
    const [new_password,setNewPassword]=useState("");
 
-   const [loading,setLoading]=useState(true);
+   const [loading,setLoading]=useState("initial");
 
 
    const handleClick=()=> {
@@ -59,7 +62,7 @@ function UserProfile() {
       }
    },[])
 return ( <>
-          <SquareLoader  loading={loading} msg={"Plse wait while we fetching your profile."}/>
+          <SquareLoader  loading={loading} msg={loading==="initial"?msg2:msg}/>
           <div className="profile_container">
               <div className="form_container">
                   <div className="form_input">

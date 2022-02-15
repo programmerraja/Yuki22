@@ -42,7 +42,7 @@ function ForgetPassword(){
     
 return ( 
     <>
-    <SquareLoader  loading={loading}/>
+    <SquareLoader  loading={loading} msg={"Plse wait we sending email for you"}/>
     
     <div class="forget_container">
 

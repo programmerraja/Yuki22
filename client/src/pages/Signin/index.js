@@ -55,7 +55,7 @@ function Signin({setUser}){
 
   return ( 
     <>
-    <SquareLoader  loading={loading}/>
+    <SquareLoader  loading={loading} msg={"Please wait we will let you in"}/>
     <div className="user">
       <p>Welcome Back</p>
     </div>  
