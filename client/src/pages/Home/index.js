@@ -1,5 +1,6 @@
 import {React} from "react";
 import Footer from "../../components/Footer";
+import FloatingIcon from "../../components/FloatingIcon";
 
 import "./style.css";
 
@@ -29,6 +30,7 @@ import gigamon from "../../img/company/gigamon.png";
 function Home() {
 
 return ( <>
+        <FloatingIcon/>
         <div className="hero_container">
            <div className="hero_text">
               <h1> Find the company that suits You </h1>
