@@ -5,6 +5,61 @@
 	align-items: center;
 	margin: 1rem;
 }
+.steps{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding:0 1rem;
+    /*overflow: hidden;*/
+}
+
+.step{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    flex: 1;
+    padding:0 0.1rem;
+    animation: backward 0.2s ease-in forwards;
+}
+.line{
+    height: 1px;
+    background-color: gray;
+    flex: 2;
+}
+.step p{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.step_active{
+    border-radius: 2px;
+    animation: delay 0.5s ease-in forwards;
+}
+.line_active{
+    background-color: var(--primary-color);
+}
+
+@keyframes delay{
+    from{
+        background-color: transparent;
+    }
+    to{
+        background-color: var(--primary-color);
+    }
+}
+@keyframes backward{
+    from{
+        background-color: var(--primary-color);
+    }
+    to{
+        background-color: transparent;
+
+    }
+}
 
 .add_review-container{
     background-color: var(--secondary-color-light);
