@@ -1,4 +1,6 @@
-import {React} from "react";
+import React from "react";
+import {useHistory} from "react-router-dom";
+
 import Footer from "../../components/Footer";
 import FloatingIcon from "../../components/FloatingIcon";
 
@@ -26,10 +28,16 @@ import smackcoders from "../../img/company/smackcoders.png";
 import datalogic from "../../img/company/datalogic.png";
 import gigamon from "../../img/company/gigamon.png";
 
+import askQuestion from "../../utils/askQuestion";
 
 function Home() {
+    const history=useHistory();
 
-return ( <>
+    React.useEffect(()=>{
+        askQuestion(history);
+    },[askQuestion])
+   
+    return ( <>
         <FloatingIcon/>
         <div className="hero_container">
            <div className="hero_text">

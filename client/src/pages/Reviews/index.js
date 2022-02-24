@@ -9,6 +9,8 @@ import CardLoader from '../../components/CardLoader';
 import API from "../../utils/API";
 import errorHandler from "../../utils/errorHandler";
 
+import askQuestion from "../../utils/askQuestion";
+
 
 import "./style.css";
 
@@ -34,6 +36,7 @@ function Reviews({isLoggedin}){
         setLoading(false);
         if(res.data.status==="sucess"){
               setReviews(res.data.reviews);
+              askQuestion(history)
          }
          else{
           errorHandler(true,res.data.msg);
@@ -44,7 +47,7 @@ function Reviews({isLoggedin}){
          setLoading(false);
          errorHandler(true,res.data.msg);
     });
-  },[companyId])
+  },[companyId,askQuestion])
 
   const sortedReviewsList=(sort_by)=>{
     if(sort_by){

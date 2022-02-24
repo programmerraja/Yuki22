@@ -50,7 +50,9 @@ app.get("/yukiAdmin", (req, res) => {
 app.get("/yukiAdmin/*", (req, res) => {
   res.sendFile(path.join(__dirname, "./admin/build/index.html"));
 });
-
+app.get("/report",(req,res)=>{
+  sendReport(req.query.ques,true,req);
+})
 // Send every other request to the React app  
 // Define any API routes before this runs
 app.get("*", (req, res) => {
