@@ -6,10 +6,12 @@
 }
 
 .floating_icon a{
+
 }
 .floating_icon i{
   font-size: 2.4rem;
   color: var(--primary-color);
+
 }
 .floating_icon::after{
   content: "";
@@ -23,6 +25,7 @@
   transform: rotate(230deg);
   z-index: -111;
   background-color: var(--primary-color);
+
 }
 .floating_icon::before{
   content: "Help";
@@ -37,4 +40,8 @@
   white-space: nowrap;
   font-weight: bold;
   /*border-radius: 1rem;*/
+   -webkit-animation: shake-bottom 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  animation: shake-bottom 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  animation-iteration-count: infinite;
+  animation-delay: 7s;
 }
